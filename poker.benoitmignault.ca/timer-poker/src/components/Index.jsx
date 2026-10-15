@@ -12,7 +12,7 @@ function Index() {
 
 	// Changer le titre de la page et le favicon lorsque le composant est monté
 	useEffect(() => {
-		document.title = t('titre');
+		document.title = t('titre-page');
 		const favicon = document.getElementById("dynamic-favicon");
 
 		// On part de /timer-poker car c'est la vraie racine du projet
