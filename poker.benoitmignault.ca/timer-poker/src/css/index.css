@@ -2,10 +2,10 @@ body {
     margin: 0;
     background:
         linear-gradient(
-            rgba(5,10,25,0.50),
-            rgba(5,10,25,0.60)
+            rgba(5,10,25,0.25),
+			rgba(5,10,25,0.35)
         ),
-        url("/images/backgrounds/bg-timer.jpg");
+        url("/images/backgrounds/bg-timer-clair.jpg");
 
     background-size: cover;
     background-position: center;
