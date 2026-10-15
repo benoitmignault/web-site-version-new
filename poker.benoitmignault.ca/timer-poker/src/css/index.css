@@ -1,0 +1,14 @@
+body {
+    margin: 0;
+    background:
+        linear-gradient(
+            rgba(5,10,25,0.50),
+            rgba(5,10,25,0.60)
+        ),
+        url("/images/backgrounds/bg-timer.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
