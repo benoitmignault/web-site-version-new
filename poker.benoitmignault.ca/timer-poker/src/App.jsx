@@ -28,7 +28,13 @@ import Index from "./components/Index";
 function App() {
 
   return (
-    <></>
+    <BrowserRouter>
+        <Suspense fallback={<div>Chargement...</div>}>
+            <Routes>
+                <Route path="/timer-poker/" element={<Index />}/>              
+            </Routes>
+        </Suspense>            
+    </BrowserRouter>
   )
 }
 
