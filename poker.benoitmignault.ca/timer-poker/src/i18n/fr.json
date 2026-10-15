@@ -1,0 +1,16 @@
+{
+  "titre": "POKER TOURNOI • GESTION DES BLINDS & TIMER",
+  "organisateur": "Organisateur",
+  "valeursJetons": "VALEURS DES JETONS",
+  "petiteMise": "Petite Mise",
+  "grosseMise": "Grosse Mise",
+  "arret": "Arrêt",
+  "poursuivre": "Poursuivre",
+  "reinitialiser": "Réinitialiser",
+  "changer": "Changer",
+  "selectionner": "Sélectionner",
+  "minutes": "Minutes",
+  "secondes": "Secondes",
+  "prochainNiveau": "Prochain niveau dans",
+  "niveau": "Niveau"
+}
