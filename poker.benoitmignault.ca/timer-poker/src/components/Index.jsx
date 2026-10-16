@@ -15,11 +15,34 @@ import '../css/index.css';
 function Index() {
 
 	// La liste des valeurs couleurs et la mise initiale sont stockées dans l'état global de l'application
-	const [couleurs, setCouleurs] = useState([]);
+	const [colors, setColors] = useState([]);
+	
+	// On doit stocker le prénom de l'organisateur sélectionné pour l'affichage dans le tableau des mises
+	const [organizerName, setOrganizerName] = useState(""); // ← le prénom (ex. "Frantz")
 
-	// La mise dans laquelle on est actuellement entrains d'utilisé dans l'état global de l'application
-	const [mise, setMise] = useState(null);
+	// On doit stocker l'id de l'organisateur sélectionné pour l'affichage dans le tableau des mises
+	const [organizerId, setOrganizerId] = useState(null); // ← le "id" (ex. 7")
 
+	// On doit stocker la mise initiale (petite et grosse blindes) pour l'affichage dans le tableau des mises
+	const [bet, setBet] = useState({
+		smallBlind: null, 
+		bigBlind: null, 
+		level: 1, 
+		maxLevel: null
+	});
+
+	// Reçoit les données d'OrganizerList et les redistribue
+	const handleDataReceived = (user, data) => {
+		setOrganizerName(data.name);
+		setOrganizerId(data.id);
+		setColors(data.colors);
+		setBet({
+			smallBlind: data.premiereMise.small,
+			bigBlind: data.premiereMise.big,
+			level: 1,
+			maxLevel: data.maxLevel,
+		});
+	};	
 
 	// Changer le titre de la page et le favicon lorsque le composant est monté
 	useEffect(() => {
