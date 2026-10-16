@@ -4,9 +4,9 @@
 
 
 import { useEffect, useState } from "react";
-import OrganisateurListe from "./OrganisateurListe";
-// import TableauJetons from "./TableauJetons";
-// import TableauMises from "./TableauMises";
+import OrganizerList from "./OrganizerList";
+import ChipList from "./ChipList";
+import BlindPanel from "./BlindPanel";
 // import CompteRebours from "./CompteRebours";
 import { API_BASE_URL, SITE_URL } from "../config";
 import { t } from "../i18n/i18n";
