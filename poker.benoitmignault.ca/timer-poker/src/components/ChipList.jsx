@@ -13,10 +13,10 @@ function ChipList({ chips }) {
 		<section>
 			<h2>{t('valeursJetons')}</h2>
 			<ul>
-				{jetons.map((jeton) => (
-					<li key={jeton.id_couleur ?? jeton.amount}>
-                        <span className={`jeton ${jeton.color_english}`}>{jeton.amount}</span>
-                        <span>{t(`couleur_${jeton.color_english}`)}</span>
+				{chips.map((chip) => (
+					<li key={chip.id_couleur ?? chip.amount}>
+                        <span className={`chip ${chip.color_english}`}>{chip.amount}</span>
+                        <span>{t(`color_${chip.color_english}`)}</span>
                     </li>
 				))}
 			</ul>
