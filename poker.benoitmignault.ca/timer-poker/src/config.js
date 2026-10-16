@@ -5,3 +5,4 @@
  * et que l'URL de production soit correctement configurée pour pointer vers votre API en production.
  */
 export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+export const SITE_URL = import.meta.env.VITE_SITE_URL;
