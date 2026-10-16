@@ -30,28 +30,32 @@ function Index() {
 		if (favicon) {
 			favicon.href = `${import.meta.env.BASE_URL}favicon/favicon-timer-Muse.png`;
 		}
-	}, []);
 
-	// Charger la liste des organisateurs au montage du composant
-	useEffect(() => {  
-        // Récupérer la liste des organisateurs depuis l'API et mettre à jour l'état      
-		//fetch(`${API_BASE_URL}/organisateurs.php`)
-			//.then((res) => res.json())
-			//.then((data) => setOrganisateurs(data));
-	}, []);
+	}, []);	
 
-	// Mémoriser l'organisateur choisi (les détails viendront avec les prochains composants)
-	const selectionnerOrganisateur = (user) => {
-		setOrganisateur(user);
-	};
+	// Reçoit les données d'OrganisateurListe et les redistribue
+	const recevoirDonnees = (donnees) => {
+		setCouleurs(donnees.couleurs);
+		setMise({
+			petiteMise: donnees.premiereMise.valeurSmall,
+			grosseMise: donnees.premiereMise.valeurBig,
+			niveau: 1,
+			niveauMax: donnees.niveauMax,
+		});
+	};	
 
 	return (
 		<div>
-			<Header
-				organisateurs={organisateurs}
-				organisateurChoisi={organisateur}
-				onSelectionner={selectionnerOrganisateur}
-			/>
+			<header>
+				<a href={SITE_URL} className="retour-site">← {t('pageAccueil')}</a>
+				<h1>{t('titre')}</h1>
+				<OrganisateurListe onDonneesRecues={recevoirDonnees} />
+			</header>
+			<div className="main-container">
+				<TableauJetons couleurs={couleurs} />
+				<TableauMises mise={mise} />
+			</div>
+			<CompteRebours />
 		</div>
 	);
 }
