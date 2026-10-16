@@ -1,14 +1,25 @@
+// Ce fichier Index va commencer par récupérer la liste des organisateurs disponibles depuis l'API. 
+// Ensuite, on va passer l'informaton 
+// mettre à jour l'état de l'application pour . Il va également gérer le changement du favicon lorsque le composant est monté.
+
+
 import { useEffect, useState } from "react";
-import Header from "./Header";
-import { API_BASE_URL } from "../config";
+import OrganisateurListe from "./OrganisateurListe";
+// import TableauJetons from "./TableauJetons";
+// import TableauMises from "./TableauMises";
+// import CompteRebours from "./CompteRebours";
+import { API_BASE_URL, SITE_URL } from "../config";
 import { t } from "../i18n/i18n";
 import '../css/index.css';
 
 function Index() {
 
-	// États globaux de l'application
-	const [organisateurs, setOrganisateurs] = useState([]);
-	const [organisateur, setOrganisateur] = useState("");
+	// La liste des valeurs couleurs et la mise initiale sont stockées dans l'état global de l'application
+	const [couleurs, setCouleurs] = useState([]);
+
+	// La mise dans laquelle on est actuellement entrains d'utilisé dans l'état global de l'application
+	const [mise, setMise] = useState(null);
+
 
 	// Changer le titre de la page et le favicon lorsque le composant est monté
 	useEffect(() => {
