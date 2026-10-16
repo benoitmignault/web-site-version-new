@@ -54,31 +54,18 @@ function Index() {
 			favicon.href = `${import.meta.env.BASE_URL}favicon/favicon-timer-Muse.png`;
 		}
 
-	}, []);	
-
-	// Reçoit les données d'OrganisateurListe et les redistribue
-	const recevoirDonnees = (donnees) => {
-		setCouleurs(donnees.couleurs);
-		setMise({
-			petiteMise: donnees.premiereMise.valeurSmall,
-			grosseMise: donnees.premiereMise.valeurBig,
-			niveau: 1,
-			niveauMax: donnees.niveauMax,
-		});
-	};	
+	}, []);
 
 	return (
 		<div>
 			<header>
-				<a href={SITE_URL} className="retour-site">← {t('pageAccueil')}</a>
 				<h1>{t('titre')}</h1>
-				<OrganisateurListe onDonneesRecues={recevoirDonnees} />
+				<OrganizerList onDataReceived={handleDataReceived} />
 			</header>
 			<div className="main-container">
-				<TableauJetons couleurs={couleurs} />
-				<TableauMises mise={mise} />
+				<ChipList colors={colors} />
+				<BlindPanel bet={bet} />
 			</div>
-			<CompteRebours />
 		</div>
 	);
 }
