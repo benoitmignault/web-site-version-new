@@ -1,6 +1,6 @@
 import { t } from "../i18n/i18n";
 
-function OrganisateurListe({  }) {
+function OrganizerList({  }) {
 
     // États globaux de l'application
 	const [organisateurs, setOrganisateurs] = useState([]);
@@ -32,4 +32,4 @@ function OrganisateurListe({  }) {
 	);
 }
 
-export default OrganisateurListe;
+export default OrganizerList;
