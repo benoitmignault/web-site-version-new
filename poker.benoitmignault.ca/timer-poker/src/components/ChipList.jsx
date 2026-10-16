@@ -1,11 +1,11 @@
 import { t } from "../i18n/i18n";
 
-function ChipList({ couleurs }) {
+function ChipList({ chips }) {
 
 	// Tri par valeur croissante pour un affichage logique
-	const jetons = [...couleurs].sort((a, b) => a.amount - b.amount);
+	const chips = [...chips].sort((a, b) => a.amount - b.amount);
 
-	if (jetons.length === 0) {
+	if (chips.length === 0) {
 		return <p>{t('erreurSansJetons')}</p>;
 	}
 
