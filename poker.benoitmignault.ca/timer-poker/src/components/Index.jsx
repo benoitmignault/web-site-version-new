@@ -4,7 +4,6 @@ import ChipList from "./ChipList";
 import BlindPanel from "./BlindPanel";
 import Countdown from "./Countdown.jsx";
 import Footer from "./Footer.jsx";
-import { API_BASE_URL, SITE_URL } from "../config";
 import { t } from "../i18n/i18n";
 import '../css/index.css';
 
