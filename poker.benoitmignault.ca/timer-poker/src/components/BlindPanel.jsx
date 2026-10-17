@@ -18,12 +18,27 @@ function BlindPanel({ organizerId, level }) {
 			.catch(() => setBlinds(null));
 	}, [organizerId, level]);
 
+	// Si on n'a pas d'organisateur sélectionné, on ne peut pas afficher les blinds, 
+	// mais on va afficher -- dans chaque case et non un message erreur
 	if (!organizerId) {
-		return <p>{t("errorNoOrganizer")}</p>;
-	}
-
-	if (!blinds) {
-		return <p>{t("loading")}</p>;
+		return (
+			<section className="blind-panel">
+				<h2>{t("blinds")}</h2>
+				<p className="level">
+					{t("level")} {level}
+				</p>
+				<div className="blind-values">
+					<div className="blind">						
+						<span className="blind-label">{t("smallBlind")}</span>
+						<span className="blind-amount">--</span>
+					</div>
+					<div className="blind">						
+						<span className="blind-label">{t("bigBlind")}</span>
+						<span className="blind-amount">--</span>
+					</div>
+				</div>
+			</section>
+		);
 	}
 
 	return (
