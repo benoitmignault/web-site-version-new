@@ -7,10 +7,25 @@ import { API_BASE_URL, SITE_URL } from "../config";
 import { t } from "../i18n/i18n";
 import '../css/index.css';
 
-function Index() {
 
-	// La liste des valeurs couleurs et la mise initiale sont stockées dans l'état global de l'application
-	const [colors, setColors] = useState([]);
+/**
+ * Composant principal du minuteur de poker.
+ *
+ * Rôle : assembler les sections de la page et détenir l'état partagé minimal.
+ * Chaque section est autonome et va chercher ses propres données via l'API ;
+ * Index ne fait que distribuer les valeurs et les setters.
+ *
+ * État partagé :
+ * - organizerId : id de l'organisateur sélectionné (ex. 7), utilisé par ChipList et BlindPanel pour leurs appels API.
+ * - organizerName : prénom de l'organisateur (ex. "Frantz"), affiché dans le Footer.
+ * - level : niveau de blinds courant (ex. 1) ; remis à 1 à chaque changement d'organisateur, incrémenté par le bouton Changer de BlindPanel.
+ *
+ * Mise en page : en-tête (titre + OrganizerList), contenu (jetons / blinds + chrono),
+ * puis Footer. 
+ * 
+ * Au montage, règle le titre de l'onglet et le favicon du minuteur.
+ */
+function Index() {
 	
 	// On doit stocker le prénom de l'organisateur sélectionné pour l'affichage dans le tableau des mises
 	const [organizerName, setOrganizerName] = useState(""); // ← le prénom (ex. "Frantz")
