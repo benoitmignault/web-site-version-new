@@ -16,7 +16,6 @@ function ChipList({ organizerId }) {
 
 	return (
 		<section>
-			<h2>{t('chipValues')}</h2>
 			<ul>
 				{sortedChips.map((chip) => (
 					<li key={chip.id_couleur ?? chip.amount}>
