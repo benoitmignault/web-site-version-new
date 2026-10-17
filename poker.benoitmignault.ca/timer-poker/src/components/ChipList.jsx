@@ -1,27 +1,33 @@
 import { t } from "../i18n/i18n";
 
-function ChipList({ chips }) {
+function ChipList({ organizerId }) {
+	
+	const [chips, setChips] = useState([]);
 
-	// Tri par valeur croissante pour un affichage logique
-	const chips = [...chips].sort((a, b) => a.amount - b.amount);
+	useEffect(() => {
+		if (!organizerId) return;
 
-	if (chips.length === 0) {
-		return <p>{t('erreurSansJetons')}</p>;
-	}
+		fetch(`${API_BASE_URL}/chips.php?id=${organizerId}`)
+			.then((r) => r.json())
+			.then((data) => setChips(data));
+	}, [organizerId]);
+
+	const sortedChips = [...chips].sort((a, b) => a.amount - b.amount);
 
 	return (
 		<section>
-			<h2>{t('valeursJetons')}</h2>
+			<h2>{t('chipValues')}</h2>
 			<ul>
-				{chips.map((chip) => (
+				{sortedChips.map((chip) => (
 					<li key={chip.id_couleur ?? chip.amount}>
-                        <span className={`chip ${chip.color_english}`}>{chip.amount}</span>
-                        <span>{t(`color_${chip.color_english}`)}</span>
-                    </li>
+						<span className={`chip ${chip.color_english}`}>{chip.amount}</span>
+						<span>{t(`color_${chip.color_english}`)}</span>
+					</li>
 				))}
 			</ul>
 		</section>
 	);
 }
+
 
 export default ChipList;
