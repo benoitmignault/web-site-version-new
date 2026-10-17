@@ -50,14 +50,21 @@ function Index() {
 
 	return (
 		<div>
-			<header>
-				<h1>{t('titre')}</h1>
-				<OrganizerList onDataReceived={handleDataReceived} />
-			</header>
-			<div className="main-container">
-				<ChipList colors={colors} />
-				<BlindPanel bet={bet} />
+			<div className="header-container">
+				<h1>{t('title')}</h1>
+				<OrganizerList setOrganizerName={setOrganizerName} setOrganizerId={setOrganizerId} setLevel={setLevel} />
 			</div>
+			<div className="main-container">
+				<div className="content-container">
+					<h2>{t('chipValues')}</h2>
+					<ChipList organizerId={organizerId} />
+				</div>
+				<div className="content-container">					
+					<BlindPanel organizerId={organizerId} level={level} setLevel={setLevel} />
+					<Countdown />
+				</div>				
+			</div>
+			<Footer organizerName={organizerName} />
 		</div>
 	);
 }
