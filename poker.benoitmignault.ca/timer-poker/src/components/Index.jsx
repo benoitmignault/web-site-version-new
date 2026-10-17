@@ -56,8 +56,12 @@ function Index() {
 			</div>
 			<div className="main-container">
 				<div className="content-container">
-					<h2>{t('chipValues')}</h2>
-					<ChipList organizerId={organizerId} />
+					{organizerId && (
+						<div>
+							<h2>{t('chipValues')}</h2>
+							<ChipList organizerId={organizerId} />
+						</div>
+					)}					
 				</div>
 				<div className="content-container">					
 					<BlindPanel organizerId={organizerId} level={level} setLevel={setLevel} />
