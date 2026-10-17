@@ -3,6 +3,7 @@ import { API_BASE_URL } from "../config";
 import { t } from "../i18n/i18n";
 
 function BlindPanel({ organizerId, level }) {
+
 	// La paire de mises pour le niveau courant
 	const [blinds, setBlinds] = useState(null);
 
