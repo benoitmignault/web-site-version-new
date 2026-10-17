@@ -1,8 +1,3 @@
-// Ce fichier Index va commencer par récupérer la liste des organisateurs disponibles depuis l'API. 
-// Ensuite, on va passer l'informaton 
-// mettre à jour l'état de l'application pour . Il va également gérer le changement du favicon lorsque le composant est monté.
-
-
 import { useEffect, useState } from "react";
 import OrganizerList from "./OrganizerList";
 import ChipList from "./ChipList";
