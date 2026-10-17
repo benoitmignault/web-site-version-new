@@ -49,13 +49,13 @@ function BlindPanel({ organizerId, level }) {
 				{blinds.maxLevel ? ` / ${blinds.maxLevel}` : ""}
 			</p>
 			<div className="blind-values">
-				<div className="blind">
-					<span className="blind-amount">{blinds.smallBlind}</span>
+				<div className="blind">					
 					<span className="blind-label">{t("smallBlind")}</span>
+					<span className="blind-amount">{blinds.smallBlind}</span>
 				</div>
-				<div className="blind">
-					<span className="blind-amount">{blinds.bigBlind}</span>
+				<div className="blind">					
 					<span className="blind-label">{t("bigBlind")}</span>
+					<span className="blind-amount">{blinds.bigBlind}</span>
 				</div>
 			</div>
 		</section>
