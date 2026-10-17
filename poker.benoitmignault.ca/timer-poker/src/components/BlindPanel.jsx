@@ -22,11 +22,7 @@ function BlindPanel({ organizerId, level }) {
 	// mais on va afficher -- dans chaque case et non un message erreur
 	if (!organizerId) {
 		return (
-			<section className="blind-panel">
-				<h2>{t("blinds")}</h2>
-				<p className="level">
-					{t("level")} {level}
-				</p>
+			<section className="blind-panel">				
 				<div className="blind-values">
 					<div className="blind">						
 						<span className="blind-label">{t("smallBlind")}</span>
@@ -42,12 +38,7 @@ function BlindPanel({ organizerId, level }) {
 	}
 
 	return (
-		<section className="blind-panel">
-			<h2>{t("blinds")}</h2>
-			<p className="level">
-				{t("level")} {level}
-				{blinds.maxLevel ? ` / ${blinds.maxLevel}` : ""}
-			</p>
+		<section className="blind-panel">			
 			<div className="blind-values">
 				<div className="blind">					
 					<span className="blind-label">{t("smallBlind")}</span>
