@@ -1,15 +1,44 @@
+import { useEffect, useState } from "react";
 import { SITE_URL } from "../config";
 import { t } from "../i18n/i18n";
 
-function Footer() {
+/**
+ * Pied de page du minuteur.
+ *
+ * Trois zones : à gauche le copyright avec le nom du site et le prénom
+ * de l'organisateur sélectionné, au centre l'heure en temps réel,
+ * à droite le lien de retour vers la page d'accueil du site.
+ */
+function Footer( organizerName ) {
 
-    // Va retourner l'année en cours pour l'affichage du copyright
-	const annee = new Date().getFullYear();
+    // L'année courante pour le copyright
+	const year = new Date().getFullYear();
 
-	return (
+	// L'heure courante, rafraîchie à chaque seconde
+	const [now, setNow] = useState(new Date());
+
+	useEffect(() => {
+
+		const timer = setInterval(() => setNow(new Date()), 1000);
+
+		// On nettoie l'intervalle quand le composant est démonté
+		return () => clearInterval(timer);
+	}, []);
+
+	return (		
 		<footer>
-			<span>© {annee} {t('titre-footer')} — {t('droitsReserves')}</span>
-			<a href={SITE_URL}>← {t('pageAccueil')}</a>
+			<span>
+				© {year} {t("siteName")}
+				{organizerName ? ` ${t("atOrganizer")} ${organizerName}` : ""} - {t("allRightsReserved")}
+			</span>
+			<span>
+				{now.toLocaleTimeString("fr-FR", {
+					hour: "2-digit",
+					minute: "2-digit",
+					second: "2-digit",
+				})}
+			</span>
+			<a href={SITE_URL}>{t("homePage")}</a>
 		</footer>
 	);
 }
