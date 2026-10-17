@@ -10,7 +10,6 @@ import { t } from "../i18n/i18n";
 function Countdown() {
 	return (
 		<section>
-			<h2>{t("countdown")}</h2>
 			<p>30:00</p>
 		</section>
 	);
