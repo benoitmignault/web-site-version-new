@@ -33,30 +33,12 @@ function Index() {
 	// On doit stocker l'id de l'organisateur sélectionné pour l'affichage dans le tableau des mises
 	const [organizerId, setOrganizerId] = useState(null); // ← le "id" (ex. 7")
 
-	// On doit stocker la mise initiale (petite et grosse blindes) pour l'affichage dans le tableau des mises
-	const [bet, setBet] = useState({
-		smallBlind: null, 
-		bigBlind: null, 
-		level: 1, 
-		maxLevel: null
-	});
-
-	// Reçoit les données d'OrganizerList et les redistribue
-	const handleDataReceived = (user, data) => {
-		setOrganizerName(data.name);
-		setOrganizerId(data.id);
-		setColors(data.colors);
-		setBet({
-			smallBlind: data.premiereMise.small,
-			bigBlind: data.premiereMise.big,
-			level: 1,
-			maxLevel: data.maxLevel,
-		});
-	};	
+	// On doit stocker le niveau de blinds sélectionné pour l'affichage dans le tableau des mises
+	const [level, setLevel] = useState(1); // ← le niveau de blinds (ex. 1")
 
 	// Changer le titre de la page et le favicon lorsque le composant est monté
 	useEffect(() => {
-		document.title = t('titre-page');
+		document.title = t('title-page');
 		const favicon = document.getElementById("dynamic-favicon");
 
 		// On part de /timer-poker car c'est la vraie racine du projet
