@@ -1,9 +1,11 @@
 {
   "title-page": "Minuteur - Poker",
   "title": "DASHBOARD • GESTION DES BLINDS & TIMER",  
-  "title-footer": "Tournoi de Poker",
+  "siteName": "Tournoi de Poker",
+  "atOrganizer": "chez",
   "home": "Retour au site",
   "organizer": "Organisateur",
+  "chooseOrganizer": "Choisir un organisateur",
   "chipValues": "VALEURS DES JETONS",
   "petiteMise": "Petite Mise",
   "grosseMise": "Grosse Mise",
@@ -26,5 +28,6 @@
   "color_black": "Noir",
   "color_yellow": "Jaune",
   "color_lightblue": "Bleu clair",
-  "color_purple": "Violet"
+  "color_purple": "Violet",
+  "droitsReserves": "Tous droits réservés"
 }
