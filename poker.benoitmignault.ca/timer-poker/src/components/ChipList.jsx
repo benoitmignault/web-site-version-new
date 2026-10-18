@@ -6,8 +6,11 @@ import { t } from "../i18n/i18n";
  * Tableau des jetons de l'organisateur sélectionné.
  *
  * Va chercher les jetons via l'API quand l'organizerId change.
- * L'affichage est généré dynamiquement : le nombre de jetons
- * et leurs valeurs varient d'un organisateur à l'autre.
+ * L'affichage est généré dynamiquement : le nombre de jetons et leurs valeurs varient d'un organisateur à l'autre.
+ * Index ne l'affiche que quand un organisateur est choisi.
+ *
+ * @param {Object} props Les propriétés du composant.
+ * @param {number} props.organizerId ID de l'organisateur sélectionné.
  */
 function ChipList({ organizerId }) {
 
