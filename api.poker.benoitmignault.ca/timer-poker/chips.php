@@ -32,6 +32,15 @@ $sql = $select . $from . $where . $orderBy;
 
 // Préparation de la requête SQL
 $stmt = $connMYSQL->prepare($sql);
+if ($stmt === false) {
+    error_log($connMYSQL->error);
+
+    http_response_code(500);
+    echo json_encode(["success" => false, "message" => "Erreur lors de la préparation de la requête."]);
+
+    $connMYSQL->close();
+    exit();
+}
 $stmt->bind_param("i", $organizerId);
 
 // Vérifier si la requête a réussi
