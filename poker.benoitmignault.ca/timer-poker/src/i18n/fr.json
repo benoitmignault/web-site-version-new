@@ -29,5 +29,9 @@
   "color_yellow": "Jaune",
   "color_lightblue": "Bleu clair",
   "color_purple": "Violet",
-  "droitsReserves": "Tous droits réservés"
+  "color_brown": "Brun",
+  "color_darkred": "Rouge foncé",
+  "color_grey": "Gris",
+  "color_orange": "Orange",
+  "color_pink": "Rose"
 }
