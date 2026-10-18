@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useRef, useState } from "react";
 import { ALERT_SOUND_URL } from "../config";
 import { t } from "../i18n/i18n";
