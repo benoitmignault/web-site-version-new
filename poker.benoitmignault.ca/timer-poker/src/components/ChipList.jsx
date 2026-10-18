@@ -20,11 +20,6 @@ function ChipList({ organizerId }) {
 	// Fonction pour charger les jetons de l'organisateur sélectionné
 	const loadChips = async () => {
 
-		// Rien à charger tant qu'aucun organisateur n'est choisi
-		if (!organizerId) {
-			return;
-		}
-
 		try {
 			// On va chercher les jetons de l'organisateur sélectionné via l'API
 			// mais en mode asynchrone pour pouvoir attendre la réponse avant de mettre à jour l'état      
