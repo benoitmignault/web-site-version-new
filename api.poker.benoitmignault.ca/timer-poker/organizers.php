@@ -9,7 +9,7 @@ include(__DIR__ . "/includes/fct-connexion-bd.php");
 // Établier la connexion à la base de données pour les soirées de poker
 $connMYSQL = connexionOrganizersDB();
 
-if (!$conn) {
+if (!$connMYSQL) {
 
     http_response_code(500);
     echo json_encode(["success" => false, "message" => "Erreur de connexion à la base de données."]);
@@ -25,7 +25,7 @@ $orderBy = "ORDER name ASC";
 $sql = $select . $from . $orderBy;
 
 // Exécuter la requête SQL
-$result = $conn->query($sql);
+$result = $connMYSQL->query($sql);
 
 // Vérifier si la requête a réussi
 if (!$result) {
@@ -34,7 +34,7 @@ if (!$result) {
     echo json_encode(["success" => false, "message" => "Erreur lors de l'exécution de la requête."]);
 
     // Fermer la connexion à la base de données
-    $conn->close();
+    $connMYSQL->close();
     exit();
 }
 
@@ -54,4 +54,4 @@ http_response_code(200);
 echo json_encode(["success" => true, "organizers" => $organizers]);
 
 // Fermer la connexion à la base de données
-$conn->close();
+$connMYSQL->close();
