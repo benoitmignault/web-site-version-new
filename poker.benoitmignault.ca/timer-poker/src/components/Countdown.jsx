@@ -58,7 +58,6 @@ function Countdown( { organizerId, level, setLevel } ) {
 		return `${paddedMinutes}:${paddedSeconds}`;
 	};
 
-
 	// Fonction pour arrêter le chrono
 	const handleStop = () => {
 
