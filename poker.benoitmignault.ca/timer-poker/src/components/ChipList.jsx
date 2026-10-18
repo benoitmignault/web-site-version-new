@@ -59,9 +59,9 @@ function ChipList({ organizerId }) {
             await loadChips();
         };
 
-        initializeData();
-
-    }, []);
+        initializeData();		
+		// On relance le useEffect à chaque fois que l'organizerId change
+    }, [organizerId]); 
 
 	// Si le chargement a échoué, on affiche l'erreur au lieu des jetons
 	if (error) {
