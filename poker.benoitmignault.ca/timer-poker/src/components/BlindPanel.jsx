@@ -82,10 +82,7 @@ function BlindPanel({ organizerId, level, setLevel }) {
 		// On relance le useEffect à chaque fois que l'organizerId change
     }, [organizerId, level]); 
 
-	// Si le chargement a échoué, on affiche l'erreur au lieu des mises
-	if (error) {
-		return <p className="error">{error}</p>;
-	}
+	
 
 	return (
 		<section className="blind-panel">			
@@ -111,6 +108,8 @@ function BlindPanel({ organizerId, level, setLevel }) {
 					{t("reset")}
 				</button>
 			</div>
+			{/* Erreur affichée avec le panneau, pas à la place : on garde les contrôles */}
+			{error && <p className="error">{error}</p>}
 		</section>
 	);
 }
