@@ -163,10 +163,6 @@ function Countdown( { organizerId, level, setLevel } ) {
 			>
 				{t("reset")}
 			</button>
-
-
-
-
 		</section>
 	);
 }
