@@ -13,15 +13,17 @@
 			$user,
 			$password,
 			$bd_organizers
-		);		
+		);
 
-		if ($connMYSQL === false) {
+		if (!$connMYSQL) {
 
 			// Détail technique en log serveur seulement...
 			error_log("Échec connexion BD organisateurs : " . mysqli_connect_error());
-			
-			// ...message générique pour le client, dans notre enveloppe JSON
-			die(json_encode(["success" => false, "message" => "Erreur de connexion à la base de données."]));
+
+			http_response_code(500);
+			echo json_encode(["success" => false, "message" => "Erreur de connexion à la base de données."]);
+
+			exit();
 		}
 
 		$connMYSQL->set_charset("utf8mb4");
