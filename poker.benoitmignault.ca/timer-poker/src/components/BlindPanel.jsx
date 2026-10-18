@@ -94,9 +94,7 @@ function BlindPanel({ organizerId, level, setLevel }) {
 
         initializeData();		
 		// On relance le useEffect à chaque fois que l'organizerId change
-    }, [organizerId, level]); 
-
-	
+    }, [organizerId, level]);	
 
 	return (
 		<section className="blind-panel">			
