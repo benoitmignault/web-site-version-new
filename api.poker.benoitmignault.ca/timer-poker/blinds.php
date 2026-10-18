@@ -32,3 +32,94 @@ if ($level === false) {
 
 // Établier la connexion à la base de données pour les soirées de poker
 $connMYSQL = connexionOrganizersDB();
+
+// Récupération du niveau maximum pour cet organisateur pour vérifier si ils possèdent des combinaisons et sera utilisé si nous sommes arrivÉ à la fin des combinaisons de niveaux pour cet organisateur
+$sqlMax = "SELECT MAX(level) AS max_level FROM mise_small_big WHERE id_user = ?";
+$stmtMax = $connMYSQL->prepare($sqlMax);
+
+// Vérification si la préparation de la requête a réussi
+if ($stmtMax === false) {
+
+    error_log("Erreur lors de la préparation de la requête: " . $connMYSQL->error);
+    http_response_code(500);
+    echo json_encode(["success" => false, "message" => "Erreur lors de la préparation de la requête."]);
+    $connMYSQL->close();
+    exit;
+}
+
+$stmtMax->bind_param("i", $organizerId);
+
+// Vérifier si la requête a réussi
+if (!$stmtMax->execute()) {
+
+    error_log($stmtMax->error);
+    
+    http_response_code(500);
+    echo json_encode(["success" => false, "message" => "Erreur lors de l'exécution de la requête."]); 
+    
+    // Fermer la connexion au résultat du insert dans la base de données et la connexion à la base de données
+    $stmtMax->close();
+    $connMYSQL->close();
+    exit();
+}
+
+// Récupérer le niveau maximum pour cet organisateur
+$maxLevel = $stmtMax->get_result()->fetch_assoc()["max_level"];
+$stmtMax->close();
+
+// Aucun niveau de mise pour cet organisateur
+if ($maxLevel === null) {
+
+    error_log("Aucune combinaison de blinds trouvée pour l'organisateur avec l'ID: " . $organizerId);
+    http_response_code(404);
+    echo json_encode(["success" => false, "message" => "Aucune combinaison de blinds trouvée pour l'organisateur."]);
+    $connMYSQL->close();
+    exit;
+}
+
+$maxLevel = (int)$maxLevel;
+
+// Niveau borné au maximum
+$level = min($level, $maxLevel);
+
+// Les mises du niveau demandé
+$sql = "SELECT small, big FROM mise_small_big WHERE id_user = ? AND level = ?";
+$stmt = $connMYSQL->prepare($sql);
+
+if ($stmt === false) {
+    
+    error_log("Erreur lors de la préparation de la requête: " . $connMYSQL->error);
+    http_response_code(500);
+    echo json_encode(["success" => false, "message" => "Erreur lors de la préparation de la requête."]);
+    $connMYSQL->close();
+    exit;
+}
+
+$stmt->bind_param("ii", $organizerId, $level);
+
+// Vérifier si la requête a réussi
+if (!$stmt->execute()) {
+
+    error_log($stmt->error);
+    
+    http_response_code(500);
+    echo json_encode(["success" => false, "message" => "Erreur lors de l'exécution de la requête."]); 
+    
+    // Fermer la connexion au résultat du insert dans la base de données et la connexion à la base de données
+    $stmt->close();
+    $connMYSQL->close();
+    exit();
+}
+
+// Récupérer les blinds pour le niveau demandé
+$blind = $stmt->get_result()->fetch_assoc();
+
+echo json_encode([
+    "success" => true,
+    "maxLevel" => $maxLevel,
+    "small" => (int)$blind["small"],
+    "big" => (int)$blind["big"]
+]);
+
+$stmt->close();
+$connMYSQL->close();
