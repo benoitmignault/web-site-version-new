@@ -113,15 +113,11 @@ if (!$stmt->execute()) {
 
 // Récupérer les blinds pour le niveau demandé
 $result = $stmt->get_result();
-$blind = $result->fetch_assoc();
 
-if ($blind === null) {
-    http_response_code(404);
-    echo json_encode(["success" => false, "message" => "Aucune combinaison de blinds trouvée pour ce niveau."]);
-    $stmt->close();
-    $connMYSQL->close();
-    exit;
-}
+// Il n'est pas nécessaire de vérifier si le résultat est vide, 
+// car nous avons déjà vérifié que le niveau demandé est inférieur ou égal au niveau maximum pour cet organisateur. 
+// Il est donc garanti qu'il y aura un résultat.
+$blind = $result->fetch_assoc();
 
 echo json_encode([
     "success" => true,
