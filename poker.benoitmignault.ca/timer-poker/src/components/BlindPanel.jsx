@@ -62,6 +62,11 @@ function BlindPanel({ organizerId, level, setLevel }) {
 		setLevel((prev) => prev + 1);
 	};
 
+	// Revenir au premier niveau (en cas d'erreur ou pour recommencer)
+	const handleReset = () => {
+		setLevel(1);
+	};
+
 	// On charge la combinaison où on est rendu au niveau courant de l'organisateur sélectionné au montage du composant
 	// et à chaque fois que l'organizerId ou le level change
 	useEffect(() => {
@@ -98,6 +103,12 @@ function BlindPanel({ organizerId, level, setLevel }) {
 					onClick={handleChange} disabled={!organizerId || (maxLevel !== null && level >= maxLevel)}			
 				>
 					{t("change")}
+				</button>
+				<button
+					className="btn-reset"
+					onClick={handleReset} disabled={!organizerId || level <= 1}
+				>
+					{t("reset")}
 				</button>
 			</div>
 		</section>
