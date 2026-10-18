@@ -21,7 +21,7 @@ if (!$connMYSQL) {
 $select = "SELECT idUser, name ";
 // Utilisation de LEFT JOIN pour inclure tous les joueurs, même ceux sans résultats de tournament
 $from = "FROM login_organisateur ";
-$orderBy = "ORDER name ASC";
+$orderBy = "ORDER BY name ASC";
 $sql = $select . $from . $orderBy;
 
 // Exécuter la requête SQL
