@@ -87,15 +87,15 @@ function BlindPanel({ organizerId, level, setLevel }) {
 			<div className="blind-values">
 				<div className="blind">					
 					<span className="blind-label">{t("smallBlind")}</span>
-					{ /*<span className="blind-amount">{blinds.smallBlind}</span> */}
+					<span>{small === null ? "--" : small}</span>
 				</div>
 				<div className="blind">					
 					<span className="blind-label">{t("bigBlind")}</span>
-					{ /*<span className="blind-amount">{blinds.bigBlind}</span> */ }
+					<span>{big === null ? "--" : big}</span>
 				</div>
 				<button
 					type="button" className="change-button"
-					onClick={() => setLevel((currentLevel) => currentLevel + 1)}
+					onClick={handleChange} disabled={!organizerId || (maxLevel !== null && level >= maxLevel)}			
 				>
 					{t("change")}
 				</button>
