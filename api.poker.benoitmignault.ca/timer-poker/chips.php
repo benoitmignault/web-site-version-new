@@ -4,18 +4,10 @@
 include(__DIR__ . "/includes/cors.php");
 
 // Inclut la fonction de connexion à la base de données
-include(__DIR__ . "/includes/fct-connexion-bd.php")
+include(__DIR__ . "/includes/fct-connexion-bd.php");
 
 // Établier la connexion à la base de données pour les soirées de poker
 $connMYSQL = connexionOrganizersDB();
-
-if (!$connMYSQL) {
-
-    http_response_code(500);
-    echo json_encode(["success" => false, "message" => "Erreur de connexion à la base de données."]);
-
-    exit();
-}
 
 // Récupération de l'ID de l'organisateur depuis les paramètres GET
 $organizerId = isset($_GET['id']) ? intval($_GET['id']) : null;
