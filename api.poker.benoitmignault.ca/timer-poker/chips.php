@@ -32,6 +32,8 @@ $sql = $select . $from . $where . $orderBy;
 
 // Préparation de la requête SQL
 $stmt = $connMYSQL->prepare($sql);
+
+// Vérification si la préparation de la requête a réussi
 if ($stmt === false) {
     error_log($connMYSQL->error);
 
@@ -41,6 +43,7 @@ if ($stmt === false) {
     $connMYSQL->close();
     exit();
 }
+
 $stmt->bind_param("i", $organizerId);
 
 // Vérifier si la requête a réussi
