@@ -81,7 +81,7 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 			<select onChange={handleChange} defaultValue="">
 				<option value="">{t("chooseOrganizer")}</option>
 				{organizers.map((organizer) => (
-					<option key={organizer.id} value={organizer.id}>
+					<option key={organizer.idUser} value={organizer.idUser}>
 						{organizer.name}
 					</option>
 				))}
