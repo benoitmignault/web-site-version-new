@@ -97,24 +97,54 @@ function Countdown( { organizerId, level, setLevel } ) {
 		};
 	}, []);
 
-	// Jouer le red alert (sans le redémarrer s'il joue déjà)
-	const playAlert = () => {
-		alertRef.current?.play().catch(() => {
-			// Ignorer les erreurs de lecture (ex. lecture interrompue)
-		});
-	};
+	// Faire couler le temps quand le chrono est en marche
+	useEffect(() => {
 
+		// À chaque seconde, on décrémente le nombre de secondes restantes si le chrono est en marche.
+		// Comme la constante «secondsLeft» fait partie de ce useEffect, donc à chaque changement état, on relance ce useEffect.
 
+		// En pause : rien à faire
+		if (!isRunning) {
+			return;
+		}
+
+		// 00:00 : on arrête le chrono et on avance au prochain niveau
+		// si un organisateur est choisi ; la remise à 30:00 se fait
+		// ensuite via l'effet sur [organizerId, level]
+		if (secondsLeft <= 0) {
+
+			setIsRunning(false);
+
+			if (organizerId) {
+				setLevel((prev) => prev + 1);
+			}
+			return;
+		}
+
+		// Sinon, on décrémente dans une seconde
+		const timer = setTimeout(() => {
+			const next = secondsLeft - 1;
+
+			// Red alert à partir des 7 dernières secondes
+			if (next <= ALERT_SECONDS && next > 0) {
+
+				// Jouer le son d'alerte (sans le redémarrer s'il joue déjà)
+				playAlert();
+			}
+
+			setSecondsLeft(next);
+		}, 1000);
+
+		// Nettoyer le timeout si l'effet est relancé ou le composant démonté
+		return () => clearTimeout(timer);
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isRunning, secondsLeft, organizerId, setLevel]);
 
 	return (
 		<section>
-			<div className={`countdown-display ${getTimeColor()}`}>
+			<div className={`countdown-display ${getTimeColor()}${isAlerting ? " flashing" : ""}`}>
 				<span>{formatTime(secondsLeft)}</span>
 			</div>
-
-
-
-
 			<button
 				type="button" className="btn-stop"
 				onClick={handleStop} disabled={!organizerId || !isRunning}		
