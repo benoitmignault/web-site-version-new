@@ -31,9 +31,9 @@ body {
 .chip.red { background: #c62828; }
 .chip.white { background: #f5f5f5; color: #333; }
 .chip.black { background: #212121; }
-.chip.yellow { background: #f9a825; }
+.chip.yellow { background: #f9a825; color: #333; }
 .chip.purple { background: #6a1b9a; }
-.chip.lightblue { background: #4fc3f7; }
+.chip.lightblue { background: #4fc3f7; color: #333; }
 .chip.purple { background: #6a1b9a; }
 
 
