@@ -1,4 +1,12 @@
+import { useEffect, useState } from "react";
+import { ALERT_SOUND_URL } from "../config";
 import { t } from "../i18n/i18n";
+
+// Durée d'un niveau en secondes (pas d'option 15 minutes pour l'instant)
+const DEFAULT_SECONDS = 30 * 60;
+
+// Le red alert joue à partir de ce nombre de secondes avant la fin
+const ALERT_SECONDS = 7;
 
 /**
  * Compte à rebours du minuteur.
