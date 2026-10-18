@@ -9,14 +9,6 @@ include(__DIR__ . "/includes/fct-connexion-bd.php");
 // Établier la connexion à la base de données pour les soirées de poker
 $connMYSQL = connexionOrganizersDB();
 
-if (!$connMYSQL) {
-
-    http_response_code(500);
-    echo json_encode(["success" => false, "message" => "Erreur de connexion à la base de données."]);
-
-    exit();
-}
-
 // Requête SQl pour récupérer la lsite des organisateurs de soirées de poker avec leur nom e tleur ID
 $select = "SELECT id, name ";
 // Utilisation de LEFT JOIN pour inclure tous les joueurs, même ceux sans résultats de tournament
