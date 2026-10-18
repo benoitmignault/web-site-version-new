@@ -42,11 +42,11 @@ function BlindPanel({ organizerId, level }) {
 			<div className="blind-values">
 				<div className="blind">					
 					<span className="blind-label">{t("smallBlind")}</span>
-					<span className="blind-amount">{blinds.smallBlind}</span>
+					{ /*<span className="blind-amount">{blinds.smallBlind}</span> */}
 				</div>
 				<div className="blind">					
 					<span className="blind-label">{t("bigBlind")}</span>
-					<span className="blind-amount">{blinds.bigBlind}</span>
+					{ /*<span className="blind-amount">{blinds.bigBlind}</span> */ }
 				</div>
 				<button
 					type="button" className="change-button"
