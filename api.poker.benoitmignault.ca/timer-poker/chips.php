@@ -10,10 +10,10 @@ include(__DIR__ . "/includes/fct-connexion-bd.php");
 $connMYSQL = connexionOrganizersDB();
 
 // Récupération de l'ID de l'organisateur depuis les paramètres GET
-$organizerId = isset($_GET['id']) ? intval($_GET['id']) : null;
+$organizerId = filter_var($_GET['id'] ?? null, FILTER_VALIDATE_INT, ["options" => ["min_range" => 1]]);
 
 // Vérification si l'ID de l'organisateur est valide
-if ($organizerId < 0) {
+if ($organizerId === false) {
 
     http_response_code(400);
     echo json_encode(["success" => false, "message" => "ID de l'organisateur invalide."]);
