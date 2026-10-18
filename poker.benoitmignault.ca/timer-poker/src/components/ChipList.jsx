@@ -68,12 +68,14 @@ function ChipList({ organizerId }) {
 		return <p className="error">{error}</p>;
 	}
 
+	// Il est important d'avoir un id pour une lsite car React utilise les clés 
+	// pour identifier les éléments de la liste et optimiser le rendu.
 	return (
 		<ul>
 			{chips.map((chip) => (
-				<li key={chip.id_couleur ?? chip.amount}>
+				<li key={chip.id}>
 					<span className={`chip ${chip.color_english}`}>{chip.amount}</span>
-					<span>{t(`color_${chip.color_english}`)}</span>
+					<span>{chip.color_french}</span>
 				</li>
 			))}
 		</ul>
