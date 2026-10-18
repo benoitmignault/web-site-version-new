@@ -21,15 +21,57 @@ function Countdown( { organizerId, level, setLevel } ) {
 	const [secondsLeft, setSecondsLeft] = useState(DEFAULT_SECONDS);
 
 	// Est-ce que le chrono est en cours ou arrêté ? (true = en cours, false = arrêté)
-	const [isRunning, setIsRunning] = useState(true);
+	const [isRunning, setIsRunning] = useState(false);
 
 	// L'objet Audio du red alert : créé une seule fois, conservé entre les rendus
 	const alertRef = useRef(null);
 
+	// Couleur de la bordure du chrono selon le temps restant
+	const getTimeColor = () => {
+
+		const minutesLeft = secondsLeft / 60;
+
+		if (minutesLeft >= 15) {
+			return "green";
+		}
+
+		if (minutesLeft >= 5) {
+			return "orange";
+		}
+
+		return "red";
+	};
+
+	// Formate un nombre de secondes en "MM:SS" (ex. 90 -> "01:30")
+	const formatTime = (totalSeconds) => {
+		const minutes = Math.floor(totalSeconds / 60);
+		const seconds = totalSeconds % 60;
+
+		const paddedMinutes = String(minutes).padStart(2, "0");
+		const paddedSeconds = String(seconds).padStart(2, "0");
+
+		return `${paddedMinutes}:${paddedSeconds}`;
+	};
 
 
+	// Fonction pour arrêter le chrono
+	const handleStop = () => {
 
+		setIsRunning(false);
+	};
 
+	// Fonction pour reprendre le chrono
+	const handleResume = () => {
+
+		setIsRunning(true);
+	};
+
+	// Fonction pour réinitialiser le chrono
+	const handleReset = () => {
+
+		setIsRunning(false);
+		setSecondsLeft(DEFAULT_SECONDS);
+	};
 
 	// Fonction pour arrêter le chrono
 	useEffect(() => {
