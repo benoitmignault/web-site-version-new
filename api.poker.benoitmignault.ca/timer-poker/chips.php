@@ -32,7 +32,7 @@ if ($organizerId < 0) {
 }
 
 // Requête SQL pour récupérer les informations sur les jetons de l'organisateur
-$select = "SELECT ac.amount, c.color_english, c.color_french ";
+$select = "SELECT ac.id, ac.amount, c.color_english, c.color_french ";
 $from = "FROM amount_color ac INNER JOIN color c ON ac.id_color = c.id ";
 $where = "WHERE ac.id_user = ? ";
 $orderBy = "ORDER BY ac.amount";
