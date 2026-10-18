@@ -68,7 +68,7 @@ function ChipList({ organizerId }) {
 		return <p className="error">{error}</p>;
 	}
 
-	// Il est important d'avoir un id pour une lsite car React utilise les clés 
+	// Il est important d'avoir un id pour une liste car React utilise les clés 
 	// pour identifier les éléments de la liste et optimiser le rendu.
 	return (
 		<ul>
