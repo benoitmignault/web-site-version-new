@@ -77,8 +77,16 @@ function Countdown( { organizerId, level, setLevel } ) {
 		setSecondsLeft(DEFAULT_SECONDS);
 	};
 
-	// Fonction pour arrêter le chrono
+	// Cette fonction permet de jouer le red alert (sans le redémarrer s'il joue déjà) et sera caller à moins de 7 secondes 
+	const playAlert = () => {
+		alertRef.current?.play().catch(() => {
+			// Ignorer les erreurs de lecture (ex. lecture interrompue)
+		});
+	};
+
+	// Créer l'objet Audio au montage du composant et le nettoyer au démontage
 	useEffect(() => {
+		
 		// Créer l'objet Audio au montage du composant
 		alertRef.current = new Audio(ALERT_SOUND_URL);
 
