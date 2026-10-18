@@ -18,7 +18,7 @@
  */
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { Suspense } from "react";
 
 // Chargement immédiat
 import Index from "./components/Index";
