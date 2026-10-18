@@ -2,6 +2,20 @@ import { useEffect, useState } from "react";
 import { API_BASE_URL } from "../config";
 import { t } from "../i18n/i18n";
 
+/**
+ * Panneau des mises (petite et grosse) pour le niveau courant.
+ *
+ * Va chercher les mises via l'API quand l'organisateur ou le niveau change.
+ * Le bouton Changer passe au niveau suivant (désactivé au dernier niveau).
+ * Le bouton de réinitialisation ramène au premier niveau (désactivé au niveau 1).
+ * Tant qu'il n'y a pas de données, on affiche "--", comme un vrai tableau de bord.
+ * En cas d'erreur, le message s'affiche sous les boutons, avec le panneau.
+ *
+ * @param {Object} props Les propriétés du composant.
+ * @param {number|null} props.organizerId ID de l'organisateur sélectionné (null si aucun choisi).
+ * @param {number} props.level Niveau de blindes courant (base 1).
+ * @param {Function} props.setLevel Fonction pour mettre à jour le niveau de blindes.
+ */
 function BlindPanel({ organizerId, level, setLevel }) {
 
 	// Les mises reçues de l'API (null = pas encore de données)
