@@ -18,7 +18,7 @@ if (!$connMYSQL) {
 }
 
 // Requête SQl pour récupérer la lsite des organisateurs de soirées de poker avec leur nom e tleur ID
-$select = "SELECT idUser, name ";
+$select = "SELECT id, name ";
 // Utilisation de LEFT JOIN pour inclure tous les joueurs, même ceux sans résultats de tournament
 $from = "FROM login_organisateur ";
 $orderBy = "ORDER BY name ASC";
