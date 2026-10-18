@@ -50,7 +50,7 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 
 		// On retrouve l'organisateur choisi dans la liste (la valeur du select est une chaîne, l'id un nombre)
 		const selected = organizers.find(
-			(organizer) => String(organizer.id) === event.target.value
+			(organizer) => String(organizer.idUser) === event.target.value
 		);
 
 		if (!selected) {
