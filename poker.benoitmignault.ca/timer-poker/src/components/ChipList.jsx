@@ -49,6 +49,7 @@ function ChipList({ organizerId }) {
 		}
 	};
 
+	// On charge les jetons de l'organisateur sélectionné au montage du composant
 	useEffect(() => {
 
         const initializeData = async () => {
