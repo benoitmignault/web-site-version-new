@@ -58,7 +58,7 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 		}
 
 		// On stocke son id et son prénom dans Index...
-		setOrganizerId(selected.id);
+		setOrganizerId(selected.idUser);
 		setOrganizerName(selected.name);
 		// ...et on repart au niveau 1
 		setLevel(1);
