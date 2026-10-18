@@ -116,7 +116,7 @@ function BlindPanel({ organizerId, level, setLevel }) {
 					{t("change")}
 				</button>
 				<button
-					className="btn-reset"
+					type="button" className="btn-reset"
 					onClick={handleReset} disabled={!organizerId || level <= 1}
 				>
 					{t("reset")}
