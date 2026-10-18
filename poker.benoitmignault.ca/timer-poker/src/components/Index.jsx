@@ -66,8 +66,10 @@ function Index() {
 				<div className="content-container">					
 					<div>
 						<BlindPanel organizerId={organizerId} level={level} setLevel={setLevel} />
-					</div>				
-					<Countdown />
+					</div>	
+					<div>
+						<Countdown />
+					</div>					
 				</div>				
 			</div>
 			<Footer organizerName={organizerName} />
