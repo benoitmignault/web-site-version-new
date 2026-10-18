@@ -27,6 +27,10 @@ function Countdown( { organizerId, level, setLevel } ) {
 	// L'objet Audio du red alert : créé une seule fois, conservé entre les rendus
 	const alertRef = useRef(null);
 
+	// L'encadré clignote en rouge pendant l'alerte (7 dernières secondes)
+	// À chaque changement de secondsLeft, on vérifie si on est dans la période d'alerte
+	const isAlerting = secondsLeft <= ALERT_SECONDS && secondsLeft > 0;
+
 	// Couleur de la bordure du chrono selon le temps restant
 	const getTimeColor = () => {
 
