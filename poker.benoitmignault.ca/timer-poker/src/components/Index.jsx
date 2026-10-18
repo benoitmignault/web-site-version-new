@@ -70,7 +70,7 @@ function Index() {
 						<BlindPanel organizerId={organizerId} level={level} setLevel={setLevel} />
 					</div>	
 					<div>
-						<Countdown />
+						<Countdown organizerId={organizerId} level={level} />
 					</div>					
 				</div>				
 			</div>
