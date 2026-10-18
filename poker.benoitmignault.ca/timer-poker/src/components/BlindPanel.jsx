@@ -5,18 +5,7 @@ import { t } from "../i18n/i18n";
 function BlindPanel({ organizerId, level, setLevel }) {
 
 	// La paire de mises pour le niveau courant
-	const [blinds, setBlinds] = useState(null);
-
-	useEffect(() => {
-		// Rien à charger tant qu'aucun organisateur n'est choisi
-		if (!organizerId) {
-			return;
-		}
-		fetch(`${API_BASE_URL}/blinds.php?id=${organizerId}&level=${level}`)
-			.then((response) => response.json())
-			.then((data) => setBlinds(data))
-			.catch(() => setBlinds(null));
-	}, [organizerId, level]);
+	const [blinds, setBlinds] = useState(null);	
 
 	// Si on n'a pas d'organisateur sélectionné, on ne peut pas afficher les blinds, 
 	// mais on va afficher -- dans chaque case et non un message erreur
