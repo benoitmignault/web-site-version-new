@@ -12,7 +12,7 @@ if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowed
 header("Access-Control-Allow-Credentials: true");
 
 // En-têtes supplémentaires pour les requêtes CORS 
-header("Content-Type: application/json");
+header("Content-Type: application/json; charset=utf-8");
 
 // Permettre les méthodes HTTP spécifiques pour les requêtes CORS
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");

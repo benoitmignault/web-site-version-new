@@ -1,8 +1,8 @@
 <?php
 	/**
-	 * Connexion à la BD des organisateurs de tournois de poker.
-	 * 
-	 * @return mysqli
+	 * Fonction de connexion à la base de données des organisateurs de poker.
+	 *
+	 * @return mysqli La connexion à la base de données
 	 */
 	function connexionOrganizersDB(): mysqli {		
 
@@ -15,9 +15,15 @@
 			$bd_organizers
 		);
 
-		if ($connMYSQL->connect_error) {
-			// Même enveloppe que l'API : ton React teste data.success
-			die(json_encode(["success" => false, "message" => $connMYSQL->connect_error]));
+		if (!$connMYSQL) {
+
+			// Détail technique en log serveur seulement...
+			error_log("Échec connexion BD organisateurs : " . mysqli_connect_error());
+
+			http_response_code(500);
+			echo json_encode(["success" => false, "message" => "Erreur de connexion à la base de données."]);
+
+			exit();
 		}
 
 		$connMYSQL->set_charset("utf8mb4");

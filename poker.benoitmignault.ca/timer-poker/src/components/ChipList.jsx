@@ -20,11 +20,6 @@ function ChipList({ organizerId }) {
 	// Fonction pour charger les jetons de l'organisateur sélectionné
 	const loadChips = async () => {
 
-		// Rien à charger tant qu'aucun organisateur n'est choisi
-		if (!organizerId) {
-			return;
-		}
-
 		try {
 			// On va chercher les jetons de l'organisateur sélectionné via l'API
 			// mais en mode asynchrone pour pouvoir attendre la réponse avant de mettre à jour l'état      
@@ -54,6 +49,7 @@ function ChipList({ organizerId }) {
 		}
 	};
 
+	// On charge les jetons de l'organisateur sélectionné au montage du composant
 	useEffect(() => {
 
         const initializeData = async () => {
@@ -63,21 +59,23 @@ function ChipList({ organizerId }) {
             await loadChips();
         };
 
-        initializeData();
-
-    }, []);
+        initializeData();		
+		// On relance le useEffect à chaque fois que l'organizerId change
+    }, [organizerId]); 
 
 	// Si le chargement a échoué, on affiche l'erreur au lieu des jetons
 	if (error) {
 		return <p className="error">{error}</p>;
 	}
 
+	// Il est important d'avoir un id pour une liste car React utilise les clés 
+	// pour identifier les éléments de la liste et optimiser le rendu.
 	return (
 		<ul>
 			{chips.map((chip) => (
-				<li key={chip.id_couleur ?? chip.amount}>
+				<li key={chip.id}>
 					<span className={`chip ${chip.color_english}`}>{chip.amount}</span>
-					<span>{t(`color_${chip.color_english}`)}</span>
+					<span>{chip.color_french}</span>
 				</li>
 			))}
 		</ul>

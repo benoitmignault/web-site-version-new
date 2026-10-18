@@ -2,21 +2,10 @@ import { useEffect, useState } from "react";
 import { API_BASE_URL } from "../config";
 import { t } from "../i18n/i18n";
 
-function BlindPanel({ organizerId, level }) {
+function BlindPanel({ organizerId, level, setLevel }) {
 
 	// La paire de mises pour le niveau courant
-	const [blinds, setBlinds] = useState(null);
-
-	useEffect(() => {
-		// Rien à charger tant qu'aucun organisateur n'est choisi
-		if (!organizerId) {
-			return;
-		}
-		fetch(`${API_BASE_URL}/blinds.php?id=${organizerId}&level=${level}`)
-			.then((response) => response.json())
-			.then((data) => setBlinds(data))
-			.catch(() => setBlinds(null));
-	}, [organizerId, level]);
+	const [blinds, setBlinds] = useState(null);	
 
 	// Si on n'a pas d'organisateur sélectionné, on ne peut pas afficher les blinds, 
 	// mais on va afficher -- dans chaque case et non un message erreur
@@ -42,12 +31,18 @@ function BlindPanel({ organizerId, level }) {
 			<div className="blind-values">
 				<div className="blind">					
 					<span className="blind-label">{t("smallBlind")}</span>
-					<span className="blind-amount">{blinds.smallBlind}</span>
+					{ /*<span className="blind-amount">{blinds.smallBlind}</span> */}
 				</div>
 				<div className="blind">					
 					<span className="blind-label">{t("bigBlind")}</span>
-					<span className="blind-amount">{blinds.bigBlind}</span>
+					{ /*<span className="blind-amount">{blinds.bigBlind}</span> */ }
 				</div>
+				<button
+					type="button" className="change-button"
+					onClick={() => setLevel((currentLevel) => currentLevel + 1)}
+				>
+					{t("change")}
+				</button>
 			</div>
 		</section>
 	);

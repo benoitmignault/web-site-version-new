@@ -63,12 +63,10 @@ function Index() {
 						</div>
 					)}					
 				</div>
-				<div className="content-container">		
-					{organizerId && (
-						<div>
-							<BlindPanel organizerId={organizerId} level={level} setLevel={setLevel} />
-						</div>
-					)}
+				<div className="content-container">					
+					<div>
+						<BlindPanel organizerId={organizerId} level={level} setLevel={setLevel} />
+					</div>				
 					<Countdown />
 				</div>				
 			</div>

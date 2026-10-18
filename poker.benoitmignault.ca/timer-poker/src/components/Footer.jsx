@@ -9,7 +9,7 @@ import { t } from "../i18n/i18n";
  * de l'organisateur sélectionné, au centre l'heure en temps réel,
  * à droite le lien de retour vers la page d'accueil du site.
  */
-function Footer( organizerName ) {
+function Footer( {organizerName} ) {
 
     // L'année courante pour le copyright
 	const year = new Date().getFullYear();
