@@ -112,7 +112,16 @@ if (!$stmt->execute()) {
 }
 
 // Récupérer les blinds pour le niveau demandé
-$blind = $stmt->get_result()->fetch_assoc();
+$result = $stmt->get_result();
+$blind = $result->fetch_assoc();
+
+if ($blind === null) {
+    http_response_code(404);
+    echo json_encode(["success" => false, "message" => "Aucune combinaison de blinds trouvée pour ce niveau."]);
+    $stmt->close();
+    $connMYSQL->close();
+    exit;
+}
 
 echo json_encode([
     "success" => true,
