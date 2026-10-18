@@ -12,7 +12,7 @@ $organizerId = filter_var($_GET["id"] ?? null, FILTER_VALIDATE_INT, ["options" =
 // Vérification si l'ID de l'organisateur est valide
 if ($organizerId === false) {
 
-    error_log("ID de l'organisateur invalide: " . $organizerId);
+    error_log("ID de l'organisateur invalide: " . var_export($_GET["id"] ?? null, true));
     http_response_code(400);
     echo json_encode(["success" => false, "message" => "ID de l'organisateur invalide."]);
     exit;
