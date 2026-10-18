@@ -50,7 +50,7 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 
 		// On retrouve l'organisateur choisi dans la liste (la valeur du select est une chaîne, l'id un nombre)
 		const selected = organizers.find(
-			(organizer) => String(organizer.idUser) === event.target.value
+			(organizer) => String(organizer.id) === event.target.value
 		);
 
 		if (!selected) {
@@ -58,7 +58,7 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 		}
 
 		// On stocke son id et son prénom dans Index...
-		setOrganizerId(selected.idUser);
+		setOrganizerId(selected.id);
 		setOrganizerName(selected.name);
 		// ...et on repart au niveau 1
 		setLevel(1);
@@ -81,7 +81,7 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 			<select onChange={handleChange} defaultValue="">
 				<option value="">{t("chooseOrganizer")}</option>
 				{organizers.map((organizer) => (
-					<option key={organizer.idUser} value={organizer.idUser}>
+					<option key={organizer.id} value={organizer.id}>
 						{organizer.name}
 					</option>
 				))}
