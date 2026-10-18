@@ -24,7 +24,7 @@ $level = filter_var($_GET["level"] ?? null, FILTER_VALIDATE_INT, ["options" => [
 // Vérification si le niveau est valide
 if ($level === false) {
 
-    error_log("Niveau invalide: " . $level);
+    error_log("Niveau invalide: " . var_export($_GET["level"] ?? null, true));
     http_response_code(400);
     echo json_encode(["success" => false, "message" => "Niveau invalide."]);
     exit;
