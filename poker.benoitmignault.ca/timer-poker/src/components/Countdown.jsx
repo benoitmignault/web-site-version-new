@@ -62,20 +62,20 @@ function Countdown( { organizerId, level, setLevel } ) {
 
 
 			<button
-				type="button" className="change-button"
-				onClick={handleStop} disabled={!organizerId || (maxLevel !== null && level >= maxLevel)}			
+				type="button" className="btn-stop"
+				onClick={handleStop} disabled={!organizerId || !isRunning}		
 			>
 				{t("stop")}
 			</button>
 			<button
 				type="button" className="btn-resume"
-				onClick={handleResume} disabled={!organizerId || level <= 1}
+				onClick={handleResume} disabled={!organizerId || isRunning}
 			>
 				{t("resume")}
 			</button>
 			<button
 				type="button" className="btn-reset"
-				onClick={handleReset} disabled={!organizerId || level <= 1}
+				onClick={handleReset} disabled={!organizerId}
 			>
 				{t("reset")}
 			</button>
