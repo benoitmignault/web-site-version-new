@@ -6,22 +6,20 @@ include(__DIR__ . "/includes/cors.php");
 // Inclut la fonction de connexion à la base de données
 include(__DIR__ . "/includes/fct-connexion-bd.php");
 
-// Établier la connexion à la base de données pour les soirées de poker
-$connMYSQL = connexionOrganizersDB();
-
 // Récupération de l'ID de l'organisateur depuis les paramètres GET
 $organizerId = filter_var($_GET['id'] ?? null, FILTER_VALIDATE_INT, ["options" => ["min_range" => 1]]);
 
 // Vérification si l'ID de l'organisateur est valide
 if ($organizerId === false) {
 
+    error_log("ID de l'organisateur invalide: " . var_export($_GET['id'] ?? null, true));
     http_response_code(400);
-    echo json_encode(["success" => false, "message" => "ID de l'organisateur invalide."]);
-
-    // Fermer la connexion à la base de données
-    $connMYSQL->close();
+    echo json_encode(["success" => false, "message" => "ID de l'organisateur invalide."]);        
     exit();
 }
+
+// Établier la connexion à la base de données pour les soirées de poker
+$connMYSQL = connexionOrganizersDB();
 
 // Requête SQL pour récupérer les informations sur les jetons de l'organisateur
 $select = "SELECT ac.id, ac.amount, c.color_english, c.color_french ";
