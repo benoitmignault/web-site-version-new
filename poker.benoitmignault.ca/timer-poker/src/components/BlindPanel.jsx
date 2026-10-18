@@ -48,6 +48,12 @@ function BlindPanel({ organizerId, level }) {
 					<span className="blind-label">{t("bigBlind")}</span>
 					<span className="blind-amount">{blinds.bigBlind}</span>
 				</div>
+				<button
+					type="button" className="change-button"
+					onClick={() => setLevel((currentLevel) => currentLevel + 1)}
+				>
+					{t("change")}
+				</button>
 			</div>
 		</section>
 	);
