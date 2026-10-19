@@ -55,6 +55,12 @@ function ChipList({ organizerId }) {
 	// On charge les jetons de l'organisateur sélectionné au montage du composant
 	useEffect(() => {
 
+		// Sans organisateur sélectionné, on ne peut pas charger les jetons, donc on quitte la fonction
+		if (!organizerId) {
+			return;
+		}
+
+		// Sinon, on charge les jetons de l'organisateur sélectionné
         const initializeData = async () => {
 
             // On charge les jetons de l'organisateur sélectionné
