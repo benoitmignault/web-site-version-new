@@ -209,6 +209,11 @@ body {
 	box-sizing: border-box;
 }
 
+/* La carte des jetons garde sa place mais devient invisible sans organisateur */
+.content-container.is-hidden {
+	visibility: hidden;
+}
+
 /* La carte des jetons garde toujours la même largeur :
    pas de saut de layout quand on choisit un organisateur */
 .main-container > .content-container:first-child {
