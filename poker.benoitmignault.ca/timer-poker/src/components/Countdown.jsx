@@ -163,6 +163,28 @@ function Countdown( { organizerId, level, setLevel } ) {
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isRunning, secondsLeft]);
 
+	// Pause de fin de niveau : on reste 3 secondes sur 00:00 (flash rouge),
+	// puis on avance automatiquement au prochain niveau si un organisateur est choisi
+	useEffect(() => {
+
+		if (!isLevelEnd) {
+			return;
+		}
+
+		const pause = setTimeout(() => {
+			setIsLevelEnd(false);
+
+			// Déplacement du changement d'état pour le level 
+			if (organizerId) {
+				setLevel((prev) => prev + 1);
+			}
+
+		}, LEVEL_END_PAUSE_SECONDS * 1000);
+
+		return () => clearTimeout(pause);
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isLevelEnd]);
+
 	return (
 		<section>
 			<div className={`countdown-display ${getTimeColor()}${isAlerting ? " flashing" : ""}`}>
