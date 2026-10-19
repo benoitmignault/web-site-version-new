@@ -296,46 +296,194 @@ body {
 	color: var(--text-dim);
 }
 
-
-
-
-
-/* Bouton Changer — assorti aux cartes des blinds */
-.change-button {
-	display: block;
-	width: 100%;
-	margin-top: 1rem;
-	padding: 0.9rem 1rem;
-	background: rgba(10, 10, 10, 0.6);
-	border: 1px solid #c9a227;
-	border-radius: 8px;
-	color: #e8c15a;
-	font-size: 1.05rem;
-	font-weight: 700;
-	letter-spacing: 0.12em;
-	text-transform: uppercase;
-	cursor: pointer;
-	transition: background 0.2s, box-shadow 0.2s;
+/* Les deux cartes côte à côte, même largeur totale que les boutons du chrono */
+.blind-cards {
+	display: flex;
+	gap: 20px;
 }
 
-.change-button:hover:not(:disabled) {
+.blind-card {
+	flex: 1;
+	background: rgba(0, 0, 0, 0.6);
+	border: 1px solid var(--gold-soft);
+	border-radius: 16px;
+	padding: 28px 20px;
+	text-align: center;
+	box-shadow: inset 0 1px 0 rgba(212, 175, 55, 0.15);
+}
+
+.blind-label {
+	color: var(--gold);
+	font-size: 1.1rem;
+	font-weight: 600;
+	margin-bottom: 12px;
+}
+
+.blind-value {
+	font-size: 4rem;
+	font-weight: 700;
+	color: var(--gold);
+	line-height: 1;
+}
+
+/* Les deux boutons des blinds */
+.blind-actions {
+	display: flex;
+	gap: 12px;
+	margin-top: 20px;
+}
+
+.btn-change {
+	flex: 3;
+	padding: 16px 8px;
+	border-radius: 12px;
+	border: 1px solid var(--gold);
+	background: rgba(0, 0, 0, 0.5);
+	color: var(--gold-light);
+	font-size: 1.1rem;
+	font-weight: 700;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-change:hover:not(:disabled) {
 	background: rgba(201, 162, 39, 0.12);
 	box-shadow: 0 0 12px rgba(201, 162, 39, 0.35);
 }
 
-.change-button:disabled {
+.btn-change:disabled {
 	opacity: 0.35;
 	cursor: not-allowed;
 }
 
-@keyframes flash-red {
-	0%, 100% { border-color: red; box-shadow: 0 0 25px red; }
-	50% { border-color: transparent; box-shadow: none; }
+.blind-actions .btn-reset {
+	flex: 1;
+	padding: 16px 8px;
+	border-radius: 12px;
+	border: 1px solid var(--gold-soft);
+	background: transparent;
+	color: var(--text-dim);
+	font-size: 0.95rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.2s ease;
 }
 
-.countdown-display.green { border: 3px solid green; }
-.countdown-display.orange { border: 3px solid orange; }
-.countdown-display.red { border: 3px solid red; }
+.blind-actions .btn-reset:hover:not(:disabled) {
+	background: rgba(212, 175, 55, 0.1);
+	color: var(--gold-light);
+}
+
+.blind-actions .btn-reset:disabled {
+	opacity: 0.35;
+	cursor: not-allowed;
+}
+
+
+
+
+/* Le chrono */
+/* Affichage géant, chiffres blancs, bordure de couleur selon le temps restant */
+.countdown-display {
+	width: fit-content;
+	margin: 28px auto;
+	padding: 10px 48px;
+	text-align: center;
+	font-size: 8rem;
+	font-weight: 700;
+	color: white;
+	line-height: 1.1;
+	border: 4px solid var(--timer-green);
+	border-radius: 20px;
+	background: rgba(0, 0, 0, 0.55);
+	transition: border-color 0.5s ease;
+}
+
+.countdown-display.green { border-color: var(--timer-green); }
+.countdown-display.orange { border-color: var(--timer-orange); }
+.countdown-display.red { border-color: var(--timer-red); }
+
+/* Flash rouge pendant l'alerte */
 .countdown-display.flashing {
 	animation: flash-red 1s infinite;
 }
+
+@keyframes flash-red {
+	0%, 100% {
+		border-color: var(--timer-red);
+		box-shadow: 0 0 0 rgba(239, 68, 68, 0);
+	}
+
+	50% {
+		border-color: #ff6b6b;
+		box-shadow: 0 0 32px rgba(239, 68, 68, 0.8);
+	}
+}
+
+/* Les 3 boutons du chrono (même largeur que les cartes) */
+.countdown-actions {
+	display: flex;
+	gap: 16px;
+}
+
+.countdown-actions button {
+	flex: 1;
+	padding: 16px;
+	border-radius: 12px;
+	font-size: 1.05rem;
+	font-weight: 700;
+	cursor: pointer;
+	transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.countdown-actions button:disabled {
+	opacity: 0.35;
+	cursor: not-allowed;
+	transform: none;
+}
+
+/* Arrêt : contour rouge */
+.btn-stop {
+	border: 1px solid var(--timer-red);
+	background: rgba(239, 68, 68, 0.12);
+	color: #ff6b6b;
+}
+
+.btn-stop:hover:not(:disabled) {
+	background: rgba(239, 68, 68, 0.25);
+}
+
+/* Démarrer/Poursuivre : vert plein */
+.btn-resume {
+	border: none;
+	background: #1d9e52;
+	color: white;
+}
+
+.btn-resume:hover:not(:disabled) {
+	background: #22c55e;
+	transform: translateY(-1px);
+}
+
+/* Réinitialiser : contour or */
+.countdown-actions .btn-reset {
+	border: 1px solid var(--gold);
+	background: transparent;
+	color: var(--gold);
+}
+
+.countdown-actions .btn-reset:hover:not(:disabled) {
+	background: rgba(212, 175, 55, 0.15);
+}
+
+
+
+
+
+
+
+
+
+
