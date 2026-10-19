@@ -236,7 +236,20 @@ body {
 	box-sizing: border-box;
 	flex-shrink: 0;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+	position: relative; /* repère pour les anneaux intérieurs */
 }
+
+/* Folie niveau 1 : anneau pointillé intérieur */
+.chip::before {
+	content: "";
+	position: absolute;
+	inset: 1px; /* rapproché du bord extérieur */
+	border-radius: 50%;
+	border: 3px dashed rgba(255, 255, 255, 0.65);
+}
+
+
+
 
 .chip.green { background-color: #2ea44f; }
 .chip.darkblue { background-color: #2456a8; }
