@@ -95,8 +95,11 @@ function ChipList({ organizerId }) {
 			<ul>
 				{chips.map((chip) => (
 					<li key={chip.id}>
-						<span className={`chip ${chip.color_english}`}>{chip.amount}</span>
-						<span>{chip.color_french}</span>
+						<div className={`chip ${chip.color_english}`} />
+						<div className="chip-text">
+							<div className="chip-amount">{chip.amount}</div>
+							<div className="chip-color-name">{chip.color_french}</div>
+						</div>
 					</li>
 				))}
 			</ul>		
