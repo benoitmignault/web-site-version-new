@@ -98,6 +98,7 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 					onChange={handleChange}
 					placeholder={t("chooseOrganizer")}
 					isSearchable={false}
+					isClearable
 					aria-label={t("organizer")}
 				/>
 			</div>
