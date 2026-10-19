@@ -154,6 +154,13 @@ body {
 	flex-direction: column;
 }
 
+/* Séparateur vertical entre le titre et l'organisateur (comme le modèle) */
+.organizer-field {
+	border-left: 1px solid var(--gold-soft);
+	padding-left: 24px;
+}
+
+
 .organizer-label {
 	margin-bottom: 8px;
 	font-weight: 600;
