@@ -198,9 +198,9 @@ function Countdown( { organizerId, level, setLevel } ) {
 			</button>
 			<button
 				type="button" className="btn-resume"
-				onClick={handleResume} disabled={!organizerId || isRunning}
+				onClick={handleResume} disabled={!organizerId || isRunning || isLevelEnd}
 			>
-				{t("resume")}
+				{secondsLeft === DEFAULT_SECONDS ? t("start") : t("resume")}
 			</button>
 			<button
 				type="button" className="btn-reset"
