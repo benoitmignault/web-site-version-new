@@ -97,6 +97,13 @@ function Countdown( { organizerId, level, setLevel } ) {
 		};
 	}, []);
 
+	// Remettre le countdown à 30:00 (arrêté) quand l'organisateur ou le niveau change
+	useEffect(() => {
+
+		setSecondsLeft(DEFAULT_SECONDS);
+		setIsRunning(false);
+	}, [organizerId, level]);
+
 	// Faire couler le temps quand le chrono est en marche
 	useEffect(() => {
 
@@ -138,7 +145,7 @@ function Countdown( { organizerId, level, setLevel } ) {
 		// Nettoyer le timeout si l'effet est relancé ou le composant démonté
 		return () => clearTimeout(timer);
 	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [isRunning, secondsLeft, organizerId, setLevel]);
+	}, [isRunning, secondsLeft]);
 
 	return (
 		<section>
