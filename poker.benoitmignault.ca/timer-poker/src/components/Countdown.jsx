@@ -38,12 +38,15 @@ function Countdown( { organizerId, level, setLevel } ) {
 	// Est-ce que le chrono est en cours ou arrêté ? (true = en cours, false = arrêté)
 	const [isRunning, setIsRunning] = useState(false);
 
+	// Pause de fin de niveau en cours : 3 secondes sur 00:00 avant l'avance auto
+	const [isLevelEnd, setIsLevelEnd] = useState(false);
+
 	// L'objet Audio du red alert : créé une seule fois, conservé entre les rendus
 	const alertRef = useRef(null);
 
 	// L'encadré clignote en rouge pendant l'alerte (7 dernières secondes)
 	// À chaque changement de secondsLeft, on vérifie si on est dans la période d'alerte
-	const isAlerting = secondsLeft <= ALERT_SECONDS && secondsLeft > 0;
+	const isAlerting = secondsLeft <= ALERT_SECONDS && secondsLeft > 0 || isLevelEnd;
 
 	// Couleur de la bordure du chrono selon le temps restant
 	const getTimeColor = () => {
