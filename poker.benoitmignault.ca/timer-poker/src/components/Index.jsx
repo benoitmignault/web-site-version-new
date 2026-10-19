@@ -56,7 +56,10 @@ function Index() {
 	return (
 		<div>
 			<div className="header-container">
-				<h1>{t('title')}</h1>
+				<h1>
+					<span className="chip gold header-chip" aria-hidden="true"></span>
+					{t("title")}
+				</h1>
 				<OrganizerList setOrganizerName={setOrganizerName} setOrganizerId={setOrganizerId} setLevel={setLevel} />
 			</div>
 			<div className="main-container">
