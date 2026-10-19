@@ -220,9 +220,8 @@ body {
 	flex-shrink: 0;
 }
 
-/* Espacement entre la section des blinds et le chrono */
-.blind-container {
-	margin-bottom: 30px;
+.main-container > .content-container:last-child {	
+	padding-top: 0;
 }
 
 /* Message d'erreur (reprend le pattern du golf) */
