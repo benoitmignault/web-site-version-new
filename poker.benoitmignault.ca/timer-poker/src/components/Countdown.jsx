@@ -140,10 +140,7 @@ function Countdown( { organizerId, level, setLevel } ) {
 		if (secondsLeft <= 0) {
 
 			setIsRunning(false);
-
-			if (organizerId) {
-				setLevel((prev) => prev + 1);
-			}
+			setIsLevelEnd(true); // On entre en pause de fin de niveau			
 			return;
 		}
 
