@@ -20,8 +20,18 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 	// La liste des organisateurs reçue de l'API
 	const [organizers, setOrganizers] = useState([]);
 
+	// L'option sélectionnée (objet { value, label }), pas juste l'id
+	const [selectedOption, setSelectedOption] = useState(null);
+
 	// État pour stocker les messages d'erreur en prévision de l'ajout d'un joueur à un événement
     const [error, setError] = useState("");
+
+	// Préparer les options pour le sélecteur react-select : 
+	// on transforme la liste des organisateurs en tableau d'objets {value, label}
+	const organizerOptions = organizers.map((organizer) => ({
+		value: organizer.id,
+		label: organizer.name,
+	}));
 
 	// Fonction pour charger la liste des organisateurs pour en sélectionner un
 	const loadOrganizers = async () => {
