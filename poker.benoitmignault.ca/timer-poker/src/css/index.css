@@ -211,36 +211,66 @@ body {
 	text-align: center;
 }
 
+/* Liste des jetons : sans puces */
+.chip-list ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+}
 
-
-
-
-
-
-
-
-
-.chip {
-	display: inline-flex;
+.chip-list li {
+	display: flex;
 	align-items: center;
-	justify-content: center;
-	width: 40px;
-	height: 40px;
+	gap: 16px;
+}
+
+/* Jeton de poker dessiné en CSS : pastille couleur + bord en pointillés (les encoches) */
+.chip {
+	width: 48px;
+	height: 48px;
 	border-radius: 50%;
-	color: #fff;
-	font-weight: bold;
+	border: 6px dashed rgba(255, 255, 255, 0.9);
+	box-sizing: border-box;
+	flex-shrink: 0;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.chip.green { background-color: #2ea44f; }
+.chip.darkblue { background-color: #2456a8; }
+.chip.red { background-color: #d43a3a; }
+.chip.white { background-color: #e8e8e8; }
+.chip.black { background-color: #1a1a1a; }
+.chip.yellow { background-color: #e3b92e; }
+.chip.lightblue { background-color: #6cb4ee; }
+.chip.purple { background-color: #7a3fa0; }
+.chip.brown { background-color: #7b4b2a; }
+.chip.darkred { background-color: #8f1d1d; }
+.chip.grey { background-color: #8a8a8a; }
+.chip.orange { background-color: #e07b2a; }
+.chip.pink { background-color: #e08bb0; }
+
+.chip-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.chip-amount {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: white;
+	line-height: 1.1;
+}
+
+.chip-color-name {
+	font-size: 0.95rem;
+	color: var(--text-dim);
 }
 
 
-.chip.green { background: #2e7d32; }
-.chip.darkblue { background: #1565c0; }
-.chip.red { background: #c62828; }
-.chip.white { background: #f5f5f5; color: #333; }
-.chip.black { background: #212121; }
-.chip.yellow { background: #f9a825; color: #333; }
-.chip.purple { background: #6a1b9a; }
-.chip.lightblue { background: #4fc3f7; color: #333; }
-.chip.purple { background: #6a1b9a; }
+
 
 
 /* Bouton Changer — assorti aux cartes des blinds */
