@@ -63,7 +63,7 @@ function Index() {
 				<OrganizerList setOrganizerName={setOrganizerName} setOrganizerId={setOrganizerId} setLevel={setLevel} />
 			</div>
 			<div className="main-container">
-				<div className="content-container">
+				<div className={`content-container${organizerId ? "" : " is-hidden"}`}>
 					<ChipList organizerId={organizerId} />
 				</div>
 				<div className="timer-column">
