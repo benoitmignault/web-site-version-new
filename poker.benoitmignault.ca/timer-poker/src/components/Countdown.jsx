@@ -29,8 +29,9 @@ const LEVEL_END_PAUSE_SECONDS = 3;
  * @param {number|null} props.organizerId ID de l'organisateur sélectionné (null si aucun choisi).
  * @param {number} props.level Niveau de blinds courant (base 1).
  * @param {Function} props.setLevel Fonction pour mettre à jour le niveau de blindes.
+ * @param {number} props.maxLevel Niveau maximum de blinds.
  */
-function Countdown( { organizerId, level, setLevel } ) {
+function Countdown( { organizerId, level, setLevel, maxLevel } ) {
 
 	// Le nombre de secondes restantes avant la fin du niveau
 	const [secondsLeft, setSecondsLeft] = useState(DEFAULT_SECONDS);
