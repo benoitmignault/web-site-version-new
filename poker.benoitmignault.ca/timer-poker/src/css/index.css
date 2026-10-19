@@ -201,15 +201,15 @@ body {
 	border-radius: 10px;
 }
 
-
-
-
-
-
-
-
-
-
+/* Titre de la section des jetons : or, centré, sans marge haute */
+.chip-list h2 {
+	margin: 0 0 20px 0;
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: var(--gold);
+	letter-spacing: 1px;
+	text-align: center;
+}
 
 
 
