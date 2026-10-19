@@ -29,19 +29,25 @@ function Footer( {organizerName} ) {
 	}, []);
 
 	return (		
-		<footer>
-			<span>
-				© {year} {t("siteName")}
-				{organizerName ? ` ${t("atOrganizer")} ${organizerName}` : ""} - {t("allRightsReserved")}
-			</span>
-			<span>
-				{now.toLocaleTimeString("fr-FR", {
-					hour: "2-digit",
-					minute: "2-digit",
-					second: "2-digit",
-				})}
-			</span>
-			<a href={SITE_URL}>{t("homePage")}</a>
+		<footer className="footer-bar">
+			<div className="footer-section footer-copyright">
+				<span>
+					© {year} {t("siteName")}
+					{organizerName ? ` ${t("atOrganizer")} ${organizerName.toUpperCase()}` : ""} - {t("allRightsReserved")}
+				</span>
+			</div>
+			<div className="footer-section footer-clock">
+				<span>
+					{now.toLocaleTimeString("fr-FR", {
+						hour: "2-digit",
+						minute: "2-digit",
+						second: "2-digit",
+					})}
+				</span>
+			</div>
+			<div className="footer-section footer-link">
+				<a href={SITE_URL}>{t("homePage")}</a>
+			</div>
 		</footer>
 	);
 }
