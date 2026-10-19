@@ -296,6 +296,15 @@ body {
 	color: var(--text-dim);
 }
 
+/* Colonne de droite : deux cartes séparées (blinds / chrono) */
+.timer-column {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	min-width: 0;
+}
+
 /* Les deux cartes côte à côte, même largeur totale que les boutons du chrono */
 .blind-cards {
 	display: flex;
