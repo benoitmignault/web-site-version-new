@@ -425,7 +425,7 @@ body {
 	}
 }
 
-/* Les 3 boutons du chrono (même largeur que les cartes) */
+/* --- Les 3 boutons du chrono : même largeur totale que les cartes --- */
 .countdown-actions {
 	display: flex;
 	gap: 16px;
@@ -461,12 +461,12 @@ body {
 /* Démarrer/Poursuivre : vert plein */
 .btn-resume {
 	border: none;
-	background: #1d9e52;
+	background: var(--timer-green);
 	color: white;
 }
 
 .btn-resume:hover:not(:disabled) {
-	background: #22c55e;
+	filter: brightness(1.15);
 	transform: translateY(-1px);
 }
 
