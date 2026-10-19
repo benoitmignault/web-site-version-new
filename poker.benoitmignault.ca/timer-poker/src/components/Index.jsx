@@ -61,12 +61,7 @@ function Index() {
 			</div>
 			<div className="main-container">
 				<div className="content-container">
-					{organizerId && (
-						<div>
-							<h2>{t('chipValues')}</h2>
-							<ChipList organizerId={organizerId} />
-						</div>
-					)}					
+					<ChipList organizerId={organizerId} />
 				</div>
 				<div className="content-container">
 					<div className="blind-container">
