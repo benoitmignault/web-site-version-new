@@ -48,7 +48,7 @@ body {
 	padding: 24px 30px;
 }
 
-/* En-tete : titre + selecteur d'organisateur */
+/* En-tête : titre + sélecteur d'organisateur */
 .header-container {
 	display: flex;
 	justify-content: space-between;
@@ -70,7 +70,7 @@ body {
 	letter-spacing: 1px;
 }
 
-/* Rangee principale : jetons a gauche, blinds + chrono a droite */
+/* Rangée principale : jetons à gauche, blinds + chrono à droite */
 .main-container {
 	display: flex;
 	gap: 30px;
