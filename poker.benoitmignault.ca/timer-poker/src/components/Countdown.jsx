@@ -90,8 +90,10 @@ function Countdown( { organizerId, level, setLevel } ) {
 	// Fonction pour réinitialiser le chrono
 	const handleReset = () => {
 
+		alertRef.current?.pause();
+		if (alertRef.current) alertRef.current.currentTime = 0;
 		setIsLevelEnd(false);
-		setIsRunning(false);		
+		setIsRunning(false);
 		setSecondsLeft(DEFAULT_SECONDS);
 	};
 
