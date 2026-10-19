@@ -65,14 +65,16 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 	const handleChange = (option) => {
 		
 		setSelectedOption(option);
-		// Si l'utilisateur a annulé la sélection, on ne fait rien
-		if (!option) {
-			return;
+
+		if (option) {
+			setOrganizerId(option.value);
+			setOrganizerName(option.label);
+		} else {
+			// Le X : on réinitialise tout
+			setOrganizerId(null);
+			setOrganizerName("");
 		}
 
-		// On stocke son id et son prénom dans Index...
-		setOrganizerId(option.value);
-		setOrganizerName(option.label);
 		setLevel(1);
 	};
 
