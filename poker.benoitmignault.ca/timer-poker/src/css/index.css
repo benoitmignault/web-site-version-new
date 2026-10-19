@@ -390,12 +390,6 @@ body {
 	cursor: not-allowed;
 }
 
-/* --- Séparation visuelle entre les blinds et le chrono --- */
-.countdown-container {
-	margin-top: 30px;
-	padding-top: 30px;
-	border-top: 1px solid var(--gold-soft);
-}
 
 /* --- Affichage du chrono --- */
 .countdown-display {
