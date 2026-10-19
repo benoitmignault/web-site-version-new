@@ -442,7 +442,6 @@ body {
 	transition: border-color 0.5s ease;
 }
 
-
 /* Le span ne sort plus du div : inline-block calé sur le line-height,
    puis remontée optique des chiffres */
 .countdown-display span {
