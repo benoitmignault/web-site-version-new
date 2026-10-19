@@ -118,8 +118,9 @@ function Countdown( { organizerId, level, setLevel } ) {
 	// Remettre le countdown à 30:00 (arrêté) quand l'organisateur ou le niveau change
 	useEffect(() => {
 
+		setIsLevelEnd(false);
+		setIsRunning(false);		
 		setSecondsLeft(DEFAULT_SECONDS);
-		setIsRunning(false);
 	}, [organizerId, level]);
 
 	// Faire couler le temps quand le chrono est en marche
