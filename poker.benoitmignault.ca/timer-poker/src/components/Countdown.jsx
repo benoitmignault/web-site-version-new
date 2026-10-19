@@ -90,8 +90,10 @@ function Countdown( { organizerId, level, setLevel } ) {
 	// Fonction pour réinitialiser le chrono
 	const handleReset = () => {
 
+		// On arrête le son d'alerte s'il joue encore, on remet le chrono à 30:00 et on le met en pause
 		alertRef.current?.pause();
-		if (alertRef.current) alertRef.current.currentTime = 0;
+		if (alertRef.current) alertRef.current.currentTime = 0; // On reparte le son au début pour la prochaine fois
+
 		setIsLevelEnd(false);
 		setIsRunning(false);
 		setSecondsLeft(DEFAULT_SECONDS);
@@ -119,6 +121,10 @@ function Countdown( { organizerId, level, setLevel } ) {
 
 	// Remettre le countdown à 30:00 (arrêté) quand l'organisateur ou le niveau change
 	useEffect(() => {
+
+		// On arrête le son d'alerte s'il joue encore, on remet le chrono à 30:00 et on le met en pause
+		alertRef.current?.pause();
+		if (alertRef.current) alertRef.current.currentTime = 0; // On reparte le son au début pour la prochaine fois
 
 		setIsLevelEnd(false);
 		setIsRunning(false);		
