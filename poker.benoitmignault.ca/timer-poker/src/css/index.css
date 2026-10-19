@@ -243,7 +243,7 @@ body {
 	padding: 0;
 	display: flex;
 	flex-direction: column;
-	gap: 18px;
+	gap: 30px;
 }
 
 .chip-list li {
