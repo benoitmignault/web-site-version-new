@@ -326,7 +326,7 @@ body {
 	line-height: 1;
 }
 
-/* Les deux boutons des blinds */
+/* --- Boutons des blinds : 3/4 Changer, 1/4 Réinitialiser --- */
 .blind-actions {
 	display: flex;
 	gap: 12px;
