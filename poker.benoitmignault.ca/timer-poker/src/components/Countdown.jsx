@@ -182,8 +182,8 @@ function Countdown( { organizerId, level, setLevel } ) {
 		const pause = setTimeout(() => {
 			setIsLevelEnd(false);
 
-			// Déplacement du changement d'état pour le level 
-			if (organizerId) {
+			// On avance seulement si on n'est pas déjà au dernier niveau
+			if (organizerId && (maxLevel === null || level < maxLevel)) {
 				setLevel((prev) => prev + 1);
 			}
 
