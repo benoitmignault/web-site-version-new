@@ -14,8 +14,7 @@ const ALERT_SECONDS = 7;
  *
  * Affiche le temps restant (30:00 par défaut), avec une bordure de couleur
  * selon le temps restant (vert ≥ 15 min, orange 5–15 min, rouge < 5 min).
- * Le red alert sonore joue pendant les 7 dernières secondes et l'encadré
- * clignote en rouge.
+ * Le red alert sonore joue pendant les 7 dernières secondes et l'encadré FLASH en rouge.
  *
  * Contrôles : Arrêt (pause), Poursuivre (démarre/reprend), Réinitialiser (30:00, arrêté).
  * À 00:00, le chrono s'arrête et avance automatiquement au prochain niveau
