@@ -88,17 +88,20 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 	}
 	
 	return (
-		<label>
-			{t("organizer")}
-			<select onChange={handleChange} defaultValue="">
-				<option value="">{t("chooseOrganizer")}</option>
-				{organizers.map((organizer) => (
-					<option key={organizer.id} value={organizer.id}>
-						{organizer.name}
-					</option>
-				))}
-			</select>
-		</label>
+		<div className="organizer-field">
+			<span className="organizer-label">{t("organizer")}</span>
+			<div className="organizer-select-wrapper">
+				<Select
+					classNamePrefix="organizer-select"
+					options={organizerOptions}
+					value={selectedOption}
+					onChange={handleChange}
+					placeholder={t("chooseOrganizer")}
+					isSearchable={false}
+					aria-label={t("organizer")}
+				/>
+			</div>
+		</div>		
 	);
 }
 
