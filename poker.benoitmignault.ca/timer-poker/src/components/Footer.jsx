@@ -8,6 +8,9 @@ import { t } from "../i18n/i18n";
  * Trois zones : à gauche le copyright avec le nom du site et le prénom
  * de l'organisateur sélectionné, au centre l'heure en temps réel,
  * à droite le lien de retour vers la page d'accueil du site.
+ *
+ * @param {Object} props Les propriétés du composant.
+ * @param {string} props.organizerName Prénom de l'organisateur sélectionné (chaîne vide si aucun).
  */
 function Footer( {organizerName} ) {
 

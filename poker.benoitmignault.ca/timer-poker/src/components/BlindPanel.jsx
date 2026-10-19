@@ -2,14 +2,27 @@ import { useEffect, useState } from "react";
 import { API_BASE_URL } from "../config";
 import { t } from "../i18n/i18n";
 
-function BlindPanel({ organizerId, level, setLevel }) {
+/**
+ * Panneau des mises (petite et grosse) pour le niveau courant.
+ *
+ * Va chercher les mises via l'API quand l'organisateur ou le niveau change.
+ * Le bouton Changer passe au niveau suivant (désactivé au dernier niveau).
+ * Le bouton de réinitialisation ramène au premier niveau (désactivé au niveau 1).
+ * Tant qu'il n'y a pas de données, on affiche "--", comme un vrai tableau de bord.
+ * En cas d'erreur, le message s'affiche sous les boutons, avec le panneau.
+ *
+ * @param {Object} props Les propriétés du composant.
+ * @param {number|null} props.organizerId ID de l'organisateur sélectionné (null si aucun choisi).
+ * @param {number} props.level Niveau de blindes courant (base 1).
+ * @param {Function} props.setLevel Fonction pour mettre à jour le niveau de blindes.
+ * @param {number|null} props.maxLevel Le nombre total de niveaux pour l'organisateur (null si inconnu).
+ * @param {Function} props.setMaxLevel Fonction pour mettre à jour le nombre total de niveaux.
+ */
+function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 
 	// Les mises reçues de l'API (null = pas encore de données)
 	const [small, setSmall] = useState(null);
 	const [big, setBig] = useState(null);
-
-	// Le nombre total de niveaux pour l'organisateur
-	const [maxLevel, setMaxLevel] = useState(null);
 
 	// Le message d'erreur à afficher si le chargement échoue
 	const [error, setError] = useState("");
@@ -80,9 +93,7 @@ function BlindPanel({ organizerId, level, setLevel }) {
 
         initializeData();		
 		// On relance le useEffect à chaque fois que l'organizerId change
-    }, [organizerId, level]); 
-
-	
+    }, [organizerId, level]);	
 
 	return (
 		<section className="blind-panel">			
@@ -102,7 +113,7 @@ function BlindPanel({ organizerId, level, setLevel }) {
 					{t("change")}
 				</button>
 				<button
-					className="btn-reset"
+					type="button" className="btn-reset"
 					onClick={handleReset} disabled={!organizerId || level <= 1}
 				>
 					{t("reset")}

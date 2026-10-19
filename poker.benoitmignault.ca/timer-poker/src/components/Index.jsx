@@ -16,13 +16,15 @@ import '../css/index.css';
  * Index ne fait que distribuer les valeurs et les setters.
  *
  * État partagé :
- * - organizerId : id de l'organisateur sélectionné (ex. 7), utilisé par ChipList et BlindPanel pour leurs appels API.
+ * - organizerId : id de l'organisateur sélectionné (ex. 7), utilisé par ChipList, BlindPanel et Countdown.
  * - organizerName : prénom de l'organisateur (ex. "Frantz"), affiché dans le Footer.
- * - level : niveau de blinds courant (ex. 1) ; remis à 1 à chaque changement d'organisateur, incrémenté par le bouton Changer de BlindPanel.
+ * - level : niveau de blinds courant (ex. 1) ; remis à 1 à chaque changement d'organisateur,
+ *   incrémenté par le bouton Changer de BlindPanel ; Countdown se réinitialise à 30:00 quand il change.
  *
  * Mise en page : en-tête (titre + OrganizerList), contenu (jetons / blinds + chrono),
- * puis Footer. 
- * 
+ * puis Footer. ChipList n'est affiché que quand un organisateur est choisi ;
+ * BlindPanel affiche "--" tant qu'il n'a pas de données.
+ *
  * Au montage, règle le titre de l'onglet et le favicon du minuteur.
  */
 function Index() {
@@ -35,6 +37,9 @@ function Index() {
 
 	// On doit stocker le niveau de blinds sélectionné pour l'affichage dans le tableau des mises
 	const [level, setLevel] = useState(1); // ← le niveau de blinds (ex. 1")
+
+	// On doit stocker le nombre total de niveaux pour l'organisateur sélectionné pour l'affichage dans le tableau des mises
+	const [maxLevel, setMaxLevel] = useState(null);
 
 	// Changer le titre de la page et le favicon lorsque le composant est monté
 	useEffect(() => {
@@ -65,9 +70,11 @@ function Index() {
 				</div>
 				<div className="content-container">					
 					<div>
-						<BlindPanel organizerId={organizerId} level={level} setLevel={setLevel} />
-					</div>				
-					<Countdown />
+						<BlindPanel organizerId={organizerId} level={level} setLevel={setLevel} maxLevel={maxLevel} setMaxLevel={setMaxLevel}/>
+					</div>	
+					<div>
+						<Countdown organizerId={organizerId} level={level} setLevel={setLevel} maxLevel={maxLevel} />
+					</div>					
 				</div>				
 			</div>
 			<Footer organizerName={organizerName} />

@@ -8,6 +8,11 @@ import { t } from "../i18n/i18n";
  *
  * Va chercher la liste via l'API au montage. Quand l'utilisateur en choisit un, stocke son id et son prénom dans Index et remet le
  * niveau des blinds à 1.
+ *
+ * @param {Object} props Les propriétés du composant.
+ * @param {Function} props.setOrganizerName Fonction pour stocker le prénom de l'organisateur dans Index.
+ * @param {Function} props.setOrganizerId Fonction pour stocker l'id de l'organisateur dans Index.
+ * @param {Function} props.setLevel Fonction pour mettre à jour le niveau de blindes dans Index.
  */
 function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 

@@ -64,3 +64,15 @@ body {
 	opacity: 0.35;
 	cursor: not-allowed;
 }
+
+@keyframes flash-red {
+	0%, 100% { border-color: red; box-shadow: 0 0 25px red; }
+	50% { border-color: transparent; box-shadow: none; }
+}
+
+.countdown-display.green { border: 3px solid green; }
+.countdown-display.orange { border: 3px solid orange; }
+.countdown-display.red { border: 3px solid red; }
+.countdown-display.flashing {
+	animation: flash-red 1s infinite;
+}
