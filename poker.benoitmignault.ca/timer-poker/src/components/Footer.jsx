@@ -14,7 +14,6 @@ import { t } from "../i18n/i18n";
  */
 function Footer( {organizerName} ) {
 
-
     // L'année courante pour le copyright
 	const year = new Date().getFullYear();
 
