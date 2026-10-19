@@ -15,15 +15,14 @@ import { t } from "../i18n/i18n";
  * @param {number|null} props.organizerId ID de l'organisateur sélectionné (null si aucun choisi).
  * @param {number} props.level Niveau de blindes courant (base 1).
  * @param {Function} props.setLevel Fonction pour mettre à jour le niveau de blindes.
+ * @param {number|null} props.maxLevel Le nombre total de niveaux pour l'organisateur (null si inconnu).
+ * @param {Function} props.setMaxLevel Fonction pour mettre à jour le nombre total de niveaux.
  */
-function BlindPanel({ organizerId, level, setLevel }) {
+function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 
 	// Les mises reçues de l'API (null = pas encore de données)
 	const [small, setSmall] = useState(null);
 	const [big, setBig] = useState(null);
-
-	// Le nombre total de niveaux pour l'organisateur
-	const [maxLevel, setMaxLevel] = useState(null);
 
 	// Le message d'erreur à afficher si le chargement échoue
 	const [error, setError] = useState("");
