@@ -73,6 +73,34 @@ body {
 	letter-spacing: 1px;
 }
 
+/* Jeton doré du header — même système que la liste des chips */
+/* Jeton noir et or du header (style du modèle) */
+.chip.gold {
+	background: radial-gradient(circle at 35% 30%, #3a3a3a, #111111 70%);
+}
+
+/* Les 8 cases du bord passent en or */
+.chip.gold::before {
+	background: repeating-conic-gradient(rgba(201, 162, 39, 0.95) 0deg 30deg, transparent 30deg 45deg);
+}
+
+/* L'anneau pointillé intérieur aussi */
+.chip.gold::after {
+	border-color: rgba(201, 162, 39, 0.5);
+}
+
+.header-chip {
+	width: 54px;
+	height: 54px;
+	flex-shrink: 0;
+}
+
+.header-container h1 {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+
 /* Rangée principale : jetons à gauche, blinds + chrono à droite */
 .main-container {
 	display: flex;
