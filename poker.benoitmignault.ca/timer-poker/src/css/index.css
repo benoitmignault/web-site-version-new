@@ -352,7 +352,7 @@ body {
 }
 
 .blind-value {
-	font-size: 4rem;
+	font-size: 6rem;
 	font-weight: 700;
 	color: var(--gold);
 	line-height: 1;
