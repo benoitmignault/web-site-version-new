@@ -63,11 +63,11 @@ function Index() {
 				<div className="content-container">
 					<ChipList organizerId={organizerId} />
 				</div>
-				<div className="content-container">
-					<div className="blind-container">
+				<div className="timer-column">
+					<div className="content-container">
 						<BlindPanel organizerId={organizerId} level={level} setLevel={setLevel} maxLevel={maxLevel} setMaxLevel={setMaxLevel} />
 					</div>
-					<div className="countdown-container">
+					<div className="content-container">
 						<Countdown organizerId={organizerId} level={level} setLevel={setLevel} maxLevel={maxLevel} />
 					</div>
 				</div>				
