@@ -381,11 +381,14 @@ body {
 	cursor: not-allowed;
 }
 
+/* --- Séparation visuelle entre les blinds et le chrono --- */
+.countdown-container {
+	margin-top: 30px;
+	padding-top: 30px;
+	border-top: 1px solid var(--gold-soft);
+}
 
-
-
-/* Le chrono */
-/* Affichage géant, chiffres blancs, bordure de couleur selon le temps restant */
+/* --- Affichage du chrono --- */
 .countdown-display {
 	width: fit-content;
 	margin: 28px auto;
