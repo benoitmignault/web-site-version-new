@@ -191,6 +191,15 @@ body {
 	border-radius: 10px;
 }
 
+/* Le X pour effacer la sélection, en or comme le reste */
+.organizer-select__clear-indicator {
+	color: var(--gold) !important;
+}
+
+.organizer-select__clear-indicator:hover {
+	color: var(--gold-light) !important;
+}
+
 /* Rangée principale : jetons à gauche, blinds + chrono à droite */
 .main-container {
 	display: flex;
