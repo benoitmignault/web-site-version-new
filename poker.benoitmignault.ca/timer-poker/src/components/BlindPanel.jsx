@@ -84,6 +84,17 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 	// et à chaque fois que l'organizerId ou le level change
 	useEffect(() => {
 
+		// Sans organisateur sélectionné, on doit remettre les valeurs à null pour afficher "--" et 
+		// on ne peut pas charger les blinds, donc on quitte la fonction		
+		if (!organizerId) {
+			
+			setSmall(null);
+			setBig(null);
+			setMaxLevel(null);
+			setError(null);
+			return;
+		}
+
         const initializeData = async () => {
 
             // On charge les blinds de l'organisateur sélectionné pour le niveau courant
