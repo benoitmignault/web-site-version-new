@@ -99,7 +99,7 @@ function Countdown( { organizerId, level, setLevel } ) {
 
 	// Cette fonction permet de jouer le red alert (sans le redémarrer s'il joue déjà) et sera caller à moins de 7 secondes 
 	const playAlert = () => {
-		alertRef.current?.play().catch(() => {
+		alertRef.current?.play().catch((err) => {
 			console.error("Erreur lecture audio :", err);
 		});
 	};
