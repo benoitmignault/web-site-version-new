@@ -38,6 +38,9 @@ function Index() {
 	// On doit stocker le niveau de blinds sélectionné pour l'affichage dans le tableau des mises
 	const [level, setLevel] = useState(1); // ← le niveau de blinds (ex. 1")
 
+	// On doit stocker le nombre total de niveaux pour l'organisateur sélectionné pour l'affichage dans le tableau des mises
+	const [maxLevel, setMaxLevel] = useState(null);
+
 	// Changer le titre de la page et le favicon lorsque le composant est monté
 	useEffect(() => {
 		document.title = t('title-page');
