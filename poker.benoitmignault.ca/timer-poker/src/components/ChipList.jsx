@@ -81,7 +81,7 @@ function ChipList({ organizerId }) {
 	// la largeur ne bouge jamais à la sélection
 	if (!organizerId) {
 		return (
-			<div>
+			<div className="chip-list">
 				<h2>{t("chipValues")}</h2>
 			</div>
 		);
@@ -90,7 +90,7 @@ function ChipList({ organizerId }) {
 	// Il est important d'avoir un id pour une liste car React utilise les clés 
 	// pour identifier les éléments de la liste et optimiser le rendu.
 	return (
-		<div>
+		<div className="chip-list">
 			<h2>{t('chipValues')}</h2>
 			<ul>
 				{chips.map((chip) => (
