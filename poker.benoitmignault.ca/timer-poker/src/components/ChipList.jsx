@@ -77,17 +77,30 @@ function ChipList({ organizerId }) {
 		return <p className="error">{error}</p>;
 	}
 
+	// Titre toujours affiché : la section garde sa place même sans organisateur,
+	// la largeur ne bouge jamais à la sélection
+	if (!organizerId) {
+		return (
+			<div>
+				<h2>{t("chipValues")}</h2>
+			</div>
+		);
+	}
+
 	// Il est important d'avoir un id pour une liste car React utilise les clés 
 	// pour identifier les éléments de la liste et optimiser le rendu.
 	return (
-		<ul>
-			{chips.map((chip) => (
-				<li key={chip.id}>
-					<span className={`chip ${chip.color_english}`}>{chip.amount}</span>
-					<span>{chip.color_french}</span>
-				</li>
-			))}
-		</ul>
+		<div>
+			<h2>{t('chipValues')}</h2>
+			<ul>
+				{chips.map((chip) => (
+					<li key={chip.id}>
+						<span className={`chip ${chip.color_english}`}>{chip.amount}</span>
+						<span>{chip.color_french}</span>
+					</li>
+				))}
+			</ul>		
+		</div>		
 	);
 }
 
