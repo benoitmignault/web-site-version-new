@@ -10,11 +10,23 @@ const DEFAULT_SECONDS = 30 * 60;
 const ALERT_SECONDS = 7;
 
 /**
- * Compte à rebours du minuteur.
+ * Compte à rebours du niveau de blinds courant.
  *
- * Version minimale temporaire : la logique complète (périodes 15/30,
- * arrêt, poursuivre, réinitialiser, alerte sonore) sera portée
- * de timer.js dans une prochaine étape.
+ * Affiche le temps restant (30:00 par défaut), avec une bordure de couleur
+ * selon le temps restant (vert ≥ 15 min, orange 5–15 min, rouge < 5 min).
+ * Le red alert sonore joue pendant les 7 dernières secondes et l'encadré
+ * clignote en rouge.
+ *
+ * Contrôles : Arrêt (pause), Poursuivre (démarre/reprend), Réinitialiser (30:00, arrêté).
+ * À 00:00, le chrono s'arrête et avance automatiquement au prochain niveau
+ * si un organisateur est choisi.
+ *
+ * Le chrono se réinitialise à 30:00 (arrêté) quand l'organisateur ou le niveau change.
+ *
+ * @param {Object} props Les propriétés du composant.
+ * @param {number|null} props.organizerId ID de l'organisateur sélectionné (null si aucun choisi).
+ * @param {number} props.level Niveau de blinds courant (base 1).
+ * @param {Function} props.setLevel Fonction pour mettre à jour le niveau de blindes.
  */
 function Countdown( { organizerId, level, setLevel } ) {
 
