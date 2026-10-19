@@ -527,12 +527,54 @@ body {
 	background: rgba(212, 175, 55, 0.15);
 }
 
+/* Pied de page : ancré en bas, 3 sections */
+.footer-bar {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	background: var(--card-bg);
+	backdrop-filter: blur(8px);
+	border: 1px solid var(--gold-soft);
+	border-radius: 16px;
+	padding: 16px 28px;
+	font-size: 0.9rem;
+	position: fixed;
+	bottom: 24px;
+	left: 30px;
+	right: 30px;
+	z-index: 50;
+}
 
+.footer-section {
+	flex: 1;
+}
 
+/* Texte de gauche : or grisé (comme le modèle) */
+.footer-copyright {
+	color: var(--gold-muted);
+}
 
+/* Horloge : plus grosse, en or */
+.footer-clock {
+	text-align: center;
+	font-size: 1.3rem;
+	font-weight: 700;
+	color: var(--gold);
+	letter-spacing: 2px;
+}
 
+/* Accueil : plus gros, en or */
+.footer-link {
+	text-align: right;
+}
 
+.footer-bar a {
+	color: var(--gold);
+	font-size: 1.1rem;
+	font-weight: 600;
+	text-decoration: none;
+}
 
-
-
-
+.footer-bar a:hover {
+	text-decoration: underline;
+}
