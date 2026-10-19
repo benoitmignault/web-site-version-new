@@ -198,25 +198,27 @@ function Countdown( { organizerId, level, setLevel, maxLevel } ) {
 		<section>
 			<div className={`countdown-display ${getTimeColor()}${isAlerting ? " flashing" : ""}`}>
 				<span>{formatTime(secondsLeft)}</span>
-			</div>
-			<button
-				type="button" className="btn-stop"
-				onClick={handleStop} disabled={!organizerId || !isRunning}		
-			>
-				{t("stop")}
-			</button>
-			<button
-				type="button" className="btn-resume"
-				onClick={handleResume} disabled={!organizerId || isRunning || isLevelEnd}
-			>
-				{secondsLeft === DEFAULT_SECONDS ? t("start") : t("resume")}
-			</button>
-			<button
-				type="button" className="btn-reset"
-				onClick={handleReset} disabled={!organizerId}
-			>
-				{t("reset")}
-			</button>
+			</div>			
+			<div className="countdown-actions">
+				<button
+					type="button" className="btn-stop"
+					onClick={handleStop} disabled={!organizerId || !isRunning}		
+				>
+					{t("stop")}
+				</button>
+				<button
+					type="button" className="btn-resume"
+					onClick={handleResume} disabled={!organizerId || isRunning || isLevelEnd}
+				>
+					{secondsLeft === DEFAULT_SECONDS ? t("start") : t("resume")}
+				</button>
+				<button
+					type="button" className="btn-reset"
+					onClick={handleReset} disabled={!organizerId}
+				>
+					{t("reset")}
+				</button>
+			</div>			
 		</section>
 	);
 }
