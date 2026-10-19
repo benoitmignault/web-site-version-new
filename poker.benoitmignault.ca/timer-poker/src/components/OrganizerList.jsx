@@ -62,21 +62,17 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 	};
 
 	// Fonction pour gérer le changement de sélection dans la liste déroulante
-	const handleChange = (event) => {
-
-		// On retrouve l'organisateur choisi dans la liste (la valeur du select est une chaîne, l'id un nombre)
-		const selected = organizers.find(
-			(organizer) => String(organizer.id) === event.target.value
-		);
-
-		if (!selected) {
+	const handleChange = (option) => {
+		
+		setSelectedOption(option);
+		// Si l'utilisateur a annulé la sélection, on ne fait rien
+		if (!option) {
 			return;
 		}
 
 		// On stocke son id et son prénom dans Index...
-		setOrganizerId(selected.id);
-		setOrganizerName(selected.name);
-		// ...et on repart au niveau 1
+		setOrganizerId(option.value);
+		setOrganizerName(option.label);
 		setLevel(1);
 	};
 
