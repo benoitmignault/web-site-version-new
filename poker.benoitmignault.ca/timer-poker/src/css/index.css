@@ -232,24 +232,35 @@ body {
 	width: 48px;
 	height: 48px;
 	border-radius: 50%;
-	border: 6px dashed rgba(255, 255, 255, 0.9);
+	/*border: 5px dashed rgba(255, 255, 255, 0.9);*/
 	box-sizing: border-box;
 	flex-shrink: 0;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 	position: relative; /* repère pour les anneaux intérieurs */
 }
 
-/* Folie niveau 1 : anneau pointillé intérieur */
+/* Les 8 cases blanches du bord, comme le modèle */
 .chip::before {
 	content: "";
 	position: absolute;
-	inset: 1px; /* rapproché du bord extérieur */
+	inset: 0;
 	border-radius: 50%;
-	border: 3px dashed rgba(255, 255, 255, 0.65);
+	background: repeating-conic-gradient(
+		rgba(255, 255, 255, 0.95) 0deg 30deg,   /* 30° de blanc au lieu de 22.5° */
+		transparent 30deg 45deg
+	);
+	-webkit-mask: radial-gradient(circle, transparent 60%, black 61%);  /* anneau plus épais */
+	mask: radial-gradient(circle, transparent 60%, black 61%);
 }
 
-
-
+/* 2e anneau : petite ligne pointillée intérieure */
+.chip::after {
+	content: "";
+	position: absolute;
+	inset: 4px;
+	border-radius: 50%;
+	border: 2px dashed rgba(255, 255, 255, 0.5);
+}
 
 .chip.green { background-color: #2ea44f; }
 .chip.darkblue { background-color: #2456a8; }
