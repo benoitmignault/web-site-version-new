@@ -66,6 +66,9 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 
 			// En cas d'erreur, on affiche le message d'erreur dans la console et on met à jour l'état
 			console.error(err);
+			setSmall(null);
+			setBig(null);
+			setMaxLevel(null);
 			setError({ code: "errorLoadingBlinds", message: "" });
 		}
 
