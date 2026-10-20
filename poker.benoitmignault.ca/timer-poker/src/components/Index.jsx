@@ -45,6 +45,14 @@ function Index() {
 	// État pour gérer l'affichage du bouton de retour en haut de page
 	const [showScrollTop, setShowScrollTop] = useState(false);
 
+	const [language, setLanguageState] = useState("fr");
+
+	// Change la langue du dictionnaire et force React à tout ré-afficher
+	const changeLanguage = (lang) => {
+		setLanguage(lang);
+		setLanguageState(lang);
+	};
+
 	// Changer le titre de la page et le favicon lorsque le composant est monté
 	useEffect(() => {
 		document.title = t('title-page');
