@@ -55,7 +55,7 @@ function Index() {
 
 	// Changer le titre de la page et le favicon lorsque le composant est monté
 	useEffect(() => {
-		document.title = t('title-page');
+
 		const favicon = document.getElementById("dynamic-favicon");
 
 		// On part de /timer-poker car c'est la vraie racine du projet
@@ -63,7 +63,12 @@ function Index() {
 			favicon.href = `${import.meta.env.BASE_URL}favicon/favicon-timer-Muse.png`;
 		}
 
-	}, []);
+		document.title = t('title-page');		
+		// On met la langue du document pour l'accessibilité et le SEO		
+		document.documentElement.lang = language;
+
+		// On met à jour la langue du document pour l'accessibilité et le SEO
+	}, [language]);
 
 	// Gestion du bouton de retour en haut de page
 	useEffect(() => {
