@@ -82,13 +82,15 @@ function Index() {
 				<h1>
 					<span className="chip gold header-chip" aria-hidden="true"></span>
 					{t("title")}
-				</h1>
-				<div className="language-switch">
-					<button type="button" className={language === "fr" ? "active" : ""} onClick={() => changeLanguage("fr")}>FR</button>
-					<span>|</span>
-					<button type="button" className={language === "en" ? "active" : ""} onClick={() => changeLanguage("en")}>EN</button>
+				</h1>				
+				<div className="header-controls">
+					<OrganizerList setOrganizerName={setOrganizerName} setOrganizerId={setOrganizerId} setLevel={setLevel} />
+					<div className="language-switch">
+						<button type="button" className={language === "fr" ? "active" : ""} onClick={() => changeLanguage("fr")}>FR</button>
+						<span>|</span>
+						<button type="button" className={language === "en" ? "active" : ""} onClick={() => changeLanguage("en")}>EN</button>
+					</div>
 				</div>
-				<OrganizerList setOrganizerName={setOrganizerName} setOrganizerId={setOrganizerId} setLevel={setLevel} />
 			</div>
 			<div className="main-container">
 				<div className={`content-container${organizerId ? "" : " is-hidden"}`}>
