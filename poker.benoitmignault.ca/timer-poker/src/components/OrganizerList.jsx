@@ -26,6 +26,7 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 	// État pour stocker les messages d'erreur en prévision de l'ajout d'un joueur à un événement
     const [error, setError] = useState("");
 
+
 	// Préparer les options pour le sélecteur react-select : 
 	// on transforme la liste des organisateurs en tableau d'objets {value, label}
 	const organizerOptions = organizers.map((organizer) => ({
