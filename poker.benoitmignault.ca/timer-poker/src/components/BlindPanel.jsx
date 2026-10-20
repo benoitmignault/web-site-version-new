@@ -54,8 +54,11 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 				setError("");
 			} else {
 
-				// Erreur retournée par l'API lors du chargement des blinds
-				setError(data.message);
+				// Aucune donnée : on vide l'affichage pour ne pas garder les infos de l'organisateur précédent
+				setSmall(null);
+				setBig(null);
+				setMaxLevel(null);				
+				setError(data.message); // Erreur retournée par l'API lors du chargement des blinds
 			}
 
 		} catch (err) {
