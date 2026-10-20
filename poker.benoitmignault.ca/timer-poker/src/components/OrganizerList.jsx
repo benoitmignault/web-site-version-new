@@ -22,9 +22,10 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 	// L'option sélectionnée (objet { value, label }), pas juste l'id
 	const [selectedOption, setSelectedOption] = useState(null);
 
-	// État pour stocker les messages d'erreur en prévision de l'ajout d'un joueur à un événement
-    const [error, setError] = useState("");
-
+	// L'erreur à afficher : { code, message } — le code est traduit au rendu, donc suit la langue
+	// La traduction du code d'erreur est faite dans le rendu, car la langue peut changer après le chargement des données
+	// Utiliser un objet plutôt qu'une chaîne permet de changer de langue
+	const [error, setError] = useState(null);
 
 	// Préparer les options pour le sélecteur react-select : 
 	// on transforme la liste des organisateurs en tableau d'objets {value, label}
