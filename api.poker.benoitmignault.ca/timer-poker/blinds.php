@@ -14,7 +14,7 @@ if ($organizerId === false) {
 
     error_log("ID de l'organisateur invalide: " . var_export($_GET["id"] ?? null, true));
     http_response_code(400);
-    echo json_encode(["success" => false, "message" => "ID de l'organisateur invalide."]);
+    echo json_encode(["success" => false, "code" => "errorInvalidOrganizer", "message" => "ID de l'organisateur invalide."]);
     exit;
 }
 
@@ -26,7 +26,7 @@ if ($level === false) {
 
     error_log("Niveau invalide: " . var_export($_GET["level"] ?? null, true));
     http_response_code(400);
-    echo json_encode(["success" => false, "message" => "Niveau invalide."]);
+    echo json_encode(["success" => false, "code" => "errorInvalidLevel", "message" => "Niveau invalide."]);
     exit;
 }
 
@@ -42,7 +42,7 @@ if ($stmtMax === false) {
 
     error_log("Erreur lors de la préparation de la requête: " . $connMYSQL->error);
     http_response_code(500);
-    echo json_encode(["success" => false, "message" => "Erreur lors de la préparation de la requête."]);
+    echo json_encode(["success" => false, "code" => "errorPrepareQuery", "message" => "Erreur lors de la préparation de la requête."]);
     $connMYSQL->close();
     exit;
 }
@@ -55,7 +55,7 @@ if (!$stmtMax->execute()) {
     error_log($stmtMax->error);
     
     http_response_code(500);
-    echo json_encode(["success" => false, "message" => "Erreur lors de l'exécution de la requête."]); 
+    echo json_encode(["success" => false, "code" => "errorExecuteQuery", "message" => "Erreur lors de l'exécution de la requête."]); 
     
     // Fermer la connexion au résultat du insert dans la base de données et la connexion à la base de données
     $stmtMax->close();
@@ -72,7 +72,7 @@ if ($maxLevel === null) {
 
     error_log("Aucune combinaison de blinds trouvée pour l'organisateur avec l'ID: " . $organizerId);
     http_response_code(404);
-    echo json_encode(["success" => false, "message" => "Aucune combinaison de blinds trouvée pour l'organisateur."]);
+    echo json_encode(["success" => false, "code" => "errorNoBlinds", "message" => "Aucune combinaison de blinds trouvée pour l'organisateur."]);
     $connMYSQL->close();
     exit;
 }
@@ -90,7 +90,7 @@ if ($stmt === false) {
     
     error_log("Erreur lors de la préparation de la requête: " . $connMYSQL->error);
     http_response_code(500);
-    echo json_encode(["success" => false, "message" => "Erreur lors de la préparation de la requête."]);
+    echo json_encode(["success" => false, "code" => "errorPrepareQuery", "message" => "Erreur lors de la préparation de la requête."]);
     $connMYSQL->close();
     exit;
 }
@@ -103,7 +103,7 @@ if (!$stmt->execute()) {
     error_log($stmt->error);
     
     http_response_code(500);
-    echo json_encode(["success" => false, "message" => "Erreur lors de l'exécution de la requête."]); 
+    echo json_encode(["success" => false, "code" => "errorExecuteQuery", "message" => "Erreur lors de l'exécution de la requête."]); 
     
     // Fermer la connexion au résultat du insert dans la base de données et la connexion à la base de données
     $stmt->close();

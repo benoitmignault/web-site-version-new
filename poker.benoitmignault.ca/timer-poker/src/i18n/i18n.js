@@ -1,14 +1,30 @@
-import fr from './fr.json';
+import fr from "./fr.json";
+import en from "./en.json";
 
-const dictionnaires = { fr };
-let langue = 'fr';
+// Les dictionnaires par langue
+const translations = { fr, en };
 
-// Changer la langue active (ex. : setLangue('en') quand en.json existera)
-export function setLangue(l) {
-	langue = l;
+// La langue active (français par défaut)
+let currentLanguage = "fr";
+
+/**
+ * Change la langue active.
+ *
+ * @param {string} lang Le code de langue ("fr" ou "en").
+ */
+export function setLanguage(lang) {
+	if (translations[lang]) {
+		currentLanguage = lang;
+	}
 }
 
-// Retourne le terme traduit pour la clé donnée, ou la clé si introuvable
-export function t(cle) {
-	return dictionnaires[langue][cle] ?? cle;
+/**
+ * Retourne le texte pour une clé dans la langue active.
+ * Si la clé n'existe pas, retourne la clé elle-même.
+ *
+ * @param {string} key La clé de traduction.
+ * @returns {string} Le texte traduit.
+ */
+export function t(key) {
+	return translations[currentLanguage][key] ?? key;
 }

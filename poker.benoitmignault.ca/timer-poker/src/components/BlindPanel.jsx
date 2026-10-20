@@ -24,8 +24,10 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 	const [small, setSmall] = useState(null);
 	const [big, setBig] = useState(null);
 
-	// Le message d'erreur à afficher si le chargement échoue
-	const [error, setError] = useState("");
+	// L'erreur à afficher : { code, message } — le code est traduit au rendu, donc suit la langue
+	// La traduction du code d'erreur est faite dans le rendu, car la langue peut changer après le chargement des données
+	// Utiliser un objet plutôt qu'une chaîne permet de changer de langue
+	const [error, setError] = useState(null);
 
 	// fonction pour charger les blinds de l'organisateur sélectionné pour le niveau courant
 	const loadBlinds = async () => {
@@ -51,18 +53,24 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 				setSmall(data.small);
 				setBig(data.big);
 				setMaxLevel(data.maxLevel);
-				setError("");
+				setError(null);
 			} else {
 
-				// Erreur retournée par l'API lors du chargement des blinds
-				setError(data.message);
+				// Aucune donnée : on vide l'affichage pour ne pas garder les infos de l'organisateur précédent
+				setSmall(null);
+				setBig(null);
+				setMaxLevel(null);				
+				setError({ code: data.code, message: data.message }); // Erreur retournée par l'API lors du chargement des blinds
 			}
 
 		} catch (err) {
 
 			// En cas d'erreur, on affiche le message d'erreur dans la console et on met à jour l'état
 			console.error(err);
-			setError("Une erreur est survenue lors du chargement des blinds.");
+			setSmall(null);
+			setBig(null);
+			setMaxLevel(null);
+			setError({ code: "errorLoadingBlinds", message: "" });
 		}
 
 		// Pas d'indicateur de chargement ici : on affiche les mises
@@ -95,14 +103,8 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 			return;
 		}
 
-        const initializeData = async () => {
-
-            // On charge les blinds de l'organisateur sélectionné pour le niveau courant
-			// Au moment de l'appel de cette fonction, organizerId est déjà défini, donc on peut appeler loadChips directement
-            await loadBlinds();
-        };
-
-        initializeData();		
+        // On charge les blinds de l'organisateur sélectionné pour le niveau courant
+        loadBlinds();		
 		// On relance le useEffect à chaque fois que l'organizerId change
     }, [organizerId, level]);	
 
@@ -119,7 +121,7 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 				</div>
 			</div>
 			<div className="blind-actions">
-				<button type="button" className="btn-change" onClick={handleChange} disabled={!organizerId || (maxLevel !== null && level >= maxLevel)}>
+				<button type="button" className="btn-change" onClick={handleChange} disabled={!organizerId || maxLevel === null || level >= maxLevel}>
 					{t("change")}
 				</button>
 				<button type="button" className="btn-reset" onClick={handleReset} disabled={!organizerId || level <= 1}>
@@ -127,7 +129,7 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 				</button>
 			</div>
 			{/* Erreur affichée avec le panneau, pas à la place : on garde les contrôles */}
-			{error && <p className="error-message">{error}</p>}
+			{error && <p className="error-message">{error.code ? t(error.code) : error.message}</p>}
 		</section>
 	);
 }

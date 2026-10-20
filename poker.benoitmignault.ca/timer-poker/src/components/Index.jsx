@@ -5,7 +5,7 @@ import ChipList from "./ChipList";
 import BlindPanel from "./BlindPanel";
 import Countdown from "./Countdown.jsx";
 import Footer from "./Footer.jsx";
-import { t } from "../i18n/i18n";
+import { t, setLanguage } from "../i18n/i18n";
 import '../css/index.css';
 import '../css/mobile.css';
 
@@ -45,9 +45,17 @@ function Index() {
 	// État pour gérer l'affichage du bouton de retour en haut de page
 	const [showScrollTop, setShowScrollTop] = useState(false);
 
+	const [language, setLanguageState] = useState("fr");
+
+	// Change la langue du dictionnaire et force React à tout ré-afficher
+	const changeLanguage = (lang) => {
+		setLanguage(lang);
+		setLanguageState(lang);
+	};
+
 	// Changer le titre de la page et le favicon lorsque le composant est monté
 	useEffect(() => {
-		document.title = t('title-page');
+
 		const favicon = document.getElementById("dynamic-favicon");
 
 		// On part de /timer-poker car c'est la vraie racine du projet
@@ -55,7 +63,12 @@ function Index() {
 			favicon.href = `${import.meta.env.BASE_URL}favicon/favicon-timer-Muse.png`;
 		}
 
-	}, []);
+		document.title = t('title-page');		
+		// On met la langue du document pour l'accessibilité et le SEO		
+		document.documentElement.lang = language;
+
+		// On met à jour la langue du document pour l'accessibilité et le SEO
+	}, [language]);
 
 	// Gestion du bouton de retour en haut de page
 	useEffect(() => {
@@ -74,8 +87,15 @@ function Index() {
 				<h1>
 					<span className="chip gold header-chip" aria-hidden="true"></span>
 					{t("title")}
-				</h1>
-				<OrganizerList setOrganizerName={setOrganizerName} setOrganizerId={setOrganizerId} setLevel={setLevel} />
+				</h1>				
+				<div className="header-controls">
+					<OrganizerList setOrganizerName={setOrganizerName} setOrganizerId={setOrganizerId} setLevel={setLevel} />
+					<div className="language-switch">
+						<button type="button" aria-pressed={language === "fr"} className={language === "fr" ? "active" : ""} onClick={() => changeLanguage("fr")}>FR</button>
+						<span>|</span>
+						<button type="button" aria-pressed={language === "en"} className={language === "en" ? "active" : ""} onClick={() => changeLanguage("en")}>EN</button>
+					</div>
+				</div>
 			</div>
 			<div className="main-container">
 				<div className={`content-container${organizerId ? "" : " is-hidden"}`}>

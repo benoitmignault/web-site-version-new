@@ -17,8 +17,10 @@ function ChipList({ organizerId }) {
 	// Les jetons reçus de l'API
 	const [chips, setChips] = useState([]);
 
-	// Le message d'erreur à afficher si le chargement échoue
-	const [error, setError] = useState("");
+	// L'erreur à afficher : { code, message } — le code est traduit au rendu, donc suit la langue
+	// La traduction du code d'erreur est faite dans le rendu, car la langue peut changer après le chargement des données
+	// Utiliser un objet plutôt qu'une chaîne permet de changer de langue
+	const [error, setError] = useState(null);
 
 	// Fonction pour charger les jetons de l'organisateur sélectionné
 	const loadChips = async () => {
@@ -37,18 +39,18 @@ function ChipList({ organizerId }) {
 				// Mettre à jour la liste des jetons pour l'afficher dans le tableau
 				// la liste sera déjà trier via la réponse de l'API, donc pas besoin de trier ici
 				setChips(data.chips);
-				setError("");
+				setError(null);
 			} else {
 
 				// Erreur retournée par l'API lors du chargement des jetons
-				setError(data.message);
+				setError({ code: data.code, message: data.message });
 			}
 
 		} catch (err) {
 
 			// En cas d'erreur, on affiche le message d'erreur dans la console et on met à jour l'état
 			console.error(err);
-			setError("Une erreur est survenue lors du chargement des jetons.");
+			setError({ code: "errorLoadingChips", message: "" });
 		}
 	};
 
@@ -60,21 +62,15 @@ function ChipList({ organizerId }) {
 			return;
 		}
 
-		// Sinon, on charge les jetons de l'organisateur sélectionné
-        const initializeData = async () => {
-
-            // On charge les jetons de l'organisateur sélectionné
-			// Au moment de l'appel de cette fonction, organizerId est déjà défini, donc on peut appeler loadChips directement
-            await loadChips();
-        };
-
-        initializeData();		
+		// On charge les jetons de l'organisateur sélectionné
+        loadChips();		
+		
 		// On relance le useEffect à chaque fois que l'organizerId change
-    }, [organizerId]); 
+    }, [organizerId]);
 
-	// Si le chargement a échoué, on affiche l'erreur au lieu des jetons
+	// Si le chargement a échoué, on affiche l'erreur au lieu de la liste déroulante via le code récupéré de l'object error
 	if (error) {
-		return <p className="error">{error}</p>;
+		return <p className="error-message">{error.code ? t(error.code) : error.message}</p>;
 	}
 
 	// Titre toujours affiché : la section garde sa place même sans organisateur,
@@ -98,7 +94,7 @@ function ChipList({ organizerId }) {
 						<div className={`chip ${chip.color_english}`} />
 						<div className="chip-text">
 							<div className="chip-amount">{chip.amount}</div>
-							<div className="chip-color-name">{chip.color_french}</div>
+							<div className="chip-color-name">{t("color_" + chip.color_english)}</div>
 						</div>
 					</li>
 				))}

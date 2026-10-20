@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState } from "react";
 import { API_BASE_URL } from "../config";
 import Select from "react-select";
@@ -23,8 +22,10 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 	// L'option sélectionnée (objet { value, label }), pas juste l'id
 	const [selectedOption, setSelectedOption] = useState(null);
 
-	// État pour stocker les messages d'erreur en prévision de l'ajout d'un joueur à un événement
-    const [error, setError] = useState("");
+	// L'erreur à afficher : { code, message } — le code est traduit au rendu, donc suit la langue
+	// La traduction du code d'erreur est faite dans le rendu, car la langue peut changer après le chargement des données
+	// Utiliser un objet plutôt qu'une chaîne permet de changer de langue
+	const [error, setError] = useState(null);
 
 	// Préparer les options pour le sélecteur react-select : 
 	// on transforme la liste des organisateurs en tableau d'objets {value, label}
@@ -45,15 +46,15 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 				// Mettre à jour la liste des organisateurs pour l'afficher dans le sélecteur
 				// Le format de la réponse est : {success: true, organizers: [{id, name}]}
 				setOrganizers(data.organizers);
-				setError("");
+				setError(null);
 			} else {
 
 				// Erreur retournée par l'API lors du chargement des organisateurs
-				setError(data.message);
+				setError({ code: data.code, message: data.message });
 			}
 		} catch (err) {
 			console.error(err);
-			setError("Une erreur est survenue lors du chargement des organisateurs.");
+			setError({ code: "errorLoadingOrganizers", message: "" });
 		}
 
 		// Il n'y a pas de finally avec le setLoading car on fait juste afficher
@@ -71,6 +72,7 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 			setOrganizerName(option.label);
 		} else {
 			// Le X : on réinitialise tout
+			// Il ne pas nécessaire de remettre à null setError car on ne fait pas d'appel API ici, donc pas d'erreur à réinitialiser
 			setOrganizerId(null);
 			setOrganizerName("");
 		}
@@ -78,15 +80,15 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 		setLevel(1);
 	};
 
+	// On charge la liste des organisateurs au montage du composant
 	useEffect(() => {
 
-		loadOrganizers();
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+        loadOrganizers();
 	}, []);
 
-	// Si le chargement a échoué, on affiche l'erreur au lieu du sélecteur
+	// Si le chargement a échoué, on affiche l'erreur au lieu de la liste déroulante via le code récupéré de l'object error
 	if (error) {
-		return <p className="error">{error}</p>;
+		return <p className="error-message">{error.code ? t(error.code) : error.message}</p>;
 	}
 	
 	return (
