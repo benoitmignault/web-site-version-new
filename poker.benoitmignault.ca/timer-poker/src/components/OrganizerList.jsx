@@ -54,7 +54,7 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 			}
 		} catch (err) {
 			console.error(err);
-			setError("Une erreur est survenue lors du chargement des organisateurs.");
+			setError(t("errorLoadingOrganizers"));
 		}
 
 		// Il n'y a pas de finally avec le setLoading car on fait juste afficher
