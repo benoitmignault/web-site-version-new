@@ -91,9 +91,9 @@ function Index() {
 				<div className="header-controls">
 					<OrganizerList setOrganizerName={setOrganizerName} setOrganizerId={setOrganizerId} setLevel={setLevel} />
 					<div className="language-switch">
-						<button type="button" className={language === "fr" ? "active" : ""} onClick={() => changeLanguage("fr")}>FR</button>
+						<button type="button" aria-pressed={language === "fr"} className={language === "fr" ? "active" : ""} onClick={() => changeLanguage("fr")}>FR</button>
 						<span>|</span>
-						<button type="button" className={language === "en" ? "active" : ""} onClick={() => changeLanguage("en")}>EN</button>
+						<button type="button" aria-pressed={language === "en"} className={language === "en" ? "active" : ""} onClick={() => changeLanguage("en")}>EN</button>
 					</div>
 				</div>
 			</div>
