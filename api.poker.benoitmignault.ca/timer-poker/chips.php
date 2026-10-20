@@ -14,7 +14,7 @@ if ($organizerId === false) {
 
     error_log("ID de l'organisateur invalide: " . var_export($_GET['id'] ?? null, true));
     http_response_code(400);
-    echo json_encode(["success" => false, "message" => "ID de l'organisateur invalide."]);        
+    echo json_encode(["success" => false, "code" => "errorInvalidOrganizer", "message" => "ID de l'organisateur invalide."]);        
     exit();
 }
 
@@ -36,7 +36,7 @@ if ($stmt === false) {
     error_log($connMYSQL->error);
 
     http_response_code(500);
-    echo json_encode(["success" => false, "message" => "Erreur lors de la préparation de la requête."]);
+    echo json_encode(["success" => false, "code" => "errorPrepareQuery", "message" => "Erreur lors de la préparation de la requête."]);
 
     $connMYSQL->close();
     exit();
@@ -50,7 +50,7 @@ if (!$stmt->execute()) {
     error_log($stmt->error);
     
     http_response_code(500);
-    echo json_encode(["success" => false, "message" => "Erreur lors de l'exécution de la requête."]); 
+    echo json_encode(["success" => false, "code" => "errorExecuteQuery", "message" => "Erreur lors de l'exécution de la requête."]); 
     
     // Fermer la connexion au résultat du insert dans la base de données et la connexion à la base de données
     $stmt->close();
@@ -64,7 +64,7 @@ $result = $stmt->get_result();
 if ($result->num_rows === 0) {
 
     http_response_code(404);
-    echo json_encode(["success" => false, "message" => "Aucun jeton trouvé pour cet organisateur."]);
+    echo json_encode(["success" => false, "code" => "errorNoChips", "message" => "Aucun jeton trouvé pour cet organisateur."]);
 
     // Fermer la connexion au résultat du insert dans la base de données et la connexion à la base de données
     $stmt->close();

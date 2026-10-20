@@ -21,7 +21,7 @@
 			error_log("Échec connexion BD organisateurs : " . mysqli_connect_error());
 
 			http_response_code(500);
-			echo json_encode(["success" => false, "message" => "Erreur de connexion à la base de données."]);
+			echo json_encode(["success" => false, "code" => "errorDbConnection", "message" => "Erreur de connexion à la base de données."]);
 
 			exit();
 		}
