@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { FaArrowUp } from "react-icons/fa";
 import OrganizerList from "./OrganizerList";
 import ChipList from "./ChipList";
 import BlindPanel from "./BlindPanel";
