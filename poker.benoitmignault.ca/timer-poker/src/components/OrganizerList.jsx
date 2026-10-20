@@ -45,15 +45,15 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 				// Mettre à jour la liste des organisateurs pour l'afficher dans le sélecteur
 				// Le format de la réponse est : {success: true, organizers: [{id, name}]}
 				setOrganizers(data.organizers);
-				setError("");
+				setError(null);
 			} else {
 
 				// Erreur retournée par l'API lors du chargement des organisateurs
-				setError(data.message);
+				setError(data.code ? t(data.code) : data.message);
 			}
 		} catch (err) {
 			console.error(err);
-			setError(t("errorLoadingOrganizers"));
+			setError({ code: "errorLoadingOrganizers", message: "" });
 		}
 
 		// Il n'y a pas de finally avec le setLoading car on fait juste afficher
@@ -80,7 +80,7 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 
 	// On charge la liste des organisateurs au montage du composant
 	useEffect(() => {
-		
+
         loadOrganizers();
 	}, []);
 
