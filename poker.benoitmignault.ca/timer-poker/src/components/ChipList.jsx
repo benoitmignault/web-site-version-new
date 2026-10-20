@@ -98,7 +98,7 @@ function ChipList({ organizerId }) {
 						<div className={`chip ${chip.color_english}`} />
 						<div className="chip-text">
 							<div className="chip-amount">{chip.amount}</div>
-							<div className="chip-color-name">{chip.color_french}</div>
+							<div className="chip-color-name">{t("color_" + chip.color_english)}</div>
 						</div>
 					</li>
 				))}
