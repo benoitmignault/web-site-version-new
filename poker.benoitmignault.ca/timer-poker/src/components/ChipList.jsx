@@ -39,7 +39,7 @@ function ChipList({ organizerId }) {
 				// Mettre à jour la liste des jetons pour l'afficher dans le tableau
 				// la liste sera déjà trier via la réponse de l'API, donc pas besoin de trier ici
 				setChips(data.chips);
-				setError("");
+				setError(null);
 			} else {
 
 				// Erreur retournée par l'API lors du chargement des jetons
