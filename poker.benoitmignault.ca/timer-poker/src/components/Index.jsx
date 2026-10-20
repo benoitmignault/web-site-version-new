@@ -90,6 +90,14 @@ function Index() {
 				</div>				
 			</div>
 			<Footer organizerName={organizerName} />
+			{showScrollTop && (
+				<button
+					type="button" className="scroll-top" aria-label={t("backToTop")}
+					onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}					
+				>
+					<FaArrowUp />
+				</button>
+			)}
 		</div>
 	);
 }
