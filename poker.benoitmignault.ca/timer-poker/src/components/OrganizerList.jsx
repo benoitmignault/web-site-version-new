@@ -87,7 +87,7 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 
 	// Si le chargement a échoué, on affiche l'erreur au lieu du sélecteur
 	if (error) {
-		return <p className="error">{error}</p>;
+		return <p className="error-message">{error}</p>;
 	}
 	
 	return (
