@@ -24,8 +24,9 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 	const [small, setSmall] = useState(null);
 	const [big, setBig] = useState(null);
 
-	// Le message d'erreur à afficher si le chargement échoue
-	const [error, setError] = useState("");
+	// L'erreur à afficher : { code, message } — le code est traduit au rendu, donc suit la langue
+	const [error, setError] = useState(null);
+
 
 	// fonction pour charger les blinds de l'organisateur sélectionné pour le niveau courant
 	const loadBlinds = async () => {
