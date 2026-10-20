@@ -25,8 +25,9 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 	const [big, setBig] = useState(null);
 
 	// L'erreur à afficher : { code, message } — le code est traduit au rendu, donc suit la langue
+	// La traduction du code d'erreur est faite dans le rendu, car la langue peut changer après le chargement des données
+	// Utiliser un objet plutôt qu'une chaîne permet de changer de langue
 	const [error, setError] = useState(null);
-
 
 	// fonction pour charger les blinds de l'organisateur sélectionné pour le niveau courant
 	const loadBlinds = async () => {
