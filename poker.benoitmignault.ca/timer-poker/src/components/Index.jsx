@@ -43,6 +43,9 @@ function Index() {
 	// On doit stocker le nombre total de niveaux pour l'organisateur sélectionné pour l'affichage dans le tableau des mises
 	const [maxLevel, setMaxLevel] = useState(null);
 
+	// État pour gérer l'affichage du bouton de retour en haut de page
+	const [showScrollTop, setShowScrollTop] = useState(false);
+
 	// Changer le titre de la page et le favicon lorsque le composant est monté
 	useEffect(() => {
 		document.title = t('title-page');
