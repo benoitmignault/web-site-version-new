@@ -17,8 +17,10 @@ function ChipList({ organizerId }) {
 	// Les jetons reçus de l'API
 	const [chips, setChips] = useState([]);
 
-	// Le message d'erreur à afficher si le chargement échoue
-	const [error, setError] = useState("");
+	// L'erreur à afficher : { code, message } — le code est traduit au rendu, donc suit la langue
+	// La traduction du code d'erreur est faite dans le rendu, car la langue peut changer après le chargement des données
+	// Utilisation d'un object au lieu d'u nstring permet le switch linguistique 
+	const [error, setError] = useState(null);
 
 	// Fonction pour charger les jetons de l'organisateur sélectionné
 	const loadChips = async () => {
