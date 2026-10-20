@@ -29,5 +29,16 @@
 	"color_orange": "Orange",
 	"color_pink": "Pink",
 	"backToTop": "Back to top",
-	"errorLoadingOrganizers": "An error occurred while loading the organizers."
+	"errorLoadingOrganizers": "An error occurred while loading the organizers.",
+    "errorDbConnection": "Database connection error.",
+    "errorInvalidOrganizer": "Invalid organizer ID.",
+    "errorInvalidLevel": "Invalid level.",
+    "errorNoOrganizers": "No organizers found.",
+    "errorNoChips": "No chips found for this organizer.",
+    "errorNoBlinds": "No blind combination found for this organizer.",
+    "errorLoadingBlinds": "An error occurred while loading the blinds.",
+    "errorLoadingChips": "An error occurred while loading the chips.",
+    "errorServer": "A server error occurred.",
+    "errorPrepareQuery": "Error while preparing the query.",
+    "errorExecuteQuery": "Error while executing the query."
 }
