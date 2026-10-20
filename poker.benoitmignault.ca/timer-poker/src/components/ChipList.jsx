@@ -66,9 +66,9 @@ function ChipList({ organizerId }) {
         loadChips();		
 		
 		// On relance le useEffect à chaque fois que l'organizerId change
-    }, [organizerId]); 
+    }, [organizerId]);
 
-	// Si le chargement a échoué, on affiche l'erreur au lieu des jetons
+	// Si le chargement a échoué, on affiche l'erreur au lieu de la liste déroulante via le code récupéré de l'object error
 	if (error) {
 		return <p className="error-message">{error.code ? t(error.code) : error.message}</p>;
 	}
