@@ -119,7 +119,7 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 				</div>
 			</div>
 			<div className="blind-actions">
-				<button type="button" className="btn-change" onClick={handleChange} disabled={!organizerId || (maxLevel !== null && level >= maxLevel)}>
+				<button type="button" className="btn-change" onClick={handleChange} disabled={!organizerId || maxLevel === null || level >= maxLevel}>
 					{t("change")}
 				</button>
 				<button type="button" className="btn-reset" onClick={handleReset} disabled={!organizerId || level <= 1}>
