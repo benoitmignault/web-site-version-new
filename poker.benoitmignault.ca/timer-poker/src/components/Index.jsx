@@ -57,6 +57,16 @@ function Index() {
 
 	}, []);
 
+	// Gestion du bouton de retour en haut de page
+	useEffect(() => {
+		const handleScroll = () => {
+			setShowScrollTop(window.scrollY > 300);
+		};
+
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
+
 	return (
 		<div>
 			<div className="header-container">
