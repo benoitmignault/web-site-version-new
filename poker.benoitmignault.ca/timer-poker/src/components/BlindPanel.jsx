@@ -59,14 +59,14 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 				setSmall(null);
 				setBig(null);
 				setMaxLevel(null);				
-				setError(data.message); // Erreur retournée par l'API lors du chargement des blinds
+				setError({ code: data.code, message: data.message }); // Erreur retournée par l'API lors du chargement des blinds
 			}
 
 		} catch (err) {
 
 			// En cas d'erreur, on affiche le message d'erreur dans la console et on met à jour l'état
 			console.error(err);
-			setError("Une erreur est survenue lors du chargement des blinds.");
+			setError({ code: "errorLoadingBlinds", message: "" });
 		}
 
 		// Pas d'indicateur de chargement ici : on affiche les mises
@@ -131,7 +131,7 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 				</button>
 			</div>
 			{/* Erreur affichée avec le panneau, pas à la place : on garde les contrôles */}
-			{error && <p className="error-message">{error}</p>}
+			{error && <p className="error-message">{error.code ? t(error.code) : error.message}</p>}
 		</section>
 	);
 }
