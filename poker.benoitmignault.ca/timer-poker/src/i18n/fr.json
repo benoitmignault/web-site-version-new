@@ -14,13 +14,6 @@
   "resume": "Poursuivre",
   "reset": "Réinitialiser",
   "change": "Changer",
-  "select": "Sélectionner",
-  "minutes": "Minutes",
-  "secondes": "Secondes",
-  "nextLevel": "Prochain niveau dans",
-  "level": "Niveau",
-  "errorNoChips": "Aucun jeton disponible",
-  "errorLoadingOrganizers": "Une erreur est survenue lors du chargement des organisateurs.",
   "allRightsReserved": "Tous droits réservés",
   "color_green": "Vert",
   "color_darkblue": "Bleu foncé",
@@ -35,5 +28,6 @@
   "color_grey": "Gris",
   "color_orange": "Orange",
   "color_pink": "Rose",
-  "backToTop": "Retour en haut"
+  "backToTop": "Retour en haut",  
+  "errorLoadingOrganizers": "Une erreur est survenue lors du chargement des organisateurs."
 }
