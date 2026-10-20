@@ -80,6 +80,10 @@ body {
 	letter-spacing: 1px;
 }
 
+.language-switch { display: flex; align-items: center; gap: 8px; }
+.language-switch button { background: none; border: none; color: var(--text-dim); cursor: pointer; font-weight: 600; font-size: 0.9rem; }
+.language-switch button.active { color: var(--gold); }
+
 /* Jeton doré du header — même système que la liste des chips */
 /* Jeton noir et or du header (style du modèle) */
 .chip.gold {
