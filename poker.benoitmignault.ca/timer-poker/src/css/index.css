@@ -136,7 +136,9 @@ body {
 	display: flex;
 	flex-direction: column;
 	border-left: 1px solid var(--gold-soft);
-	padding-left: 24px;
+	border-right: 1px solid var(--gold-soft);
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 .organizer-label {
