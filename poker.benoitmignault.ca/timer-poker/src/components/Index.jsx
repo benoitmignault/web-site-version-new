@@ -5,7 +5,7 @@ import ChipList from "./ChipList";
 import BlindPanel from "./BlindPanel";
 import Countdown from "./Countdown.jsx";
 import Footer from "./Footer.jsx";
-import { t } from "../i18n/i18n";
+import { t, setLanguage } from "../i18n/i18n";
 import '../css/index.css';
 import '../css/mobile.css';
 
