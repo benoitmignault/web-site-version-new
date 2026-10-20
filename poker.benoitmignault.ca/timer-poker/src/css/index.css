@@ -587,3 +587,8 @@ body {
 .footer-bar a:hover {
 	text-decoration: underline;
 }
+
+/* Flèche remonter en haut — mobile seulement (comme le golf) */
+.scroll-top {
+	display: none;
+}
