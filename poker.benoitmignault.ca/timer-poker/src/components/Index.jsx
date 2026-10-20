@@ -9,7 +9,6 @@ import { t } from "../i18n/i18n";
 import '../css/index.css';
 import '../css/mobile.css';
 
-
 /**
  * Composant principal du minuteur de poker.
  *
