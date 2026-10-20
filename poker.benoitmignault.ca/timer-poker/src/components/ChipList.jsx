@@ -19,7 +19,7 @@ function ChipList({ organizerId }) {
 
 	// L'erreur à afficher : { code, message } — le code est traduit au rendu, donc suit la langue
 	// La traduction du code d'erreur est faite dans le rendu, car la langue peut changer après le chargement des données
-	// Utilisation d'un object au lieu d'u nstring permet le switch linguistique 
+	// Utiliser un objet plutôt qu'une chaîne permet de changer de langue
 	const [error, setError] = useState(null);
 
 	// Fonction pour charger les jetons de l'organisateur sélectionné
