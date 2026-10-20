@@ -43,14 +43,14 @@ function ChipList({ organizerId }) {
 			} else {
 
 				// Erreur retournée par l'API lors du chargement des jetons
-				setError(data.message);
+				setError({ code: data.code, message: data.message });
 			}
 
 		} catch (err) {
 
 			// En cas d'erreur, on affiche le message d'erreur dans la console et on met à jour l'état
 			console.error(err);
-			setError("Une erreur est survenue lors du chargement des jetons.");
+			setError({ code: "errorLoadingChips", message: "" });
 		}
 	};
 
