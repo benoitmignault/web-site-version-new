@@ -62,21 +62,15 @@ function ChipList({ organizerId }) {
 			return;
 		}
 
-		// Sinon, on charge les jetons de l'organisateur sélectionné
-        const initializeData = async () => {
-
-            // On charge les jetons de l'organisateur sélectionné
-			// Au moment de l'appel de cette fonction, organizerId est déjà défini, donc on peut appeler loadChips directement
-            await loadChips();
-        };
-
-        initializeData();		
+		// On charge les jetons de l'organisateur sélectionné
+        loadChips();		
+		
 		// On relance le useEffect à chaque fois que l'organizerId change
     }, [organizerId]); 
 
 	// Si le chargement a échoué, on affiche l'erreur au lieu des jetons
 	if (error) {
-		return <p className="error">{error}</p>;
+		return <p className="error-message">{error.code ? t(error.code) : error.message}</p>;
 	}
 
 	// Titre toujours affiché : la section garde sa place même sans organisateur,
