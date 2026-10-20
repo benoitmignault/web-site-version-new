@@ -1,78 +1,594 @@
+/**
+ * Minuteur de poker - styles de base : fond, conteneurs et theme.
+ * Theme poker sombre avec accents dores (voir mockup).
+ */
+
+/* Palette du minuteur */
+:root {
+	--gold: #c9a227;	
+	--gold-light: #e8c15a;
+	--gold-soft: rgba(212, 175, 55, 0.35);
+	--gold-muted: #a3935c;
+	--card-bg: rgba(10, 10, 12, 0.72);
+	--text-main: #f5f5f5;
+	--text-dim: rgba(245, 245, 245, 0.6);
+	--timer-green: #2e9e5b;
+	--timer-orange: #f59e0b;
+	--timer-red: #ef4444;
+
+	font-family:
+		system-ui,
+		-apple-system,
+		BlinkMacSystemFont,
+		sans-serif;
+
+	color: var(--text-main);
+	background-color: #060606;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
 body {
-    margin: 0;
-    color: #ffffff;
-    background:
-        linear-gradient(
-            rgba(5,10,25,0.25),
-			rgba(5,10,25,0.35)
-        ),
-        url("/images/backgrounds/bg-timer-clair.jpg");
-
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+	margin: 0;
+	background:
+		linear-gradient(
+			rgba(0, 0, 0, 0.25),
+			rgba(0, 0, 0, 0.35)
+		),
+		url("/images/backgrounds/bg-timer.jpg");
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
 }
 
-.chip {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	color: #fff;
-	font-weight: bold;
-}
-
-
-.chip.green { background: #2e7d32; }
-.chip.darkblue { background: #1565c0; }
-.chip.red { background: #c62828; }
-.chip.white { background: #f5f5f5; color: #333; }
-.chip.black { background: #212121; }
-.chip.yellow { background: #f9a825; color: #333; }
-.chip.purple { background: #6a1b9a; }
-.chip.lightblue { background: #4fc3f7; color: #333; }
-.chip.purple { background: #6a1b9a; }
-
-
-/* Bouton Changer — assorti aux cartes des blinds */
-.change-button {
-	display: block;
+#root {
 	width: 100%;
-	margin-top: 1rem;
-	padding: 0.9rem 1rem;
-	background: rgba(10, 10, 10, 0.6);
-	border: 1px solid #c9a227;
-	border-radius: 8px;
-	color: #e8c15a;
-	font-size: 1.05rem;
-	font-weight: 700;
-	letter-spacing: 0.12em;
-	text-transform: uppercase;
-	cursor: pointer;
-	transition: background 0.2s, box-shadow 0.2s;
+	margin: 0 auto;
+	min-height: 100svh;
+	display: flex;
+	flex-direction: column;
+	box-sizing: border-box;
+	padding: 24px 30px 110px;
 }
 
-.change-button:hover:not(:disabled) {
+/* En-tête : titre + sélecteur d'organisateur */
+.header-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 20px;
+	background: var(--card-bg);
+	backdrop-filter: blur(8px);
+	border: 1px solid var(--gold-soft);
+	border-radius: 16px;
+	padding: 20px 28px;
+	margin-bottom: 30px;
+	position: relative;
+	z-index: 10;
+}
+
+.header-container h1 {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	margin: 0;
+	font-size: 2rem;
+	font-weight: 700;
+	color: var(--gold);
+	letter-spacing: 1px;
+}
+
+/* Jeton doré du header — même système que la liste des chips */
+/* Jeton noir et or du header (style du modèle) */
+.chip.gold {
+	background: radial-gradient(circle at 35% 30%, #3a3a3a, #111111 70%);
+}
+
+/* Les 8 cases du bord passent en or */
+.chip.gold::before {
+	background: repeating-conic-gradient(rgba(201, 162, 39, 0.95) 0deg 30deg, transparent 30deg 45deg);
+}
+
+/* L'anneau pointillé intérieur aussi */
+.chip.gold::after {
+	border-color: rgba(201, 162, 39, 0.5);
+}
+
+.header-chip {
+	width: 54px;
+	height: 54px;
+	flex-shrink: 0;
+}
+
+/**
+ * Sélecteur d'organisateur (react-select).
+ * Reprend le style du sélecteur de joueur du golf, adapté au thème or.
+ */
+.organizer-field {
+	display: flex;
+	flex-direction: column;
+	border-left: 1px solid var(--gold-soft);
+	padding-left: 24px;
+}
+
+.organizer-label {
+	margin-bottom: 8px;
+	font-weight: 600;
+	color: var(--gold);
+}
+
+/* Largeur fixe : le select garde la même dimension
+   peu importe la longueur du nom de l'organisateur choisi */
+.organizer-select-wrapper {
+	width: 280px;
+	max-width: 100%;
+}
+
+.organizer-select__control {
+	background: rgba(255, 255, 255, 0.08) !important;
+	border: 1px solid var(--gold-soft) !important;
+	min-height: 50px !important;
+	border-radius: 10px !important;
+	box-shadow: none !important;
+	cursor: pointer !important;
+}
+
+.organizer-select__control:hover {
+	border-color: var(--gold) !important;
+}
+
+.organizer-select__control--is-focused {
+	border-color: var(--gold) !important;
+	box-shadow: 0 0 0 1px var(--gold) !important;
+}
+
+.organizer-select__single-value {
+	color: white !important;
+}
+
+.organizer-select__input-container {
+	color: white !important;
+}
+
+.organizer-select__placeholder {
+	color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.organizer-select__menu {
+	background: rgba(10, 10, 12, 0.95) !important;
+	backdrop-filter: blur(10px);
+	border: 1px solid var(--gold-soft);
+	border-radius: 10px !important;
+	overflow: hidden;
+}
+
+.organizer-select__option {
+	background: transparent !important;
+	color: white !important;
+	cursor: pointer !important;
+}
+
+.organizer-select__option--is-focused {
+	background: rgba(212, 175, 55, 0.25) !important;
+}
+
+.organizer-select__option--is-selected {
+	background: rgba(212, 175, 55, 0.45) !important;
+}
+
+.organizer-select__indicator {
+	color: var(--gold) !important;
+}
+
+.organizer-select__menu-list::-webkit-scrollbar {
+	width: 8px;
+}
+
+.organizer-select__menu-list::-webkit-scrollbar-thumb {
+	background: rgba(255, 255, 255, 0.20);
+	border-radius: 10px;
+}
+
+/* Le X pour effacer la sélection, en or comme le reste */
+.organizer-select__clear-indicator {
+	color: var(--gold) !important;
+}
+
+.organizer-select__clear-indicator:hover {
+	color: var(--gold-light) !important;
+}
+
+/* Rangée principale : jetons à gauche, blinds + chrono à droite */
+.main-container {
+	display: flex;
+	gap: 30px;
+	align-items: flex-start;
+	margin-bottom: 30px;
+	flex: 1;
+}
+
+/* Carte de section (reprend le pattern .admin-section-card du golf) */
+.content-container {
+	background: var(--card-bg);
+	backdrop-filter: blur(8px);
+	border: 1px solid var(--gold-soft);
+	border-radius: 16px;
+	padding: 24px;
+	box-sizing: border-box;
+}
+
+/* La carte des jetons garde sa place mais devient invisible sans organisateur */
+.content-container.is-hidden {
+	visibility: hidden;
+}
+
+/* La carte des jetons garde toujours la même largeur :
+   pas de saut de layout quand on choisit un organisateur */
+.main-container > .content-container:first-child {
+	width: 300px;
+	flex-shrink: 0;
+}
+
+/* La carte du chrono : contenu collé en haut */
+.timer-column > .content-container:last-child {
+	padding-top: 0;
+}
+
+/* Titre de la section des jetons : or, centré, sans marge haute */
+.chip-list h2 {
+	margin: 0 0 20px 0;
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: var(--gold);
+	letter-spacing: 1px;
+	text-align: center;
+}
+
+/* Liste des jetons : sans puces */
+.chip-list ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+}
+
+.chip-list li {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+
+/* Jeton de poker dessiné en CSS : pastille couleur + bord en pointillés (les encoches) */
+.chip {
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	box-sizing: border-box;
+	flex-shrink: 0;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+	position: relative; /* repère pour les anneaux intérieurs */
+}
+
+/* Les 8 cases blanches du bord, comme le modèle */
+.chip::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: 50%;
+	background: repeating-conic-gradient(
+		rgba(255, 255, 255, 0.95) 0deg 30deg,   /* 30° de blanc au lieu de 22.5° */
+		transparent 30deg 45deg
+	);
+	-webkit-mask: radial-gradient(circle, transparent 60%, black 61%);  /* anneau plus épais */
+	mask: radial-gradient(circle, transparent 60%, black 61%);
+}
+
+/* 2e anneau : petite ligne pointillée intérieure */
+.chip::after {
+	content: "";
+	position: absolute;
+	inset: 4px;
+	border-radius: 50%;
+	border: 2px dashed rgba(255, 255, 255, 0.5);
+}
+
+.chip.green { background-color: #2ea44f; }
+.chip.darkblue { background-color: #2456a8; }
+.chip.red { background-color: #d43a3a; }
+.chip.white { background-color: #e8e8e8; }
+.chip.black { background-color: #1a1a1a; }
+.chip.yellow { background-color: #e3b92e; }
+.chip.lightblue { background-color: #6cb4ee; }
+.chip.purple { background-color: #7a3fa0; }
+.chip.brown { background-color: #7b4b2a; }
+.chip.darkred { background-color: #8f1d1d; }
+.chip.grey { background-color: #8a8a8a; }
+.chip.orange { background-color: #e07b2a; }
+.chip.pink { background-color: #e08bb0; }
+
+.chip-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.chip-amount {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: white;
+	line-height: 1.1;
+}
+
+.chip-color-name {
+	font-size: 0.95rem;
+	color: var(--text-dim);
+}
+
+/* Colonne de droite : 50% de la largeur, centrée */
+.timer-column {
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	min-width: 0;
+}
+
+/* Les deux cartes côte à côte, même largeur totale que les boutons du chrono */
+.blind-cards {
+	display: flex;
+	gap: 20px;
+}
+
+.blind-card {
+	flex: 1;
+	background: rgba(0, 0, 0, 0.6);
+	border: 1px solid var(--gold-soft);
+	border-radius: 16px;
+	padding: 28px 20px;
+	text-align: center;
+	box-shadow: inset 0 1px 0 rgba(212, 175, 55, 0.15);
+}
+
+.blind-label {
+	color: var(--gold);
+	font-size: 1.1rem;
+	font-weight: 600;
+	margin-bottom: 12px;
+}
+
+.blind-value {
+	font-size: 6.5rem;
+	font-weight: 700;
+	color: var(--gold);
+	line-height: 1;
+}
+
+/* --- Boutons des blinds : 3/4 Changer, 1/4 Réinitialiser --- */
+.blind-actions {
+	display: flex;
+	gap: 12px;
+	margin-top: 20px;
+}
+
+.btn-change {
+	flex: 3;
+	padding: 16px 8px;
+	border-radius: 12px;
+	border: 1px solid var(--gold);
+	background: rgba(0, 0, 0, 0.5);
+	color: var(--gold-light);
+	font-size: 1.1rem;
+	font-weight: 700;
+	cursor: pointer;
+	transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-change:hover:not(:disabled) {
 	background: rgba(201, 162, 39, 0.12);
 	box-shadow: 0 0 12px rgba(201, 162, 39, 0.35);
 }
 
-.change-button:disabled {
+.btn-change:disabled {
 	opacity: 0.35;
 	cursor: not-allowed;
 }
 
-@keyframes flash-red {
-	0%, 100% { border-color: red; box-shadow: 0 0 25px red; }
-	50% { border-color: transparent; box-shadow: none; }
+.blind-actions .btn-reset {
+	flex: 1;
+	padding: 16px 8px;
+	border-radius: 12px;
+	border: 1px solid var(--gold-soft);
+	background: transparent;
+	color: var(--text-dim);
+	font-size: 0.95rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.2s ease;
 }
 
-.countdown-display.green { border: 3px solid green; }
-.countdown-display.orange { border: 3px solid orange; }
-.countdown-display.red { border: 3px solid red; }
+.blind-actions .btn-reset:hover:not(:disabled) {
+	background: rgba(212, 175, 55, 0.1);
+	color: var(--gold-light);
+}
+
+.blind-actions .btn-reset:disabled {
+	opacity: 0.35;
+	cursor: not-allowed;
+}
+
+/* Message d'erreur (reprend le pattern du golf) */
+.error-message {
+	margin-top: 15px;
+	padding: 12px 16px;
+	color: #fca5a5;
+	font-weight: 700;
+	font-size: 0.95rem;
+	background: rgba(239, 68, 68, 0.15);
+	border: 1px solid rgba(239, 68, 68, 0.35);
+	border-radius: 10px;
+	text-align: center;
+}
+
+/* --- Affichage du chrono --- */
+.countdown-display {
+	width: fit-content;
+	margin: 28px auto;
+	text-align: center;
+	font-size: 8rem;
+	font-weight: 700;
+	color: white;
+	line-height: 1;
+	padding: 12px 48px;
+	padding-top: 0; /* RÉajustement */
+	border: 4px solid var(--timer-green);
+	border-radius: 20px;
+	background: rgba(0, 0, 0, 0.55);
+	transition: border-color 0.5s ease;
+}
+
+/* Le span ne sort plus du div : inline-block calé sur le line-height,
+   puis remontée optique des chiffres */
+.countdown-display span {
+	display: inline-block;
+	line-height: 1;
+	transform: translateY(-4px);
+}
+
+.countdown-display.green { border-color: var(--timer-green); }
+.countdown-display.orange { border-color: var(--timer-orange); }
+.countdown-display.red { border-color: var(--timer-red); }
+
+/* Flash rouge pendant l'alerte */
 .countdown-display.flashing {
 	animation: flash-red 1s infinite;
+}
+
+@keyframes flash-red {
+	0%, 100% {
+		border-color: var(--timer-red);
+		box-shadow: 0 0 0 rgba(239, 68, 68, 0);
+	}
+
+	50% {
+		border-color: #ff6b6b;
+		box-shadow: 0 0 32px rgba(239, 68, 68, 0.8);
+	}
+}
+
+/* --- Les 3 boutons du chrono : même largeur totale que les cartes --- */
+.countdown-actions {
+	display: flex;
+	gap: 16px;
+}
+
+.countdown-actions button {
+	flex: 1;
+	padding: 16px;
+	border-radius: 12px;
+	font-size: 1.05rem;
+	font-weight: 700;
+	cursor: pointer;
+	transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.countdown-actions button:disabled {
+	opacity: 0.35;
+	cursor: not-allowed;
+	transform: none;
+}
+
+/* Arrêt : contour rouge */
+.btn-stop {
+	border: 1px solid var(--timer-red);
+	background: rgba(239, 68, 68, 0.12);
+	color: #ff6b6b;
+}
+
+.btn-stop:hover:not(:disabled) {
+	background: rgba(239, 68, 68, 0.25);
+}
+
+/* Démarrer/Poursuivre : vert plein */
+.btn-resume {
+	border: none;
+	background: var(--timer-green);
+	color: white;
+}
+
+.btn-resume:hover:not(:disabled) {
+	filter: brightness(1.15);
+	transform: translateY(-1px);
+}
+
+/* Réinitialiser : contour or */
+.countdown-actions .btn-reset {
+	border: 1px solid var(--gold);
+	background: transparent;
+	color: var(--gold);
+}
+
+.countdown-actions .btn-reset:hover:not(:disabled) {
+	background: rgba(212, 175, 55, 0.15);
+}
+
+/* Pied de page : ancré en bas, 3 sections */
+.footer-bar {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	background: var(--card-bg);
+	backdrop-filter: blur(8px);
+	border: 1px solid var(--gold-soft);
+	border-radius: 16px;
+	padding: 16px 28px;
+	font-size: 0.9rem;
+	position: fixed;
+	bottom: 24px;
+	left: 30px;
+	right: 30px;
+	z-index: 50;
+}
+
+.footer-section {
+	flex: 1;
+}
+
+/* Texte de gauche : or grisé (comme le modèle) */
+.footer-copyright {
+	color: var(--gold-muted);
+}
+
+/* Horloge : plus grosse, en or */
+.footer-clock {
+	text-align: center;
+	font-size: 1.3rem;
+	font-weight: 700;
+	color: var(--gold);
+	letter-spacing: 2px;
+}
+
+/* Accueil : plus gros, en or */
+.footer-link {
+	text-align: right;
+}
+
+.footer-bar a {
+	color: var(--gold);
+	font-size: 1.1rem;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.footer-bar a:hover {
+	text-decoration: underline;
+}
+
+/* Flèche remonter en haut — mobile seulement (comme le golf) */
+.scroll-top {
+	display: none;
 }

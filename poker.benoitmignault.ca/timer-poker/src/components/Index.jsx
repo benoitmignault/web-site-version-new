@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { FaArrowUp } from "react-icons/fa";
 import OrganizerList from "./OrganizerList";
 import ChipList from "./ChipList";
 import BlindPanel from "./BlindPanel";
@@ -6,7 +7,7 @@ import Countdown from "./Countdown.jsx";
 import Footer from "./Footer.jsx";
 import { t } from "../i18n/i18n";
 import '../css/index.css';
-
+import '../css/mobile.css';
 
 /**
  * Composant principal du minuteur de poker.
@@ -41,6 +42,9 @@ function Index() {
 	// On doit stocker le nombre total de niveaux pour l'organisateur sélectionné pour l'affichage dans le tableau des mises
 	const [maxLevel, setMaxLevel] = useState(null);
 
+	// État pour gérer l'affichage du bouton de retour en haut de page
+	const [showScrollTop, setShowScrollTop] = useState(false);
+
 	// Changer le titre de la page et le favicon lorsque le composant est monté
 	useEffect(() => {
 		document.title = t('title-page');
@@ -53,31 +57,48 @@ function Index() {
 
 	}, []);
 
+	// Gestion du bouton de retour en haut de page
+	useEffect(() => {
+		const handleScroll = () => {
+			setShowScrollTop(window.scrollY > 300);
+		};
+
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+		
+	}, []);
+
 	return (
 		<div>
 			<div className="header-container">
-				<h1>{t('title')}</h1>
+				<h1>
+					<span className="chip gold header-chip" aria-hidden="true"></span>
+					{t("title")}
+				</h1>
 				<OrganizerList setOrganizerName={setOrganizerName} setOrganizerId={setOrganizerId} setLevel={setLevel} />
 			</div>
 			<div className="main-container">
-				<div className="content-container">
-					{organizerId && (
-						<div>
-							<h2>{t('chipValues')}</h2>
-							<ChipList organizerId={organizerId} />
-						</div>
-					)}					
+				<div className={`content-container${organizerId ? "" : " is-hidden"}`}>
+					<ChipList organizerId={organizerId} />
 				</div>
-				<div className="content-container">					
-					<div>
-						<BlindPanel organizerId={organizerId} level={level} setLevel={setLevel} maxLevel={maxLevel} setMaxLevel={setMaxLevel}/>
-					</div>	
-					<div>
+				<div className="timer-column">
+					<div className="content-container">
+						<BlindPanel organizerId={organizerId} level={level} setLevel={setLevel} maxLevel={maxLevel} setMaxLevel={setMaxLevel} />
+					</div>
+					<div className="content-container">
 						<Countdown organizerId={organizerId} level={level} setLevel={setLevel} maxLevel={maxLevel} />
-					</div>					
+					</div>
 				</div>				
 			</div>
 			<Footer organizerName={organizerName} />
+			{showScrollTop && (
+				<button
+					type="button" className="scroll-top" aria-label={t("backToTop")}
+					onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}					
+				>
+					<FaArrowUp />
+				</button>
+			)}
 		</div>
 	);
 }

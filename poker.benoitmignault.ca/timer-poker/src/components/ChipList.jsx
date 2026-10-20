@@ -55,6 +55,12 @@ function ChipList({ organizerId }) {
 	// On charge les jetons de l'organisateur sélectionné au montage du composant
 	useEffect(() => {
 
+		// Sans organisateur sélectionné, on ne peut pas charger les jetons, donc on quitte la fonction
+		if (!organizerId) {
+			return;
+		}
+
+		// Sinon, on charge les jetons de l'organisateur sélectionné
         const initializeData = async () => {
 
             // On charge les jetons de l'organisateur sélectionné
@@ -71,17 +77,33 @@ function ChipList({ organizerId }) {
 		return <p className="error">{error}</p>;
 	}
 
+	// Titre toujours affiché : la section garde sa place même sans organisateur,
+	// la largeur ne bouge jamais à la sélection
+	if (!organizerId) {
+		return (
+			<div className="chip-list">
+				<h2>{t("chipValues")}</h2>
+			</div>
+		);
+	}
+
 	// Il est important d'avoir un id pour une liste car React utilise les clés 
 	// pour identifier les éléments de la liste et optimiser le rendu.
 	return (
-		<ul>
-			{chips.map((chip) => (
-				<li key={chip.id}>
-					<span className={`chip ${chip.color_english}`}>{chip.amount}</span>
-					<span>{chip.color_french}</span>
-				</li>
-			))}
-		</ul>
+		<div className="chip-list">
+			<h2>{t('chipValues')}</h2>
+			<ul>
+				{chips.map((chip) => (
+					<li key={chip.id}>
+						<div className={`chip ${chip.color_english}`} />
+						<div className="chip-text">
+							<div className="chip-amount">{chip.amount}</div>
+							<div className="chip-color-name">{chip.color_french}</div>
+						</div>
+					</li>
+				))}
+			</ul>		
+		</div>		
 	);
 }
 

@@ -29,8 +29,9 @@ const LEVEL_END_PAUSE_SECONDS = 3;
  * @param {number|null} props.organizerId ID de l'organisateur sélectionné (null si aucun choisi).
  * @param {number} props.level Niveau de blinds courant (base 1).
  * @param {Function} props.setLevel Fonction pour mettre à jour le niveau de blindes.
+ * @param {number} props.maxLevel Niveau maximum de blinds.
  */
-function Countdown( { organizerId, level, setLevel } ) {
+function Countdown( { organizerId, level, setLevel, maxLevel } ) {
 
 	// Le nombre de secondes restantes avant la fin du niveau
 	const [secondsLeft, setSecondsLeft] = useState(DEFAULT_SECONDS);
@@ -47,6 +48,10 @@ function Countdown( { organizerId, level, setLevel } ) {
 	// L'encadré clignote en rouge pendant l'alerte (7 dernières secondes)
 	// À chaque changement de secondsLeft, on vérifie si on est dans la période d'alerte
 	const isAlerting = secondsLeft <= ALERT_SECONDS && secondsLeft > 0 || isLevelEnd;
+
+	// Le chrono est à son état initial : rien à réinitialiser
+	const hasNotStarted = secondsLeft === DEFAULT_SECONDS && !isRunning && !isLevelEnd;
+
 
 	// Couleur de la bordure du chrono selon le temps restant
 	const getTimeColor = () => {
@@ -197,25 +202,27 @@ function Countdown( { organizerId, level, setLevel } ) {
 		<section>
 			<div className={`countdown-display ${getTimeColor()}${isAlerting ? " flashing" : ""}`}>
 				<span>{formatTime(secondsLeft)}</span>
-			</div>
-			<button
-				type="button" className="btn-stop"
-				onClick={handleStop} disabled={!organizerId || !isRunning}		
-			>
-				{t("stop")}
-			</button>
-			<button
-				type="button" className="btn-resume"
-				onClick={handleResume} disabled={!organizerId || isRunning || isLevelEnd}
-			>
-				{secondsLeft === DEFAULT_SECONDS ? t("start") : t("resume")}
-			</button>
-			<button
-				type="button" className="btn-reset"
-				onClick={handleReset} disabled={!organizerId}
-			>
-				{t("reset")}
-			</button>
+			</div>			
+			<div className="countdown-actions">
+				<button
+					type="button" className="btn-stop"
+					onClick={handleStop} disabled={!organizerId || !isRunning}		
+				>
+					{t("stop")}
+				</button>
+				<button
+					type="button" className="btn-resume"
+					onClick={handleResume} disabled={!organizerId || isRunning || isLevelEnd}
+				>
+					{secondsLeft === DEFAULT_SECONDS ? t("start") : t("resume")}
+				</button>
+				<button
+					type="button" className="btn-reset"
+					onClick={handleReset} disabled={!organizerId || hasNotStarted}
+				>
+					{t("reset")}
+				</button>
+			</div>			
 		</section>
 	);
 }

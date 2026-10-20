@@ -84,6 +84,17 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 	// et à chaque fois que l'organizerId ou le level change
 	useEffect(() => {
 
+		// Sans organisateur sélectionné, on doit remettre les valeurs à null pour afficher "--" et 
+		// on ne peut pas charger les blinds, donc on quitte la fonction		
+		if (!organizerId) {
+			
+			setSmall(null);
+			setBig(null);
+			setMaxLevel(null);
+			setError(null);
+			return;
+		}
+
         const initializeData = async () => {
 
             // On charge les blinds de l'organisateur sélectionné pour le niveau courant
@@ -97,30 +108,26 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 
 	return (
 		<section className="blind-panel">			
-			<div className="blind-values">
-				<div className="blind">					
-					<span className="blind-label">{t("smallBlind")}</span>
-					<span>{small === null ? "--" : small}</span>
+			<div className="blind-cards">
+				<div className="blind-card">
+					<div className="blind-label">{t("smallBlind")}</div>
+					<div className="blind-value">{small ?? "--"}</div>
 				</div>
-				<div className="blind">					
-					<span className="blind-label">{t("bigBlind")}</span>
-					<span>{big === null ? "--" : big}</span>
+				<div className="blind-card">
+					<div className="blind-label">{t("bigBlind")}</div>
+					<div className="blind-value">{big ?? "--"}</div>
 				</div>
-				<button
-					type="button" className="change-button"
-					onClick={handleChange} disabled={!organizerId || (maxLevel !== null && level >= maxLevel)}			
-				>
+			</div>
+			<div className="blind-actions">
+				<button type="button" className="btn-change" onClick={handleChange} disabled={!organizerId || (maxLevel !== null && level >= maxLevel)}>
 					{t("change")}
 				</button>
-				<button
-					type="button" className="btn-reset"
-					onClick={handleReset} disabled={!organizerId || level <= 1}
-				>
+				<button type="button" className="btn-reset" onClick={handleReset} disabled={!organizerId || level <= 1}>
 					{t("reset")}
 				</button>
 			</div>
 			{/* Erreur affichée avec le panneau, pas à la place : on garde les contrôles */}
-			{error && <p className="error">{error}</p>}
+			{error && <p className="error-message">{error}</p>}
 		</section>
 	);
 }

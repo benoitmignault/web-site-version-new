@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState } from "react";
 import { API_BASE_URL } from "../config";
+import Select from "react-select";
 import { t } from "../i18n/i18n";
 
 /**
@@ -19,8 +20,18 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 	// La liste des organisateurs reçue de l'API
 	const [organizers, setOrganizers] = useState([]);
 
+	// L'option sélectionnée (objet { value, label }), pas juste l'id
+	const [selectedOption, setSelectedOption] = useState(null);
+
 	// État pour stocker les messages d'erreur en prévision de l'ajout d'un joueur à un événement
     const [error, setError] = useState("");
+
+	// Préparer les options pour le sélecteur react-select : 
+	// on transforme la liste des organisateurs en tableau d'objets {value, label}
+	const organizerOptions = organizers.map((organizer) => ({
+		value: organizer.id,
+		label: organizer.name,
+	}));
 
 	// Fonction pour charger la liste des organisateurs pour en sélectionner un
 	const loadOrganizers = async () => {
@@ -51,21 +62,19 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 	};
 
 	// Fonction pour gérer le changement de sélection dans la liste déroulante
-	const handleChange = (event) => {
+	const handleChange = (option) => {
+		
+		setSelectedOption(option);
 
-		// On retrouve l'organisateur choisi dans la liste (la valeur du select est une chaîne, l'id un nombre)
-		const selected = organizers.find(
-			(organizer) => String(organizer.id) === event.target.value
-		);
-
-		if (!selected) {
-			return;
+		if (option) {
+			setOrganizerId(option.value);
+			setOrganizerName(option.label);
+		} else {
+			// Le X : on réinitialise tout
+			setOrganizerId(null);
+			setOrganizerName("");
 		}
 
-		// On stocke son id et son prénom dans Index...
-		setOrganizerId(selected.id);
-		setOrganizerName(selected.name);
-		// ...et on repart au niveau 1
 		setLevel(1);
 	};
 
@@ -81,17 +90,21 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 	}
 	
 	return (
-		<label>
-			{t("organizer")}
-			<select onChange={handleChange} defaultValue="">
-				<option value="">{t("chooseOrganizer")}</option>
-				{organizers.map((organizer) => (
-					<option key={organizer.id} value={organizer.id}>
-						{organizer.name}
-					</option>
-				))}
-			</select>
-		</label>
+		<div className="organizer-field">
+			<span className="organizer-label">{t("organizer")}</span>
+			<div className="organizer-select-wrapper">
+				<Select
+					classNamePrefix="organizer-select"
+					options={organizerOptions}
+					value={selectedOption}
+					onChange={handleChange}
+					placeholder={t("chooseOrganizer")}
+					isSearchable={false}
+					isClearable
+					aria-label={t("organizer")}
+				/>
+			</div>
+		</div>		
 	);
 }
 
