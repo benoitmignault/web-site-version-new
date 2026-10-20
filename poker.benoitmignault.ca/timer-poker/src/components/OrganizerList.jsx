@@ -72,6 +72,7 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 			setOrganizerName(option.label);
 		} else {
 			// Le X : on réinitialise tout
+			// Il ne pas nécessaire de remettre à null setError car on ne fait pas d'appel API ici, donc pas d'erreur à réinitialiser
 			setOrganizerId(null);
 			setOrganizerName("");
 		}
