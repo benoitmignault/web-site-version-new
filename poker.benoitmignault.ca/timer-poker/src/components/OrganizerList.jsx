@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState } from "react";
 import { API_BASE_URL } from "../config";
 import Select from "react-select";
@@ -79,10 +78,10 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 		setLevel(1);
 	};
 
+	// On charge la liste des organisateurs au montage du composant
 	useEffect(() => {
-
-		loadOrganizers();
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		
+        loadOrganizers();
 	}, []);
 
 	// Si le chargement a échoué, on affiche l'erreur au lieu du sélecteur
