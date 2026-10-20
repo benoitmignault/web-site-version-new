@@ -49,7 +49,7 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 			} else {
 
 				// Erreur retournée par l'API lors du chargement des organisateurs
-				setError(data.code ? t(data.code) : data.message);
+setError({ code: data.code, message: data.message });
 			}
 		} catch (err) {
 			console.error(err);
