@@ -49,6 +49,10 @@ function Countdown( { organizerId, level, setLevel, maxLevel } ) {
 	// À chaque changement de secondsLeft, on vérifie si on est dans la période d'alerte
 	const isAlerting = secondsLeft <= ALERT_SECONDS && secondsLeft > 0 || isLevelEnd;
 
+	// Le chrono est à son état initial : rien à réinitialiser
+	const hasNotStarted = secondsLeft === DEFAULT_SECONDS && !isRunning && !isLevelEnd;
+
+
 	// Couleur de la bordure du chrono selon le temps restant
 	const getTimeColor = () => {
 
@@ -214,7 +218,7 @@ function Countdown( { organizerId, level, setLevel, maxLevel } ) {
 				</button>
 				<button
 					type="button" className="btn-reset"
-					onClick={handleReset} disabled={!organizerId}
+					onClick={handleReset} disabled={!organizerId || hasNotStarted}
 				>
 					{t("reset")}
 				</button>
