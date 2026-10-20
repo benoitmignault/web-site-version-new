@@ -99,14 +99,8 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 			return;
 		}
 
-        const initializeData = async () => {
-
-            // On charge les blinds de l'organisateur sélectionné pour le niveau courant
-			// Au moment de l'appel de cette fonction, organizerId est déjà défini, donc on peut appeler loadChips directement
-            await loadBlinds();
-        };
-
-        initializeData();		
+        // On charge les blinds de l'organisateur sélectionné pour le niveau courant
+        loadBlinds();		
 		// On relance le useEffect à chaque fois que l'organizerId change
     }, [organizerId, level]);	
 
