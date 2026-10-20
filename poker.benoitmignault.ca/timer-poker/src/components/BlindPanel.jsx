@@ -53,7 +53,7 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 				setSmall(data.small);
 				setBig(data.big);
 				setMaxLevel(data.maxLevel);
-				setError("");
+				setError(null);
 			} else {
 
 				// Aucune donnée : on vide l'affichage pour ne pas garder les infos de l'organisateur précédent
