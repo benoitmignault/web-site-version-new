@@ -83,6 +83,11 @@ function Index() {
 					<span className="chip gold header-chip" aria-hidden="true"></span>
 					{t("title")}
 				</h1>
+				<div className="language-switch">
+					<button type="button" className={language === "fr" ? "active" : ""} onClick={() => changeLanguage("fr")}>FR</button>
+					<span>|</span>
+					<button type="button" className={language === "en" ? "active" : ""} onClick={() => changeLanguage("en")}>EN</button>
+				</div>
 				<OrganizerList setOrganizerName={setOrganizerName} setOrganizerId={setOrganizerId} setLevel={setLevel} />
 			</div>
 			<div className="main-container">
