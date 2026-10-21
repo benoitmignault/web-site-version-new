@@ -53,7 +53,6 @@ function Countdown( { organizerId, level, setLevel, maxLevel, setIsTimerFlashing
 	// Le chrono est à son état initial : rien à réinitialiser
 	const hasNotStarted = secondsLeft === DEFAULT_SECONDS && !isRunning && !isLevelEnd;
 
-
 	// Couleur de la bordure du chrono selon le temps restant
 	const getTimeColor = () => {
 
