@@ -47,6 +47,10 @@ function Index() {
 	// État pour gérer l'affichage du bouton de retour en haut de page
 	const [showScrollTop, setShowScrollTop] = useState(false);
 
+	// État pour gérer le flash du chrono (Countdown.jsx) : on le passe à true quand le chrono clignote
+	const [isTimerFlashing, setIsTimerFlashing] = useState(false);
+
+	// État pour gérer la langue du site : "fr" ou "en"
 	const [language, setLanguageState] = useState("fr");
 
 	// Change la langue du dictionnaire et force React à tout ré-afficher
