@@ -72,6 +72,23 @@ function Index() {
 		// On met à jour la langue du document pour l'accessibilité et le SEO
 	}, [language]);
 
+	// On logge le chargement de la page pour les stats, mais seulement si l'utilisateur n'a pas choisi d'exclure ses stats
+	useEffect(() => {
+		fetch(`${API_BASE_URL}/log-timer.php`,
+			{ 
+				method: "POST",
+				headers: {"Content-Type": "application/json"},
+				body: JSON.stringify({
+					action_type: "page_load",
+					action_name: "Affichage page",
+					organizer_id: organizerId,
+					// Vérifier si la variable locale "exclude_stats" est défini dans le navigateur
+					exclude_stats: shouldExcludeStats()
+				})
+			}
+		);
+	}, []);
+
 	// Gestion du bouton de retour en haut de page
 	useEffect(() => {
 		const handleScroll = () => {
