@@ -74,6 +74,7 @@ function Index() {
 
 	// On logge le chargement de la page pour les stats, mais seulement si l'utilisateur n'a pas choisi d'exclure ses stats
 	useEffect(() => {
+		
 		fetch(`${API_BASE_URL}/log-timer.php`,
 			{ 
 				method: "POST",
