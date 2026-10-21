@@ -1,25 +1,5 @@
-# Dépendances Node
-node_modules/
-
-# Build Vite
-dist/
-dist-ssr/
-*.local
-
-# Fichiers d'environnement locaux (secrets persos)
-.env.local
-
-# Logs
-*.log
-npm-debug.log*
-
-# Windows
-Thumbs.db
-desktop.ini
-
-# Éditeurs
-.vscode/
-.idea/
-
-# EXclusion du fichier de info-connexion-bd.php contenant les identifiants de connexion à la base de données
+# Exclure les informations sensibles du dépôt Git comme la connexion à la BD et les données SQL avec les hachés.
 api.poker.benoitmignault.ca/timer-poker/includes/info-connexion-bd.php
+
+# Exclure les fichiers SQL contenant des données initiales (insert) pour éviter de compromettre la sécurité.
+api.poker.benoitmignault.ca/timer-poker/tables-sql/insert-table/
