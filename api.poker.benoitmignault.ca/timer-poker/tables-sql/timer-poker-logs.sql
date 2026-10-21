@@ -11,5 +11,5 @@ CREATE TABLE `timer_logs` (
   KEY `idx_log_date` (`log_date`),
   KEY `idx_organizer_id` (`organizer_id`),
   CONSTRAINT `fk_timer_logs_organisateur` FOREIGN KEY (`organizer_id`)
-    REFERENCES `login_organisateur` (`id`) ON DELETE CASCADE
+    REFERENCES `login_organisateur` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
