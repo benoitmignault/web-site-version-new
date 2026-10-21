@@ -129,8 +129,8 @@ function Index() {
 					<div className="content-container">
 						<BlindPanel organizerId={organizerId} level={level} setLevel={setLevel} maxLevel={maxLevel} setMaxLevel={setMaxLevel} />
 					</div>
-					<div className="content-container">
-						<Countdown organizerId={organizerId} level={level} setLevel={setLevel} maxLevel={maxLevel} />
+					<div className={`content-container${isTimerFlashing ? " flashing" : ""}`}>
+						<Countdown organizerId={organizerId} level={level} setLevel={setLevel} maxLevel={maxLevel} setIsTimerFlashing={setIsTimerFlashing} />
 					</div>
 				</div>				
 			</div>
