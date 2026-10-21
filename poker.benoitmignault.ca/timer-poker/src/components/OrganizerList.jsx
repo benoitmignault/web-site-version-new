@@ -70,6 +70,23 @@ function OrganizerList({ setOrganizerName, setOrganizerId, setLevel }) {
 		if (option) {
 			setOrganizerId(option.value);
 			setOrganizerName(option.label);
+			
+			// On logge le choix de l'organisateur pour les stats, mais seulement 
+			// si l'utilisateur n'a pas choisi d'exclure ses stats avant d'arriver sur la page
+			fetch(`${API_BASE_URL}/log-timer.php`,
+				{ 
+					method: "POST",
+					headers: {"Content-Type": "application/json"},
+					body: JSON.stringify({
+						action_type: "organizer_load",
+						action_name: "Affichage organisateur",
+						organizer_id: option.value,
+						// Vérifier si la variable locale "exclude_stats" est défini dans le navigateur
+						exclude_stats: shouldExcludeStats()
+					})
+				}
+			);
+
 		} else {
 			// Le X : on réinitialise tout
 			// Il ne pas nécessaire de remettre à null setError car on ne fait pas d'appel API ici, donc pas d'erreur à réinitialiser
