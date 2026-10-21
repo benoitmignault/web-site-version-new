@@ -48,21 +48,45 @@ if ($rawOrganizerId === null) {
 	}
 }
 
-// Établier la connexion à la base de données pour les soirées de poker
-$connMYSQL = connexionOrganizersDB();
+// Validation des champs reçus : types et valeurs avant tout traitement
+$actionType = $data["action_type"] ?? null;
+$actionName = $data["action_name"] ?? null;
 
-// Récupérer les autres données envoyées par le frontend
-$actionType = $data['action_type'];
-$actionName = $data['action_name'];
+// Définir les types d'action valides
+$validActionTypes = ["page_load", "organizer_load"];
+
+if (!is_string($actionType) || !in_array($actionType, $validActionTypes, true) || !is_string($actionName) || strlen($actionName) > 255) {
+
+	error_log("log-timer.php : champs invalides reçus : " . var_export($data, true));
+	http_response_code(400);
+	echo json_encode(["success" => false, "code" => "errorInvalidData", "message" => "Données invalides."]);
+	exit();
+}
+
 // Récupérer l'adresse IP du client
 $ipAddress = $_SERVER['REMOTE_ADDR'];
 
+// Établier la connexion à la base de données pour les soirées de poker
+$connMYSQL = connexionOrganizersDB();
+
 // Requête SQL pour insérer un nouveau log dans la table timer_logs
-// Amélioration, on va gérer la date du timestamp directement dans la base de données avec NOW() pour éviter les problèmes de fuseau horaire
+// Amélioration, on va gérer la date du timestamp directement dans la base de données
 $sql = "INSERT INTO timer_logs (action_type, action_name, organizer_id, ip_address) VALUES (?, ?, ?, ?)";
 
 // Préparer la requête SQL
 $stmt = $connMYSQL->prepare($sql);
+
+// Vérification si la préparation de la requête a réussi
+if ($stmt === false) {
+
+    error_log($connMYSQL->error);
+
+    http_response_code(500);
+    echo json_encode(["success" => false, "code" => "errorPrepareQuery", "message" => "Erreur lors de la préparation de la requête."]);
+
+    $connMYSQL->close();
+    exit();
+}
 
 // Lier les paramètres à la requête préparée
 $stmt->bind_param("ssis", $actionType, $actionName, $organizerId, $ipAddress);
