@@ -30,8 +30,9 @@ const LEVEL_END_PAUSE_SECONDS = 3;
  * @param {number} props.level Niveau de blinds courant (base 1).
  * @param {Function} props.setLevel Fonction pour mettre à jour le niveau de blindes.
  * @param {number} props.maxLevel Niveau maximum de blinds.
+ * @param {Function} props.setIsTimerFlashing Fonction pour mettre à jour l'état du flash du chrono.
  */
-function Countdown( { organizerId, level, setLevel, maxLevel } ) {
+function Countdown( { organizerId, level, setLevel, maxLevel, setIsTimerFlashing } ) {
 
 	// Le nombre de secondes restantes avant la fin du niveau
 	const [secondsLeft, setSecondsLeft] = useState(DEFAULT_SECONDS);
