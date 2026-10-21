@@ -28,18 +28,17 @@ if (isset($data["exclude_stats"]) && $data["exclude_stats"] === true) {
     exit();
 }
 
-// Maintenant, on peut valider les données reçues
-// Récupération de l'ID de l'organisateur
-$organizerId = $data["organizer_id"] ?? null;
+// Récupération de l'ID de l'organisateur : optionnel (absent = aucun organisateur sélectionné)
+$rawOrganizerId = $data["organizer_id"] ?? null;
 
-if ($organizerId === null) {
+if ($rawOrganizerId === null) {
 
 	// Aucun organisateur sélectionné : c'est valide, on continue avec null
 	$organizerId = null;
 } else {
 
 	// Un id est présent : il doit être un entier >= 1
-	$organizerId = filter_var($organizerId, FILTER_VALIDATE_INT, ["options" => ["min_range" => 1]]);
+	$organizerId = filter_var($rawOrganizerId, FILTER_VALIDATE_INT, ["options" => ["min_range" => 1]]);
 
 	if ($organizerId === false) {
 		error_log("Valeur brute reçue pour id : " . var_export($organizerId, true));
