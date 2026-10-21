@@ -198,10 +198,15 @@ function Countdown( { organizerId, level, setLevel, maxLevel, setIsTimerFlashing
 		return () => clearTimeout(pause);
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isLevelEnd]);
+	
+	// Signaler au parent l'état du flash, pour la classe sur le conteneur
+	useEffect(() => {
+		setIsTimerFlashing(isAlerting);
+	}, [isAlerting, setIsTimerFlashing]);
 
 	return (
 		<section>
-			<div className={`countdown-display ${getTimeColor()}${isAlerting ? " flashing" : ""}`}>
+			<div className={`countdown-display ${getTimeColor()}`}>
 				<span>{formatTime(secondsLeft)}</span>
 			</div>			
 			<div className="countdown-actions">
