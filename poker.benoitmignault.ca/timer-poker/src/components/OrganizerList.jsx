@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { API_BASE_URL } from "../config";
 import Select from "react-select";
+import { shouldExcludeStats } from "../utils/logging";
 import { t } from "../i18n/i18n";
 
 /**
