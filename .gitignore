@@ -2,4 +2,4 @@
 api.poker.benoitmignault.ca/timer-poker/includes/info-connexion-bd.php
 
 # Exclure les fichiers SQL contenant des données initiales (insert) pour éviter de compromettre la sécurité.
-api.poker.benoitmignault.ca/timer-poker/tables-sql/insert-table/
+api.poker.benoitmignault.ca/tables-sql/insert-table/
