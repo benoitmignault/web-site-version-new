@@ -26,6 +26,19 @@
 		padding: 0;
 	}
 
+	.message-page {
+        margin: 60px 20px;
+        padding: 25px;
+    }
+
+    .message-page h2 {
+        font-size: 1.6rem;
+    }
+
+    .message-page p {
+        font-size: 1rem;
+    }
+
 	/* En-tête empilé : titre dessus, organisateur dessous */
 	.header-container {
 		flex-direction: column;

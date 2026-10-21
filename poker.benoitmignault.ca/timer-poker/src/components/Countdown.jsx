@@ -30,8 +30,9 @@ const LEVEL_END_PAUSE_SECONDS = 3;
  * @param {number} props.level Niveau de blinds courant (base 1).
  * @param {Function} props.setLevel Fonction pour mettre à jour le niveau de blindes.
  * @param {number} props.maxLevel Niveau maximum de blinds.
+ * @param {Function} props.setIsTimerFlashing Fonction pour mettre à jour l'état du flash du chrono.
  */
-function Countdown( { organizerId, level, setLevel, maxLevel } ) {
+function Countdown( { organizerId, level, setLevel, maxLevel, setIsTimerFlashing } ) {
 
 	// Le nombre de secondes restantes avant la fin du niveau
 	const [secondsLeft, setSecondsLeft] = useState(DEFAULT_SECONDS);
@@ -51,7 +52,6 @@ function Countdown( { organizerId, level, setLevel, maxLevel } ) {
 
 	// Le chrono est à son état initial : rien à réinitialiser
 	const hasNotStarted = secondsLeft === DEFAULT_SECONDS && !isRunning && !isLevelEnd;
-
 
 	// Couleur de la bordure du chrono selon le temps restant
 	const getTimeColor = () => {
@@ -197,10 +197,15 @@ function Countdown( { organizerId, level, setLevel, maxLevel } ) {
 		return () => clearTimeout(pause);
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isLevelEnd]);
+	
+	// Signaler au parent l'état du flash, pour la classe sur le conteneur
+	useEffect(() => {
+		setIsTimerFlashing(isAlerting);
+	}, [isAlerting, setIsTimerFlashing]);
 
 	return (
 		<section>
-			<div className={`countdown-display ${getTimeColor()}${isAlerting ? " flashing" : ""}`}>
+			<div className={`countdown-display ${getTimeColor()}`}>
 				<span>{formatTime(secondsLeft)}</span>
 			</div>			
 			<div className="countdown-actions">

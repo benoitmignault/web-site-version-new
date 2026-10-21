@@ -18,12 +18,14 @@
  */
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Suspense } from "react";
+import { lazy, Suspense } from "react";
 
 // Chargement immédiat
 import Index from "./components/Index";
 
 // Chargement à la demande
+const ExcludeAnalytics = lazy(() => import("./components/settings/ExcludeAnalytics"));
+const IncludeAnalytics = lazy(() => import("./components/settings/IncludeAnalytics"));
 
 function App() {
 
@@ -31,6 +33,8 @@ function App() {
     <BrowserRouter>
         <Suspense fallback={<div>Chargement...</div>}>
             <Routes>
+                <Route path="/timer-poker/exclude-analytics" element={<ExcludeAnalytics />} />
+                <Route path="/timer-poker/include-analytics" element={<IncludeAnalytics />} />
                 <Route path="/timer-poker/" element={<Index />}/>              
             </Routes>
         </Suspense>            

@@ -54,6 +54,40 @@ body {
 	padding: 24px 30px 110px;
 }
 
+.message-page {
+    max-width: 650px;
+    margin: 120px auto;
+    padding: 35px 40px;
+    text-align: center;
+    background: rgba(20, 30, 60, 0.40);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.message-page h2 {
+    margin: 0 0 20px 0;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.message-page .message-success {
+    color: #7CFC8A;
+}
+
+.message-page .message-error {
+    color: #ff5c5c;
+}
+
+.message-page p {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+}
+
 /* En-tête : titre + sélecteur d'organisateur */
 .header-container {
 	display: flex;
@@ -493,7 +527,7 @@ body {
 .countdown-display.red { border-color: var(--timer-red); }
 
 /* Flash rouge pendant l'alerte */
-.countdown-display.flashing {
+.content-container.flashing {
 	animation: flash-red 1s infinite;
 }
 
