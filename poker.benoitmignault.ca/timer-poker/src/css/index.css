@@ -3,6 +3,40 @@
  * Theme poker sombre avec accents dores (voir mockup).
  */
 
+/* Tailles proportionnelles (route A) : clamp(minimum, vh, maximum).
+   Les valeurs suivent la hauteur de l'écran : sur grand écran, le maximum
+   redonne la valeur d'origine (rien ne change) ; sur écran court
+   (ex. portable avec grossissement Windows à 125 %), les vh rapetissent
+   l'ensemble pour que tout le tableau de bord entre sans défilement. 
+*/
+
+/* .header-container */
+/* Padding vertical et marge du bas proportionnels à la hauteur d'écran */
+
+/* .main-container */
+/* Écart entre les colonnes et marge du bas proportionnels à la hauteur */
+
+/* .content-container */
+/* Padding proportionnel : les cartes respirent moins sur écran court */
+
+/* .chip-list ul */
+/* Écart entre les jetons proportionnel : la liste se compacte en hauteur */
+
+/* .timer-column */
+/* Écart entre la carte des blinds et celle du chrono proportionnel */
+
+/* .blind-card */
+/* Padding vertical proportionnel à la hauteur d'écran */
+
+/* .blind-value */
+/* Taille des chiffres plafonnée par la hauteur (11vh) plutôt que fixe :
+   énormes sur grand écran, réduits juste assez sur écran court */
+
+/* .countdown-display */
+/* Marges et taille du chrono plafonnées par la hauteur (14vh) :
+   le chrono reste la vedette sans déborder sur les écrans courts */
+
+
 /* Palette du minuteur */
 :root {
 	--gold: #c9a227;	
