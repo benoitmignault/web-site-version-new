@@ -3,6 +3,40 @@
  * Theme poker sombre avec accents dores (voir mockup).
  */
 
+/* Tailles proportionnelles (route A) : clamp(minimum, vh, maximum).
+   Les valeurs suivent la hauteur de l'écran : sur grand écran, le maximum
+   redonne la valeur d'origine (rien ne change) ; sur écran court
+   (ex. portable avec grossissement Windows à 125 %), les vh rapetissent
+   l'ensemble pour que tout le tableau de bord entre sans défilement. 
+*/
+
+/* .header-container */
+/* Padding vertical et marge du bas proportionnels à la hauteur d'écran */
+
+/* .main-container */
+/* Écart entre les colonnes et marge du bas proportionnels à la hauteur */
+
+/* .content-container */
+/* Padding proportionnel : les cartes respirent moins sur écran court */
+
+/* .chip-list ul */
+/* Écart entre les jetons proportionnel : la liste se compacte en hauteur */
+
+/* .timer-column */
+/* Écart entre la carte des blinds et celle du chrono proportionnel */
+
+/* .blind-card */
+/* Padding vertical proportionnel à la hauteur d'écran */
+
+/* .blind-value */
+/* Taille des chiffres plafonnée par la hauteur (11vh) plutôt que fixe :
+   énormes sur grand écran, réduits juste assez sur écran court */
+
+/* .countdown-display */
+/* Marges et taille du chrono plafonnées par la hauteur (14vh) :
+   le chrono reste la vedette sans déborder sur les écrans courts */
+
+
 /* Palette du minuteur */
 :root {
 	--gold: #c9a227;	
@@ -98,8 +132,8 @@ body {
 	backdrop-filter: blur(8px);
 	border: 1px solid var(--gold-soft);
 	border-radius: 16px;
-	padding: 20px 28px;
-	margin-bottom: 30px;
+	padding: clamp(12px, 2.2vh, 20px) 28px;
+	margin-bottom: clamp(14px, 3vh, 30px);
 	position: relative;
 	z-index: 10;
 }
@@ -266,9 +300,9 @@ body {
 /* Rangée principale : jetons à gauche, blinds + chrono à droite */
 .main-container {
 	display: flex;
-	gap: 30px;
+	gap: clamp(16px, 3vh, 30px);
+	margin-bottom: clamp(14px, 3vh, 30px);
 	align-items: flex-start;
-	margin-bottom: 30px;
 	flex: 1;
 }
 
@@ -278,7 +312,7 @@ body {
 	backdrop-filter: blur(8px);
 	border: 1px solid var(--gold-soft);
 	border-radius: 16px;
-	padding: 24px;
+	padding: clamp(14px, 2.5vh, 24px);
 	box-sizing: border-box;
 }
 
@@ -316,7 +350,7 @@ body {
 	padding: 0;
 	display: flex;
 	flex-direction: column;
-	gap: 40px;
+	gap: clamp(16px, 4vh, 40px);
 }
 
 .chip-list li {
@@ -397,7 +431,7 @@ body {
 	margin-right: auto;
 	display: flex;
 	flex-direction: column;
-	gap: 30px;
+	gap: clamp(14px, 3vh, 30px);
 	min-width: 0;
 }
 
@@ -412,7 +446,7 @@ body {
 	background: rgba(0, 0, 0, 0.6);
 	border: 1px solid var(--gold-soft);
 	border-radius: 16px;
-	padding: 28px 20px;
+	padding: clamp(14px, 3vh, 28px) 20px;
 	text-align: center;
 	box-shadow: inset 0 1px 0 rgba(212, 175, 55, 0.15);
 }
@@ -425,7 +459,7 @@ body {
 }
 
 .blind-value {
-	font-size: 6.5rem;
+	font-size: clamp(3rem, 11vh, 6.5rem);
 	font-weight: 700;
 	color: var(--gold);
 	line-height: 1;
@@ -500,9 +534,9 @@ body {
 /* --- Affichage du chrono --- */
 .countdown-display {
 	width: fit-content;
-	margin: 28px auto;
+	margin: clamp(12px, 3vh, 28px) auto;
+	font-size: clamp(3.5rem, 14vh, 8rem);
 	text-align: center;
-	font-size: 8rem;
 	font-weight: 700;
 	color: white;
 	line-height: 1;
