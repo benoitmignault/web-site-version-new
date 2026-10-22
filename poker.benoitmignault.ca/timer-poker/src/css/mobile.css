@@ -206,3 +206,14 @@
 		background: rgba(201, 162, 39, 0.35);
 	}
 }
+
+/* ============ MOBILE COURT (≤768px de large ET ≤850px de hauteur) ============ */
+/* Réaffirme les marges compactes du chrono après le bloc mobile,
+   qui les écrase (margin: 20px 0) quand les deux queries correspondent. */
+@media (max-width: 768px) and (max-height: 850px) {
+
+	.countdown-display {
+		margin-top: 12px;
+		margin-bottom: 12px;
+	}
+}
