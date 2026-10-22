@@ -23,7 +23,11 @@
 
 	#root {
 		padding-top: 14px;
-		padding-bottom: 96px;
+		padding-bottom: 76px;
+	}
+
+	.header-container {
+		margin-bottom: 12px;
 	}
 
 	.header-container h1 {
@@ -35,8 +39,20 @@
 		height: 44px;
 	}
 
+	.main-container {
+		margin-bottom: 10px;
+	}
+
+	.content-container {
+		padding: 12px;
+	}
+
 	.chip-list h2 {
 		margin-bottom: 10px;
+	}
+
+	.timer-column {
+		gap: 12px;
 	}
 
 	.blind-label {
@@ -45,6 +61,11 @@
 
 	.blind-actions {
 		margin-top: 12px;
+	}
+
+	.countdown-display {
+		margin-top: 12px;
+		margin-bottom: 12px;
 	}
 
 	.countdown-actions button {
