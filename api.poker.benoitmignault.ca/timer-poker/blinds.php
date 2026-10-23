@@ -114,6 +114,7 @@ if (!$stmt->execute()) {
 // Récupérer les blinds pour le niveau demandé
 $result = $stmt->get_result();
 
+// Aucun niveau de mise pour cet organisateur
 if ($result->num_rows === 0) {
     http_response_code(404);
     echo json_encode(["success" => false, "code" => "errorNoBlinds", "message" => "Aucune combinaison de blinds trouvée pour l'organisateur."]);
