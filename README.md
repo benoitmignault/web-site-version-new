@@ -24,16 +24,20 @@ where applicable.
 
 ## Repository Structure
 
-    poker.benoitmignault.ca/        Frontend apps — one folder per tool
-      timer-poker/                  Poker timer (Vite + React)
-    api.poker.benoitmignault.ca/    PHP APIs — one folder per tool
-      timer-poker/                  Timer endpoints (organizers, chips, blinds, logs)
-        includes/                   Connection and shared include files
-      tables-sql/                   SQL schemas for the poker databases
+    poker.benoitmignault.ca/          Frontend apps — one folder per tool
+      timer-poker/                    Poker timer (Vite + React)
+    api.poker.benoitmignault.ca/      PHP APIs — one folder per tool
+      timer-poker/                    Timer endpoints (organizers, chips, blinds, logs)
+      includes/                       Connection and shared include files
+      tables-sql/                     Timer-specific schema (the timer_logs table)
+        create-table/
+          create_timer_logs.sql
+      tables-sql/                     Schemas of the shared databases (data common to all tools)
         create_db_poker_night_organizers.sql
         create_db_poker_night_stats.sql
-        create-table/               CREATE TABLE files (versioned)
-        insert-table/               INSERT files with real data (not in Git)
+        create-table/                 CREATE TABLE files (versioned)
+        insert-table/                 INSERT files with real data (not in Git)
+
 
 Two kinds of content are deliberately **not on GitHub**:
 - `tables-sql/insert-table/` — the INSERT files contain real data
