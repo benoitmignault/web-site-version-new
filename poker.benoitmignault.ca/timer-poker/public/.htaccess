@@ -1,9 +1,0 @@
-# Routage SPA (React Router) : toute route qui ne correspond ni à un fichier
-# ni à un dossier réel est servie par index.html — React Router prend
-# ensuite le relais dans le navigateur.
-RewriteEngine On
-RewriteBase /timer-poker/
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /timer-poker/index.html [L]
