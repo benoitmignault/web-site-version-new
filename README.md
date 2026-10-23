@@ -75,8 +75,10 @@ Frontend environment files:
 2. Upload the API folder, with a production `info-connexion-bd.php`.
 
 3. Build the frontend (`npm run build`) and upload the **contents** of
-   `dist/` over the previous version — do not empty the folder, the
-   `.htaccess` SPA fallback rule for React Router lives there.
+   `dist/` over the previous version. The SPA fallback `.htaccess` for
+   React Router ships inside `dist/` — it lives in `public/` and Vite
+   copies it on every build — so direct routes work out of the box.
+
 4. Test the app and its direct routes (e.g. `/timer-poker/exclude-analytics`).
 
 ## Conventions
