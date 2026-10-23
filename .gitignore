@@ -1,0 +1,5 @@
+# Exclure les informations sensibles du dépôt Git comme la connexion à la BD et les données SQL avec les hachés.
+api.poker.benoitmignault.ca/timer-poker/includes/info-connexion-bd.php
+
+# Exclure les fichiers SQL contenant des données initiales (insert) pour éviter de compromettre la sécurité.
+api.poker.benoitmignault.ca/tables-sql/insert-table/
