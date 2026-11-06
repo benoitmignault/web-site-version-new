@@ -6,3 +6,6 @@ api.poker.benoitmignault.ca/stats-poker/includes/info-connexion-bd.php
 
 # Exclure les fichiers SQL contenant des données initiales (insert) pour éviter de compromettre la sécurité.
 api.poker.benoitmignault.ca/tables-sql/insert-table/
+
+# Exclure les fichiers SQL contenant des données initiales (insert) pour éviter de compromettre la sécurité.
+api.poker.benoitmignault.ca/stats-poker/tables-sql/insert-table/
