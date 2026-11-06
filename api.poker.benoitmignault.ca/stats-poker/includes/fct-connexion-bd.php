@@ -12,13 +12,13 @@
 			$host,
 			$user,
 			$password,
-			$bd_organizers
+			$bd_stats
 		);
 
 		if (!$connMYSQL) {
 
 			// Détail technique en log serveur seulement...
-			error_log("Échec connexion BD organisateurs : " . mysqli_connect_error());
+			error_log("Erreur de connexion à la base de données : " . mysqli_connect_error());
 
 			http_response_code(500);
 			echo json_encode(["success" => false, "code" => "errorDbConnection", "message" => "Erreur de connexion à la base de données."]);
