@@ -1,10 +1,10 @@
 <?php
 	/**
-	 * Fonction de connexion à la base de données des organisateurs de poker.
+	 * Connexion à la base de données pour les statistiques des tournois de poker
 	 *
 	 * @return mysqli La connexion à la base de données
 	 */
-	function connexionOrganizersDB(): mysqli {		
+	function connexionStatsDB(): mysqli {		
 
 		include_once(__DIR__ . "/info-connexion-bd.php");
 
