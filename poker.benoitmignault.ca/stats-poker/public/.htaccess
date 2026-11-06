@@ -1,0 +1,34 @@
+# ============================================================================
+# Routage SPA (React Router) — app stats-poker
+#
+# Les routes de React Router n'existent que dans le navigateur : quand une
+# route est demandée directement au serveur (lien partagé, favori,
+# rafraîchissement de page), Apache cherche un fichier de ce nom sur le
+# disque, ne trouve rien et répondrait 404. Les règles ci-dessous lui disent
+# de servir index.html à la place ; React démarre, lit l'URL et affiche la
+# bonne route lui-même.
+#
+# Le fichier vit dans public/ : Vite copie public/ tel quel à la racine du
+# dist/ à chaque build, donc le .htaccess est déployé automatiquement, au
+# même niveau que le index.html de production. En développement, le serveur
+# Vite l'ignore complètement.
+# ============================================================================
+
+# Active le module de réécriture d'URL d'Apache (mod_rewrite)
+RewriteEngine On
+
+# Préfixe de base : les réécritures s'appliquent au dossier de l'app
+RewriteBase /stats-poker/
+
+# Condition 1 : l'URL demandée ne correspond à aucun fichier réel sur le
+# disque (le « ! » est la négation). Les vrais fichiers — favicon, images,
+# fichiers JS/CSS du build — sont donc servis normalement, sans réécriture.
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Condition 2 : l'URL demandée ne correspond pas non plus à un dossier réel
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Si les deux conditions sont vraies, sert index.html, quelle que soit l'URL
+# demandée (« . » = n'importe quelle URL). [L] = Last : Apache arrête le
+# traitement des règles après celle-ci.
+RewriteRule . /stats-poker/index.html [L]
