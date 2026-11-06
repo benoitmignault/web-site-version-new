@@ -1,7 +1,7 @@
 <?php
 
 // Configurer les en-têtes pour permettre les requêtes CORS et spécifier le type de contenu JSON	
-$allowedOrigins = ["http://localhost:5173", "https://poker.benoitmignault.ca"];
+$allowedOrigins = ["http://localhost:5173", "http://localhost:5174", "https://poker.benoitmignault.ca"];
 
 // Vérifier si l'origine de la requête est dans la liste des origines autorisées et définir l'en-tête Access-Control-Allow-Origin en conséquence
 if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowedOrigins)) {
