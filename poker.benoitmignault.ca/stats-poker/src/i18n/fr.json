@@ -12,5 +12,8 @@
 	"viewPlayer": "Joueur",
 	"viewLeaderboard": "Classement",
 	"viewTournament": "Tournoi",
-	"viewKillersLemons": "Killers & citrons"
+	"viewKillersLemons": "Killers & citrons",
+	"playerLabel": "Joueur",
+	"choosePlayer": "Choisir un joueur",
+	"errorLoadingPlayers": "Une erreur est survenue lors du chargement des joueurs."
 }
