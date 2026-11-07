@@ -70,11 +70,11 @@ function PlayerResult({ playerId }) {
 	}
 
 	return (
-		<div className="player-result">
+		<div className="player-result">			
 			{/* Section 1 : le sommaire — la carte du joueur (nom, tuiles, trophées) */}
+			<h2>{t("resultSummary")}</h2>
 			<div className="player-summary">
 				<h3 className="player-summary-title">{player.nom}</h3>
-
 				<div className="player-stats-grid">
 					<div className="player-stat-card">
 						<span className="player-stat-label">{t("presences")}</span>
