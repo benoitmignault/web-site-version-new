@@ -89,6 +89,9 @@ body {
 	align-items: center;
 	gap: 16px;
 	margin-left: auto;
+	border-left: 1px solid var(--gold-soft);
+	padding-left: 20px;
+	align-self: stretch;
 }
 
 .timer-link {
@@ -110,6 +113,9 @@ body {
 	display: flex;
 	align-items: center;
 	gap: 8px;
+	border-left: 1px solid var(--gold-soft);
+	padding-left: 20px;
+	align-self: stretch;
 }
 
 .language-switch button {
