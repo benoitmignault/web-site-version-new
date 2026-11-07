@@ -15,5 +15,20 @@
 	"viewKillersLemons": "Killers & citrons",
 	"playerLabel": "Joueur",
 	"choosePlayer": "Choisir un joueur",
-	"errorLoadingPlayers": "Une erreur est survenue lors du chargement des joueurs."
+	"loading": "Chargement...",
+	"errorLoadingPlayer": "Une erreur est survenue lors du chargement du joueur.",
+	"presences": "Présences",
+	"netGain": "Gain net",
+	"killers": "Killers",
+	"lemons": "Prix citrons",
+	"wins": "Victoires",
+	"secondPlaces": "2e places",
+	"visitHistory": "Historique des visites",
+	"tournament": "Tournoi",
+	"date": "Date",
+	"gain": "Gain",
+	"killer": "Killer",
+	"lemon": "Citron",
+	"firstPlace": "1er",
+	"secondPlace": "2e"
 }
