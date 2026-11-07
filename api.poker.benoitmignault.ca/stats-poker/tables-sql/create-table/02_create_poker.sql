@@ -24,3 +24,5 @@ CREATE TABLE `poker` (
   CONSTRAINT `fk_poker_joueur` FOREIGN KEY (`id_joueur`)
     REFERENCES `joueur` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Nous avons corrigé quelques anomalies dans les inserts de backup et maintenant tout est ok. On peut donc ajouter la contrainte d'intégrité référentielle.
