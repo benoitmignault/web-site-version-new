@@ -1,5 +1,10 @@
 import { useState } from "react";
 import PlayersList from "./PlayersList.jsx";
+import AllResults from "./results/AllResults.jsx";
+import PlayerResult from "./results/PlayerResult.jsx";
+import LeaderboardResult from "./results/LeaderboardResult.jsx";
+import TournamentResult from "./results/TournamentResult.jsx";
+import KillersLemonsResult from "./results/KillersLemonsResult.jsx";
 import { t } from "../i18n/i18n";
 
 /**
@@ -65,7 +70,11 @@ function Content() {
 			{activeResult !== null && (
                 <section className="result-section">
                     <h2>{t("resultTitle")}</h2>
-                    {/* Le résultat de la vue active viendra ici */}
+                    {activeView === "all" && <AllResults />}
+                    {activeView === "player" && <PlayerResult playerId={activeResult} />}
+                    {activeView === "leaderboard" && <LeaderboardResult minPresences={activeResult} />}
+                    {activeView === "tournament" && <TournamentResult tournamentId={activeResult} />}
+                    {activeView === "killers-lemons" && <KillersLemonsResult />}
                 </section>
             )}
 		</main>
