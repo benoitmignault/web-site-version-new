@@ -12,5 +12,8 @@
 	"viewPlayer": "Player",
 	"viewLeaderboard": "Leaderboard",
 	"viewTournament": "Tournament",
-	"viewKillersLemons": "Killers & lemons"
+	"viewKillersLemons": "Killers & lemons",
+	"playerLabel": "Player",
+	"choosePlayer": "Choose a player",
+	"errorLoadingPlayers": "An error occurred while loading the players."
 }
