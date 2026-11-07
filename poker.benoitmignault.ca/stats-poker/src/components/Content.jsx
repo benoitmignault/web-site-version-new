@@ -33,7 +33,14 @@ function Content() {
 		{ id: "leaderboard", labelKey: "viewLeaderboard" },
 		{ id: "tournament", labelKey: "viewTournament" },
 		{ id: "killers-lemons", labelKey: "viewKillersLemons" }
-	];
+	];    
+
+    // Changer de vue : le résultat démarre tout seul pour les vues sans précision, 
+    // et attend la précision pour les autres
+    const handleViewChange = (viewId) => {
+        setActiveView(viewId);
+        setActiveResult(viewsWithoutPrecision.includes(viewId) ? viewId : null);
+    };
 
 	return (
 		<main className="content-container">
@@ -46,15 +53,21 @@ function Content() {
 							type="button"
 							aria-pressed={activeView === view.id}
 							className={activeView === view.id ? "view-btn active" : "view-btn"}
-							onClick={() => setActiveView(view.id)}
+							onClick={() => handleViewChange(view.id)}
 						>
 							{t(view.labelKey)}
 						</button>
 					))}
 				</div>
-				{/* La précision de la vue active viendra ici (au besoin seulement) */}
+				{/* La précision des vues nécessitant une précision viendra ici (au besoin seulement) */}
+                {activeView === "player" && (
+                    <div className="precision-zone">
+                        <PlayersList setActiveResult={setActiveResult} />
+                    </div>
+                )}
+
 			</section>
-			{activeView !== null && (
+			{activeResult !== null && (
                 <section className="result-section">
                     <h2>{t("resultTitle")}</h2>
                     {/* Le résultat de la vue active viendra ici */}
