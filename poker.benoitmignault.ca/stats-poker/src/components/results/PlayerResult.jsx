@@ -77,10 +77,12 @@ function PlayerResult({ playerId }) {
 				<h3 className="player-summary-title">{player.nom}</h3>
 				<div className="player-stats-grid">
 					<div className="player-stat-card">
+						<span className="stat-icon-spacer"></span>
 						<span className="player-stat-label">{t("presences")}</span>
 						<span className="player-stat-value">{player.summary.presences}</span>
 					</div>
 					<div className="player-stat-card">
+						<span className="stat-icon-spacer"></span>
 						<span className="player-stat-label">{t("netGain")}</span>
 						<span className={`player-stat-value ${player.summary.gainNet > 0 ? "gain-positive" : player.summary.gainNet < 0 ? "gain-negative" : ""}`}>
 							{player.summary.gainNet > 0 ? "+" : ""}{player.summary.gainNet} $
@@ -89,13 +91,13 @@ function PlayerResult({ playerId }) {
 					<div className="player-stat-card player-trophies-card">
 						<div className="player-trophy-card">
 							<FaTrophy className="trophy gold" />
-							<span className="player-trophy-count">{player.summary.victoires}</span>
 							<span className="player-trophy-label">{t("wins")}</span>
+							<span className="player-trophy-count">{player.summary.victoires}</span>							
 						</div>
 						<div className="player-trophy-card">
 							<FaTrophy className="trophy silver" />
-							<span className="player-trophy-count">{player.summary.deuxiemes}</span>
 							<span className="player-trophy-label">{t("secondPlaces")}</span>
+							<span className="player-trophy-count">{player.summary.deuxiemes}</span>							
 						</div>
 					</div>
 					<div className="player-stat-card">
