@@ -86,6 +86,18 @@ function PlayerResult({ playerId }) {
 							{player.summary.gainNet >= 0 ? "+" : ""}{player.summary.gainNet} $
 						</span>
 					</div>
+					<div className="player-stat-card player-trophies-card">
+						<div className="player-trophy-card">
+							<FaTrophy className="trophy gold" />
+							<span className="player-trophy-count">{player.summary.victoires}</span>
+							<span className="player-trophy-label">{t("wins")}</span>
+						</div>
+						<div className="player-trophy-card">
+							<FaTrophy className="trophy silver" />
+							<span className="player-trophy-count">{player.summary.deuxiemes}</span>
+							<span className="player-trophy-label">{t("secondPlaces")}</span>
+						</div>
+					</div>
 					<div className="player-stat-card">
 						<FaSkullCrossbones className="stat-icon killer-icon" />
 						<span className="player-stat-label">{t("killers")}</span>
@@ -97,21 +109,9 @@ function PlayerResult({ playerId }) {
 						<span className="player-stat-value">{player.summary.prixCitrons}</span>
 					</div>
 				</div>
-
-				<div className="player-trophies">
-					<div className="player-trophy-card">
-						<FaTrophy className="trophy gold" />
-						<span className="player-trophy-count">{player.summary.victoires}</span>
-						<span className="player-trophy-label">{t("wins")}</span>
-					</div>
-					<div className="player-trophy-card">
-						<FaTrophy className="trophy silver" />
-						<span className="player-trophy-count">{player.summary.deuxiemes}</span>
-						<span className="player-trophy-label">{t("secondPlaces")}</span>
-					</div>
-				</div>
 			</div>
 			{/* Section 2 : le détaillé — l'historique de ses visites en tableau */}
+			<h3 className="result-subtitle">{t("resultDetail")}</h3>
 		</div>
 	);
 }
