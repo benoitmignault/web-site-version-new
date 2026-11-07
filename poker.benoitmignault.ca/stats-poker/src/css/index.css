@@ -397,3 +397,124 @@ body {
 	font-weight: 600;
 	margin: 0;
 }
+
+/* Sommaire du joueur (repris de la carte joueur du golf Montérégie) */
+.player-summary {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.player-summary-title {
+	margin: 0;
+	font-size: 28px;
+	font-weight: 700;
+	color: white;
+	text-align: center;
+}
+
+.player-stats-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 15px;
+}
+
+.player-stat-card {
+	background: rgba(255, 255, 255, 0.06);
+	border: 1px solid var(--gold-soft);
+	border-radius: 12px;
+	padding: 15px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.2s ease;
+}
+
+.player-stat-card:hover {
+	transform: translateY(-2px);
+	background: rgba(255, 255, 255, 0.10);
+}
+
+.player-stat-label {
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	color: var(--text-dim);
+	margin-bottom: 8px;
+}
+
+.player-stat-value {
+	font-size: 28px;
+	font-weight: 700;
+	color: white;
+}
+
+.gain-positive {
+	color: #7cfc8a;
+}
+
+.gain-negative {
+	color: #ff8080;
+}
+
+.stat-icon {
+	font-size: 1.4rem;
+	margin-bottom: 6px;
+}
+
+.killer-icon {
+	color: #e8e8e8;
+}
+
+.lemon-icon {
+	color: #f2d024;
+}
+
+.player-trophies {
+	display: flex;
+	justify-content: center;
+	gap: 40px;
+	margin-top: 10px;
+}
+
+.player-trophy-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 5px;
+	transition: all 0.2s ease;
+}
+
+.player-trophy-card:hover {
+	transform: translateY(-2px);
+}
+
+.trophy {
+	font-size: 1.5rem;
+}
+
+.trophy.gold {
+	color: #FFD700;
+}
+
+.trophy.silver {
+	color: #C0C0C0;
+}
+
+.player-trophy-count {
+	font-size: 26px;
+	font-weight: bold;
+	color: white;
+}
+
+.player-trophy-label {
+	font-size: 12px;
+	color: var(--text-dim);
+}
+
+.loading-message {
+	color: var(--text-dim);
+	font-weight: 600;
+	margin: 0;
+}
