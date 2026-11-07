@@ -291,29 +291,6 @@ body {
 	text-decoration: underline;
 }
 
-/* Bouton de retour en haut de page (visible après défilement) */
-.scroll-top-btn {
-	position: fixed;
-	right: 24px;
-	bottom: 84px;
-	width: 48px;
-	height: 48px;
-	border-radius: 50%;
-	border: 1px solid var(--gold);
-	background: var(--gold);
-	color: #111111;
-	display: grid;
-	place-items: center;
-	font-size: 1.1rem;
-	cursor: pointer;
-	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
-	z-index: 20;
-}
-
-.scroll-top-btn:hover {
-	background: var(--gold-light);
-}
-
 /* Zone de précision : visible seulement quand la vue en demande une */
 .precision-zone {
 	margin-top: 18px;
