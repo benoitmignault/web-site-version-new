@@ -48,7 +48,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	box-sizing: border-box;
-	padding: 24px 30px 110px;
+	padding: 24px 30px 24px;
 }
 
 /* En-tête : titre + lien minuteur + sélecteur de langue */
