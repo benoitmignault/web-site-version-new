@@ -415,15 +415,15 @@ body {
 
 .player-stats-grid {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 15px;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 12px;
 }
 
 .player-stat-card {
 	background: rgba(255, 255, 255, 0.06);
 	border: 1px solid var(--gold-soft);
 	border-radius: 12px;
-	padding: 15px;
+	padding: 10px 12px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
