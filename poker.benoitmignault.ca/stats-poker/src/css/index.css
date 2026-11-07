@@ -94,19 +94,28 @@ body {
 	align-self: stretch;
 }
 
+.admin-link {
+	color: rgba(245, 245, 245, 0.35);
+	font-weight: 600;
+	font-size: 0.95rem;
+	cursor: not-allowed;
+}
+
+
 .timer-link {
 	color: var(--gold);
 	text-decoration: none;
 	font-weight: 600;
 	font-size: 0.95rem;
-	border: 1px solid var(--gold-soft);
-	border-radius: 10px;
-	padding: 8px 14px;
-	background: rgba(255, 255, 255, 0.06);
+	border-left: 1px solid var(--gold-soft);
+	padding-left: 20px;
+	align-self: stretch;
+	display: flex;
+	align-items: center;
 }
 
 .timer-link:hover {
-	border-color: var(--gold);
+	text-decoration: underline;
 }
 
 .language-switch {
