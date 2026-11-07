@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PlayersList from "./PlayersList.jsx";
 import { t } from "../i18n/i18n";
 
 /**
