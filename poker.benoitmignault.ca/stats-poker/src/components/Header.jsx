@@ -23,6 +23,7 @@ function Header({ language, changeLanguage }) {
 				<p className="header-subtitle">{t("subtitle")}</p>
 			</div>
 			<div className="header-controls">
+				<span className="admin-link" aria-disabled="true">{t("statsManagement")}</span>
 				<a className="timer-link" href={TIMER_URL} target="_blank" rel="noopener noreferrer">
 					{t("timerLink")}
 				</a>
