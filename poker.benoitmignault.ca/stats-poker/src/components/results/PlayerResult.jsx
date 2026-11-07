@@ -113,11 +113,11 @@ function PlayerResult({ playerId }) {
 			{/* Section 2 : le détaillé — l'historique de ses visites en tableau */}
 			<h3 className="result-subtitle">{t("resultDetail")}</h3>
 			<div className="history-table-wrapper">
-				<table className="history-table">
+				<table className="history-table">					
 					<thead>
 						<tr>
 							<th className="col-center">{t("tournament")}</th>
-							<th>{t("date")}</th>
+							<th className="col-center">{t("date")}</th>
 							<th className="col-right">{t("gain")}</th>
 							<th>{t("killer")}</th>
 							<th>{t("lemon")}</th>
@@ -128,7 +128,7 @@ function PlayerResult({ playerId }) {
 						{player.history.map((visit) => (
 							<tr key={visit.idTournoi}>
 								<td className="col-center">{visit.idTournoi}</td>
-								<td>{visit.date}</td>
+								<td className="col-center">{visit.date}</td>
 								<td className={`col-right ${visit.gain >= 0 ? "gain-positive" : "gain-negative"}`}>
 									{visit.gain >= 0 ? "+" : ""}{visit.gain} $
 								</td>
