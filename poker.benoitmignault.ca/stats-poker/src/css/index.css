@@ -207,6 +207,11 @@ body {
 	color: var(--gold);
 }
 
+.result-section h2 {
+	/* ... */
+	margin: 0;
+}
+
 .view-choices {
 	display: flex;
 	flex-wrap: wrap;
