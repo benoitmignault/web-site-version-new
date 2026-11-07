@@ -20,7 +20,9 @@ function Header({ language, changeLanguage }) {
 					<span className="chip gold header-chip" aria-hidden="true"></span>
 					{t("title")}
 				</h1>
-				<p className="header-subtitle">{t("subtitle")}</p>
+			</div>
+			<div className="header-tagline">
+				<span>{t("subtitle")}</span>
 			</div>
 			<div className="header-controls">
 				<span className="admin-link" aria-disabled="true">{t("statsManagement")}</span>
