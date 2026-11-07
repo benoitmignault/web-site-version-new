@@ -437,15 +437,15 @@ body {
 }
 
 .player-stat-label {
-	font-size: 12px;
+	font-size: 11px;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	color: var(--text-dim);
-	margin-bottom: 8px;
+	margin-bottom: 5px;
 }
 
 .player-stat-value {
-	font-size: 28px;
+	font-size: 24px;
 	font-weight: 700;
 	color: white;
 }
@@ -459,8 +459,8 @@ body {
 }
 
 .stat-icon {
-	font-size: 1.4rem;
-	margin-bottom: 6px;
+	font-size: 1.2rem;
+	margin-bottom: 4px;
 }
 
 .killer-icon {
