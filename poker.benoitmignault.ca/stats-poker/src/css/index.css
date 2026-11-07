@@ -78,10 +78,32 @@ body {
 	letter-spacing: 1px;
 }
 
-.header-subtitle {
-	margin: 4px 0 0 70px;
-	color: var(--gold-muted);
-	font-size: 0.95rem;
+.header-tagline {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	gap: 18px;
+	margin: 0 10px;
+	color: var(--gold-light);
+	font-style: italic;
+	font-size: 1.05rem;
+	letter-spacing: 1px;
+	white-space: nowrap;
+}
+
+.header-tagline::before,
+.header-tagline::after {
+	content: "";
+	flex: 1;
+	height: 1px;
+}
+
+.header-tagline::before {
+	background: linear-gradient(to right, transparent, var(--gold-soft));
+}
+
+.header-tagline::after {
+	background: linear-gradient(to right, var(--gold-soft), transparent);
 }
 
 .header-controls {
