@@ -15,6 +15,17 @@ function Content() {
 	// La vue active parmi les 5 choix d'affichage (aucune au départ)
     const [activeView, setActiveView] = useState(null);
 
+    // Les vues sans précision produisent leur résultat dès le clic
+    const viewsWithoutPrecision = ["all", "killers-lemons"];
+
+    // Ce qui déclenche et nourrit le résultat (null = rien à montrer)
+    const [activeResult, setActiveResult] = useState(null);
+
+
+
+    // Le joueur choisi dans le sélecteur (aucun au départ)
+    const [selectedPlayerId, setSelectedPlayerId] = useState(null);
+
 	// Les 5 vues : l'id sert d'état, la clé i18n sert d'étiquette
 	const views = [
 		{ id: "all", labelKey: "viewAll" },
