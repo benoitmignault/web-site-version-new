@@ -119,8 +119,8 @@ function PlayerResult({ playerId }) {
 							<th className="col-center">{t("tournament")}</th>
 							<th className="col-center">{t("date")}</th>
 							<th className="col-right">{t("gain")}</th>
-							<th>{t("killer")}</th>
-							<th>{t("lemon")}</th>
+							<th className="col-center">{t("killer")}</th>
+							<th className="col-center">{t("lemon")}</th>
 							<th className="col-center">{t("result")}</th>
 						</tr>
 					</thead>
@@ -132,8 +132,8 @@ function PlayerResult({ playerId }) {
 								<td className={`col-right ${visit.gain >= 0 ? "gain-positive" : "gain-negative"}`}>
 									{visit.gain >= 0 ? "+" : ""}{visit.gain} $
 								</td>
-								<td>{visit.killer}</td>
-								<td>{visit.prixCitron}</td>
+								<td className="col-center">{visit.killer}</td>
+								<td className="col-center">{visit.prixCitron}</td>
 								<td className="col-center">
 									{visit.victoire === 1 && (
 										<span className="place-badge">
