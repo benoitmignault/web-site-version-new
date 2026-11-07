@@ -82,8 +82,8 @@ function PlayerResult({ playerId }) {
 					</div>
 					<div className="player-stat-card">
 						<span className="player-stat-label">{t("netGain")}</span>
-						<span className={`player-stat-value ${player.summary.gainNet >= 0 ? "gain-positive" : "gain-negative"}`}>
-							{player.summary.gainNet >= 0 ? "+" : ""}{player.summary.gainNet} $
+						<span className={`player-stat-value ${player.summary.gainNet > 0 ? "gain-positive" : player.summary.gainNet < 0 ? "gain-negative" : ""}`}>
+							{player.summary.gainNet > 0 ? "+" : ""}{player.summary.gainNet} $
 						</span>
 					</div>
 					<div className="player-stat-card player-trophies-card">
@@ -129,8 +129,8 @@ function PlayerResult({ playerId }) {
 							<tr key={visit.idTournoi}>
 								<td className="col-center">{visit.idTournoi}</td>
 								<td className="col-center">{visit.date}</td>
-								<td className={`col-right ${visit.gain >= 0 ? "gain-positive" : "gain-negative"}`}>
-									{visit.gain >= 0 ? "+" : ""}{visit.gain} $
+								<td className={`col-right ${visit.gain > 0 ? "gain-positive" : visit.gain < 0 ? "gain-negative" : ""}`}>
+									{visit.gain > 0 ? "+" : ""}{visit.gain} $
 								</td>
 								<td className="col-center">{visit.killer}</td>
 								<td className="col-center">{visit.prixCitron}</td>
