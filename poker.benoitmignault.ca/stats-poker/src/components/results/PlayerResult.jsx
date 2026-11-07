@@ -154,5 +154,4 @@ function PlayerResult({ playerId }) {
 		</div>
 	);
 }
-
 export default PlayerResult;
