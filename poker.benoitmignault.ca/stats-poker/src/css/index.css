@@ -402,12 +402,12 @@ body {
 .player-summary {
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
+	gap: 14px;
 }
 
 .player-summary-title {
 	margin: 0;
-	font-size: 28px;
+	font-size: 24px;
 	font-weight: 700;
 	color: white;
 	text-align: center;
@@ -416,14 +416,14 @@ body {
 .player-stats-grid {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-	gap: 15px;
+	gap: 12px;
 }
 
 .player-stat-card {
 	background: rgba(255, 255, 255, 0.06);
 	border: 1px solid var(--gold-soft);
 	border-radius: 12px;
-	padding: 15px;
+	padding: 10px 12px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -437,15 +437,15 @@ body {
 }
 
 .player-stat-label {
-	font-size: 12px;
+	font-size: 11px;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	color: var(--text-dim);
-	margin-bottom: 8px;
+	margin-bottom: 5px;
 }
 
 .player-stat-value {
-	font-size: 28px;
+	font-size: 24px;
 	font-weight: 700;
 	color: white;
 }
@@ -459,8 +459,8 @@ body {
 }
 
 .stat-icon {
-	font-size: 1.4rem;
-	margin-bottom: 6px;
+	font-size: 1.2rem;
+	margin-bottom: 4px;
 }
 
 .killer-icon {
@@ -474,8 +474,8 @@ body {
 .player-trophies {
 	display: flex;
 	justify-content: center;
-	gap: 40px;
-	margin-top: 10px;
+	gap: 32px;
+	margin-top: 4px;
 }
 
 .player-trophy-card {
@@ -491,7 +491,7 @@ body {
 }
 
 .trophy {
-	font-size: 1.5rem;
+	font-size: 1.3rem;
 }
 
 .trophy.gold {
@@ -503,7 +503,7 @@ body {
 }
 
 .player-trophy-count {
-	font-size: 26px;
+	font-size: 22px;
 	font-weight: bold;
 	color: white;
 }
