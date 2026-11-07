@@ -34,6 +34,7 @@ $stmtJoueur->close();
 // Si aucun joueur ne porte cet id, on arrête ici avec une erreur 404
 if (!$joueur) {
 
+    error_log("Aucun joueur trouvé pour l'ID: " . $idJoueur);
 	http_response_code(404);
 	echo json_encode(["success" => false, "code" => "playerNotFound", "message" => "Aucun joueur ne correspond à cet identifiant."]);
 
