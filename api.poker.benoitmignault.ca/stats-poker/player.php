@@ -67,7 +67,7 @@ if (!$joueur) {
 	exit();
 }
 
-// --- Sommaire du joueur (méthode 3) : tous les agrégats sont calculés par SQL ---
+// --- Sommaire du joueur via le principe de la (méthode 3 (Total)) : tous les agrégats sont calculés par SQL ---
 $select = "SELECT COUNT(*) AS presences, ";
 $select .= "COALESCE(SUM(gain), 0) AS gain_net, ";
 $select .= "COALESCE(SUM(victoire), 0) AS victoires, ";
