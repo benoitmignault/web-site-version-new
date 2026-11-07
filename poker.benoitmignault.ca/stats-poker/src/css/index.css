@@ -471,18 +471,17 @@ body {
 	color: #f2d024;
 }
 
-.player-trophies {
-	display: flex;
-	justify-content: center;
-	gap: 40px;
-	margin-top: 10px;
+/* La case des trophées : les deux trophées côte à côte */
+.player-trophies-card {
+	flex-direction: row;
+	gap: 22px;
 }
 
 .player-trophy-card {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 5px;
+	gap: 4px;
 	transition: all 0.2s ease;
 }
 
