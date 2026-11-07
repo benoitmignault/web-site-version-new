@@ -25,8 +25,32 @@ $connMYSQL = connexionStatsDB();
 // (la colonne du nom s'appelle "joueur" dans la table, on l'expose en "nom")
 $sqlJoueur = "SELECT id, joueur AS nom FROM joueur WHERE id = ?";
 $stmtJoueur = $connMYSQL->prepare($sqlJoueur);
+
+// Vérification si la préparation de la requête a réussi
+if ($stmtJoueur === false) {
+
+    error_log("Erreur lors de la préparation de la requête: " . $connMYSQL->error);
+    http_response_code(500);
+    echo json_encode(["success" => false, "code" => "errorPrepareQuery", "message" => "Erreur lors de la préparation de la requête."]);
+    $connMYSQL->close();
+    exit;
+}
+
 $stmtJoueur->bind_param("i", $idJoueur);
-$stmtJoueur->execute();
+
+// Vérifier si la requête a réussi
+if (!$stmtJoueur->execute()) {
+
+    error_log("Erreur lors de l'exécution de la requête: " . $stmtJoueur->error);
+    http_response_code(500);
+    echo json_encode(["success" => false, "code" => "errorExecuteQuery", "message" => "Erreur lors de l'exécution de la requête."]); 
+    
+    // Fermer la connexion au résultat du insert dans la base de données et la connexion à la base de données
+    $stmtJoueur->close();
+    $connMYSQL->close();
+    exit();
+}
+
 $resultatJoueur = $stmtJoueur->get_result();
 $joueur = $resultatJoueur->fetch_assoc();
 $stmtJoueur->close();
@@ -55,8 +79,32 @@ $where = "WHERE id_joueur = ?";
 $sqlSommaire = $select . $from . $where;
 
 $stmtSommaire = $connMYSQL->prepare($sqlSommaire);
+
+// Vérification si la préparation de la requête a réussi
+if ($stmtSommaire === false) {
+
+    error_log("Erreur lors de la préparation de la requête: " . $connMYSQL->error);
+    http_response_code(500);
+    echo json_encode(["success" => false, "code" => "errorPrepareQuery", "message" => "Erreur lors de la préparation de la requête."]);
+    $connMYSQL->close();
+    exit;
+}
+
 $stmtSommaire->bind_param("i", $idJoueur);
-$stmtSommaire->execute();
+
+// Vérifier si la requête a réussi
+if (!$stmtSommaire->execute()) {
+
+    error_log("Erreur lors de l'exécution de la requête: " . $stmtSommaire->error);
+    http_response_code(500);
+    echo json_encode(["success" => false, "code" => "errorExecuteQuery", "message" => "Erreur lors de l'exécution de la requête."]); 
+    
+    // Fermer la connexion au résultat du insert dans la base de données et la connexion à la base de données
+    $stmtSommaire->close();
+    $connMYSQL->close();
+    exit();
+}
+
 $resultatSommaire = $stmtSommaire->get_result();
 $ligneSommaire = $resultatSommaire->fetch_assoc();
 $stmtSommaire->close();
@@ -79,8 +127,32 @@ $orderBy = "ORDER BY date DESC, id_tournoi DESC";
 $sqlHistorique = $select . $from . $where . $orderBy;
 
 $stmtHistorique = $connMYSQL->prepare($sqlHistorique);
+
+// Vérification si la préparation de la requête a réussi
+if ($stmtHistorique === false) {
+
+    error_log("Erreur lors de la préparation de la requête: " . $connMYSQL->error);
+    http_response_code(500);
+    echo json_encode(["success" => false, "code" => "errorPrepareQuery", "message" => "Erreur lors de la préparation de la requête."]);
+    $connMYSQL->close();
+    exit;
+}
+
 $stmtHistorique->bind_param("i", $idJoueur);
-$stmtHistorique->execute();
+
+// Vérifier si la requête a réussi
+if (!$stmtHistorique->execute()) {
+
+    error_log("Erreur lors de l'exécution de la requête: " . $stmtHistorique->error);
+    http_response_code(500);
+    echo json_encode(["success" => false, "code" => "errorExecuteQuery", "message" => "Erreur lors de l'exécution de la requête."]); 
+    
+    // Fermer la connexion au résultat du insert dans la base de données et la connexion à la base de données
+    $stmtHistorique->close();
+    $connMYSQL->close();
+    exit();
+}
+
 $resultatHistorique = $stmtHistorique->get_result();
 
 // Créer un tableau pour stocker les visites
