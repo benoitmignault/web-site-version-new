@@ -290,3 +290,105 @@ body {
 .scroll-top-btn:hover {
 	background: var(--gold-light);
 }
+
+/* Zone de précision : visible seulement quand la vue en demande une */
+.precision-zone {
+	margin-top: 18px;
+}
+
+/* Sélecteur de joueur (react-select), repris du sélecteur d'organisateur du minuteur */
+.player-field {
+	display: flex;
+	flex-direction: column;
+}
+
+.player-label {
+	margin-bottom: 8px;
+	font-weight: 600;
+	color: var(--gold);
+}
+
+.player-select-wrapper {
+	width: 320px;
+	max-width: 100%;
+}
+
+.player-select__control {
+	background: rgba(255, 255, 255, 0.08) !important;
+	border: 1px solid var(--gold-soft) !important;
+	min-height: 50px !important;
+	border-radius: 10px !important;
+	box-shadow: none !important;
+	cursor: pointer !important;
+}
+
+.player-select__control:hover {
+	border-color: var(--gold) !important;
+}
+
+.player-select__control--is-focused {
+	border-color: var(--gold) !important;
+	box-shadow: 0 0 0 1px var(--gold) !important;
+}
+
+.player-select__single-value {
+	color: white !important;
+}
+
+.player-select__input-container {
+	color: white !important;
+}
+
+.player-select__placeholder {
+	color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.player-select__menu {
+	background: rgba(10, 10, 12, 0.95) !important;
+	backdrop-filter: blur(10px);
+	border: 1px solid var(--gold-soft);
+	border-radius: 10px !important;
+	overflow: hidden;
+}
+
+.player-select__option {
+	background: transparent !important;
+	color: white !important;
+	cursor: pointer !important;
+}
+
+.player-select__option--is-focused {
+	background: rgba(212, 175, 55, 0.25) !important;
+}
+
+.player-select__option--is-selected {
+	background: rgba(212, 175, 55, 0.45) !important;
+}
+
+.player-select__indicator {
+	color: var(--gold) !important;
+}
+
+.player-select__menu-list::-webkit-scrollbar {
+	width: 8px;
+}
+
+.player-select__menu-list::-webkit-scrollbar-thumb {
+	background: rgba(255, 255, 255, 0.20);
+	border-radius: 10px;
+}
+
+/* Le X pour effacer la sélection, en or comme le reste */
+.player-select__clear-indicator {
+	color: var(--gold) !important;
+}
+
+.player-select__clear-indicator:hover {
+	color: var(--gold-light) !important;
+}
+
+.error-message {
+	color: #ff8080;
+	font-weight: 600;
+	margin: 0;
+}
