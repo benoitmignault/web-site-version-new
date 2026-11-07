@@ -259,10 +259,6 @@ body {
 
 /* Pied de page fixe : même largeur et même verre que le header et le contenu */
 .footer-bar {
-	position: fixed;
-	left: 30px;
-	right: 30px;
-	bottom: 24px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -272,7 +268,7 @@ body {
 	border: 1px solid var(--gold-soft);
 	border-radius: 16px;
 	padding: 14px 28px;
-	z-index: 10;
+	margin-top: clamp(14px, 3vh, 30px);
 }
 
 .footer-copyright {
