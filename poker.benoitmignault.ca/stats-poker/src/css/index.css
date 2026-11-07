@@ -462,11 +462,11 @@ body {
 	color: white;
 }
 
-.gain-positive {
+.player-stat-value.gain-positive {
 	color: #7cfc8a;
 }
 
-.gain-negative {
+.player-stat-value.gain-negative {
 	color: #ff8080;
 }
 
