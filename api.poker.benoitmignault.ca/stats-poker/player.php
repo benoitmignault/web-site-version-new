@@ -171,6 +171,7 @@ while ($row = $resultatHistorique->fetch_assoc()) {
 		"prixCitron" => (float)$row["prix_citron"]
 	];
 }
+
 $stmtHistorique->close();
 
 http_response_code(200);
