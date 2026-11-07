@@ -406,16 +406,33 @@ body {
 	margin: 0;
 }
 
-/* Sommaire du joueur (repris de la carte joueur du golf Montérégie) */
+/* ============ Résultat de la vue Joueur ============ */
+
+.player-result {
+	display: flex;
+	flex-direction: column;
+}
+
+/* Titre de la section 1 (Résultat - Sommaire) */
+.result-section h2 {
+	color: var(--gold);
+	font-size: 15px;
+	font-weight: 700;
+	letter-spacing: 1.5px;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+/* Section 1 : le sommaire — la carte du joueur */
 .player-summary {
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
+	gap: 14px;
 }
 
 .player-summary-title {
 	margin: 0;
-	font-size: 28px;
+	font-size: 24px;
 	font-weight: 700;
 	color: white;
 	text-align: center;
