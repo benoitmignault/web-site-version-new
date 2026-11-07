@@ -69,7 +69,6 @@ function Content() {
 			</section>
 			{activeResult !== null && (
                 <section className="result-section">
-                    <h2>{t("resultTitle")}</h2>
                     {activeView === "all" && <AllResults />}
                     {activeView === "player" && <PlayerResult playerId={activeResult} />}
                     {activeView === "leaderboard" && <LeaderboardResult minPresences={activeResult} />}
