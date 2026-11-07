@@ -15,5 +15,20 @@
 	"viewKillersLemons": "Killers & lemons",
 	"playerLabel": "Player",
 	"choosePlayer": "Choose a player",
-	"errorLoadingPlayers": "An error occurred while loading the players."
+	"loading": "Loading...",
+	"errorLoadingPlayer": "An error occurred while loading the player.",
+	"presences": "Attendance",
+	"netGain": "Net gain",
+	"killers": "Killers",
+	"lemons": "Lemon prizes",
+	"wins": "Wins",
+	"secondPlaces": "2nd places",
+	"visitHistory": "Visit history",
+	"tournament": "Tournament",
+	"date": "Date",
+	"gain": "Gain",
+	"killer": "Killer",
+	"lemon": "Lemon",
+	"firstPlace": "1st",
+	"secondPlace": "2nd"
 }
