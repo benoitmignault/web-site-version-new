@@ -68,7 +68,7 @@ function Index() {
 				<button
 					type="button"
 					className="scroll-top-btn"
-					aria-label="Retour en haut"
+					aria-label={t("backToTop")}
 					onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
 				>
 					<FaArrowUp />
