@@ -431,7 +431,6 @@ body {
 }
 
 /* ============ Résultat de la vue Joueur ============ */
-
 .player-result {
 	display: flex;
 	flex-direction: column;
