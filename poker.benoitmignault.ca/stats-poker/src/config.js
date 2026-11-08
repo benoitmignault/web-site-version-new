@@ -6,3 +6,6 @@
  */
 export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 export const SITE_URL = import.meta.env.VITE_SITE_URL;
+
+// URL de l'application Timer Poker
+export const TIMER_URL = "https://poker.benoitmignault.ca/timer-poker/";

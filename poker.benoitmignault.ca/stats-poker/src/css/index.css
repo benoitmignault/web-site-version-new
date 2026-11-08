@@ -1,0 +1,675 @@
+/**
+ * Statistiques de poker - styles de base : fond, conteneurs et thème.
+ * Thème poker sombre avec accents dorés, le même que le minuteur.
+ */
+
+/* Palette des statistiques (les mêmes variables que le minuteur) */
+:root {
+	--gold: #c9a227;
+	--gold-light: #e8c15a;
+	--gold-soft: rgba(212, 175, 55, 0.35);
+	--gold-muted: #a3935c;
+	--card-bg: rgba(10, 10, 12, 0.72);
+	--text-main: #f5f5f5;
+	--text-dim: rgba(245, 245, 245, 0.6);
+
+	font-family:
+		system-ui,
+		-apple-system,
+		BlinkMacSystemFont,
+		sans-serif;
+
+	color: var(--text-main);
+	background-color: #060606;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	margin: 0;
+	background:
+		linear-gradient(
+			rgba(0, 0, 0, 0.25),
+			rgba(0, 0, 0, 0.35)
+		),
+		/* Image d'arrière-plan généré par Muse AI (Skynet) */
+		url("/images/backgrounds/bg-stats-16-9.jpg");
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+}
+
+#root {
+	width: 100%;
+	margin: 0 auto;
+	min-height: 100svh;
+	display: flex;
+	flex-direction: column;
+	box-sizing: border-box;
+	padding: 24px 30px 24px;
+}
+
+/* En-tête : titre + lien minuteur + sélecteur de langue */
+.header-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 20px;
+	background: var(--card-bg);
+	backdrop-filter: blur(8px);
+	border: 1px solid var(--gold-soft);
+	border-radius: 16px;
+	padding: clamp(12px, 2.2vh, 20px) 28px;
+	margin-bottom: clamp(14px, 3vh, 30px);
+	position: relative;
+	z-index: 10;
+}
+
+.header-container h1 {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	margin: 0;
+	font-size: 2rem;
+	font-weight: 700;
+	color: var(--gold);
+	letter-spacing: 1px;
+}
+
+.header-tagline {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	gap: 18px;
+	margin: 0 10px;
+	color: var(--gold-light);
+	font-style: italic;
+	font-size: 1.05rem;
+	letter-spacing: 1px;
+	white-space: nowrap;
+}
+
+.header-tagline::before,
+.header-tagline::after {
+	content: "";
+	flex: 1;
+	height: 1px;
+}
+
+.header-tagline::before {
+	background: linear-gradient(to right, transparent, var(--gold-soft));
+}
+
+.header-tagline::after {
+	background: linear-gradient(to right, var(--gold-soft), transparent);
+}
+
+.header-controls {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	margin-left: auto;
+	border-left: 1px solid var(--gold-soft);
+	padding-left: 20px;
+	align-self: stretch;
+}
+
+.admin-link {
+	color: rgba(245, 245, 245, 0.35);
+	font-weight: 600;
+	font-size: 0.95rem;
+	cursor: not-allowed;
+}
+
+
+.timer-link {
+	color: var(--gold);
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 0.95rem;
+	border-left: 1px solid var(--gold-soft);
+	padding-left: 20px;
+	align-self: stretch;
+	display: flex;
+	align-items: center;
+}
+
+.timer-link:hover {
+	text-decoration: underline;
+}
+
+.language-switch {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	border-left: 1px solid var(--gold-soft);
+	padding-left: 20px;
+	align-self: stretch;
+}
+
+.language-switch button {
+	background: none;
+	border: none;
+	color: var(--text-dim);
+	cursor: pointer;
+	font-weight: 600;
+	font-size: 0.9rem;
+}
+
+.language-switch button.active {
+	color: var(--gold);
+}
+
+/* Jeton de poker dessiné en CSS : pastille + bord en pointillés (les encoches) */
+.chip {
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	box-sizing: border-box;
+	flex-shrink: 0;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+	position: relative; /* repère pour les anneaux intérieurs */
+}
+
+/* Les 8 cases du bord, comme le modèle */
+.chip::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: 50%;
+	background: repeating-conic-gradient(
+		rgba(255, 255, 255, 0.95) 0deg 30deg,
+		transparent 30deg 45deg
+	);
+	-webkit-mask: radial-gradient(circle, transparent 60%, black 61%);
+	mask: radial-gradient(circle, transparent 60%, black 61%);
+}
+
+/* 2e anneau : petite ligne pointillée intérieure */
+.chip::after {
+	content: "";
+	position: absolute;
+	inset: 4px;
+	border-radius: 50%;
+	border: 2px dashed rgba(255, 255, 255, 0.5);
+}
+
+/* Jeton noir et or du header (style du modèle) */
+.chip.gold {
+	background: radial-gradient(circle at 35% 30%, #3a3a3a, #111111 70%);
+}
+
+/* Les 8 cases du bord passent en or */
+.chip.gold::before {
+	background: repeating-conic-gradient(rgba(201, 162, 39, 0.95) 0deg 30deg, transparent 30deg 45deg);
+}
+
+/* L'anneau pointillé intérieur aussi */
+.chip.gold::after {
+	border-color: rgba(201, 162, 39, 0.5);
+}
+
+.header-chip {
+	width: 54px;
+	height: 54px;
+	flex-shrink: 0;
+}
+
+/* Contenu : les deux sections (choix en haut, résultat en bas) */
+.content-container {
+	display: flex;
+	flex-direction: column;
+	gap: clamp(14px, 3vh, 30px);
+	flex: 1;
+}
+
+.choice-section,
+.result-section {
+	background: var(--card-bg);
+	backdrop-filter: blur(8px);
+	border: 1px solid var(--gold-soft);
+	border-radius: 16px;
+	padding: 20px 28px;
+}
+
+.choice-section h2,
+.result-section h2 {
+	margin: 0 0 16px;
+	font-size: 1.05rem;
+	font-weight: 700;
+	letter-spacing: 1.5px;
+	text-transform: uppercase;
+	color: var(--gold);
+}
+
+.choice-section {
+	position: relative;
+	z-index: 10;
+}
+
+.result-section {
+	position: relative;
+	z-index: 1;
+}
+
+.result-section h2 {
+	margin-bottom: 0;
+}
+
+.result-subtitle {
+	color: var(--gold);
+	font-size: 15px;
+	font-weight: 700;
+	letter-spacing: 1.5px;
+	text-transform: uppercase;
+	margin: 24px 0 12px;
+}
+
+.view-choices {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.view-btn {
+	background: rgba(255, 255, 255, 0.06);
+	border: 1px solid var(--gold-soft);
+	border-radius: 999px;
+	color: var(--text-main);
+	padding: 10px 18px;
+	font-weight: 600;
+	font-size: 0.95rem;
+	cursor: pointer;
+}
+
+.view-btn:hover {
+	border-color: var(--gold);
+}
+
+.view-btn.active {
+	background: var(--gold);
+	border-color: var(--gold);
+	color: #111111;
+}
+
+/* Pied de page fixe : même largeur et même verre que le header et le contenu */
+.footer-bar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 20px;
+	background: var(--card-bg);
+	backdrop-filter: blur(8px);
+	border: 1px solid var(--gold-soft);
+	border-radius: 16px;
+	padding: 14px 28px;
+	margin-top: clamp(14px, 3vh, 30px);
+}
+
+.footer-copyright {
+	color: var(--text-dim);
+	font-size: 0.9rem;
+}
+
+.footer-link a {
+	color: var(--gold);
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 0.95rem;
+}
+
+.footer-link a:hover {
+	text-decoration: underline;
+}
+
+/* Zone de précision : visible seulement quand la vue en demande une */
+.precision-zone {
+	margin-top: 18px;
+}
+
+/* Sélecteur de joueur (react-select), repris du sélecteur d'organisateur du minuteur */
+.player-field {
+	display: flex;
+	flex-direction: column;
+}
+
+.player-label {
+	margin-bottom: 8px;
+	font-weight: 600;
+	color: var(--gold);
+}
+
+.player-select-wrapper {
+	width: 320px;
+	max-width: 100%;
+}
+
+.player-select__control {
+	background: rgba(255, 255, 255, 0.08) !important;
+	border: 1px solid var(--gold-soft) !important;
+	min-height: 50px !important;
+	border-radius: 10px !important;
+	box-shadow: none !important;
+	cursor: pointer !important;
+}
+
+.player-select__control:hover {
+	border-color: var(--gold) !important;
+}
+
+.player-select__control--is-focused {
+	border-color: var(--gold) !important;
+	box-shadow: 0 0 0 1px var(--gold) !important;
+}
+
+.player-select__single-value {
+	color: white !important;
+}
+
+.player-select__input-container {
+	color: white !important;
+}
+
+.player-select__placeholder {
+	color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.player-select__menu {
+	background: rgba(10, 10, 12, 0.95) !important;
+	backdrop-filter: blur(10px);
+	border: 1px solid var(--gold-soft);
+	border-radius: 10px !important;
+	overflow: hidden;
+}
+
+.player-select__option {
+	background: transparent !important;
+	color: white !important;
+	cursor: pointer !important;
+}
+
+.player-select__option--is-focused {
+	background: rgba(212, 175, 55, 0.25) !important;
+}
+
+.player-select__option--is-selected {
+	background: rgba(212, 175, 55, 0.45) !important;
+}
+
+.player-select__indicator {
+	color: var(--gold) !important;
+}
+
+.player-select__menu-list::-webkit-scrollbar {
+	width: 8px;
+}
+
+.player-select__menu-list::-webkit-scrollbar-thumb {
+	background: rgba(255, 255, 255, 0.20);
+	border-radius: 10px;
+}
+
+/* Le X pour effacer la sélection, en or comme le reste */
+.player-select__clear-indicator {
+	color: var(--gold) !important;
+}
+
+.player-select__clear-indicator:hover {
+	color: var(--gold-light) !important;
+}
+
+.error-message {
+	color: #ff8080;
+	font-weight: 600;
+	margin: 0;
+}
+
+/* ============ Résultat de la vue Joueur ============ */
+
+.player-result {
+	display: flex;
+	flex-direction: column;
+}
+
+/* Titre de la section 1 (Résultat - Sommaire) */
+.result-section h2 {
+	color: var(--gold);
+	font-size: 15px;
+	font-weight: 700;
+	letter-spacing: 1.5px;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+/* Section 1 : le sommaire — la carte du joueur */
+.player-summary {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.player-summary-title {
+	margin: 0;
+	font-size: 24px;
+	font-weight: 700;
+	color: white;
+	text-align: center;
+}
+
+.player-stats-grid {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 12px;
+}
+
+.player-stat-card {
+	background: rgba(255, 255, 255, 0.06);
+	border: 1px solid var(--gold-soft);
+	border-radius: 12px;
+	padding: 10px 12px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.2s ease;
+}
+
+.player-stat-card:hover {
+	transform: translateY(-2px);
+	background: rgba(255, 255, 255, 0.10);
+}
+
+.stat-icon-spacer {
+	display: block;
+	width: 1.2rem;
+	height: 1.2rem;
+	margin-bottom: 4px;
+	visibility: hidden;
+}
+
+.player-stat-label {
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	color: var(--text-dim);
+	margin-bottom: 5px;
+}
+
+.player-stat-value {
+	font-size: 24px;
+	font-weight: 700;
+	color: white;
+}
+
+.player-stat-value.gain-positive {
+	color: #7cfc8a;
+}
+
+.player-stat-value.gain-negative {
+	color: #ff8080;
+}
+
+.stat-icon {
+	font-size: 1.2rem;
+	margin-bottom: 4px;
+}
+
+.killer-icon {
+	color: #e8e8e8;
+}
+
+.lemon-icon {
+	color: #f2d024;
+}
+
+/* La case des trophées : les deux trophées côte à côte */
+.player-trophies-card {
+	flex-direction: row;
+	gap: 22px;
+}
+
+.player-trophy-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 4px;
+	transition: all 0.2s ease;
+}
+
+.player-trophy-card:hover {
+	transform: translateY(-2px);
+}
+
+.trophy {
+	font-size: 1.3rem;
+}
+
+.trophy.gold {
+	color: #FFD700;
+}
+
+.trophy.silver {
+	color: #C0C0C0;
+}
+
+.player-trophy-count {
+	font-size: 22px;
+	font-weight: bold;
+	color: white;
+}
+
+.player-trophy-label {
+	font-size: 12px;
+	color: var(--text-dim);
+}
+
+/* Titre de la section 2 (Résultat - Détaillé) */
+.result-subtitle {
+	color: var(--gold);
+	font-size: 15px;
+	font-weight: 700;
+	letter-spacing: 1.5px;
+	text-transform: uppercase;
+	margin: 24px 0 12px;
+}
+
+.loading-message {
+	color: var(--text-dim);
+	font-weight: 600;
+	margin: 0;
+}
+
+/* Section 2 : le détaillé — l'historique des visites */
+.history-table-wrapper {
+	overflow-x: auto;
+}
+
+.history-table {
+	width: 100%;
+	min-width: 720px;
+	table-layout: fixed;
+	border-collapse: collapse;
+	font-size: 14px;
+}
+
+.history-table col {
+	width: calc(100% / 6);
+}
+
+.history-table th {
+	color: var(--gold);
+	font-size: 12px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	text-align: left;
+	padding: 8px 10px;
+	border-bottom: 1px solid var(--gold-soft);
+}
+
+.history-table td {
+	color: var(--text);
+	padding: 7px 10px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.history-table td.gain-positive {
+	color: #7cfc8a;
+}
+
+.history-table td.gain-negative {
+	color: #ff8080;
+}
+
+.history-table tbody tr:hover {
+	background: rgba(255, 255, 255, 0.04);
+}
+
+.history-table .col-center {
+	text-align: center;
+}
+
+.history-table .col-right {
+	text-align: right;
+}
+
+.place-badge {
+	font-size: 13px;
+	font-weight: 600;
+	white-space: nowrap;
+}
+
+.place-badge .trophy {
+	font-size: 0.95rem;
+	vertical-align: -2px;
+}
+
+
+
+
+/* Bouton de retour en haut de page (visible après défilement) */
+.scroll-top-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	width: 45px;
+	height: 45px;
+	bottom: 16px;
+	right: 16px;
+	border: 1px solid var(--gold-soft);
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.06);
+	color: var(--gold);
+	font-size: 22px;
+	cursor: pointer;
+	backdrop-filter: blur(10px);
+	z-index: 60;
+	transition: transform 0.2s ease, background 0.25s ease;
+}
+
+.scroll-top-btn:hover {
+	transform: translateY(-2px);
+	background: rgba(255, 255, 255, 0.10);
+}

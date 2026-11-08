@@ -1,0 +1,50 @@
+/* Statistiques de poker - ajustements pour petits écrans */
+
+@media (max-width: 768px) {
+	#root {
+		padding: 16px 14px 130px;
+	}
+
+	.header-container {
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 16px 20px;
+	}
+
+	.header-container h1 {
+		font-size: 1.6rem;
+	}
+
+	.header-subtitle {
+		margin-left: 0;
+	}
+
+	.header-controls {
+		margin-left: 0;
+	}
+
+	.choice-section,
+	.result-section {
+		padding: 16px 20px;
+	}
+
+	.view-btn {
+		flex: 1 1 auto;
+	}
+
+	.footer-bar {
+		flex-direction: column;
+		gap: 6px;
+		padding: 12px 16px;
+		text-align: center;
+	}
+
+	.player-stats-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.player-trophies-card {
+		grid-column: span 2;
+	}
+	
+}
