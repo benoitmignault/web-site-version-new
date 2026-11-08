@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { API_BASE_URL } from "../../config";
 import { FaTrophy, FaSkullCrossbones, FaLemon } from "react-icons/fa";
 import { t } from "../../i18n/i18n";
