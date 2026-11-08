@@ -14,7 +14,7 @@ $select = "SELECT p.id, j.joueur AS nom, p.id_tournoi, p.date, p.gain, p.victoir
 $from = "FROM poker p ";
 $join = "LEFT JOIN joueur j ON j.id = p.id_joueur ";
 // L'ordre de tri est : par id_tournoi décroissant, puis par prix_citron (les prix citron sont affichés en dernier), puis par gain décroissant, puis par killer décroissant, puis par nom du joueur.
-$orderBy = "ORDER BY p.id_tournoi DESC, (p.prix_citron > 0) ASC, p.gain DESC, p.killer DESC, j.joueur ASC";
+$orderBy = "ORDER BY p.id_tournoi DESC, p.gain DESC, p.killer DESC, (p.prix_citron > 0) ASC, j.joueur ASC";
 
 $sql = $select . $from . $join . $orderBy;
 
