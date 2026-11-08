@@ -7,7 +7,7 @@ include(__DIR__ . "/includes/cors.php");
 include(__DIR__ . "/includes/fct-connexion-bd.php");
 
 // Établir la connexion à la base de données pour les statistiques de poker
-$connexion = connexionStatsDB();
+$connMYSQL = connexionStatsDB();
 
 // Requête SQL pour récupérer tous les résultats : 
 // par tournoi, par gain décroissant, les killers départagent les égalités (un perdant avec des killers est moins perdant), puis par nom de joueur.
@@ -58,4 +58,4 @@ http_response_code(200);
 echo json_encode(["success" => true, "results" => $results]);
 
 // Fermer la connexion à la base de données
-$connexion->close();
+$connMYSQL->close();
