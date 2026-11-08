@@ -18,7 +18,7 @@
 	"playerLabel": "Player",
 	"choosePlayer": "Choose a player",
 	"loading": "Loading...",
-	"errorLoadingPlayer": "An error occurred while loading the player.",
+	"errorLoadingPlayers": "An error occurred while loading the player.",
 	"errorDbConnection": "Database connection error.",
 	"errorPrepareQuery": "An error occurred while preparing the query.",
 	"errorExecuteQuery": "An error occurred while executing the query.",
