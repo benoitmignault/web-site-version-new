@@ -23,13 +23,43 @@ function PlayerResult({ playerId }) {
 	// L'erreur à afficher : { code, message } — le code est traduit au rendu, donc suit la langue
 	const [error, setError] = useState(null);
 
+	/**
+	 * @description
+	 * Le problème du joueur choisi : les réponses de l'API peuvent arriver dans le désordre.
+	 * Exemple : 
+	 * Tu choisis Benoît dans la liste. L'appel #1 part chercher sa fiche — et elle est lourde : 215 visites à rapatrier. 
+	 * Une fraction de seconde plus tard, tu changes d'idée et tu choisis Carl : l'appel #2 part, mais sa fiche est minuscule, 13 visites. 
+	 * 
+	 * Le piège : le réseau garantit l'ordre d'envoi, jamais l'ordre de retour. La petite réponse de Carl revient en premier → Carl s'affiche, 
+	 * tout est beau. Puis la grosse réponse de Benoît finit d'arriver... et comme rien ne la vérifie, elle écrase l'écran : le sélecteur dit « Carl », 
+	 * la carte affiche Benoît. L'écran a « sauté » tout seul, sans que tu touches à rien. 
+	 * 
+	 * Sur ton localhost, les réponses prennent quelques millisecondes — le risque est mince. 
+	 * En production, avec un vrai serveur et une vraie connexion, un gros joueur suivi d'un petit, c'est tout à fait plausible. 
+	 * Le correctif, c'est le principe du ticket de vestiaire : chaque appel reçoit un numéro (1, 2, 3...). Quand une réponse revient, 
+	 * elle présente son ticket — si ce n'est plus le dernier numéro émis, son ticket est périmé et elle est ignorée en silence. 
+	 * Seule la réponse du choix le plus récent a le droit d'écrire sur l'écran.
+	*/
+	
+	// Compteur d'appels : seule la réponse du dernier appel a le droit de mettre à jour l'état
+	const requestCount = useRef(0);
+
 	// Fonction pour charger le joueur, son sommaire et son historique
 	const loadPlayer = async () => {
+
+		// Le numéro de cet appel : si un appel plus récent survient, la réponse de celui-ci sera ignorée
+		const requestId = ++requestCount.current;
 
 		try {
 			const response = await fetch(`${API_BASE_URL}/player.php?id_joueur=${playerId}`);
 
 			const data = await response.json();
+
+			// Réponse périmée : un autre joueur a été choisi entre-temps, on ignore cette réponse
+			if (requestId !== requestCount.current) {
+				return;
+			}
+
 			if (data.success) {
 
 				// Une seule mise à jour : le sommaire et le détaillé
