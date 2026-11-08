@@ -258,6 +258,10 @@ body {
 	margin-bottom: 0;
 }
 
+.result-section .all-results h2 {
+	margin-bottom: 16px
+}
+
 .result-subtitle {
 	color: var(--gold);
 	font-size: 15px;
@@ -427,7 +431,6 @@ body {
 }
 
 /* ============ Résultat de la vue Joueur ============ */
-
 .player-result {
 	display: flex;
 	flex-direction: column;
@@ -565,16 +568,6 @@ body {
 	color: var(--text-dim);
 }
 
-/* Titre de la section 2 (Résultat - Détaillé) */
-.result-subtitle {
-	color: var(--gold);
-	font-size: 15px;
-	font-weight: 700;
-	letter-spacing: 1.5px;
-	text-transform: uppercase;
-	margin: 24px 0 12px;
-}
-
 .loading-message {
 	color: var(--text-dim);
 	font-weight: 600;
@@ -645,6 +638,23 @@ body {
 	vertical-align: -2px;
 }
 
+/* ===== Vue Tout afficher ===== */
+.all-results .result-subtitle {
+	margin-top: 36px;
+}
+
+/* Séparation dorée : la première ligne d'un nouveau tournoi se détache du bloc précédent */
+.all-results .history-table tr.tournament-start td {
+	border-top: 2px solid var(--gold-soft);
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -656,7 +666,7 @@ body {
 	position: fixed;
 	width: 45px;
 	height: 45px;
-	bottom: 16px;
+	bottom: 66px;
 	right: 16px;
 	border: 1px solid var(--gold-soft);
 	border-radius: 50%;
