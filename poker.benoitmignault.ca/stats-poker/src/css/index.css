@@ -638,6 +638,23 @@ body {
 	vertical-align: -2px;
 }
 
+/* ===== Vue Tout afficher ===== */
+.all-results .result-subtitle {
+	margin-top: 36px;
+}
+
+/* Séparation dorée : la première ligne d'un nouveau tournoi se détache du bloc précédent */
+.all-results .history-table tr.tournament-start td {
+	border-top: 2px solid var(--gold-soft);
+}
+
+
+
+
+
+
+
+
 
 
 
