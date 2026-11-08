@@ -75,8 +75,8 @@ function AllResults() {
 						</tr>
 					</thead>
 					<tbody>
-						{results.map((row) => (
-							<tr key={row.id}>
+						{results.map((row, index) => (
+							<tr key={row.id} className={index > 0 && row.idTournoi !== results[index - 1].idTournoi ? "tournament-start" : ""}>
 								<td>{row.nom}</td>
 								<td className="col-center">{row.idTournoi}</td>
 								<td className="col-center">{row.date}</td>
