@@ -38,5 +38,6 @@
 	"lemon": "Citron",
 	"firstPlace": "1er",
 	"secondPlace": "2e",
-	"result": "Résultat"
+	"result": "Résultat",
+	"backToTop": "Retour en haut"
 }
