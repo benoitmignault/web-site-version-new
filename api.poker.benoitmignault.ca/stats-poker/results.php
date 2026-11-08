@@ -9,12 +9,13 @@ include(__DIR__ . "/includes/fct-connexion-bd.php");
 // Établir la connexion à la base de données pour les statistiques de poker
 $connMYSQL = connexionStatsDB();
 
-// Requête SQL pour récupérer tous les résultats : 
-// par tournoi, par gain décroissant, les killers départagent les égalités (un perdant avec des killers est moins perdant), puis par nom de joueur.
+// Requête SQL pour récupérer tous les résultats :
 $select = "SELECT p.id, j.joueur AS nom, p.id_tournoi, p.date, p.gain, p.victoire, p.fini_2e, p.killer, p.prix_citron ";
 $from = "FROM poker p ";
 $join = "LEFT JOIN joueur j ON j.id = p.id_joueur ";
-$orderBy = "ORDER BY p.id_tournoi DESC, p.gain DESC, p.killer DESC, j.joueur ASC";
+// L'ordre de tri est : par id_tournoi décroissant, puis par prix_citron (les prix citron sont affichés en dernier), puis par gain décroissant, puis par killer décroissant, puis par nom du joueur.
+$orderBy = "ORDER BY p.id_tournoi DESC, (p.prix_citron > 0) ASC, p.gain DESC, p.killer DESC, j.joueur ASC";
+
 $sql = $select . $from . $join . $orderBy;
 
 // Exécuter la requête SQL
