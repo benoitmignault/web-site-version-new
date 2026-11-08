@@ -258,6 +258,10 @@ body {
 	margin-bottom: 0;
 }
 
+.result-section .all-results h2 {
+	margin-bottom: 16px
+}
+
 .result-subtitle {
 	color: var(--gold);
 	font-size: 15px;
