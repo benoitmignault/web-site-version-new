@@ -28,3 +28,32 @@ export function setLanguage(lang) {
 export function t(key) {
 	return translations[currentLanguage][key] ?? key;
 }
+
+/**
+ * Retourne le suffixe ordinal d'un nombre dans la langue active.
+ * Français : 1er, puis 2e, 3e, ... — Anglais : 1st, 2nd, 3rd, 4th, ...
+ * avec l'exception 11th, 12th, 13th (et 111th, 112th, 113th).
+ *
+ * @param {number} n Le nombre à suffixer.
+ * @returns {string} Le suffixe ordinal (à afficher en exposant).
+ */
+export function ordinalSuffix(n) {
+
+	// En anglais, les exceptions sont 11, 12 et 13 (et 111, 112, 113, etc.)
+	if (currentLanguage === "en") {
+		const lastTwo = n % 100;
+		if (lastTwo >= 11 && lastTwo <= 13) {
+			return "th";
+		}
+
+		switch (n % 10) {
+			case 1: return "st";
+			case 2: return "nd";
+			case 3: return "rd";
+			default: return "th";
+		}
+	}
+
+	// En français, seul le 1er est spécial, tous les autres sont "e"
+	return n === 1 ? "er" : "e";
+}
