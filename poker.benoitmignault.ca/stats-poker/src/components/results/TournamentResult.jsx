@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { API_BASE_URL } from "../../config";
 import { FaTrophy } from "react-icons/fa";
-import { ordinalSuffix, t } from "../../i18n/i18n";
+import { ordinalInSuperscript, ordinalSuffix, t } from "../../i18n/i18n";
 
 
 /**
@@ -86,10 +86,14 @@ function TournamentResult({ tournamentId }) {
 		return <p className="loading-message">{t("loading")}</p>;
 	}
 
+	// Le suffixe ordinal du tournoi : en exposant en français, sur la ligne en anglais
+	const suffix = ordinalSuffix(tournament.id);
+	const tournamentSuffix = ordinalInSuperscript() ? <sup>{suffix}</sup> : suffix;
+
 	return (
 		<div className="tournament-result">
 			<h2 className="result-subtitle">{t("resultTournament")}</h2>
-			<h3 className="tournament-summary-title">{tournament.id}<sup>{ordinalSuffix(tournament.id)}</sup> - {tournament.date}</h3>
+			<h3 className="tournament-summary-title">{tournament.id}{tournamentSuffix} - {tournament.date}</h3>
 			<div className="history-table-wrapper">
 				<table className="history-table">
 					<thead>
