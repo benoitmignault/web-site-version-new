@@ -27,9 +27,9 @@ function TournamentList({ setActiveResult }) {
     // Préparer les options pour le sélecteur react-select :
     // on transforme la liste des tournois en tableau d'objets {value, label}
     const tournamentOptions = tournaments.map((tournament) => ({
-        value: tournament.id_tournoi,
+        value: tournament.id,
         // Ajancement du label pour inclure la date du tournoi et du # 
-        label: `${tournament.id_tournoi} - ${tournament.date}`,
+        label: `${tournament.id} - ${tournament.date}`,
     }));
 
     // Fonction pour charger la liste des tournois pour en sélectionner un
