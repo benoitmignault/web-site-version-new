@@ -57,3 +57,14 @@ export function ordinalSuffix(n) {
 	// En français, seul le 1er est spécial, tous les autres sont "e"
 	return n === 1 ? "er" : "e";
 }
+
+/**
+ * Indique si le suffixe ordinal de la langue active s'affiche en exposant.
+ * Français : oui (220ᵉ). Anglais : non, il reste sur la ligne (220th).
+ *
+ * @returns {boolean} Vrai si le suffixe va en exposant.
+ */
+export function ordinalInSuperscript() {
+	return currentLanguage === "fr";
+}
+
