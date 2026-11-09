@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PlayersList from "./PlayersList.jsx";
+import TournamentList from "./TournamentList.jsx";
 import AllResults from "./results/AllResults.jsx";
 import PlayerResult from "./results/PlayerResult.jsx";
 import LeaderboardResult from "./results/LeaderboardResult.jsx";
