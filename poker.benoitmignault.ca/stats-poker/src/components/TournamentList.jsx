@@ -50,7 +50,7 @@ function TournamentList({ setActiveResult }) {
                 // Erreur retournée par l'API lors du chargement des tournois
                 setError({ code: data.code, message: data.message });
             }            
-        } catch (error) {            
+        } catch (err) {            
             console.error(err);
 			setError({ code: "errorLoadingTournaments", message: "" });
         }
