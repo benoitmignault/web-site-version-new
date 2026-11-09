@@ -25,11 +25,14 @@
 	"errorLoadingPlayers": "An error occurred while loading the players.",
 	"errorLoadingResults": "An error occurred while loading the results.",
 	"errorLoadingTournaments": "An error occurred while loading the tournaments.",
+	"errorLoadingTournament": "An error occurred while loading the tournament.",
 	"errorDbConnection": "Database connection error.",
 	"errorPrepareQuery": "An error occurred while preparing the query.",
 	"errorExecuteQuery": "An error occurred while executing the query.",
 	"invalidPlayerId": "The id_joueur parameter is missing or invalid.",
+	"invalidTournamentId": "The id_tournoi parameter is missing or invalid.",
 	"playerNotFound": "No player matches this identifier.",
+	"tournamentNotFound": "No tournament matches this identifier.",
 	"presences": "Attendance",
 	"netGain": "Net gain",
 	"killers": "Killers",
@@ -45,5 +48,6 @@
 	"firstPlace": "1st",
 	"secondPlace": "2nd",
 	"result": "Result",
+	"resultTournament": "Result - Tournament",
 	"backToTop": "Back to top"
 }
