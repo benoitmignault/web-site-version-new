@@ -20,9 +20,7 @@ CREATE TABLE `poker` (
   KEY `idx_poker_tournoi` (`id_tournoi`),
   CONSTRAINT `chk_poker_victoire` CHECK (`victoire` IN (0, 1)),
   CONSTRAINT `chk_poker_fini_2e` CHECK (`fini_2e` IN (0, 1)),
-  -- Si le joueur est supprimé, ses résultats restent : l'historique ne s'efface pas
+  -- Un résultat vient toujours avec un joueur : impossible de supprimer un joueur qui a des participations
   CONSTRAINT `fk_poker_joueur` FOREIGN KEY (`id_joueur`)
-    REFERENCES `joueur` (`id`) ON DELETE SET NULL
+    REFERENCES `joueur` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Nous avons corrigé quelques anomalies dans les inserts de backup et maintenant tout est ok. On peut donc ajouter la contrainte d'intégrité référentielle.
