@@ -12,7 +12,7 @@ $connMYSQL = connexionStatsDB();
 // Requête SQl pour récupérer la lsite des tournois de manière décroissante (du plus récent au plus ancien) 
 // avec leur date et leur ID
 $select = "SELECT distinct id_tournoi, date ";
-$from = "FROM joueur ";
+$from = "FROM poker ";
 $orderBy = "ORDER BY id_tournoi desc";
 $sql = $select . $from . $orderBy;
 
