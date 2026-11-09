@@ -66,6 +66,11 @@ function Content() {
                         <PlayersList setActiveResult={setActiveResult} />
                     </div>
                 )}
+                {activeView === "tournament" && (
+                    <div className="precision-zone">
+                        <TournamentList setActiveResult={setActiveResult} />
+                    </div>
+                )}
 
 			</section>
 			{activeResult !== null && (
