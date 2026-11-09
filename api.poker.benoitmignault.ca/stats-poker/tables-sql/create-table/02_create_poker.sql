@@ -6,7 +6,7 @@
 -- ============================================================================
 CREATE TABLE `poker` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_joueur` int(11) DEFAULT NULL,                -- Joueur (joueur), NULL si le joueur a été supprimé
+  `id_joueur` INT NOT NULL,                        -- Joueur (joueur), NULL si le joueur a été supprimé
   `gain` int(11) NOT NULL,                         -- Résultat net du tournoi ($), négatif si perdant
   `victoire` tinyint(1) NOT NULL DEFAULT 0,        -- 1 = a remporté le tournoi, 0 sinon
   `fini_2e` tinyint(1) NOT NULL DEFAULT 0,         -- 1 = a terminé 2e, 0 sinon
