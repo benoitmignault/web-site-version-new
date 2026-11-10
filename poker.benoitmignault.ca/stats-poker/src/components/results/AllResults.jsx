@@ -88,7 +88,7 @@ function AllResults() {
 								<td className="col-center">
 									{row.victoire === 1 && (
 										<span className="place-badge">
-											<FaTrophy className="trophy gold" />
+											<FaTrophy className="trophy gold" role="img" aria-label={t("wins")} />
 										</span>
 									)}
 									{row.fini2e === 1 && (
