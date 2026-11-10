@@ -70,8 +70,8 @@ function TournamentResult({ tournamentId }) {
 	// On charge le tournoi au montage et à chaque changement d'id
 	useEffect(() => {
 
-		// On vide le tournoi courant : pendant le chargement du nouveau,
-		// c'est le message d'attente qui s'affiche, pas l'ancien tableau
+		// On vide le tournoi courant : pendant le chargement du nouveau, c'est le message d'attente qui s'affiche, pas l'ancien tableau
+		setError(null); // On vide l'erreur courante : si le nouveau tournoi n'existe pas, on affichera l'erreur de l'API, pas celle du tournoi précédent
 		setTournament(null);
 		loadTournament();
 	}, [tournamentId]);
