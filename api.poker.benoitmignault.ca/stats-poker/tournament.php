@@ -73,6 +73,9 @@ if ((int)$tournoi["nb"] === 0) {
 	exit();
 }
 
+// La date canonique du tournoi : la plus ancienne de ses participations
+$dateTournoi = $tournoi["date"];
+
 // --- Les participants du tournoi ---
 // Même logique de tri que la vue Tout afficher, à l'intérieur d'un tournoi :
 // par gain décroissant, les killers départagent les égalités, le prix citron ferme sa classe de gain, puis par nom de joueur
@@ -143,7 +146,7 @@ echo json_encode([
 	"success" => true,
 	"tournament" => [
 		"id" => $idTournoi,
-		"date" => $tournoi["date"],
+		"date" => $dateTournoi,
 		"players" => $players
 	]
 ]);
