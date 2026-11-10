@@ -108,6 +108,7 @@ function LeaderboardResult({ minPresences }) {
 						<tr>
 							<th className="col-center">{t("rank")}</th>
 							<th>{t("playerLabel")}</th>
+							<th className="col-center">{t("specialMentions")}</th>
 							<th className="col-right">{t("gain")}</th>
 							<th className="col-center">{t("wins")}</th>
 							<th className="col-center">{t("secondPlaces")}</th>
@@ -119,8 +120,8 @@ function LeaderboardResult({ minPresences }) {
 						{players.map((player, index) => (
 							<tr key={player.id}>
 								<td className="col-center">{index + 1}</td>
-								<td className="player-name-cell">
-									{player.nom}
+								<td>{player.nom}</td>
+								<td className="col-center special-mention-cell">
 									{MEDALS[player.id] && (
 										<FaTrophy className={`trophy ${MEDALS[player.id]}`} />
 									)}
