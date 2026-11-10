@@ -648,7 +648,14 @@ body {
 	border-top: 2px solid var(--gold-soft);
 }
 
+.trophy.bronze {
+	color: #CD7F32;
+}
 
+.special-mention-cell .trophy {
+	font-size: 0.95rem;
+	vertical-align: -2px;
+}
 
 
 
