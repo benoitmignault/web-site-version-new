@@ -15,6 +15,9 @@ const MEDALS = {
 	7: "bronze", // Jean-Philippe — 3e du 150e
 };
 
+// Trophées du podium : la couleur suit la position dans le classement affiché
+const RANK_TROPHIES = ["gold", "silver", "bronze"];
+
 /**
  * Résultat de la vue Classement.
  *
@@ -119,7 +122,13 @@ function LeaderboardResult({ minPresences }) {
 					<tbody>
 						{players.map((player, index) => (
 							<tr key={player.id}>
-								<td className="col-center">{index + 1}</td>
+								<td className="col-center rank-cell">
+									{RANK_TROPHIES[index] ? (
+										<FaTrophy className={`trophy ${RANK_TROPHIES[index]}`} />
+									) : (
+										index + 1
+									)}
+								</td>
 								<td>{player.nom}</td>
 								<td className="col-center special-mention-cell">
 									{MEDALS[player.id] && (
