@@ -126,6 +126,7 @@ function LeaderboardResult({ minPresences }) {
 	// même colonne = on inverse le sens ; nouvelle colonne = son sens
 	// naturel (croissant pour le nom, décroissant pour les chiffres)
 	const handleSort = (key) => {
+
 		if (sort.key === key) {
 			setSort({ key, direction: sort.direction === "asc" ? "desc" : "asc" });
 		} else {
