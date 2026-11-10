@@ -23,10 +23,11 @@ if ($idTournoi === false) {
 $connMYSQL = connexionStatsDB();
 
 // --- Le tournoi existe-t-il ? ---
-// (une date par tournoi : la requête ramène la date si le tournoi existe)
-$select = "SELECT DISTINCT date ";
+// On récupère le nombre de participants et la date du tournoi pour vérifier son existence
+$select = "SELECT COUNT(*) AS nb, MIN(date) AS date ";
 $from = "FROM poker ";
 $where = "WHERE id_tournoi = ?";
+
 $sqlTournoi = $select . $from . $where;
 $stmtTournoi = $connMYSQL->prepare($sqlTournoi);
 
