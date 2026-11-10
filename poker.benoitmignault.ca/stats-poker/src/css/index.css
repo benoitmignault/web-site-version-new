@@ -652,11 +652,15 @@ body {
 	color: #CD7F32;
 }
 
-.special-mention-cell .trophy {
-	font-size: 0.95rem;
+.special-mention-cell .trophy,
+.rank-cell .trophy {
+	font-size: 1.25rem;
 	vertical-align: -2px;
 }
 
+.rank-cell .trophy {
+	margin-left: 6px;
+}
 
 
 
