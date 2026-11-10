@@ -453,7 +453,7 @@ body {
 	gap: 14px;
 }
 
-.player-summary-title {
+.player-summary-title, .tournament-summary-title {
 	margin: 0;
 	font-size: 24px;
 	font-weight: 700;

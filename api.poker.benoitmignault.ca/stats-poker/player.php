@@ -56,7 +56,7 @@ $joueur = $resultatJoueur->fetch_assoc();
 $stmtJoueur->close();
 
 // Si aucun joueur ne porte cet id, on arrête ici avec une erreur 404
-if (!$joueur) {
+if ($joueur === null) {
 
     error_log("Aucun joueur trouvé pour l'ID: " . $idJoueur);
 	http_response_code(404);
