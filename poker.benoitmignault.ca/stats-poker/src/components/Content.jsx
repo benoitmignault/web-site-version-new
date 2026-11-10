@@ -1,6 +1,5 @@
 import { useState } from "react";
 import PlayersList from "./PlayersList.jsx";
-import TournamentList from "./TournamentList.jsx";
 import AllResults from "./results/AllResults.jsx";
 import PlayerResult from "./results/PlayerResult.jsx";
 import LeaderboardResult from "./results/LeaderboardResult.jsx";
@@ -64,11 +63,6 @@ function Content() {
                 {activeView === "player" && (
                     <div className="precision-zone">
                         <PlayersList setActiveResult={setActiveResult} />
-                    </div>
-                )}
-                {activeView === "tournament" && (
-                    <div className="precision-zone">
-                        <TournamentList setActiveResult={setActiveResult} />
                     </div>
                 )}
 

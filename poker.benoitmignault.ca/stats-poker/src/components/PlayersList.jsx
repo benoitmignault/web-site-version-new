@@ -48,7 +48,7 @@ function PlayersList({ setActiveResult }) {
 
 				// Erreur retournée par l'API lors du chargement des joueurs
 				setError({ code: data.code, message: data.message });
-			}			
+			}
 		} catch (err) {
 			console.error(err);
 			setError({ code: "errorLoadingPlayers", message: "" });

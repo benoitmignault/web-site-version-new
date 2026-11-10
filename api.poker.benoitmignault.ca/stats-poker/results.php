@@ -11,11 +11,12 @@ $connMYSQL = connexionStatsDB();
 
 // Requête SQL pour récupérer tous les résultats :
 $select = "SELECT p.id, j.joueur AS nom, p.id_tournoi, p.date, p.gain, p.victoire, p.fini_2e, p.killer, p.prix_citron ";
-$from = "FROM poker p INNER JOIN joueur j ON j.id = p.id_joueur ";
+$from = "FROM poker p ";
+$join = "LEFT JOIN joueur j ON j.id = p.id_joueur ";
 // L'ordre de tri est : par id_tournoi décroissant, puis par prix_citron (les prix citron sont affichés en dernier), puis par gain décroissant, puis par killer décroissant, puis par nom du joueur.
 $orderBy = "ORDER BY p.id_tournoi DESC, p.gain DESC, p.killer DESC, (p.prix_citron > 0) ASC, j.joueur ASC";
 
-$sql = $select . $from . $orderBy;
+$sql = $select . $from . $join . $orderBy;
 
 // Exécuter la requête SQL
 $result = $connMYSQL->query($sql);
@@ -40,7 +41,7 @@ while ($row = $result->fetch_assoc()) {
     // Ajoute un résultat au tableau en normalisant les types pour l'application React.
 	$results[] = [
 		"id" => (int) $row["id"],
-		"nom" => $row["nom"],
+		"nom" => $row["nom"] ?? "",
 		"idTournoi" => (int) $row["id_tournoi"],
 		"date" => $row["date"],
 		"gain" => (int) $row["gain"],
