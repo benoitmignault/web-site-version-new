@@ -61,18 +61,18 @@ function Content() {
 						</button>
 					))}
 				</div>
-				{/* La précision des vues nécessitant une précision viendra ici (au besoin seulement) */}
-                {activeView === "player" && (
-                    <div className="precision-zone">
+				<div className="precision-zone">
+                    {activeView === "player" && (
                         <PlayersList setActiveResult={setActiveResult} />
-                    </div>
-                )}
-                {activeView === "tournament" && (
-                    <div className="precision-zone">
+                    )}
+                    {activeView === "tournament" && (
                         <TournamentList setActiveResult={setActiveResult} />
-                    </div>
-                )}
-
+                    )}
+                    {activeView === "leaderboard" && (
+                        <MinPresencesSelect setActiveResult={setActiveResult} />
+                    )}
+                </div>
+                
 			</section>
 			{activeResult !== null && (
                 <section className="result-section">
