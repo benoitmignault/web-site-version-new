@@ -169,12 +169,12 @@ function PlayerResult({ playerId }) {
 								<td className="col-center">
 									{visit.victoire === 1 && (
 										<span className="place-badge">
-											<FaTrophy className="trophy gold" />
+											<FaTrophy className="trophy gold" aria-hidden="true" /> {t("win")}
 										</span>
 									)}
 									{visit.fini2e === 1 && (
 										<span className="place-badge">
-											<FaTrophy className="trophy silver" />
+											<FaTrophy className="trophy silver" aria-hidden="true" /> {t("secondPlace")}
 										</span>
 									)}
 								</td>
