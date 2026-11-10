@@ -19,6 +19,43 @@ const MEDALS = {
 const RANK_TROPHIES = ["gold", "silver", "bronze"];
 
 /**
+ * Explication du principe de triage côté client : 
+ * Le tri repose sur trois idées : 
+ * 	1- une note (l'état),
+ *  2- un clic sur l'en-tête (handleSort qui change l'état),
+ *  3- une photocopie (le tableau trié à afficher).
+ *  4- un comparateur (un juge) (la fonction de comparaison).
+ * 
+ * 1 - L'état du triage garde et connait juste la colonne et le sens du tri.
+ * 	const [sort, setSort] = useState({ key: "gain", direction: "desc" });
+ * 
+ * 2 - Le clic sur l'en-tête appelle la fonction «handleSort» qui met à jour l'état du tri.
+ * 	Si c'est la même que celle du tri courant (donc la même colonne), on inverse le sens ; 
+ * 	sinon on prend le sens naturel de la colonne (croissant pour le nom, décroissant pour les chiffres).
+ * 
+ * 3 - La photocopie est une copie du tableau reçu de l'API, triée selon le comparateur. 
+ * 	React déteste qu'on mute son état en douce, donc on fait une copie avant de trier et cette dernière est jetable : 
+ * 	elle n'est pas stockée dans l'état, elle est recalculée à chaque rendu.
+ * 
+ * 4 - Le comparateur qui est le juge (la fonction) qui compare deux lignes selon la colonne et le sens du tri.
+ * 	La fonction .sort() trie des nombres, pas de sobjects joueurs docn il faut comparer des valeurs de même types.
+ * 	- négatif → a d'abord (devant/plus haut)
+ * 	- positif → b d'abord (derrière/plus bas)
+ * 	- 0       → égalité (l'ordre actuel gagne — d'où la stabilité)
+ *  
+ * Exemple apr explication :
+ * 	Supposons que l'on ait un tableau de joueurs trié par gain décroissant :
+ * 	[ { name: "Alice", gain: 100 }, { name: "Bob", gain: 200 }, { name: "Charlie", gain: 150 } ]
+ * 	Si on clique sur l'en-tête "gain" pour trier en ordre croissant, le tableau devient :
+ * 	[ { name: "Alice", gain: 100 }, { name: "Charlie", gain: 150 }, { name: "Bob", gain: 200 } ]
+ * 
+ * Pour le nom, on utilise localeCompare pour comparer les noms, 
+ * le tri est croissant par défaut, donc si on clique sur l'en-tête "nom", le tableau devient :
+ * 	[ { name: "Alice", gain: 100 }, { name: "Bob", gain: 200 }, { name: "Charlie", gain: 150 } ]
+ * 
+ */
+
+/**
  * Résultat de la vue Classement.
  *
  * Au montage et à chaque changement de minimum de présences, appelle leaderboard.php, 
