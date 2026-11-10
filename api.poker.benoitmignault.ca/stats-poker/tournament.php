@@ -55,8 +55,8 @@ if (!$stmtTournoi->execute()) {
     exit();
 }
 
-$stmtTournoi = $stmtTournoi->get_result();
-$tournoi = $stmtTournoi->fetch_assoc();
+$resultTournoi = $stmtTournoi->get_result();
+$tournoi = $resultTournoi->fetch_assoc();
 $stmtTournoi->close();
 
 // Vérifier si le tournoi existe, sinon on arrête ici avec une erreur 404
