@@ -88,12 +88,12 @@ function AllResults() {
 								<td className="col-center">
 									{row.victoire === 1 && (
 										<span className="place-badge">
-											<FaTrophy className="trophy gold" /> {t("firstPlace")}
+											<FaTrophy className="trophy gold" />
 										</span>
 									)}
 									{row.fini2e === 1 && (
 										<span className="place-badge">
-											<FaTrophy className="trophy silver" /> {t("secondPlace")}
+											<FaTrophy className="trophy silver" />
 										</span>
 									)}
 								</td>
