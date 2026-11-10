@@ -154,21 +154,21 @@ function LeaderboardResult({ minPresences }) {
 					<thead>
 						<tr>
 							<th className="col-center">{t("rank")}</th>
-							<th>{t("playerLabel")}</th>
+							{sortableHeader("nom", t("playerLabel"), "")}
 							<th className="col-center">
 								<a className="special-mentions-link" href="#special-mentions-note">
 									{t("specialMentions")} *
 								</a>
 							</th>
-							<th className="col-right">{t("gain")}</th>
-							<th className="col-center">{t("wins")}</th>
-							<th className="col-center">{t("secondPlaces")}</th>
-							<th className="col-center">{t("presences")}</th>
-							<th className="col-right">{t("gainPerPresence")}</th>
+							{sortableHeader("gain", t("gain"), "col-right")}
+							{sortableHeader("victoires", t("wins"), "col-center")}
+							{sortableHeader("fini2e", t("secondPlaces"), "col-center")}
+							{sortableHeader("presences", t("presences"), "col-center")}
+							{sortableHeader("gainParPresence", t("gainPerPresence"), "col-right")}
 						</tr>
 					</thead>
 					<tbody>
-						{players.map((player, index) => (
+						{sortedPlayers.map((player, index) => (
 							<tr key={player.id}>
 								<td className="col-center rank-cell">
 									{RANK_TROPHIES[index] ? (
