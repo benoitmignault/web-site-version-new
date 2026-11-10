@@ -55,6 +55,7 @@ if (!$stmtTournoi->execute()) {
     exit();
 }
 
+// Récupérer le résultat de la requête pour le tournoi en créant une nouvelle variable
 $resultTournoi = $stmtTournoi->get_result();
 $tournoi = $resultTournoi->fetch_assoc();
 $stmtTournoi->close();
