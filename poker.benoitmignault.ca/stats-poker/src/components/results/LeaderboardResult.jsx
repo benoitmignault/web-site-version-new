@@ -117,6 +117,35 @@ function LeaderboardResult({ minPresences }) {
 		return <p className="loading-message">{t("loading")}</p>;
 	}
 
+	// Copie triée des lignes selon le tri courant : on ne trie jamais
+	// le tableau reçu (players), toujours une copie.
+	// Le tri JavaScript est stable : à valeur égale, l'ordre du serveur
+	// est conservé (gain, puis victoires, puis 2e places, puis présences) —
+	// ce sont les départages de ta v1, gratuits.
+	const sortedPlayers = [...players].sort((a, b) => {
+		const aValue = a[sort.key];
+		const bValue = b[sort.key];
+
+		// Le nom se compare comme du texte, les autres colonnes comme des nombres
+		const comparison = typeof aValue === "string"
+			? aValue.localeCompare(bValue)
+			: aValue - bValue;
+
+		return sort.direction === "asc" ? comparison : -comparison;
+	});
+
+	// En-tête triable : le clic trie par sa colonne, la flèche montre le tri actif
+	const sortableHeader = (key, label, className) => (
+		<th className={`${className} sortable-header`} onClick={() => handleSort(key)}>
+			{label}
+			{sort.key === key && (
+				<span className="sort-arrow">{sort.direction === "asc" ? " ▲" : " ▼"}</span>
+			)}
+		</th>
+	);
+
+
+
 	return (
 		<div className="leaderboard-result">
 			<h2 className="result-subtitle">{t("resultLeaderboard")}</h2>
