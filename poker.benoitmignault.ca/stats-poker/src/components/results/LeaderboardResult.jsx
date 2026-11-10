@@ -38,21 +38,20 @@ const RANK_TROPHIES = ["gold", "silver", "bronze"];
  * 	elle n'est pas stockée dans l'état, elle est recalculée à chaque rendu.
  * 
  * 4 - Le comparateur qui est le juge (la fonction) qui compare deux lignes selon la colonne et le sens du tri.
- * 	La fonction .sort() trie des nombres, pas de sobjects joueurs docn il faut comparer des valeurs de même types.
+ * 	La fonction .sort() trie des nombres seulement avec un comparateur, pas de sobjects joueurs docn il faut comparer des valeurs de même types.
  * 	- négatif → a d'abord (devant/plus haut)
  * 	- positif → b d'abord (derrière/plus bas)
  * 	- 0       → égalité (l'ordre actuel gagne — d'où la stabilité)
  *  
- * Exemple apr explication :
- * 	Supposons que l'on ait un tableau de joueurs trié par gain décroissant :
- * 	[ { name: "Alice", gain: 100 }, { name: "Bob", gain: 200 }, { name: "Charlie", gain: 150 } ]
- * 	Si on clique sur l'en-tête "gain" pour trier en ordre croissant, le tableau devient :
+ * Exemple par rapport à l'explication :
+ * 	* 	Supposons que l'on ait un tableau de joueurs trié par gain décroissant :
+ * 	[ { name: "Bob", gain: 200 }, { name: "Charlie", gain: 150 }, { name: "Alice", gain: 100 } ]
+ * 	Si on clique sur l'en-tête "gain" (même colonne : on inverse le sens, donc croissant), le tableau devient :
  * 	[ { name: "Alice", gain: 100 }, { name: "Charlie", gain: 150 }, { name: "Bob", gain: 200 } ]
  * 
  * Pour le nom, on utilise localeCompare pour comparer les noms, 
  * le tri est croissant par défaut, donc si on clique sur l'en-tête "nom", le tableau devient :
  * 	[ { name: "Alice", gain: 100 }, { name: "Bob", gain: 200 }, { name: "Charlie", gain: 150 } ]
- * 
  */
 
 /**
