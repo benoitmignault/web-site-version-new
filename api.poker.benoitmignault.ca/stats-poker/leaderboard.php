@@ -7,7 +7,7 @@ include(__DIR__ . "/includes/cors.php");
 include(__DIR__ . "/includes/fct-connexion-bd.php");
 
 // Récupérer le paramètre min_presences et valider que c'est un entier
-$minPresences = filter_var($_GET["min_presences"] ?? null, FILTER_VALIDATE_INT);
+$minPresences = filter_var($_GET["min_presences"] ?? null, FILTER_VALIDATE_INT, ["options" => ["min_range" => 1]]);
 
 // Vérifier si le paramètre min_presences est absent ou invalide
 if ($minPresences === false) {
