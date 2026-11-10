@@ -11,10 +11,12 @@ $connMYSQL = connexionStatsDB();
 
 // Requête SQl pour récupérer la lsite des tournois de manière décroissante (du plus récent au plus ancien) 
 // avec leur date et leur ID
-$select = "SELECT distinct id_tournoi, date ";
+$select = "SELECT id_tournoi, MIN(date) AS date ";
 $from = "FROM poker ";
+$groupBy = "GROUP BY id_tournoi ";
 $orderBy = "ORDER BY id_tournoi desc";
-$sql = $select . $from . $orderBy;
+$sql = $select . $from . $groupBy . $orderBy;
+
 
 // Exécuter la requête SQL
 $result = $connMYSQL->query($sql);
