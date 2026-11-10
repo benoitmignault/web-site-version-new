@@ -86,6 +86,17 @@ function LeaderboardResult({ minPresences }) {
 		}
 	};
 
+	// Fonction pour changer le tri quand on clique un en-tête :
+	// même colonne = on inverse le sens ; nouvelle colonne = son sens
+	// naturel (croissant pour le nom, décroissant pour les chiffres)
+	const handleSort = (key) => {
+		if (sort.key === key) {
+			setSort({ key, direction: sort.direction === "asc" ? "desc" : "asc" });
+		} else {
+			setSort({ key, direction: key === "nom" ? "asc" : "desc" });
+		}
+	};
+
 	// On charge le classement au montage et à chaque changement de seuil
 	useEffect(() => {
 
