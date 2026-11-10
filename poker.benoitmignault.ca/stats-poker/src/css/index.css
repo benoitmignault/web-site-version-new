@@ -26,6 +26,11 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+/* Pour permet de descendre de manière plus fluide*/
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	margin: 0;
 	background:
