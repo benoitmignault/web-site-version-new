@@ -113,15 +113,15 @@ function TournamentResult({ tournamentId }) {
 								</td>
 								<td className="col-center">{row.killer}</td>
 								<td className="col-center">{row.prixCitron}</td>
-								<td className="col-center">
+								<td className="col-center">									
 									{row.victoire === 1 && (
 										<span className="place-badge">
-											<FaTrophy className="trophy gold" />
+											<FaTrophy className="trophy gold" aria-hidden="true" /> {t("win")}
 										</span>
 									)}
 									{row.fini2e === 1 && (
 										<span className="place-badge">
-											<FaTrophy className="trophy silver" />
+											<FaTrophy className="trophy silver" aria-hidden="true" /> {t("secondPlace")}
 										</span>
 									)}
 								</td>
