@@ -99,7 +99,7 @@ function LeaderboardResult({ minPresences }) {
 
 			if (data.success) {
 
-				// Le format de la réponse est : {success: true, players: [...]}
+				// Le format de la réponse est : {success: true, leaderboard: [...]}
 				setPlayers(data.leaderboard);
 				setError(null);
 			} else {
