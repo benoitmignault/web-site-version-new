@@ -93,7 +93,7 @@ function AllResults() {
 									)}
 									{row.fini2e === 1 && (
 										<span className="place-badge">
-											<FaTrophy className="trophy silver" />
+											<FaTrophy className="trophy silver" role="img" aria-label={t("secondPlace")} />
 										</span>
 									)}
 								</td>
