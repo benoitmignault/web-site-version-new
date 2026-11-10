@@ -80,7 +80,7 @@ function Content() {
                     {activeView === "player" && <PlayerResult playerId={activeResult} />}
                     {activeView === "leaderboard" && <LeaderboardResult minPresences={activeResult} />}
                     {activeView === "tournament" && <TournamentResult tournamentId={activeResult} />}
-                    {activeView === "killers-lemons" && <KillersLemonsResult />}
+                    {activeView === "killers-lemons" && <KillersLemonsResult minPresences={activeResult} />}
                 </section>
             )}
 		</main>
