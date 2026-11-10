@@ -3,7 +3,6 @@ import { API_BASE_URL } from "../../config";
 import { FaTrophy } from "react-icons/fa";
 import { ordinalInSuperscript, ordinalSuffix, t } from "../../i18n/i18n";
 
-
 /**
  * Résultat de la vue Tournois.
  *
