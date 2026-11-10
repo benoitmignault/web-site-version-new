@@ -111,7 +111,11 @@ function LeaderboardResult({ minPresences }) {
 						<tr>
 							<th className="col-center">{t("rank")}</th>
 							<th>{t("playerLabel")}</th>
-							<th className="col-center">{t("specialMentions")}</th>
+							<th className="col-center">
+								<a className="special-mentions-link" href="#special-mentions-note">
+									{t("specialMentions")} *
+								</a>
+							</th>
 							<th className="col-right">{t("gain")}</th>
 							<th className="col-center">{t("wins")}</th>
 							<th className="col-center">{t("secondPlaces")}</th>
@@ -149,6 +153,7 @@ function LeaderboardResult({ minPresences }) {
 					</tbody>
 				</table>
 			</div>
+			<p className="leaderboard-note" id="special-mentions-note">* {t("specialMentionsNote")}</p>
 		</div>
 	);
 }
