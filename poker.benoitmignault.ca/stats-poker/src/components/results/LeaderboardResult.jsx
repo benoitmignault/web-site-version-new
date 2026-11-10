@@ -36,6 +36,10 @@ function LeaderboardResult({ minPresences }) {
 	// Les lignes du classement reçues de l'API
 	const [players, setPlayers] = useState(null);
 
+	// Le tri courant : la colonne (key) et le sens (direction).
+	// Par défaut, celui de l'endpoint : gain décroissant.
+	const [sort, setSort] = useState({ key: "gain", direction: "desc" });
+
 	// L'erreur à afficher : { code, message } — le code est traduit au rendu, donc suit la langue
 	const [error, setError] = useState(null);
 
