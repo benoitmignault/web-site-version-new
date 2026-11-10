@@ -20,7 +20,7 @@ const RANK_TROPHIES = ["gold", "silver", "bronze"];
 
 /**
  * Explication du principe de triage côté client : 
- * Le tri repose sur trois idées : 
+ * Le tri repose sur quatre idées : 
  * 	1- une note (l'état),
  *  2- un clic sur l'en-tête (handleSort qui change l'état),
  *  3- une photocopie (le tableau trié à afficher).
