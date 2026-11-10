@@ -132,7 +132,7 @@ function LeaderboardResult({ minPresences }) {
 								<td className="col-center">{player.fini2e}</td>
 								<td className="col-center">{player.presences}</td>
 								<td className={player.gainParPresence > 0 ? "col-right gain-positive" : player.gainParPresence < 0 ? "col-right gain-negative" : "col-right"}>
-									{player.gainParPresence > 0 ? `+${player.gainParPresence.toFixed(2)}` : player.gainParPresence.toFixed(2)}
+									{player.gainParPresence > 0 ? `+${player.gainParPresence.toFixed(2)} $` : `${player.gainParPresence.toFixed(2)} $`}
 								</td>
 							</tr>
 						))}
