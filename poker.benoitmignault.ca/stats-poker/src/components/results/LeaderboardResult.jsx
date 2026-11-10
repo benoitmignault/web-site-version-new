@@ -21,12 +21,11 @@ const RANK_TROPHIES = ["gold", "silver", "bronze"];
 /**
  * Résultat de la vue Classement.
  *
- * Au montage et à chaque changement de seuil, appelle leaderboard.php,
- * qui retourne le classement général des joueurs ayant au moins
- * le nombre de présences demandé (méthode 4 : aucune notion de
- * killer ni de prix citron). L'ordre reçu du serveur est l'ordre
- * d'affichage ; le rang est la position dans la liste.
- * Le tri interactif par colonne viendra plus tard.
+ * Au montage et à chaque changement de minimum de présences, appelle leaderboard.php, 
+ * qui retourne le classement général des joueurs ayant au moins le nombre de présences demandé.
+ * L'ordre reçu du serveur est l'ordre d'affichage dans un premier temps.
+ * Le triage interactif est côté client : on peut trier par n'importe quelle colonne, dans les deux sens.
+ *  - Sauf le rang et les mentions spéciales, qui sont fixes et ne se trient pas.
  *
  * @param {Object} props Les propriétés du composant.
  * @param {number} props.minPresences Le nombre minimal de présences choisi dans le sélecteur.
