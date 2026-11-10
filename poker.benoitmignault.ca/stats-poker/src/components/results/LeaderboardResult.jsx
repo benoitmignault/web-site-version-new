@@ -58,7 +58,7 @@ function LeaderboardResult({ minPresences }) {
 			if (data.success) {
 
 				// Le format de la réponse est : {success: true, players: [...]}
-				setPlayers(data.players);
+				setPlayers(data.leaderboard);
 				setError(null);
 			} else {
 
