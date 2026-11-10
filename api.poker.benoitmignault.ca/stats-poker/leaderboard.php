@@ -60,23 +60,20 @@ if (!$stmtLeaderboard->execute()) {
 $resultLeaderboard = $stmtLeaderboard->get_result();
 
 // Créer un tableau pour stocker les lignes du classement
-$leaderboardRows = [];
+$leaderboard = [];
 
 // Parcourir les résultats de la requête et ajouter chaque joueur au tableau
 while ($row = $resultLeaderboard->fetch_assoc()) {
 
 	// Ajouter chaque joueur au tableau (types normalisés pour le JavaScript)
-	$leaderboardRows[] = [
+	$leaderboard[] = [
 		"id" => (int) $row["id"],
 		"nom" => $row["nom"],
 		"presences" => (int) $row["presences"],
 		"gain" => (int) $row["gain"],
 		"victoires" => (int) $row["victoires"],
 		"fini2e" => (int) $row["fini2e"],
-		"killers" => (float) $row["killers"],
-		"prixCitrons" => (float) $row["prixCitrons"],
-		"gainParPresence" => (float) $row["gain_par_presence"],
-		"killerParPresence" => (float) $row["killer_par_presence"]
+		"gainParPresence" => (float) $row["gain_par_presence"]
 	];
 }
 
@@ -86,7 +83,7 @@ $stmtLeaderboard->close();
 http_response_code(200);
 
 // Retourner les données au format JSON :
-echo json_encode(["success" => true, "leaderboardRows" => $leaderboardRows]);
+echo json_encode(["success" => true, "leaderboard" => $leaderboard]);
 
 // Fermer la connexion à la base de données
 $connMYSQL->close();
