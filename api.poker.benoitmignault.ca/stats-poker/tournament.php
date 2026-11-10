@@ -62,7 +62,7 @@ $tournoi = $resultTournoi->fetch_assoc();
 $stmtTournoi->close();
 
 // Vérifier si le tournoi existe, sinon on arrête ici avec une erreur 404
-if ($tournoi === null) {
+if ((int)$tournoi["nb"] === 0) {
 
     error_log("Aucun tournoi trouvé pour l'ID: " . $idTournoi);
 	http_response_code(404);
