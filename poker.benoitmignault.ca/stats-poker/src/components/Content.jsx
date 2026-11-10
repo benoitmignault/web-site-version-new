@@ -35,7 +35,7 @@ function Content() {
 		{ id: "leaderboard", labelKey: "viewLeaderboard" },
 		{ id: "tournament", labelKey: "viewTournament" },
 		{ id: "killers-lemons", labelKey: "viewKillersLemons" }
-	];    
+	]; 
 
     // Changer de vue : le résultat démarre tout seul pour les vues sans précision, 
     // et attend la précision pour les autres
