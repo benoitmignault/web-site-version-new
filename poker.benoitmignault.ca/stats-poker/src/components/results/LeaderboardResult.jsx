@@ -181,15 +181,18 @@ function LeaderboardResult({ minPresences }) {
 
 	// En-tête triable : le clic trie par sa colonne, la flèche montre le tri actif
 	const sortableHeader = (key, label, className) => (
-		<th className={`${className} sortable-header`} onClick={() => handleSort(key)}>
-			{label}
-			{sort.key === key && (
-				<span className="sort-arrow">{sort.direction === "asc" ? " ▲" : " ▼"}</span>
-			)}
+		<th
+			className={`${className} sortable-header`}
+			aria-sort={sort.key === key ? (sort.direction === "asc" ? "ascending" : "descending") : undefined}
+		>
+			<button type="button" className="sort-button" onClick={() => handleSort(key)}>
+				{label}
+				{sort.key === key && (
+					<span className="sort-arrow"> {sort.direction === "asc" ? "▲" : "▼"}</span>
+				)}
+			</button>
 		</th>
 	);
-
-
 
 	return (
 		<div className="leaderboard-result">
