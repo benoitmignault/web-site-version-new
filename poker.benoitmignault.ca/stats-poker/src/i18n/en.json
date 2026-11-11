@@ -21,7 +21,7 @@
 	"choosePlayer": "Choose a player",
 	"chooseTournament": "Choose a tournament",
 	"loading": "Loading...",
-	"invalidMinPresences": "The presences_min parameter is missing or invalid.",
+	"invalidMinPresences": "The min_presences parameter is missing or invalid.",
 	"minPresencesLabel": "Minimum attendance",
 	"chooseMinPresences": "Choose a minimum",
 	"andMore": "and up",
