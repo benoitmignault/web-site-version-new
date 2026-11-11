@@ -26,7 +26,7 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-/* Pour permet de descendre de manière plus fluide*/
+/* Pour permettre une descente plus fluide */
 html {
 	scroll-behavior: smooth;
 }
