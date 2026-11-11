@@ -45,7 +45,7 @@ function Index() {
 
 	}, [language]);
 
-    // TODO : On loggera une stat pur arriver sur la page 
+    // TODO : On loggera une stat pour arriver sur la page 
     // TODO : On loggera une stat pour le choix d'affichage de la vue (toutes, joueur, classement, tournoi, killers & lemons)
 
 	// Gestion du bouton de retour en haut de page
