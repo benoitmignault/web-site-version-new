@@ -218,16 +218,21 @@ function LeaderboardResult({ minPresences }) {
 						{sortedPlayers.map((player, index) => (
 							<tr key={player.id}>
 								<td className="col-center rank-cell">
-									{RANK_TROPHIES[index] ? (
-										<FaTrophy className={`trophy ${RANK_TROPHIES[index]}`} />
+									{index < 3 ? (
+										<span className="place-badge">
+											<FaTrophy className={`trophy ${RANK_TROPHIES[index]}`} aria-hidden="true" /> {t(RANK_LABEL_KEYS[index])}
+										</span>
 									) : (
 										index + 1
 									)}
 								</td>
+
 								<td>{player.nom}</td>
 								<td className="col-center special-mention-cell">
 									{MEDALS[player.id] && (
-										<FaTrophy className={`trophy ${MEDALS[player.id]}`} />
+										<span className="place-badge">
+											<FaTrophy className={`trophy ${MEDALS[player.id]}`} aria-hidden="true" /> {t(MEDAL_LABEL_KEYS[MEDALS[player.id]])}
+										</span>
 									)}
 								</td>
 								<td className={player.gain > 0 ? "col-right gain-positive" : player.gain < 0 ? "col-right gain-negative" : "col-right"}>
