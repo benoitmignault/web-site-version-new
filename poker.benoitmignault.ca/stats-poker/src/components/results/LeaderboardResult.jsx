@@ -18,6 +18,17 @@ const MEDALS = {
 // Trophées du podium : la couleur suit la position dans le classement affiché
 const RANK_TROPHIES = ["gold", "silver", "bronze"];
 
+// Noms accessibles des mentions : l'exploit des tournois spéciaux, selon la couleur
+const MEDAL_LABEL_KEYS = {
+	gold: "firstPlace", // 1re place — nouvelle clé
+	silver: "secondPlace", // 2e place — existe déjà
+	bronze: "thirdPlace", // 3e place — nouvelle clé
+};
+
+
+const RANK_LABEL_KEYS = ["rankFirst", "rankSecond", "rankThird"];
+
+
 /**
  * Explication du principe de triage côté client : 
  * Le tri repose sur quatre idées : 
