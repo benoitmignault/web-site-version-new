@@ -227,7 +227,6 @@ function LeaderboardResult({ minPresences }) {
 										index + 1
 									)}
 								</td>
-
 								<td>{player.nom}</td>
 								<td className="col-center special-mention-cell">
 									{MEDALS[player.id] && (
