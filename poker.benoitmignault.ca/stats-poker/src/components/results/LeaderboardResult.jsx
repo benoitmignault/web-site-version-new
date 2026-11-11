@@ -25,9 +25,7 @@ const MEDAL_LABEL_KEYS = {
 	bronze: "thirdPlace", // 3e place — nouvelle clé
 };
 
-
 const RANK_LABEL_KEYS = ["rankFirst", "rankSecond", "rankThird"];
-
 
 /**
  * Explication du principe de triage côté client : 
