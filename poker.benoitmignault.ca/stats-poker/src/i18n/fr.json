@@ -15,7 +15,7 @@
 	"viewPlayer": "Joueur",
 	"playerLabel": "Joueur",
 	"viewLeaderboard": "Classement",
-	"invalidMinPresences": "Le paramètre présences_min est absent ou invalide.",
+	"invalidMinPresences": "Le paramètre min_presences est absent ou invalide.",
 	"minPresencesLabel": "Présences minimales",
 	"chooseMinPresences": "Choisir un minimum",
 	"andMore": "et +",
