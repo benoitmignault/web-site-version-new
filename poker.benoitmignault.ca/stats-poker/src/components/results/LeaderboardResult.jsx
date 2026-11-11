@@ -25,6 +25,7 @@ const MEDAL_LABEL_KEYS = {
 	bronze: "thirdPlace", // 3e place — nouvelle clé
 };
 
+// Noms accessibles du podium : la position dans le classement affiché, selon l'index
 const RANK_LABEL_KEYS = ["rankFirst", "rankSecond", "rankThird"];
 
 /**
