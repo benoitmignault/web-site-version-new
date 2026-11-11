@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { API_BASE_URL } from "../config";
 import Select from "react-select";
-import { t } from "../i18n/i18n";
+import { API_BASE_URL } from "../../config";
+import { t } from "../../i18n/i18n";
 
 /**
  * Liste déroulante des joueurs.
@@ -78,11 +78,11 @@ function PlayersList({ setActiveResult }) {
 	}
 
 	return (
-		<div className="player-field">
-			<span className="player-label">{t("playerLabel")}</span>
-			<div className="player-select-wrapper">
+		<div className="choice-field">
+			<span className="choice-label">{t("playerLabel")}</span>
+			<div className="choice-select-wrapper">
 				<Select
-					classNamePrefix="player-select"
+					classNamePrefix="choice-select"
 					options={playerOptions}
 					value={selectedOption}
 					onChange={handleChange}

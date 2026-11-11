@@ -26,6 +26,11 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+/* Pour permettre une descente plus fluide */
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	margin: 0;
 	background:
@@ -333,24 +338,24 @@ body {
 	margin-top: 18px;
 }
 
-/* Sélecteur de joueur (react-select), repris du sélecteur d'organisateur du minuteur */
-.player-field {
+/* Sélecteur d'une liste option (react-select), repris du sélecteur d'organisateur du minuteur */
+.choice-field {
 	display: flex;
 	flex-direction: column;
 }
 
-.player-label {
+.choice-label {
 	margin-bottom: 8px;
 	font-weight: 600;
 	color: var(--gold);
 }
 
-.player-select-wrapper {
+.choice-select-wrapper {
 	width: 320px;
 	max-width: 100%;
 }
 
-.player-select__control {
+.choice-select__control {
 	background: rgba(255, 255, 255, 0.08) !important;
 	border: 1px solid var(--gold-soft) !important;
 	min-height: 50px !important;
@@ -359,28 +364,28 @@ body {
 	cursor: pointer !important;
 }
 
-.player-select__control:hover {
+.choice-select__control:hover {
 	border-color: var(--gold) !important;
 }
 
-.player-select__control--is-focused {
+.choice-select__control--is-focused {
 	border-color: var(--gold) !important;
 	box-shadow: 0 0 0 1px var(--gold) !important;
 }
 
-.player-select__single-value {
+.choice-select__single-value {
 	color: white !important;
 }
 
-.player-select__input-container {
+.choice-select__input-container {
 	color: white !important;
 }
 
-.player-select__placeholder {
+.choice-select__placeholder {
 	color: rgba(255, 255, 255, 0.6) !important;
 }
 
-.player-select__menu {
+.choice-select__menu {
 	background: rgba(10, 10, 12, 0.95) !important;
 	backdrop-filter: blur(10px);
 	border: 1px solid var(--gold-soft);
@@ -388,39 +393,39 @@ body {
 	overflow: hidden;
 }
 
-.player-select__option {
+.choice-select__option {
 	background: transparent !important;
 	color: white !important;
 	cursor: pointer !important;
 }
 
-.player-select__option--is-focused {
+.choice-select__option--is-focused {
 	background: rgba(212, 175, 55, 0.25) !important;
 }
 
-.player-select__option--is-selected {
+.choice-select__option--is-selected {
 	background: rgba(212, 175, 55, 0.45) !important;
 }
 
-.player-select__indicator {
+.choice-select__indicator {
 	color: var(--gold) !important;
 }
 
-.player-select__menu-list::-webkit-scrollbar {
+.choice-select__menu-list::-webkit-scrollbar {
 	width: 8px;
 }
 
-.player-select__menu-list::-webkit-scrollbar-thumb {
+.choice-select__menu-list::-webkit-scrollbar-thumb {
 	background: rgba(255, 255, 255, 0.20);
 	border-radius: 10px;
 }
 
 /* Le X pour effacer la sélection, en or comme le reste */
-.player-select__clear-indicator {
+.choice-select__clear-indicator {
 	color: var(--gold) !important;
 }
 
-.player-select__clear-indicator:hover {
+.choice-select__clear-indicator:hover {
 	color: var(--gold-light) !important;
 }
 
@@ -593,7 +598,7 @@ body {
 
 .history-table th {
 	color: var(--gold);
-	font-size: 12px;
+	font-size: 14px;
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	text-align: left;
@@ -634,7 +639,7 @@ body {
 }
 
 .place-badge .trophy {
-	font-size: 0.95rem;
+	font-size: 1.25rem;
 	vertical-align: -2px;
 }
 
@@ -646,6 +651,73 @@ body {
 /* Séparation dorée : la première ligne d'un nouveau tournoi se détache du bloc précédent */
 .all-results .history-table tr.tournament-start td {
 	border-top: 2px solid var(--gold-soft);
+}
+
+.trophy.bronze {
+	color: #CD7F32;
+}
+
+.special-mention-cell .trophy,
+.rank-cell .trophy {
+	font-size: 1.25rem;
+	vertical-align: -2px;
+}
+
+.rank-cell .trophy {
+	margin-left: 6px;
+}
+
+.leaderboard-note {
+	margin-top: 10px;
+	font-size: 14px;
+	color: rgba(255, 255, 255, 0.55);
+	margin-bottom: 0;
+}
+
+.special-mentions-link {
+	color: inherit;
+	text-decoration: none;
+}
+
+.special-mentions-link:hover {
+	text-decoration: underline;
+}
+
+#special-mentions-note {
+	scroll-margin-top: 20px;
+}
+
+.history-table th.sortable-header {
+	cursor: pointer;
+}
+
+.history-table th.sortable-header:hover {
+	color: var(--gold-light);
+}
+
+.sort-arrow {
+	font-size: 11px;
+}
+
+/* Bouton de tri : aucun look propre, il hérite de l'en-tête */
+.sort-button {
+	background: none;
+	border: none;
+	padding: 0;
+	width: 100%;
+	font: inherit;
+	color: inherit;
+	text-align: inherit;
+	cursor: pointer;
+}
+
+.sort-button:hover {
+	color: var(--gold-light);
+}
+
+.sort-button:focus-visible {
+	outline: 2px solid var(--gold);
+	outline-offset: 2px;
 }
 
 

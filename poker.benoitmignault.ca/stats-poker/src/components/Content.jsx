@@ -1,6 +1,7 @@
 import { useState } from "react";
-import PlayersList from "./PlayersList.jsx";
-import TournamentList from "./TournamentList.jsx";
+import PlayersList from "./choices/PlayersList.jsx";
+import TournamentList from "./choices/TournamentList.jsx";
+import MinPresencesSelect from "./choices/MinPresencesSelect.jsx";
 import AllResults from "./results/AllResults.jsx";
 import PlayerResult from "./results/PlayerResult.jsx";
 import LeaderboardResult from "./results/LeaderboardResult.jsx";
@@ -34,7 +35,7 @@ function Content() {
 		{ id: "leaderboard", labelKey: "viewLeaderboard" },
 		{ id: "tournament", labelKey: "viewTournament" },
 		{ id: "killers-lemons", labelKey: "viewKillersLemons" }
-	];    
+	]; 
 
     // Changer de vue : le résultat démarre tout seul pour les vues sans précision, 
     // et attend la précision pour les autres
@@ -60,18 +61,18 @@ function Content() {
 						</button>
 					))}
 				</div>
-				{/* La précision des vues nécessitant une précision viendra ici (au besoin seulement) */}
-                {activeView === "player" && (
-                    <div className="precision-zone">
+				<div className="precision-zone">
+                    {activeView === "player" && (
                         <PlayersList setActiveResult={setActiveResult} />
-                    </div>
-                )}
-                {activeView === "tournament" && (
-                    <div className="precision-zone">
+                    )}
+                    {activeView === "tournament" && (
                         <TournamentList setActiveResult={setActiveResult} />
-                    </div>
-                )}
-
+                    )}
+                    {activeView === "leaderboard" && (
+                        <MinPresencesSelect setActiveResult={setActiveResult} />
+                    )}
+                </div>
+                
 			</section>
 			{activeResult !== null && (
                 <section className="result-section">
@@ -79,7 +80,7 @@ function Content() {
                     {activeView === "player" && <PlayerResult playerId={activeResult} />}
                     {activeView === "leaderboard" && <LeaderboardResult minPresences={activeResult} />}
                     {activeView === "tournament" && <TournamentResult tournamentId={activeResult} />}
-                    {activeView === "killers-lemons" && <KillersLemonsResult />}
+                    {activeView === "killers-lemons" && <KillersLemonsResult minPresences={activeResult} />}
                 </section>
             )}
 		</main>

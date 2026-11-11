@@ -3,7 +3,6 @@ import { API_BASE_URL } from "../../config";
 import { FaTrophy } from "react-icons/fa";
 import { ordinalInSuperscript, ordinalSuffix, t } from "../../i18n/i18n";
 
-
 /**
  * Résultat de la vue Tournois.
  *
@@ -114,15 +113,15 @@ function TournamentResult({ tournamentId }) {
 								</td>
 								<td className="col-center">{row.killer}</td>
 								<td className="col-center">{row.prixCitron}</td>
-								<td className="col-center">
+								<td className="col-center">									
 									{row.victoire === 1 && (
 										<span className="place-badge">
-											<FaTrophy className="trophy gold" /> {t("firstPlace")}
+											<FaTrophy className="trophy gold" aria-hidden="true" /> {t("win")}
 										</span>
 									)}
 									{row.fini2e === 1 && (
 										<span className="place-badge">
-											<FaTrophy className="trophy silver" /> {t("secondPlace")}
+											<FaTrophy className="trophy silver" aria-hidden="true" /> {t("secondPlace")}
 										</span>
 									)}
 								</td>
