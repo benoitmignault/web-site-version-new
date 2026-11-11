@@ -598,7 +598,7 @@ body {
 
 .history-table th {
 	color: var(--gold);
-	font-size: 12px;
+	font-size: 14px;
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	text-align: left;
