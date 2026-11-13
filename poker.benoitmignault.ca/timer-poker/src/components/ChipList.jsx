@@ -24,7 +24,7 @@ function ChipList({ organizerId }) {
 
 	// Fonction pour charger les jetons de l'organisateur sélectionné
 	const loadChips = async () => {
-
+		
 		try {
 			// On va chercher les jetons de l'organisateur sélectionné via l'API
 			// mais en mode asynchrone pour pouvoir attendre la réponse avant de mettre à jour l'état      
@@ -43,6 +43,7 @@ function ChipList({ organizerId }) {
 			} else {
 
 				// Erreur retournée par l'API lors du chargement des jetons
+				setChips([]); // On vide la liste des jetons pour ne pas afficher de données obsolètes
 				setError({ code: data.code, message: data.message });
 			}
 
@@ -50,6 +51,7 @@ function ChipList({ organizerId }) {
 
 			// En cas d'erreur, on affiche le message d'erreur dans la console et on met à jour l'état
 			console.error(err);
+			setChips([]); // On vide la liste des jetons pour ne pas afficher de données obsolètes
 			setError({ code: "errorLoadingChips", message: "" });
 		}
 	};
@@ -57,16 +59,23 @@ function ChipList({ organizerId }) {
 	// On charge les jetons de l'organisateur sélectionné au montage du composant
 	useEffect(() => {
 
-		// Sans organisateur sélectionné, on ne peut pas charger les jetons, donc on quitte la fonction
+		// Sans organisateur sélectionné, on vide les jetons et on quitte la fonction
 		if (!organizerId) {
+			setChips([]);
+			setError(null);
 			return;
 		}
 
+		// Nouvel organisateur : on vide tout de suite, avant même de charger,
+		// pour ne jamais afficher les jetons du précédent pendant l'attente
+		setChips([]);
+		setError(null);
+
 		// On charge les jetons de l'organisateur sélectionné
-        loadChips();		
-		
+		loadChips();
+
 		// On relance le useEffect à chaque fois que l'organizerId change
-    }, [organizerId]);
+	}, [organizerId]);
 
 	// Si le chargement a échoué, on affiche l'erreur au lieu de la liste déroulante via le code récupéré de l'object error
 	if (error) {
