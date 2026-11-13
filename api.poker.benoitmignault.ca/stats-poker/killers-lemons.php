@@ -73,9 +73,10 @@ while ($row = $resultKillersLemons->fetch_assoc()) {
 		"id" => (int) $row["id"],
 		"nom" => $row["nom"],
 		"presences" => (int) $row["presences"],
-		"killers" => (int) $row["killers"],
-		"citrons" => (int) $row["citrons"],
-		"killerParPresence" => (float) $row["killer_par_presence"]
+		"killers" => (float) $row["killers"],
+		"citrons" => (float) $row["citrons"],
+		"killerParPresence" => (float) $row["killer_par_presence"],
+        "citronParPresence" => (float) $row["citron_par_presence"]
 	];
 }
 
