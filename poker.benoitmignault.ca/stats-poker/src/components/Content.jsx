@@ -23,7 +23,7 @@ function Content() {
     const [activeView, setActiveView] = useState(null);
 
     // Les vues sans précision produisent leur résultat dès le clic
-    const viewsWithoutPrecision = ["all", "killers-lemons"];
+    const viewsWithoutPrecision = ["all"];
 
     // Ce qui déclenche et nourrit le résultat (null = rien à montrer)
     const [activeResult, setActiveResult] = useState(null);
