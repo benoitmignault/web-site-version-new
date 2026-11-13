@@ -103,6 +103,13 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 			return;
 		}
 
+		// Nouvel organisateur ou nouveau niveau : on vide tout de suite, avant même de charger,
+		// pour ne jamais afficher les blinds du précédent pendant l'attente
+		setSmall(null);
+		setBig(null);
+		setMaxLevel(null);
+		setError(null);
+
         // On charge les blinds de l'organisateur sélectionné pour le niveau courant
         loadBlinds();		
 		// On relance le useEffect à chaque fois que l'organizerId change
