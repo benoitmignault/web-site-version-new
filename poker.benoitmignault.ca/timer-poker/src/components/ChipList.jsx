@@ -60,6 +60,11 @@ function ChipList({ organizerId }) {
 
 		} catch (err) {
 
+			// Erreur périmée, même principe : un appel plus récent a pris le relais
+			if (requestId !== requestCount.current) {
+				return;
+			}
+			
 			// En cas d'erreur, on affiche le message d'erreur dans la console et on met à jour l'état
 			console.error(err);
 			setChips([]); // On vide la liste des jetons pour ne pas afficher de données obsolètes
