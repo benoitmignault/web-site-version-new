@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { API_BASE_URL } from "../../config";
-import { FaTrophy } from "react-icons/fa";
+import { FaLemon, FaSkullCrossbones, FaTrophy } from "react-icons/fa";
 import { t } from "../../i18n/i18n";
 
 // Médailles des tournois anniversaires : au 100e et au 150e tournoi,
