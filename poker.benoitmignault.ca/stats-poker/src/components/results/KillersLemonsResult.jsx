@@ -180,7 +180,7 @@ function KillersLemonsResult( { minPresences }) {
 							{sortableHeader("killers", (<><FaSkullCrossbones aria-hidden="true" /> {t("killers")}</>), "col-right")}
 							{sortableHeader("citrons", (<><FaLemon aria-hidden="true" /> {t("lemons")}</>), "col-right")}
 							{sortableHeader("presences", t("presences"), "col-center")}
-							{sortableHeader("killerParPresence", t("killerPerPresence"), "col-right")}
+							{sortableHeader("killerParPresence", t("killerPerPresence"), "col-right ratio-start")}
 							{sortableHeader("citronParPresence", t("lemonPerPresence"), "col-right")}
 						</tr>
 					</thead>
@@ -207,7 +207,7 @@ function KillersLemonsResult( { minPresences }) {
 								<td className="col-right">{player.killers.toFixed(2)}</td>
 								<td className="col-right">{player.citrons.toFixed(2)}</td>
 								<td className="col-center">{player.presences}</td>
-								<td className="col-right">{player.killerParPresence.toFixed(2)}</td>
+								<td className="col-right ratio-start">{player.killerParPresence.toFixed(2)}</td>
 								<td className="col-right">{player.citronParPresence.toFixed(2)}</td>
 							</tr>
 						))}
