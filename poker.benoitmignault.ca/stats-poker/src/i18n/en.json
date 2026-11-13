@@ -32,6 +32,7 @@
 	"errorLoadingResults": "An error occurred while loading the results.",
 	"errorLoadingTournaments": "An error occurred while loading the tournaments.",
 	"errorLoadingTournament": "An error occurred while loading the tournament.",
+	"errorLoadingKillersLemons": "An error occurred while loading the killers and lemons.",
 	"errorDbConnection": "Database connection error.",
 	"errorPrepareQuery": "An error occurred while preparing the query.",
 	"errorExecuteQuery": "An error occurred while executing the query.",
