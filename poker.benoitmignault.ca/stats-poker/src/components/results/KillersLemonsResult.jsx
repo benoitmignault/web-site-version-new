@@ -51,7 +51,7 @@ function KillersLemonsResult( { minPresences }) {
 
 	// Le tri courant : la colonne (key) et le sens (direction).
 	// Par défaut, celui de l'endpoint : killer décroissant.
-	const [sort, setSort] = useState({ key: "killer", direction: "desc" });
+	const [sort, setSort] = useState({ key: "killers", direction: "desc" });
 	
 	// L'erreur à afficher : { code, message } — le code est traduit au rendu, donc suit la langue
 	const [error, setError] = useState(null);
