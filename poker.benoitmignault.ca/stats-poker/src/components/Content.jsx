@@ -68,12 +68,9 @@ function Content() {
                     {activeView === "tournament" && (
                         <TournamentList setActiveResult={setActiveResult} />
                     )}
-                    {activeView === "leaderboard" && (
-                        <MinPresencesSelect setActiveResult={setActiveResult} />
-                    )}
-					{activeView === "killers-lemons" && (
-                        <MinPresencesSelect setActiveResult={setActiveResult} />
-                    )}
+                    {(activeView === "leaderboard" || activeView === "killers-lemons") && (
+						<MinPresencesSelect setActiveResult={setActiveResult} />
+					)}
                 </div>
                 
 			</section>
