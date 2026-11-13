@@ -71,6 +71,9 @@ function Content() {
                     {activeView === "leaderboard" && (
                         <MinPresencesSelect setActiveResult={setActiveResult} />
                     )}
+					{activeView === "killers-lemons" && (
+                        <MinPresencesSelect setActiveResult={setActiveResult} />
+                    )}
                 </div>
                 
 			</section>
