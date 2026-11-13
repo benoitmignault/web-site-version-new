@@ -79,6 +79,9 @@ function Content() {
                     {activeView === "tournament" && (
                         <TournamentList setActiveResult={setActiveResult} />
                     )}
+					{ /* Les vues qui partagent le même sélecteur de présences minimales 
+					     doivent utiliser key pour garder une certaine identité donc 
+						 si la key genre React fait un react du Composant*/ }
                     {(activeView === "leaderboard" || activeView === "killers-lemons") && (
 						<MinPresencesSelect key={activeView} setActiveResult={setActiveResult} />
 					)}
