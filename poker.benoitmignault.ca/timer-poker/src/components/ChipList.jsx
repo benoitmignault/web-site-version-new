@@ -27,6 +27,9 @@ function ChipList({ organizerId }) {
 
 	// Fonction pour charger les jetons de l'organisateur sélectionné
 	const loadChips = async () => {
+
+		// Le numéro de cet appel : si un appel plus récent survient, la réponse de celui-ci sera ignorée
+		const requestId = ++requestCount.current;
 		
 		try {
 			// On va chercher les jetons de l'organisateur sélectionné via l'API
@@ -35,6 +38,11 @@ function ChipList({ organizerId }) {
 
 			// On attend la réponse et on la convertit en JSON
 			const data = await response.json();
+
+			// Réponse périmée : un autre seuil a été choisi entre-temps, on ignore cette réponse
+			if (requestId !== requestCount.current) {
+				return;
+			}
 
 			// Vérification de la réponse de l'API pour voir si la récupération des détails du joueur a réussi
 			if (data.success) {

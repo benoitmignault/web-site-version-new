@@ -35,6 +35,9 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 	// fonction pour charger les blinds de l'organisateur sélectionné pour le niveau courant
 	const loadBlinds = async () => {
 
+		// Le numéro de cet appel : si un appel plus récent survient, la réponse de celui-ci sera ignorée
+		const requestId = ++requestCount.current;
+
 		// Rien à charger tant qu'aucun organisateur n'est choisi
 		// On doit attendre que l'organizerId soit défini avant de faire l'appel API, car sinon, on va utiliser la version sans id
 		if (!organizerId) {
@@ -48,6 +51,11 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 
 			// On attend la réponse et on la convertit en JSON
 			const data = await response.json();
+
+			// Réponse périmée : un autre organisateur ou niveau a été choisi entre-temps, on ignore cette réponse
+			if (requestId !== requestCount.current) {
+				return;
+			}
 
 			// Vérification de la réponse de l'API pour voir si la récupération des détails du joueur a réussi
 			if (data.success) {
