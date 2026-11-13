@@ -142,7 +142,7 @@ function PlayerResult({ playerId }) {
 				</div>
 			</div>
 			<h3 className="result-subtitle">{t("resultDetail")}</h3>
-			<p className="table-scroll-hint">{t("tableScrollHint")}</p>
+			<p className="table-scroll-hint playerresult">{t("tableScrollHint")}</p>
 			<div className="history-table-wrapper">
 				<table className="history-table">					
 					<thead>
