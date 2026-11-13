@@ -88,6 +88,19 @@
 
 	.table-scroll-hint {
 		display: block;
+		margin: 12px 0 0px;
+	}
+
+	.table-scroll-hint.allresults {		
+		margin: 12px 0 8px;
+	}
+
+	.table-scroll-hint.playerresult {		
+		margin: 0 0 8px;
+	}
+
+	.table-scroll-hint.tournamentresult {		
+		margin: 10px 0 10px;
 	}
 
 	.footer-bar {
