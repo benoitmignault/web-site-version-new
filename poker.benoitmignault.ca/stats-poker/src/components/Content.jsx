@@ -10,6 +10,17 @@ import KillersLemonsResult from "./results/KillersLemonsResult.jsx";
 import { t } from "../i18n/i18n";
 
 /**
+ * Le sélecteur de présences minimales est partagé par deux vues
+ * (Classement et Killers & citrons). Il est monté avec key={activeView} :
+ * pour React, la key fait partie de l'identité du composant, donc changer
+ * de vue change la key, démonte l'ancien sélecteur et en monte un neuf —
+ * son choix interne repart à zéro (« Choisir un minimum »), comme le
+ * résultat, déjà remis à null par le changement de vue. Sans la key,
+ * le même composant au même endroit resterait monté d'une vue à l'autre
+ * et garderait le seuil choisi pour la vue précédente.
+ */
+
+/**
  * Contenu des statistiques de poker.
  *
  * Deux sections : en haut, la recherche et les choix (les 5 vues,
@@ -69,7 +80,7 @@ function Content() {
                         <TournamentList setActiveResult={setActiveResult} />
                     )}
                     {(activeView === "leaderboard" || activeView === "killers-lemons") && (
-						<MinPresencesSelect setActiveResult={setActiveResult} />
+						<MinPresencesSelect key={activeView} setActiveResult={setActiveResult} />
 					)}
                 </div>
                 
