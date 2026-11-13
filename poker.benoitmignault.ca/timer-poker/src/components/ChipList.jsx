@@ -17,6 +17,9 @@ function ChipList({ organizerId }) {
 	// Les jetons reçus de l'API
 	const [chips, setChips] = useState([]);
 
+	// Compteur d'appels : seule la réponse du dernier appel a le droit de mettre à jour l'état
+	const requestCount = useRef(0);
+
 	// L'erreur à afficher : { code, message } — le code est traduit au rendu, donc suit la langue
 	// La traduction du code d'erreur est faite dans le rendu, car la langue peut changer après le chargement des données
 	// Utiliser un objet plutôt qu'une chaîne permet de changer de langue
