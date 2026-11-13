@@ -720,7 +720,9 @@ body {
 	outline-offset: 2px;
 }
 
-
+.sort-button svg {
+	vertical-align: -2px;
+}
 
 
 
