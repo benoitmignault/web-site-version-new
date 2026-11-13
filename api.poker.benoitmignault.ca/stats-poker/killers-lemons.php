@@ -24,7 +24,8 @@ $connMYSQL = connexionStatsDB();
 // agrégats par joueur, avec les ratios par présence calculés en SQL.
 // Le tri par défaut est celui de la version 1 (le + killer, le - prix citron, le - présences) ;
 // le tri interactif par colonne se fait côté React.
-$select = "SELECT j.id, j.joueur AS nom, COUNT(*) AS presences, SUM(p.killer) AS killers, SUM(p.prix_citron) AS citrons, ROUND(SUM(p.killer) / COUNT(*), 2) AS killer_par_presence ";
+$select = "SELECT j.id, j.joueur AS nom, COUNT(*) AS presences, SUM(p.killer) AS killers, SUM(p.prix_citron) AS citrons, 
+                  ROUND(SUM(p.killer) / COUNT(*), 2) AS killer_par_presence, ROUND(SUM(p.prix_citron) / COUNT(*), 2) AS citron_par_presence ";
 $from = "FROM poker p INNER JOIN joueur j ON j.id = p.id_joueur ";
 $where = "WHERE p.id_tournoi > 100 "; // Exclure les 100 premiers tournois qui n'avaient pas la notion de killer & de prix citron
 $groupBy = "GROUP BY j.id, j.joueur ";
