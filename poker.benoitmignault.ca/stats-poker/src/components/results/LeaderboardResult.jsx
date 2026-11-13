@@ -198,6 +198,7 @@ function LeaderboardResult({ minPresences }) {
 	return (
 		<div className="leaderboard-result">
 			<h2 className="result-subtitle">{t("resultLeaderboard")}</h2>
+			<p className="table-scroll-hint">{t("tableScrollHint")}</p>
 			<div className="history-table-wrapper">
 				<table className="history-table">
 					<thead>

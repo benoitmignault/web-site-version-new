@@ -93,6 +93,7 @@ function TournamentResult({ tournamentId }) {
 		<div className="tournament-result">
 			<h2 className="result-subtitle">{t("resultTournament")}</h2>
 			<h3 className="tournament-summary-title">{tournament.id}{tournamentSuffix} - {tournament.date}</h3>
+			<p className="table-scroll-hint">{t("tableScrollHint")}</p>
 			<div className="history-table-wrapper">
 				<table className="history-table">
 					<thead>

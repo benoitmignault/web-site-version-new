@@ -166,6 +166,7 @@ function KillersLemonsResult( { minPresences }) {
 	return (
 		<div className="killers-lemons-result">
 			<h2 className="result-subtitle">{t("resultKillersLemons")}</h2>
+			<p className="table-scroll-hint">{t("tableScrollHint")}</p>
 			<div className="history-table-wrapper">
 				<table className="history-table">
 					<thead>

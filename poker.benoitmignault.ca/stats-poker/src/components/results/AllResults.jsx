@@ -61,6 +61,7 @@ function AllResults() {
 	return (
 		<div className="all-results">
 			<h2>{t("resultAll")}</h2>
+			<p className="table-scroll-hint">{t("tableScrollHint")}</p>
 			<div className="history-table-wrapper">
 				<table className="history-table">
 					<thead>
