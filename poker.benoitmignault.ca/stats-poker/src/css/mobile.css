@@ -118,9 +118,58 @@
 		grid-column: span 2;
 	}
 	
+	.history-table {
+		min-width: 600px;
+		font-size: 13px;
+	}
+
+	.history-table th {
+		font-size: 12px;
+		letter-spacing: 0;
+		padding: 8px 6px;
+	}
+
+	.history-table td {
+		padding: 7px 6px;
+	}
+
 	.history-table .special-mention-cell {
 		display: none;
 	}
+
+	.history-table-tournament {
+		min-width: 350px;
+	}
+
+	.history-table-tournament th:nth-child(1) {
+		width: 27%;
+	}
+
+	.history-table-tournament th:nth-child(2) {
+		width: 18%;
+	}
+
+	.history-table-tournament th:nth-child(3) {
+		width: 13%;
+	}
+
+	.history-table-tournament th:nth-child(4) {
+		width: 13%;
+	}
+
+	.history-table-tournament th:nth-child(5) {
+		width: 32%;
+	}
+
+
+
+
+
+
+
+
+
+
 
 	#special-mentions-note {
 		display: none;
