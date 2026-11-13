@@ -57,6 +57,7 @@ if (!$stmtLeaderboard->execute()) {
 	exit();
 }
 
+// Récupérer les résultats de la requête
 $resultLeaderboard = $stmtLeaderboard->get_result();
 
 // Créer un tableau pour stocker les lignes du classement

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { API_BASE_URL } from "../config";
 import { t } from "../i18n/i18n";
 
@@ -17,6 +17,9 @@ function ChipList({ organizerId }) {
 	// Les jetons reçus de l'API
 	const [chips, setChips] = useState([]);
 
+	// Compteur d'appels : seule la réponse du dernier appel a le droit de mettre à jour l'état
+	const requestCount = useRef(0);
+
 	// L'erreur à afficher : { code, message } — le code est traduit au rendu, donc suit la langue
 	// La traduction du code d'erreur est faite dans le rendu, car la langue peut changer après le chargement des données
 	// Utiliser un objet plutôt qu'une chaîne permet de changer de langue
@@ -25,6 +28,9 @@ function ChipList({ organizerId }) {
 	// Fonction pour charger les jetons de l'organisateur sélectionné
 	const loadChips = async () => {
 
+		// Le numéro de cet appel : si un appel plus récent survient, la réponse de celui-ci sera ignorée
+		const requestId = ++requestCount.current;
+		
 		try {
 			// On va chercher les jetons de l'organisateur sélectionné via l'API
 			// mais en mode asynchrone pour pouvoir attendre la réponse avant de mettre à jour l'état      
@@ -32,6 +38,11 @@ function ChipList({ organizerId }) {
 
 			// On attend la réponse et on la convertit en JSON
 			const data = await response.json();
+
+			// Réponse périmée : un autre seuil a été choisi entre-temps, on ignore cette réponse
+			if (requestId !== requestCount.current) {
+				return;
+			}
 
 			// Vérification de la réponse de l'API pour voir si la récupération des détails du joueur a réussi
 			if (data.success) {
@@ -43,13 +54,20 @@ function ChipList({ organizerId }) {
 			} else {
 
 				// Erreur retournée par l'API lors du chargement des jetons
+				setChips([]); // On vide la liste des jetons pour ne pas afficher de données obsolètes
 				setError({ code: data.code, message: data.message });
 			}
 
 		} catch (err) {
 
+			// Erreur périmée, même principe : un appel plus récent a pris le relais
+			if (requestId !== requestCount.current) {
+				return;
+			}
+			
 			// En cas d'erreur, on affiche le message d'erreur dans la console et on met à jour l'état
 			console.error(err);
+			setChips([]); // On vide la liste des jetons pour ne pas afficher de données obsolètes
 			setError({ code: "errorLoadingChips", message: "" });
 		}
 	};
@@ -57,16 +75,23 @@ function ChipList({ organizerId }) {
 	// On charge les jetons de l'organisateur sélectionné au montage du composant
 	useEffect(() => {
 
-		// Sans organisateur sélectionné, on ne peut pas charger les jetons, donc on quitte la fonction
+		// Sans organisateur sélectionné, on vide les jetons et on quitte la fonction
 		if (!organizerId) {
+			setChips([]);
+			setError(null);
 			return;
 		}
 
+		// Nouvel organisateur : on vide tout de suite, avant même de charger,
+		// pour ne jamais afficher les jetons du précédent pendant l'attente
+		setChips([]);
+		setError(null);
+
 		// On charge les jetons de l'organisateur sélectionné
-        loadChips();		
-		
+		loadChips();
+
 		// On relance le useEffect à chaque fois que l'organizerId change
-    }, [organizerId]);
+	}, [organizerId]);
 
 	// Si le chargement a échoué, on affiche l'erreur au lieu de la liste déroulante via le code récupéré de l'object error
 	if (error) {

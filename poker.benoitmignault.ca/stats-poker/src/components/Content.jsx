@@ -10,6 +10,17 @@ import KillersLemonsResult from "./results/KillersLemonsResult.jsx";
 import { t } from "../i18n/i18n";
 
 /**
+ * Le sélecteur de présences minimales est partagé par deux vues
+ * (Classement et Killers & citrons). Il est monté avec key={activeView} :
+ * pour React, la key fait partie de l'identité du composant, donc changer
+ * de vue change la key, démonte l'ancien sélecteur et en monte un neuf —
+ * son choix interne repart à zéro (« Choisir un minimum »), comme le
+ * résultat, déjà remis à null par le changement de vue. Sans la key,
+ * le même composant au même endroit resterait monté d'une vue à l'autre
+ * et garderait le seuil choisi pour la vue précédente.
+ */
+
+/**
  * Contenu des statistiques de poker.
  *
  * Deux sections : en haut, la recherche et les choix (les 5 vues,
@@ -23,7 +34,7 @@ function Content() {
     const [activeView, setActiveView] = useState(null);
 
     // Les vues sans précision produisent leur résultat dès le clic
-    const viewsWithoutPrecision = ["all", "killers-lemons"];
+    const viewsWithoutPrecision = ["all"];
 
     // Ce qui déclenche et nourrit le résultat (null = rien à montrer)
     const [activeResult, setActiveResult] = useState(null);
@@ -68,9 +79,12 @@ function Content() {
                     {activeView === "tournament" && (
                         <TournamentList setActiveResult={setActiveResult} />
                     )}
-                    {activeView === "leaderboard" && (
-                        <MinPresencesSelect setActiveResult={setActiveResult} />
-                    )}
+					{ /* Les vues qui partagent le même sélecteur de présences minimales 
+					     doivent utiliser key pour garder une certaine identité donc 
+						 si la key genre React fait un react du Composant*/ }
+                    {(activeView === "leaderboard" || activeView === "killers-lemons") && (
+						<MinPresencesSelect key={activeView} setActiveResult={setActiveResult} />
+					)}
                 </div>
                 
 			</section>

@@ -720,15 +720,14 @@ body {
 	outline-offset: 2px;
 }
 
+.sort-button svg {
+	vertical-align: -2px;
+}
 
-
-
-
-
-
-
-
-
+/* Séparation verticale : la section des ratios (calculs dérivés) se détache des données brutes */
+.history-table .ratio-start {
+	border-left: 1px solid var(--gold-soft);
+}
 
 /* Bouton de retour en haut de page (visible après défilement) */
 .scroll-top-btn {

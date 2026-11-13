@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { API_BASE_URL } from "../config";
 import { t } from "../i18n/i18n";
 
@@ -24,6 +24,9 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 	const [small, setSmall] = useState(null);
 	const [big, setBig] = useState(null);
 
+	// Compteur d'appels : seule la réponse du dernier appel a le droit de mettre à jour l'état
+	const requestCount = useRef(0);
+
 	// L'erreur à afficher : { code, message } — le code est traduit au rendu, donc suit la langue
 	// La traduction du code d'erreur est faite dans le rendu, car la langue peut changer après le chargement des données
 	// Utiliser un objet plutôt qu'une chaîne permet de changer de langue
@@ -31,6 +34,9 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 
 	// fonction pour charger les blinds de l'organisateur sélectionné pour le niveau courant
 	const loadBlinds = async () => {
+
+		// Le numéro de cet appel : si un appel plus récent survient, la réponse de celui-ci sera ignorée
+		const requestId = ++requestCount.current;
 
 		// Rien à charger tant qu'aucun organisateur n'est choisi
 		// On doit attendre que l'organizerId soit défini avant de faire l'appel API, car sinon, on va utiliser la version sans id
@@ -45,6 +51,11 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 
 			// On attend la réponse et on la convertit en JSON
 			const data = await response.json();
+
+			// Réponse périmée : un autre organisateur ou niveau a été choisi entre-temps, on ignore cette réponse
+			if (requestId !== requestCount.current) {
+				return;
+			}
 
 			// Vérification de la réponse de l'API pour voir si la récupération des détails du joueur a réussi
 			if (data.success) {
@@ -64,6 +75,11 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 			}
 
 		} catch (err) {
+
+			// Erreur périmée, même principe : un appel plus récent a pris le relais
+			if (requestId !== requestCount.current) {
+				return;
+			}
 
 			// En cas d'erreur, on affiche le message d'erreur dans la console et on met à jour l'état
 			console.error(err);
@@ -102,6 +118,13 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 			setError(null);
 			return;
 		}
+
+		// Nouvel organisateur ou nouveau niveau : on vide tout de suite, avant même de charger,
+		// pour ne jamais afficher les blinds du précédent pendant l'attente
+		setSmall(null);
+		setBig(null);
+		setMaxLevel(null);
+		setError(null);
 
         // On charge les blinds de l'organisateur sélectionné pour le niveau courant
         loadBlinds();		
