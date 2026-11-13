@@ -103,5 +103,22 @@
 
 	.player-trophies-card {
 		grid-column: span 2;
-	}	
+	}
+	
+	.history-table .special-mention-cell {
+		display: none;
+	}
+
+	#special-mentions-note {
+		display: none;
+	}
+
+	.special-mentions-pc-note {
+		display: block;
+	}
+
+
+
+
+
 }
