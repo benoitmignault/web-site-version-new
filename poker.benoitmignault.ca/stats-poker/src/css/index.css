@@ -729,13 +729,6 @@ body {
 	border-left: 1px solid var(--gold-soft);
 }
 
-
-
-
-
-
-
-
 /* Bouton de retour en haut de page (visible après défilement) */
 .scroll-top-btn {
 	display: flex;
