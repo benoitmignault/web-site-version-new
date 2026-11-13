@@ -28,6 +28,10 @@
 		padding: 16px 20px;
 	}
 
+	.view-choices {
+		flex-direction: column;
+	}
+
 	.view-btn {
 		flex: 1 1 auto;
 	}
