@@ -77,7 +77,7 @@ function KillersLemonsResult( { minPresences }) {
 
 			if (data.success) {
 
-				// Le format de la réponse est : {success: true, leaderboard: [...]}
+				// Le format de la réponse est : {success: true, killersLemons: [...]}
 				setPlayers(data.killersLemons);
 				setError(null);
 			} else {
