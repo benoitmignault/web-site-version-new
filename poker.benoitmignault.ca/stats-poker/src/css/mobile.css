@@ -2,7 +2,7 @@
 
 @media (max-width: 768px) {
 	#root {
-		padding: 16px 14px 130px;
+		padding: 16px 14px;
 	}
 
 	.header-container {
