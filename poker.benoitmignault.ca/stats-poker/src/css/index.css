@@ -724,6 +724,10 @@ body {
 	vertical-align: -2px;
 }
 
+/* Séparation verticale : la section des ratios (calculs dérivés) se détache des données brutes */
+.history-table .ratio-start {
+	border-left: 1px solid var(--gold-soft);
+}
 
 
 
