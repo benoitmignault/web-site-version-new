@@ -213,7 +213,7 @@ function LeaderboardResult({ minPresences }) {
 							{sortableHeader("victoires", t("wins"), "col-center")}
 							{sortableHeader("fini2e", t("secondPlaces"), "col-center")}
 							{sortableHeader("presences", t("presences"), "col-center")}
-							{sortableHeader("gainParPresence", t("gainPerPresence"), "col-right")}
+							{sortableHeader("gainParPresence", t("gainPerPresence"), "col-right ratio-start")}
 						</tr>
 					</thead>
 					<tbody>
@@ -242,7 +242,7 @@ function LeaderboardResult({ minPresences }) {
 								<td className="col-center">{player.victoires}</td>
 								<td className="col-center">{player.fini2e}</td>
 								<td className="col-center">{player.presences}</td>
-								<td className={player.gainParPresence > 0 ? "col-right gain-positive" : player.gainParPresence < 0 ? "col-right gain-negative" : "col-right"}>
+								<td className={player.gainParPresence > 0 ? "col-right gain-positive ratio-start" : player.gainParPresence < 0 ? "col-right gain-negative ratio-start" : "col-right ratio-start"}>
 									{player.gainParPresence > 0 ? `+${player.gainParPresence.toFixed(2)} $` : `${player.gainParPresence.toFixed(2)} $`}
 								</td>
 							</tr>
