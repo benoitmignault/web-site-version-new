@@ -683,6 +683,10 @@ body {
 	margin-bottom: 0;
 }
 
+.special-mentions-pc-note {
+	display: none;
+}
+
 .special-mentions-link {
 	color: inherit;
 	text-decoration: none;
