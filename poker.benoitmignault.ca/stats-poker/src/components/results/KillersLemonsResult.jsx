@@ -173,7 +173,7 @@ function KillersLemonsResult( { minPresences }) {
 						<tr>
 							<th className="col-center">{t("rank")}</th>
 							{sortableHeader("nom", t("playerLabel"), "")}
-							<th className="col-center">
+							<th className="col-center special-mention-cell">
 								<a className="special-mentions-link" href="#special-mentions-note">
 									{t("specialMentions")} *
 								</a>
@@ -216,6 +216,7 @@ function KillersLemonsResult( { minPresences }) {
 				</table>
 			</div>
 			<p className="leaderboard-note" id="special-mentions-note">* {t("specialMentionsNote")}</p>
+			<p className="leaderboard-note special-mentions-pc-note">{t("specialMentionsPcNote")}</p>
 		</div>
 	);
 }
