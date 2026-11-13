@@ -28,18 +28,49 @@
 	.header-controls {
 		margin-left: 0;
 		flex-wrap: wrap;
-		gap: 10px 14px;
+		gap: 10px 0;
 		border-left: none;
 		padding-left: 0;
+	}
+
+	.admin-link {
+		flex: 1 1 50%;
+		box-sizing: border-box;
+		text-align: right;
+		padding-right: 20px;
+	}
+
+	.timer-link {
+		flex: 1 1 50%;
+		box-sizing: border-box;
 	}
 
 	.language-switch {
+		flex: 1 1 100%;
+		gap: 0;
 		border-left: none;
 		padding-left: 0;
-		flex: 1 1 100%;
-		justify-content: center;
 	}
 
+	.language-switch span {
+		display: none;
+	}
+
+	.language-switch button {
+		flex: 1 1 50%;
+		box-sizing: border-box;
+	}
+
+	.language-switch button:first-of-type {
+		text-align: right;
+		padding-right: 20px;
+	}
+
+	.language-switch button:last-of-type {
+		border-left: 1px solid var(--gold-soft);
+		text-align: left;
+		padding-left: 20px;
+	}
 
 	.choice-section,
 	.result-section {
@@ -67,6 +98,5 @@
 
 	.player-trophies-card {
 		grid-column: span 2;
-	}
-	
+	}	
 }
