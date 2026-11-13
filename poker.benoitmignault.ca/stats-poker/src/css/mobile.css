@@ -33,8 +33,17 @@
 		margin-left: 0;
 		flex-wrap: wrap;
 		gap: 10px 14px;
-		padding-left: 14px;
+		border-left: none;
+		padding-left: 0;
 	}
+
+	.language-switch {
+		border-left: none;
+		padding-left: 0;
+		flex: 1 1 100%;
+		justify-content: center;
+	}
+
 
 	.choice-section,
 	.result-section {
