@@ -112,7 +112,9 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 		// on ne peut pas charger les blinds, donc on quitte la fonction		
 		if (!organizerId) {
 			
-			setSmall(null);
+			// On vide les valeurs pour ne pas garder les infos de l'organisateur précédent
+			requestCount.current++; // mais on incrémente le compteur pour que la réponse de l'appel précédent soit ignorée si elle arrive après
+			setSmall(null);			
 			setBig(null);
 			setMaxLevel(null);
 			setError(null);
