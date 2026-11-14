@@ -11,9 +11,21 @@ where applicable.
 
 | Project | Description | Status |
 |---|---|---|
-| **Poker Tournament Timer** | Dashboard for home poker tournaments: per-organizer chip colors/values and blind structures, countdown timer with end-of-level alerts. [Live demo](https://poker.benoitmignault.ca/timer-poker/) | Deployed (Oct 2026) |
+| **Poker Tournament Timer** | Dashboard for home poker tournaments: per-organizer chip colors/values and blind structures, countdown timer with end-of-level alerts. [Live demo](https://poker.benoitmignault.ca/timer-poker/) | Deployed (Oct 2026) — version 2 in preparation |
 | **Poker Night Stats** | Statistics from my Friday poker nights with friends (tracked since 2011): five public views — all results, player summary, leaderboard, tournament detail, killers & lemons. [Live demo](https://poker.benoitmignault.ca/stats-poker/) | Deployed (Nov 2026) |
 | **Montérégie Golf League** | League standings, results and statistics. | Separate repository: [golf-league-monteregie](https://github.com/benoitmignault/golf-league-monteregie) |
+
+
+## Roadmap
+
+| When | Project |
+|---|---|
+| Late November 2026 | **Poker Tournament Timer — version 2**: TV mode via a dedicated route, dashboard layout rework (clock moved up), larger chip display |
+| Late November – December 2026 | **Stats Management**: admin tool to add and edit poker results |
+| Mid to late December 2026 | **Organizer Management**: organizer accounts and password reset |
+| January 2027 | **New homepage** for benoitmignault.ca, connecting the 2.0 tools |
+| February 2027 | **Calculator**: the calculator first imagined in 2016, rebuilt in React — no page reloads |
+
 
 ## Tech Stack
 
