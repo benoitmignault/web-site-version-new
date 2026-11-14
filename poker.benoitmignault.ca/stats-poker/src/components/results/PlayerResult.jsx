@@ -74,6 +74,8 @@ function PlayerResult({ playerId }) {
 				setError({ code: data.code, message: data.message });
 			}
 		} catch (err) {
+
+			// Erreur périmée, même principe : un appel plus récent a pris le relais
 			if (requestId !== requestCount.current) {
 				return;
 			}
