@@ -137,6 +137,48 @@
 		display: none;
 	}
 
+	.history-table-allresults {
+		min-width: 540px;
+	}
+
+	.history-table-allresults th:nth-child(1) {
+		width: 18%;
+	}
+
+	.history-table-allresults th:nth-child(2) {
+		width: 12%;
+	}
+
+	.history-table-allresults th:nth-child(3) {
+		width: 17%;
+	}
+
+	.history-table-allresults th:nth-child(4) {
+		width: 11%;
+	}
+
+	.history-table-allresults th:nth-child(5) {
+		width: 10%;
+	}
+
+	.history-table-allresults th:nth-child(6) {
+		width: 11%;
+	}
+
+	.history-table-allresults th:nth-child(7) {
+		width: 21%;
+	}
+
+
+
+
+
+
+
+
+
+
+
 	.history-table-tournament {
 		min-width: 350px;
 	}
@@ -181,6 +223,10 @@
 
 
 
+
+	.scroll-top-btn {
+		bottom: 22px;
+	}
 
 
 }
