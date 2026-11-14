@@ -1,6 +1,6 @@
 -- ============================================================================
 -- Table : stats_logs
--- Journal des statistiques des statistiques de poker : une ligne par événement
+-- Journal des statistiques de poker : une ligne par événement
 -- (chargement de page, sélection d'une option d'affichage et de sa sous-option).
 -- Même logique que timer_logs (minuteur) : les logs naissent de l'usage,
 -- la table démarre vide, aucun fichier d'insert.
