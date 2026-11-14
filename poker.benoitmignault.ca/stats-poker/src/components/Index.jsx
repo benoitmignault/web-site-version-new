@@ -46,10 +46,7 @@ function Index() {
 		document.documentElement.lang = language;
 
 	}, [language]);
-
-    // TODO : On loggera une stat pour arriver sur la page 
-    // TODO : On loggera une stat pour le choix d'affichage de la vue (toutes, joueur, classement, tournoi, killers & lemons)
-
+	
 	/**
 	 * Bouton de retour en haut : visible seulement après 300 px de défilement.
 	 * L'écouteur est passif pour ne jamais bloquer le défilement, et la mise à
