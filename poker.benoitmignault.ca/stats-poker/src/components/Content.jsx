@@ -41,6 +41,7 @@ function Content() {
     // Ce qui déclenche et nourrit le résultat (null = rien à montrer)
     const [activeResult, setActiveResult] = useState(null);
 
+	// Compteur pour forcer le démontage/remontage du sélecteur de précision
 	const [resetCount, setResetCount] = useState(0);
 
 	// Les 5 vues : l'id sert d'état, la clé i18n sert d'étiquette
