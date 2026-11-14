@@ -18,7 +18,7 @@ function IncludeStats() {
         includeStats();
 
         // Redirection après 2 secondes
-        const timer = setTimeout(() => {navigate("/timer-poker/");}, 2000);
+        const timer = setTimeout(() => {navigate("/stats-poker/");}, 2000);
         
         return () => clearTimeout(timer);
 
