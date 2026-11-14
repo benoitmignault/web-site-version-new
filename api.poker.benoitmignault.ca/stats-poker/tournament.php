@@ -15,7 +15,7 @@ if ($idTournoi === false) {
 
     error_log("ID tournoi invalide: " . var_export($_GET["id_tournoi"] ?? null, true));    
 	http_response_code(400);
-	echo json_encode(["success" => false, "code" => "invalidTournamentId", "message" => "Le paramètre 'id_tournoi' est absent ou invalide"]);
+	echo json_encode(["success" => false, "code" => "errorInvalidTournamentId", "message" => "Le paramètre 'id_tournoi' est absent ou invalide"]);
 	exit();
 }
 
