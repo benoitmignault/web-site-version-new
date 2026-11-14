@@ -1,0 +1,280 @@
+/* Statistiques de poker - ajustements pour petits écrans */
+
+@media (max-width: 768px) {
+	#root {
+		padding: 16px 14px;
+	}
+
+	.message-page {
+		margin: 60px 20px;
+		padding: 25px;
+	}
+
+	.message-page h2 {
+		font-size: 1.6rem;
+	}
+
+	.message-page p {
+		font-size: 1rem;
+	}
+
+	.header-container {
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 16px 20px;
+	}
+
+	.header-container h1 {
+		font-size: 1.6rem;
+	}
+
+	.header-tagline {
+		white-space: normal;
+	}
+
+	.header-tagline > span {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.header-controls {
+		margin-left: 0;
+		flex-wrap: wrap;
+		gap: 10px 0;
+		border-left: none;
+		padding-left: 0;
+	}
+
+	.admin-link {
+		flex: 1 1 50%;
+		box-sizing: border-box;
+		text-align: right;
+		padding-right: 20px;
+	}
+
+	.timer-link {
+		flex: 1 1 50%;
+		box-sizing: border-box;
+	}
+
+	.language-switch {
+		flex: 1 1 100%;
+		gap: 0;
+		border-left: none;
+		padding-left: 0;
+	}
+
+	.language-switch span {
+		display: none;
+	}
+
+	.language-switch button {
+		flex: 1 1 50%;
+		box-sizing: border-box;
+	}
+
+	.language-switch button:first-of-type {
+		text-align: right;
+		padding-right: 20px;
+	}
+
+	.language-switch button:last-of-type {
+		border-left: 1px solid var(--gold-soft);
+		text-align: left;
+		padding-left: 20px;
+	}
+
+	.choice-section,
+	.result-section {
+		padding: 16px 20px;
+	}
+
+	.view-choices {
+		flex-direction: column;
+	}
+
+	.view-btn {
+		flex: 1 1 auto;
+		border-radius: 10px;
+	}
+
+	.table-scroll-hint {
+		display: block;
+		margin: 12px 0 0px;
+	}
+
+	.table-scroll-hint.allresults {		
+		margin: 12px 0 8px;
+	}
+
+	.table-scroll-hint.playerresult {		
+		margin: 0 0 8px;
+	}
+
+	.table-scroll-hint.tournamentresult {		
+		margin: 10px 0 10px;
+	}
+
+	.footer-bar {
+		flex-direction: column;
+		gap: 6px;
+		padding: 12px 16px;
+		text-align: center;
+	}
+
+	.player-stats-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.player-trophies-card {
+		grid-column: span 2;
+	}
+	
+	.history-table {
+		min-width: 600px;
+		font-size: 13px;
+	}
+
+	.history-table th {
+		font-size: 12px;
+		letter-spacing: 0;
+		padding: 8px 6px;
+	}
+
+	.history-table td {
+		padding: 7px 6px;
+	}
+
+	.history-table .special-mention-cell {
+		display: none;
+	}
+
+	.history-table-allresults {
+		min-width: 560px;
+	}
+
+	.history-table-allresults th:nth-child(1) {
+		width: 18%;
+	}
+
+	.history-table-allresults th:nth-child(2) {
+		width: 12%;
+	}
+
+	.history-table-allresults th:nth-child(3) {
+		width: 17%;
+	}
+
+	.history-table-allresults th:nth-child(4) {
+		width: 11%;
+	}
+
+	.history-table-allresults th:nth-child(5) {
+		width: 10%;
+	}
+
+	.history-table-allresults th:nth-child(6) {
+		width: 11%;
+	}
+
+	.history-table-allresults th:nth-child(7) {
+		width: 21%;
+	}
+
+	.history-table-playerresult {
+		min-width: 420px;
+	}
+
+	.history-table-playerresult th:nth-child(1) {
+		width: 14%;
+	}
+
+	.history-table-playerresult th:nth-child(2) {
+		width: 23%;
+	}
+
+	.history-table-playerresult th:nth-child(3) {
+		width: 13%;
+	}
+
+	.history-table-playerresult th:nth-child(4) {
+		width: 12%;
+	}
+
+	.history-table-playerresult th:nth-child(5) {
+		width: 13%;
+	}
+
+	.history-table-playerresult th:nth-child(6) {
+		width: 25%;
+	}
+
+	.history-table-leaderboard {
+		min-width: 580px;
+	}
+
+	.history-table-leaderboard th:nth-child(1) {
+		width: 10%;
+	}
+
+	.history-table-leaderboard th:nth-child(2) {
+		width: 19%;
+	}
+
+	.history-table-leaderboard th:nth-child(4) {
+		width: 12%;
+	}
+
+	.history-table-leaderboard th:nth-child(5) {
+		width: 13%;
+	}
+
+	.history-table-leaderboard th:nth-child(6) {
+		width: 12%;
+	}
+
+	.history-table-leaderboard th:nth-child(7) {
+		width: 13%;
+	}
+
+	.history-table-leaderboard th:nth-child(8) {
+		width: 21%;
+	}
+
+	.history-table-tournament {
+		min-width: 350px;
+	}
+
+	.history-table-tournament th:nth-child(1) {
+		width: 27%;
+	}
+
+	.history-table-tournament th:nth-child(2) {
+		width: 18%;
+	}
+
+	.history-table-tournament th:nth-child(3) {
+		width: 13%;
+	}
+
+	.history-table-tournament th:nth-child(4) {
+		width: 13%;
+	}
+
+	.history-table-tournament th:nth-child(5) {
+		width: 32%;
+	}
+
+	#special-mentions-note {
+		display: none;
+	}
+
+	.special-mentions-pc-note {
+		display: block;
+	}
+
+	.scroll-top-btn {
+		bottom: 22px;
+	}
+}
