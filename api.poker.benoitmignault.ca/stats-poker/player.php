@@ -14,7 +14,7 @@ if ($idJoueur === false) {
 
     error_log("ID joueur invalide: " . var_export($_GET["id_joueur"] ?? null, true));    
 	http_response_code(400);
-	echo json_encode(["success" => false, "code" => "invalidPlayerId", "message" => "Le paramètre 'id_joueur' est absent ou invalide"]);
+	echo json_encode(["success" => false, "code" => "errorInvalidPlayerId", "message" => "Le paramètre 'id_joueur' est absent ou invalide"]);
 	exit();
 }
 
