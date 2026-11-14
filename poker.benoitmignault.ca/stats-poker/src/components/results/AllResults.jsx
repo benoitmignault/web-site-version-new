@@ -45,6 +45,13 @@ function AllResults() {
 
 	// On charge tous les résultats au montage du composant
 	useEffect(() => {
+
+		// On vide les résultats courants : pendant le chargement du nouveau,
+		// c'est le message d'attente qui s'affiche, pas l'ancien tableau
+		setResults(null);
+		setError(null);
+
+		// On charge tous les résultats de tous les tournois, du plus récent au plus ancien
 		loadResults();
 	}, []);
 
