@@ -138,7 +138,7 @@
 	}
 
 	.history-table-allresults {
-		min-width: 540px;
+		min-width: 560px;
 	}
 
 	.history-table-allresults th:nth-child(1) {
@@ -253,38 +253,7 @@
 		width: 32%;
 	}
 
-	.history-table-killerslemons {
-		min-width: 540px;
-	}
-
-	.history-table-killerslemons th:nth-child(1) {
-		width: 10%;
-	}
-
-	.history-table-killerslemons th:nth-child(2) {
-		width: 19%;
-	}
-
-	.history-table-killerslemons th:nth-child(4) {
-		width: 14%;
-	}
-
-	.history-table-killerslemons th:nth-child(5) {
-		width: 14%;
-	}
-
-	.history-table-killerslemons th:nth-child(6) {
-		width: 13%;
-	}
-
-	.history-table-killerslemons th:nth-child(7) {
-		width: 15%;
-	}
-
-	.history-table-killerslemons th:nth-child(8) {
-		width: 15%;
-	}
-
+	
 
 
 
