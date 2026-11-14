@@ -169,6 +169,43 @@
 		width: 21%;
 	}
 
+	.history-table-playerresult {
+		min-width: 420px;
+	}
+
+	.history-table-playerresult th:nth-child(1) {
+		width: 14%;
+	}
+
+	.history-table-playerresult th:nth-child(2) {
+		width: 23%;
+	}
+
+	.history-table-playerresult th:nth-child(3) {
+		width: 13%;
+	}
+
+	.history-table-playerresult th:nth-child(4) {
+		width: 12%;
+	}
+
+	.history-table-playerresult th:nth-child(5) {
+		width: 13%;
+	}
+
+	.history-table-playerresult th:nth-child(6) {
+		width: 25%;
+	}
+
+
+
+
+
+
+
+
+
+
 
 
 
