@@ -91,8 +91,8 @@ function PlayerResult({ playerId }) {
 
 		// On vide le joueur courant : pendant le chargement du nouveau,
 		// c'est le message d'attente qui s'affiche, pas l'ancienne carte
+		setError(null);
 		setPlayer(null);
-		loadPlayer();
 	}, [playerId]);
 
 	// Si le chargement a échoué, on affiche l'erreur au lieu du résultat
