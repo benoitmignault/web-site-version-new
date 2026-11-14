@@ -3,6 +3,8 @@ import { FaArrowUp } from "react-icons/fa";
 import Header from "./Header.jsx";
 import Content from "./Content.jsx";
 import Footer from "./Footer.jsx";
+import { API_BASE_URL } from "../config";
+import { shouldExcludeStats } from "../utils/logging";
 import { t, setLanguage } from "../i18n/i18n";
 import "../css/index.css";
 import "../css/mobile.css";
@@ -66,6 +68,23 @@ function Index() {
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
 		};
+	}, []);
+
+	// On logge le chargement de la page pour les stats, mais seulement si l'utilisateur n'a pas choisi d'exclure ses stats
+	useEffect(() => {
+
+		fetch(`${API_BASE_URL}/log-stats.php`,
+			{ 
+				method: "POST",
+				headers: {"Content-Type": "application/json"},
+				body: JSON.stringify({
+					action_type: "page_load",
+					action_name: "Affichage page",
+					// Vérifier si la variable locale "exclude_stats" est défini dans le navigateur
+					exclude_stats: shouldExcludeStats()
+				})
+			}
+		);
 	}, []);
 
 	return (
