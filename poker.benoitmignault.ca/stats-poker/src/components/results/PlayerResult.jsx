@@ -93,6 +93,7 @@ function PlayerResult({ playerId }) {
 		// c'est le message d'attente qui s'affiche, pas l'ancienne carte
 		setError(null);
 		setPlayer(null);
+		loadPlayer();
 	}, [playerId]);
 
 	// Si le chargement a échoué, on affiche l'erreur au lieu du résultat
