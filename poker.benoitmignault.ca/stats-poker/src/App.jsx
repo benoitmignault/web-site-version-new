@@ -27,8 +27,8 @@ function App() {
         <Suspense fallback={<div>Chargement...</div>}>
           <Routes>
             <Route path="/stats-poker/" element={<Index />}/>
-            {/* <Route path="/stats-poker/exclude-analytics" element={<ExcludeAnalytics />} />
-            <Route path="/stats-poker/include-analytics" element={<IncludeAnalytics />} /> */}
+            <Route path="/stats-poker/exclude-analytics" element={<ExcludeAnalytics />} />
+            <Route path="/stats-poker/include-analytics" element={<IncludeAnalytics />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
