@@ -77,6 +77,7 @@ function ChipList({ organizerId }) {
 
 		// Sans organisateur sélectionné, on vide les jetons et on quitte la fonction
 		if (!organizerId) {
+			++requestCount.current;
 			setChips([]);
 			setError(null);
 			return;
