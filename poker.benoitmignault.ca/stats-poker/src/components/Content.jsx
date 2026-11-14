@@ -41,6 +41,8 @@ function Content() {
     // Ce qui déclenche et nourrit le résultat (null = rien à montrer)
     const [activeResult, setActiveResult] = useState(null);
 
+	const [resetCount, setResetCount] = useState(0);
+
 	// Les 5 vues : l'id sert d'état, la clé i18n sert d'étiquette
 	const views = [
 		{ id: "all", labelKey: "viewAll" },
@@ -87,6 +89,9 @@ function Content() {
     // Changer de vue : le résultat démarre tout seul pour les vues sans précision, 
     // et attend la précision pour les autres
     const handleViewChange = (viewId) => {
+		if (viewId === activeView) {
+			setResetCount((count) => count + 1);
+		}
 		setActiveView(viewId);
 		if (viewsWithoutPrecision.includes(viewId)) {
 			logViewLoad(viewId, null);
@@ -113,16 +118,16 @@ function Content() {
 				</div>
 				<div className="precision-zone">
                     {activeView === "player" && (
-                        <PlayersList setActiveResult={handleResultChange} />
+                        <PlayersList key={resetCount} setActiveResult={handleResultChange} />
                     )}
                     {activeView === "tournament" && (
-                        <TournamentList setActiveResult={handleResultChange} />
+                        <TournamentList key={resetCount} setActiveResult={handleResultChange} />
                     )}
 					{ /* Les vues qui partagent le même sélecteur de présences minimales 
 					     doivent utiliser key pour garder une certaine identité donc 
 						 si la key genre React fait un react du Composant*/ }
                     {(activeView === "leaderboard" || activeView === "killers-lemons") && (
-						<MinPresencesSelect key={activeView} setActiveResult={handleResultChange} />
+						<MinPresencesSelect key={`${activeView}-${resetCount}`} setActiveResult={handleResultChange} />
 					)}
                 </div>
                 
