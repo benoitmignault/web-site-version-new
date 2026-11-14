@@ -7,6 +7,8 @@ import PlayerResult from "./results/PlayerResult.jsx";
 import LeaderboardResult from "./results/LeaderboardResult.jsx";
 import TournamentResult from "./results/TournamentResult.jsx";
 import KillersLemonsResult from "./results/KillersLemonsResult.jsx";
+import { API_BASE_URL } from "../config";
+import { shouldExcludeStats } from "../utils/logging";
 import { t } from "../i18n/i18n";
 
 /**
@@ -48,12 +50,49 @@ function Content() {
 		{ id: "killers-lemons", labelKey: "viewKillersLemons" }
 	]; 
 
+	// Journaliser le chargement d'une vue : le libellé et la sous-option dépendent de la vue affichée
+	const logViewLoad = (viewId, value) => {
+
+		let viewLog = { action_name: "Affichage tout afficher" };
+
+		if (viewId === "player") {
+			viewLog = { action_name: "Affichage joueur", player_id: value };
+		} else if (viewId === "tournament") {
+			viewLog = { action_name: "Affichage tournoi", tournament_id: value };
+		} else if (viewId === "leaderboard") {
+			viewLog = { action_name: "Affichage classement", min_presences: value };
+		} else if (viewId === "killers-lemons") {
+			viewLog = { action_name: "Affichage killers & citrons", min_presences: value };
+		}
+
+		fetch(`${API_BASE_URL}/log-stats.php`, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({
+				action_type: "view_load",
+				...viewLog,
+				exclude_stats: shouldExcludeStats()
+			})
+		});
+	};
+
+	// Intercepter le résultat choisi : on journalise la sélection, jamais l'effacement (le X = null)
+	const handleResultChange = (value) => {
+		if (value !== null) {
+			logViewLoad(activeView, value);
+		}
+		setActiveResult(value);
+	};
+
     // Changer de vue : le résultat démarre tout seul pour les vues sans précision, 
     // et attend la précision pour les autres
     const handleViewChange = (viewId) => {
-        setActiveView(viewId);
-        setActiveResult(viewsWithoutPrecision.includes(viewId) ? viewId : null);
-    };
+		setActiveView(viewId);
+		if (viewsWithoutPrecision.includes(viewId)) {
+			logViewLoad(viewId, null);
+		}
+		setActiveResult(viewsWithoutPrecision.includes(viewId) ? viewId : null);
+	};
 
 	return (
 		<main className="content-container">
@@ -74,16 +113,16 @@ function Content() {
 				</div>
 				<div className="precision-zone">
                     {activeView === "player" && (
-                        <PlayersList setActiveResult={setActiveResult} />
+                        <PlayersList setActiveResult={handleResultChange} />
                     )}
                     {activeView === "tournament" && (
-                        <TournamentList setActiveResult={setActiveResult} />
+                        <TournamentList setActiveResult={handleResultChange} />
                     )}
 					{ /* Les vues qui partagent le même sélecteur de présences minimales 
 					     doivent utiliser key pour garder une certaine identité donc 
 						 si la key genre React fait un react du Composant*/ }
                     {(activeView === "leaderboard" || activeView === "killers-lemons") && (
-						<MinPresencesSelect key={activeView} setActiveResult={setActiveResult} />
+						<MinPresencesSelect key={activeView} setActiveResult={handleResultChange} />
 					)}
                 </div>
                 
