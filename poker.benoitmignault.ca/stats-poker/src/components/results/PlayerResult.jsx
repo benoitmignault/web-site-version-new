@@ -74,6 +74,10 @@ function PlayerResult({ playerId }) {
 				setError({ code: data.code, message: data.message });
 			}
 		} catch (err) {
+			if (requestId !== requestCount.current) {
+				return;
+			}
+
 			console.error(err);
 			setPlayer(null);
 			setError({ code: "errorLoadingPlayer", message: "" });
