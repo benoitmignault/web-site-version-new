@@ -13,6 +13,9 @@ where applicable.
 |---|---|---|
 | **Poker Tournament Timer** | Dashboard for home poker tournaments: per-organizer chip colors/values and blind structures, countdown timer with end-of-level alerts. [Live demo](https://poker.benoitmignault.ca/timer-poker/) | Deployed (Oct 2026) — version 2 in preparation |
 | **Poker Night Stats** | Statistics from my Friday poker nights with friends (tracked since 2011): five public views — all results, player summary, leaderboard, tournament detail, killers & lemons. [Live demo](https://poker.benoitmignault.ca/stats-poker/) | Deployed (Nov 2026) |
+=======
+| **Poker Tournament Timer** | Dashboard for home poker tournaments: per-organizer chip colors/values and blind structures, countdown timer with end-of-level alerts. [Live demo](https://poker.benoitmignault.ca/timer-poker/) | Deployed (Oct 2026) |
+| **Poker Night Stats** | Statistics from my Friday poker nights with friends (tracked since 2011): player summaries, complete results, leaderboards, tournament history. Public pages, no login. | In development — player and full-results views complete |
 | **Montérégie Golf League** | League standings, results and statistics. | Separate repository: [golf-league-monteregie](https://github.com/benoitmignault/golf-league-monteregie) |
 
 
@@ -106,5 +109,5 @@ Frontend environment files:
 
 ## License
 
-Personal project — all rights reserved. © Benoit Mignault
+MIT — see the [LICENSE](LICENSE) file.
 
