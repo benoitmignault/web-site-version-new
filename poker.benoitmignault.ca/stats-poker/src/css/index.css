@@ -56,6 +56,40 @@ body {
 	padding: 24px 30px 24px;
 }
 
+.message-page {
+	max-width: 650px;
+	margin: 120px auto;
+	padding: 35px 40px;
+	text-align: center;
+	background: var(--card-bg);
+	backdrop-filter: blur(8px);
+	border: 1px solid var(--gold-soft);
+	border-radius: 16px;
+	color: white;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.message-page h2 {
+	margin: 0 0 20px 0;
+	font-size: 2rem;
+	font-weight: 700;
+}
+
+.message-page .message-success {
+	color: #7cfc8a;
+}
+
+.message-page .message-error {
+	color: #ff8080;
+}
+
+.message-page p {
+	margin: 0;
+	font-size: 1.1rem;
+	line-height: 1.7;
+	color: rgba(255, 255, 255, 0.9);
+}
+
 /* En-tête : titre + lien minuteur + sélecteur de langue */
 .header-container {
 	display: flex;
