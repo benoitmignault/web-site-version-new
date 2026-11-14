@@ -267,6 +267,15 @@ body {
 	margin-bottom: 16px
 }
 
+.table-scroll-hint {
+	display: none;
+	text-align: center;
+	font-size: 0.85rem;
+	font-style: italic;
+	color: var(--text-dim);
+	margin: 0 0 12px;
+}
+
 .result-subtitle {
 	color: var(--gold);
 	font-size: 15px;
@@ -672,6 +681,10 @@ body {
 	font-size: 14px;
 	color: rgba(255, 255, 255, 0.55);
 	margin-bottom: 0;
+}
+
+.special-mentions-pc-note {
+	display: none;
 }
 
 .special-mentions-link {

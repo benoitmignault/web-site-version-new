@@ -22,7 +22,7 @@ function Header({ language, changeLanguage }) {
 				</h1>
 			</div>
 			<div className="header-tagline">
-				<span>{t("subtitle")}</span>
+				<span>{t("subtitle")}<span className="tagline-dash">—</span>{t("subtitleSince")}</span>
 			</div>
 			<div className="header-controls">
 				<span className="admin-link" aria-disabled="true">{t("statsManagement")}</span>

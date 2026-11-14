@@ -100,9 +100,8 @@ function PlayerResult({ playerId }) {
 	}
 
 	return (
-		<div className="player-result">			
-			{/* Section 1 : le sommaire — la carte du joueur (nom, tuiles, trophées) */}
-			<h2>{t("resultSummary")}</h2>
+		<div className="player-result">		
+			<h2>{t("resultSummary")}</h2>			
 			<div className="player-summary">
 				<h3 className="player-summary-title">{player.nom}</h3>
 				<div className="player-stats-grid">
@@ -142,10 +141,10 @@ function PlayerResult({ playerId }) {
 					</div>
 				</div>
 			</div>
-			{/* Section 2 : le détaillé — l'historique de ses visites en tableau */}
 			<h3 className="result-subtitle">{t("resultDetail")}</h3>
+			<p className="table-scroll-hint playerresult">{t("tableScrollHint")}</p>
 			<div className="history-table-wrapper">
-				<table className="history-table">					
+				<table className="history-table history-table-playerresult">			
 					<thead>
 						<tr>
 							<th className="col-center">{t("tournament")}</th>

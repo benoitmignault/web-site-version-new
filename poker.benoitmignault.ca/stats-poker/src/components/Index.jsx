@@ -48,15 +48,24 @@ function Index() {
     // TODO : On loggera une stat pour arriver sur la page 
     // TODO : On loggera une stat pour le choix d'affichage de la vue (toutes, joueur, classement, tournoi, killers & lemons)
 
-	// Gestion du bouton de retour en haut de page
+	/**
+	 * Bouton de retour en haut : visible seulement après 300 px de défilement.
+	 * L'écouteur est passif pour ne jamais bloquer le défilement, et la mise à
+	 * jour retourne la valeur actuelle quand rien ne bascule : React ne re-rend
+	 * pas la page à chaque événement, seulement au franchissement du seuil.
+	 */
 	useEffect(() => {
 		const handleScroll = () => {
-			setShowScrollTop(window.scrollY > 300);
+			setShowScrollTop((current) => {
+				const shouldShow = window.scrollY > 300;
+				return current === shouldShow ? current : shouldShow;
+			});
 		};
 
-		window.addEventListener("scroll", handleScroll);
-		return () => window.removeEventListener("scroll", handleScroll);
-
+		window.addEventListener('scroll', handleScroll, { passive: true });
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
 	}, []);
 
 	return (

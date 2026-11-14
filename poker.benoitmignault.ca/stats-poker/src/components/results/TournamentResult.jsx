@@ -93,8 +93,9 @@ function TournamentResult({ tournamentId }) {
 		<div className="tournament-result">
 			<h2 className="result-subtitle">{t("resultTournament")}</h2>
 			<h3 className="tournament-summary-title">{tournament.id}{tournamentSuffix} - {tournament.date}</h3>
+			<p className="table-scroll-hint tournamentresult">{t("tableScrollHint")}</p>
 			<div className="history-table-wrapper">
-				<table className="history-table">
+				<table className="history-table history-table-tournament">
 					<thead>
 						<tr>
 							<th>{t("playerLabel")}</th>

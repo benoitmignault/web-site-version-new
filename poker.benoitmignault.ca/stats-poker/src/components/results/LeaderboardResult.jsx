@@ -198,13 +198,14 @@ function LeaderboardResult({ minPresences }) {
 	return (
 		<div className="leaderboard-result">
 			<h2 className="result-subtitle">{t("resultLeaderboard")}</h2>
+			<p className="table-scroll-hint">{t("tableScrollHint")}</p>
 			<div className="history-table-wrapper">
-				<table className="history-table">
+				<table className="history-table history-table-leaderboard">
 					<thead>
 						<tr>
 							<th className="col-center">{t("rank")}</th>
 							{sortableHeader("nom", t("playerLabel"), "")}
-							<th className="col-center">
+							<th className="col-center special-mention-cell">
 								<a className="special-mentions-link" href="#special-mentions-note">
 									{t("specialMentions")} *
 								</a>
@@ -251,6 +252,7 @@ function LeaderboardResult({ minPresences }) {
 				</table>
 			</div>
 			<p className="leaderboard-note" id="special-mentions-note">* {t("specialMentionsNote")}</p>
+			<p className="leaderboard-note special-mentions-pc-note">{t("specialMentionsPcNote")}</p>
 		</div>
 	);
 }
