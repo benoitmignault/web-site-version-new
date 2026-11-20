@@ -185,25 +185,25 @@
 	.footer-section {
 		text-align: center;
 	}
+	
+	/* Sous-titre du footer : resserré pour tenir sur une ligne en petit écran */
+	.footer-subtitle span {
+		font-size: 1rem;
+		letter-spacing: 1px;
+	}
 
 	.footer-link {
 		text-align: center;
 	}
-
-	.footer-clock {
-		font-size: 1.1rem;
-	}
-
+	
     .scroll-top {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		position: fixed;
+		position: static;
 		width: 45px;
-        height: 45px;
-        font-size: 22px;
-        bottom: 16px;
-        right: 16px;
+		height: 45px;
+		margin: 4px 0 12px auto;
 		border: 1px solid var(--gold-soft);
 		border-radius: 50%;
 		background: rgba(201, 162, 39, 0.18);
