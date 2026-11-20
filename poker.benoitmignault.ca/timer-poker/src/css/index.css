@@ -314,7 +314,7 @@ body {
 	display: flex;
 	gap: clamp(16px, 3vh, 30px);
 	margin-bottom: clamp(14px, 3vh, 30px);
-	align-items: flex-start;
+	align-items: stretch;
 	flex: 1;
 }
 
