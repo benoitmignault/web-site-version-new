@@ -59,6 +59,17 @@ function Index() {
 		setLanguageState(lang);
 	};
 
+	// L'heure courante, rafraîchie à chaque seconde
+	const [now, setNow] = useState(new Date());
+
+	useEffect(() => {
+
+		const timer = setInterval(() => setNow(new Date()), 1000);
+
+		// On nettoie l'intervalle quand le composant est démonté
+		return () => clearInterval(timer);
+	}, []);
+
 	// Changer le titre de la page et le favicon lorsque le composant est monté
 	useEffect(() => {
 
