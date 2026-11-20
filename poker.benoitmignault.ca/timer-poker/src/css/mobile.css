@@ -16,10 +16,14 @@
 	.header-container h1 {
 		font-size: 1.6rem;
 	}
+
+	.header-clock {
+		font-size: 1.6rem;
+	}
 }
 
-/* ============ ÉCRANS COURTS (≤850px de hauteur, ex. portable avec grossissement Windows) ============ */
-@media (max-height: 850px) {
+/* ============ ÉCRANS COURTS (≤900px de hauteur, ex. portable 1080p plein écran mesuré à 859px avec grossissement Windows) ============ */
+@media (max-height: 900px) {
 
 	#root {
 		padding-top: 14px;
@@ -207,10 +211,10 @@
 	}
 }
 
-/* ============ MOBILE COURT (≤768px de large ET ≤850px de hauteur) ============ */
+/* ============ MOBILE COURT (≤768px de large ET ≤900px de hauteur) ============ */
 /* Réaffirme les marges compactes du chrono après le bloc mobile,
    qui les écrase (margin: 20px 0) quand les deux queries correspondent. */
-@media (max-width: 768px) and (max-height: 850px) {
+@media (max-width: 768px) and (max-height: 900px) {
 
 	.countdown-display {
 		margin-top: 12px;
