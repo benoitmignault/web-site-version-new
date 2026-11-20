@@ -111,7 +111,16 @@ function Index() {
 				<h1>
 					<span className="chip gold header-chip" aria-hidden="true"></span>
 					{t("title")}
-				</h1>				
+				</h1>
+				<div className="header-clock">
+					<span>
+						{now.toLocaleTimeString("fr-FR", {
+							hour: "2-digit",
+							minute: "2-digit",
+							second: "2-digit",
+						})}
+					</span>
+				</div>			
 				<div className="header-controls">
 					<OrganizerList setOrganizerName={setOrganizerName} setOrganizerId={setOrganizerId} setLevel={setLevel} />
 					<div className="language-switch">
