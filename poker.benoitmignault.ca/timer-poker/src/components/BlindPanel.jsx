@@ -117,6 +117,7 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 		if (!organizerId) {
 			requestCount.current++;
 		}
+		
 		clearBlinds();
 		setError(null);
 	}, [organizerId]);
