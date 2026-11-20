@@ -68,9 +68,7 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 			} else {
 
 				// Aucune donnée : on vide l'affichage pour ne pas garder les infos de l'organisateur précédent
-				setSmall(null);
-				setBig(null);
-				setMaxLevel(null);				
+				clearBlinds();				
 				setError({ code: data.code, message: data.message }); // Erreur retournée par l'API lors du chargement des blinds
 			}
 
@@ -83,9 +81,7 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 
 			// En cas d'erreur, on affiche le message d'erreur dans la console et on met à jour l'état
 			console.error(err);
-			setSmall(null);
-			setBig(null);
-			setMaxLevel(null);
+			clearBlinds();
 			setError({ code: "errorLoadingBlinds", message: "" });
 		}
 
@@ -110,7 +106,6 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 		setSmall(null);
 		setBig(null);
 		setMaxLevel(null);
-		setError(null);
 	};
 
 	// Changement d'organisateur : on vide les blinds de l'ancien,
@@ -120,28 +115,20 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 		// Sans organisateur, on invalide aussi l'appel en cours :
 		// sa réponse ne doit plus écrire après coup
 		if (!organizerId) {
-			requestCount.current++;
-		}
-		
-		clearBlinds();
-	}, [organizerId]);
-
-	// On charge la combinaison du niveau courant de l'organisateur sélectionné,
-	// au montage et à chaque changement d'organizerId ou de level.
-	// Un simple changement de niveau ne vide pas l'affichage :
-	// les valeurs en place restent jusqu'à l'arrivée des nouvelles.
-	useEffect(() => {
-
-		if (!organizerId) {
+			
+			// On vide les valeurs pour ne pas garder les infos de l'organisateur précédent
+			requestCount.current++; // mais on incrémente le compteur pour que la réponse de l'appel précédent soit ignorée si elle arrive après
+			setSmall(null);			
+			setBig(null);
+			setMaxLevel(null);
+			setError(null);
 			return;
 		}
 
-		loadBlinds();
-	}, [organizerId, level]);
-
-
-
-
+        // On charge les blinds de l'organisateur sélectionné pour le niveau courant
+        loadBlinds();		
+		// On relance le useEffect à chaque fois que l'organizerId change
+    }, [organizerId, level]);	
 
 	return (
 		<section className="blind-panel">			
