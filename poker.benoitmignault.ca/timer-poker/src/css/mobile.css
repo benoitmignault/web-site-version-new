@@ -228,3 +228,18 @@
 		margin-bottom: 12px;
 	}
 }
+
+/* Bande intermédiaire seulement : l'horloge passe sur sa propre rangée,
+   elle ne peut plus recouvrir le sélecteur d'organisateur */
+@media (min-width: 769px) and (max-width: 1100px) {
+	.header-container {
+		flex-wrap: wrap;
+	}
+
+	.header-clock {
+		position: static;
+		transform: none;
+		order: 3;
+		width: 100%;
+	}
+}
