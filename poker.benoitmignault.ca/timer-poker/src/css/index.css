@@ -675,12 +675,14 @@ body {
 	color: var(--gold-muted);
 }
 
-/* Horloge : plus grosse, en or */
-.footer-clock {
+.footer-subtitle {
 	text-align: center;
-	font-size: 1.3rem;
+}
+
+.footer-subtitle span {
+	color: #c9a227;
+	font-size: 1.15rem;
 	font-weight: 700;
-	color: var(--gold);
 	letter-spacing: 2px;
 }
 
