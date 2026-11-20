@@ -120,14 +120,28 @@
 		font-size: 1.3rem;
 	}
 
+	.header-controls {
+		width: 100%;
+		flex-wrap: wrap;
+	}
+
+	.language-switch {
+		flex-shrink: 0;
+		margin: 0 auto;
+	}
+
 	.header-chip {
 		width: 40px;
 		height: 40px;
 	}
 
 	.organizer-field {
+		flex: 1 1 100%;
+		min-width: 0;
+		padding-left: 12px;
+		padding-right: 12px;
 		border-left: none;
-		padding-left: 0;
+		border-right: none;
 	}
 
 	.organizer-select-wrapper {
