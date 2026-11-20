@@ -16,10 +16,14 @@
 	.header-container h1 {
 		font-size: 1.6rem;
 	}
+
+	.header-clock {
+		font-size: 1.6rem;
+	}
 }
 
-/* ============ ÉCRANS COURTS (≤850px de hauteur, ex. portable avec grossissement Windows) ============ */
-@media (max-height: 850px) {
+/* ============ ÉCRANS COURTS (≤900px de hauteur, ex. portable 1080p plein écran mesuré à 859px avec grossissement Windows) ============ */
+@media (max-height: 900px) {
 
 	#root {
 		padding-top: 14px;
@@ -27,10 +31,14 @@
 	}
 
 	.header-container {
-		margin-bottom: 12px;
+		margin-bottom: 30px;
 	}
 
 	.header-container h1 {
+		font-size: 1.6rem;
+	}
+
+	.header-clock {
 		font-size: 1.6rem;
 	}
 
@@ -39,12 +47,8 @@
 		height: 44px;
 	}
 
-	.main-container {
-		margin-bottom: 10px;
-	}
-
-	.content-container {
-		padding: 12px;
+	.main-container > .content-container:first-child {
+		margin-bottom: 20px;
 	}
 
 	.chip-list h2 {
@@ -109,14 +113,35 @@
 		font-size: 1.3rem;
 	}
 
+	.header-clock {
+		position: static;
+		transform: none;
+		text-align: center;
+		font-size: 1.3rem;
+	}
+
+	.header-controls {
+		width: 100%;
+		flex-wrap: wrap;
+	}
+
+	.language-switch {
+		flex-shrink: 0;
+		margin: 0 auto;
+	}
+
 	.header-chip {
 		width: 40px;
 		height: 40px;
 	}
 
 	.organizer-field {
+		flex: 1 1 100%;
+		min-width: 0;
+		padding-left: 12px;
+		padding-right: 12px;
 		border-left: none;
-		padding-left: 0;
+		border-right: none;
 	}
 
 	.organizer-select-wrapper {
@@ -126,6 +151,7 @@
 	/* Rangée principale en colonne */
 	.main-container {
 		flex-direction: column;
+		margin-bottom: 14px;
 	}
 
 	/* Carte des jetons pleine largeur */
@@ -170,25 +196,25 @@
 	.footer-section {
 		text-align: center;
 	}
+	
+	/* Sous-titre du footer : resserré pour tenir sur une ligne en petit écran */
+	.footer-subtitle span {
+		font-size: 1rem;
+		letter-spacing: 1px;
+	}
 
 	.footer-link {
 		text-align: center;
 	}
-
-	.footer-clock {
-		font-size: 1.1rem;
-	}
-
+	
     .scroll-top {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		position: fixed;
+		position: static;
 		width: 45px;
-        height: 45px;
-        font-size: 22px;
-        bottom: 16px;
-        right: 16px;
+		height: 45px;
+		margin: 4px 0 12px auto;
 		border: 1px solid var(--gold-soft);
 		border-radius: 50%;
 		background: rgba(201, 162, 39, 0.18);
@@ -197,7 +223,6 @@
 		cursor: pointer;
 		backdrop-filter: blur(10px);
 		box-shadow: 0 0 20px rgba(201, 162, 39, 0.25);
-		z-index: 60;
 		transition: transform 0.2s ease, background 0.25s ease;
 	}
 
@@ -207,13 +232,28 @@
 	}
 }
 
-/* ============ MOBILE COURT (≤768px de large ET ≤850px de hauteur) ============ */
+/* ============ MOBILE COURT (≤768px de large ET ≤900px de hauteur) ============ */
 /* Réaffirme les marges compactes du chrono après le bloc mobile,
    qui les écrase (margin: 20px 0) quand les deux queries correspondent. */
-@media (max-width: 768px) and (max-height: 850px) {
+@media (max-width: 768px) and (max-height: 900px) {
 
 	.countdown-display {
 		margin-top: 12px;
 		margin-bottom: 12px;
+	}
+}
+
+/* Bande intermédiaire seulement : l'horloge passe sur sa propre rangée,
+   elle ne peut plus recouvrir le sélecteur d'organisateur */
+@media (min-width: 769px) and (max-width: 1100px) {
+	.header-container {
+		flex-wrap: wrap;
+	}
+
+	.header-clock {
+		position: static;
+		transform: none;
+		order: 3;
+		width: 100%;
 	}
 }

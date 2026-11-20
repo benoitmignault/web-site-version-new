@@ -59,6 +59,17 @@ function Index() {
 		setLanguageState(lang);
 	};
 
+	// L'heure courante, rafraîchie à chaque seconde
+	const [now, setNow] = useState(new Date());
+
+	useEffect(() => {
+
+		const timer = setInterval(() => setNow(new Date()), 1000);
+
+		// On nettoie l'intervalle quand le composant est démonté
+		return () => clearInterval(timer);
+	}, []);
+
 	// Changer le titre de la page et le favicon lorsque le composant est monté
 	useEffect(() => {
 
@@ -111,7 +122,16 @@ function Index() {
 				<h1>
 					<span className="chip gold header-chip" aria-hidden="true"></span>
 					{t("title")}
-				</h1>				
+				</h1>
+				<div className="header-clock">
+					<span>
+						{now.toLocaleTimeString("fr-FR", {
+							hour: "2-digit",
+							minute: "2-digit",
+							second: "2-digit",
+						})}
+					</span>
+				</div>			
 				<div className="header-controls">
 					<OrganizerList setOrganizerName={setOrganizerName} setOrganizerId={setOrganizerId} setLevel={setLevel} />
 					<div className="language-switch">
@@ -133,8 +153,7 @@ function Index() {
 						<Countdown organizerId={organizerId} level={level} setLevel={setLevel} maxLevel={maxLevel} setIsTimerFlashing={setIsTimerFlashing} />
 					</div>
 				</div>				
-			</div>
-			<Footer organizerName={organizerName} />
+			</div>			
 			{showScrollTop && (
 				<button
 					type="button" className="scroll-top" aria-label={t("backToTop")}
@@ -143,6 +162,7 @@ function Index() {
 					<FaArrowUp />
 				</button>
 			)}
+			<Footer organizerName={organizerName} />
 		</div>
 	);
 }

@@ -68,9 +68,7 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 			} else {
 
 				// Aucune donnée : on vide l'affichage pour ne pas garder les infos de l'organisateur précédent
-				setSmall(null);
-				setBig(null);
-				setMaxLevel(null);				
+				clearBlinds();				
 				setError({ code: data.code, message: data.message }); // Erreur retournée par l'API lors du chargement des blinds
 			}
 
@@ -83,9 +81,7 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 
 			// En cas d'erreur, on affiche le message d'erreur dans la console et on met à jour l'état
 			console.error(err);
-			setSmall(null);
-			setBig(null);
-			setMaxLevel(null);
+			clearBlinds();
 			setError({ code: "errorLoadingBlinds", message: "" });
 		}
 
@@ -104,34 +100,39 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 		setLevel(1);
 	};
 
-	// On charge la combinaison où on est rendu au niveau courant de l'organisateur sélectionné au montage du composant
-	// et à chaque fois que l'organizerId ou le level change
-	useEffect(() => {
-
-		// Sans organisateur sélectionné, on doit remettre les valeurs à null pour afficher "--" et 
-		// on ne peut pas charger les blinds, donc on quitte la fonction		
-		if (!organizerId) {
-			
-			// On vide les valeurs pour ne pas garder les infos de l'organisateur précédent
-			requestCount.current++; // mais on incrémente le compteur pour que la réponse de l'appel précédent soit ignorée si elle arrive après
-			setSmall(null);			
-			setBig(null);
-			setMaxLevel(null);
-			setError(null);
-			return;
-		}
-
-		// Nouvel organisateur ou nouveau niveau : on vide tout de suite, avant même de charger,
-		// pour ne jamais afficher les blinds du précédent pendant l'attente
+	// On vide les blinds affichées : on ne veut jamais montrer celles
+	// de l'organisateur ou du niveau précédent
+	const clearBlinds = () => {
 		setSmall(null);
 		setBig(null);
 		setMaxLevel(null);
-		setError(null);
+	};
 
-        // On charge les blinds de l'organisateur sélectionné pour le niveau courant
-        loadBlinds();		
-		// On relance le useEffect à chaque fois que l'organizerId change
-    }, [organizerId, level]);	
+	// Changement d'organisateur : on vide les blinds de l'ancien,
+	// on ne veut pas les voir sous le nom du nouveau
+	useEffect(() => {
+
+		// Sans organisateur, on invalide aussi l'appel en cours :
+		// sa réponse ne doit plus écrire après coup
+		if (!organizerId) {
+			requestCount.current++;
+		}
+		
+		clearBlinds();
+		setError(null);
+	}, [organizerId]);
+
+	// On charge la combinaison du niveau courant de l'organisateur sélectionné,
+	// au montage et à chaque changement d'organizerId ou de level.
+	// Un simple changement de niveau ne vide pas l'affichage :
+	// les valeurs en place restent jusqu'à l'arrivée des nouvelles.
+	useEffect(() => {
+
+		if (!organizerId) {
+			return;
+		}
+		loadBlinds();
+	}, [organizerId, level]);
 
 	return (
 		<section className="blind-panel">			
