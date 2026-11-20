@@ -47,12 +47,8 @@
 		height: 44px;
 	}
 
-	.main-container {
-		margin-bottom: 10px;
-	}
-
-	.content-container {
-		padding: 12px;
+	.main-container > .content-container:first-child {
+		margin-bottom: 20px;
 	}
 
 	.chip-list h2 {
