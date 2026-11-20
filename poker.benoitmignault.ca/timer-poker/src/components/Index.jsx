@@ -12,23 +12,23 @@ import '../css/index.css';
 import '../css/mobile.css';
 
 /**
- * Composant principal du minuteur de poker.
+ * Page principale du minuteur de poker (dashboard).
  *
- * Rôle : assembler les sections de la page et détenir l'état partagé minimal.
- * Chaque section est autonome et va chercher ses propres données via l'API ;
- * Index ne fait que distribuer les valeurs et les setters.
+ * Structure :
+ * - En-tête : jeton doré et titre « DASHBOARD », horloge en temps réel
+ *   centrée (mise à jour chaque seconde), sélecteur d'organisateur et
+ *   interrupteur de langue FR | EN
+ * - Corps : carte des valeurs des jetons (ChipList) à gauche — invisible
+ *   mais espace réservé tant qu'aucun organisateur n'est choisi — et
+ *   colonne du minuteur à droite (BlindPanel et Countdown)
+ * - Pied de page : le composant Footer, qui reçoit le nom de
+ *   l'organisateur
+ * - Bouton « retour en haut » : apparaît après défilement et ramène
+ *   en haut de la page en douceur
  *
- * État partagé :
- * - organizerId : id de l'organisateur sélectionné (ex. 7), utilisé par ChipList, BlindPanel et Countdown.
- * - organizerName : prénom de l'organisateur (ex. "Frantz"), affiché dans le Footer.
- * - level : niveau de blinds courant (ex. 1) ; remis à 1 à chaque changement d'organisateur,
- *   incrémenté par le bouton Changer de BlindPanel ; Countdown se réinitialise à 30:00 quand il change.
- *
- * Mise en page : en-tête (titre + OrganizerList), contenu (jetons / blinds + chrono),
- * puis Footer. ChipList n'est affiché que quand un organisateur est choisi ;
- * BlindPanel affiche "--" tant qu'il n'a pas de données.
- *
- * Au montage, règle le titre de l'onglet et le favicon du minuteur.
+ * État détenu ici : l'organisateur choisi (id et nom), le niveau de
+ * blinds courant et le niveau maximum, le clignotement d'alerte du
+ * minuteur et l'affichage du bouton de retour en haut.
  */
 function Index() {
 	
