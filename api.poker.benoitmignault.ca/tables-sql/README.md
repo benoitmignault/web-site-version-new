@@ -23,5 +23,13 @@ Then insert in the same order, using the files in `insert-table/`
 
 ## poker_night_stats
 
-Documented by `create_db_poker_night_stats.sql`. Its tables will be
-added here when the poker stats tool is built.
+Documented by `create_db_poker_night_stats.sql`. Its tables live
+with the stats tool, in `../stats-poker/tables-sql/create-table/`:
+
+1. `01_create_joueur.sql`
+2. `02_create_poker.sql`
+3. `03_create_stats_logs.sql` (stats-specific table)
+
+Then insert in the same order, using the files in
+`../stats-poker/tables-sql/insert-table/` (not versioned — they
+contain real data).
