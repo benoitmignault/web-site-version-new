@@ -115,20 +115,23 @@ function BlindPanel({ organizerId, level, setLevel, maxLevel, setMaxLevel }) {
 		// Sans organisateur, on invalide aussi l'appel en cours :
 		// sa réponse ne doit plus écrire après coup
 		if (!organizerId) {
-			
-			// On vide les valeurs pour ne pas garder les infos de l'organisateur précédent
-			requestCount.current++; // mais on incrémente le compteur pour que la réponse de l'appel précédent soit ignorée si elle arrive après
-			setSmall(null);			
-			setBig(null);
-			setMaxLevel(null);
-			setError(null);
+			requestCount.current++;
+		}
+		clearBlinds();
+		setError(null);
+	}, [organizerId]);
+
+	// On charge la combinaison du niveau courant de l'organisateur sélectionné,
+	// au montage et à chaque changement d'organizerId ou de level.
+	// Un simple changement de niveau ne vide pas l'affichage :
+	// les valeurs en place restent jusqu'à l'arrivée des nouvelles.
+	useEffect(() => {
+
+		if (!organizerId) {
 			return;
 		}
-
-        // On charge les blinds de l'organisateur sélectionné pour le niveau courant
-        loadBlinds();		
-		// On relance le useEffect à chaque fois que l'organizerId change
-    }, [organizerId, level]);	
+		loadBlinds();
+	}, [organizerId, level]);
 
 	return (
 		<section className="blind-panel">			
