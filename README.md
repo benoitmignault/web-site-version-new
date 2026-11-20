@@ -11,17 +11,16 @@ where applicable.
 
 | Project | Description | Status |
 |---|---|---|
-| **Poker Tournament Timer** | Dashboard for home poker tournaments: per-organizer chip colors/values and blind structures, countdown timer with end-of-level alerts. [Live demo](https://poker.benoitmignault.ca/timer-poker/) | Deployed (Oct 2026) — version 2 in preparation |
+| **Poker Tournament Timer** | Dashboard for home poker tournaments: per-organizer chip colors/values and blind structures, countdown timer with end-of-level alerts. [Live demo](https://poker.benoitmignault.ca/timer-poker/) | Version 2 deployed (Nov 2026) |
 | **Poker Night Stats** | Statistics from my Friday poker nights with friends (tracked since 2011): five public views — all results, player summary, leaderboard, tournament detail, killers & lemons. [Live demo](https://poker.benoitmignault.ca/stats-poker/) | Deployed (Nov 2026) |
 | **Montérégie Golf League** | League standings, results and statistics. | Separate repository: [golf-league-monteregie](https://github.com/benoitmignault/golf-league-monteregie) |
-
 
 ## Roadmap
 
 | When | Project |
 |---|---|
-| Late November 2026 | **Poker Tournament Timer — version 2**: TV mode via a dedicated route, dashboard layout rework (clock moved up), larger chip display |
 | Late November – December 2026 | **Stats Management**: admin tool to add and edit poker results |
+| December 2026 | **Poker Tournament Timer — TV mode**: dedicated route for the kitchen TV display |
 | Mid to late December 2026 | **Organizer Management**: organizer accounts and password reset |
 | January 2027 | **New homepage** for benoitmignault.ca, connecting the 2.0 tools |
 | February 2027 | **Calculator**: the calculator first imagined in 2016, rebuilt in React — no page reloads |
@@ -41,12 +40,16 @@ where applicable.
       stats-poker/                    Poker statistics (Vite + React)
     api.poker.benoitmignault.ca/      PHP APIs — one folder per tool
       timer-poker/                    Timer endpoints (organizers, chips, blinds, logs)
+        includes/                     Connection and include files (credentials not in Git)
+        tables-sql/                   Timer-specific schema (the timer_logs table)
+          create-table/
+            create_timer_logs.sql
       stats-poker/                    Statistics endpoints (players, results, tournaments, leaderboard, killers & lemons, logs)
-      includes/                       Connection and shared include files
-      tables-sql/                     Timer-specific schema (the timer_logs table)
-        create-table/
-          create_timer_logs.sql
-      tables-sql/                     Schemas of the shared databases (data common to all tools)
+        includes/                     Connection and include files (credentials not in Git)
+        tables-sql/                   Stats-specific schemas (players, tournaments, stats_logs)
+          create-table/
+      tables-sql/                     Shared database files (see its README for which schemas live where)
+        README.md
         create_db_poker_night_organizers.sql
         create_db_poker_night_stats.sql
         create-table/                 CREATE TABLE files (versioned)
