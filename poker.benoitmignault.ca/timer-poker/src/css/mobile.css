@@ -38,6 +38,10 @@
 		font-size: 1.6rem;
 	}
 
+	.header-clock {
+		font-size: 1.6rem;
+	}
+
 	.header-chip {
 		width: 44px;
 		height: 44px;
@@ -110,6 +114,13 @@
 	}
 
 	.header-container h1 {
+		font-size: 1.3rem;
+	}
+
+	.header-clock {
+		position: static;
+		transform: none;
+		text-align: center;
 		font-size: 1.3rem;
 	}
 
