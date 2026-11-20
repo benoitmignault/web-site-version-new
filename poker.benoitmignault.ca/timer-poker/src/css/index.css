@@ -149,16 +149,13 @@ body {
 	letter-spacing: 1px;
 }
 
+/* Horloge : plus grosse, en or */
 .header-clock {
 	position: absolute;
 	left: 50%;
 	transform: translateX(-50%);
-}
-
-/* Horloge : plus grosse, en or */
-.header-clock {
 	text-align: center;
-	font-size: 1.3rem;
+	font-size: 2rem;
 	font-weight: 700;
 	color: var(--gold);
 	letter-spacing: 2px;
