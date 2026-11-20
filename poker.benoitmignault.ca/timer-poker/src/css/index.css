@@ -379,8 +379,8 @@ body {
 
 /* Jeton de poker dessiné en CSS : pastille couleur + bord en pointillés (les encoches) */
 .chip {
-	width: 48px;
-	height: 48px;
+	width: 60px;
+	height: 60px;
 	border-radius: 50%;
 	box-sizing: border-box;
 	flex-shrink: 0;
@@ -431,14 +431,14 @@ body {
 }
 
 .chip-amount {
-	font-size: 1.5rem;
+	font-size: 1.85rem;
 	font-weight: 700;
 	color: white;
 	line-height: 1.1;
 }
 
 .chip-color-name {
-	font-size: 0.95rem;
+	font-size: 1.1rem;
 	color: var(--text-dim);
 }
 
