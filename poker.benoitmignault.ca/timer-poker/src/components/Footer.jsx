@@ -2,14 +2,20 @@ import { SITE_URL } from "../config";
 import { t } from "../i18n/i18n";
 
 /**
- * Pied de page du minuteur.
+ * Pied de page du minuteur : barre ancrée en bas de l'écran (déclinée en
+ * bloc statique empilé sur mobile).
  *
- * Trois zones : à gauche le copyright avec le nom du site et le prénom
- * de l'organisateur sélectionné, au centre l'heure en temps réel,
- * à droite le lien de retour vers la page d'accueil du site.
+ * Trois zones :
+ * - gauche : copyright — année courante et nom du tournoi, avec le nom de
+ *   l'organisateur quand il est sélectionné (« CHEZ ... »)
+ * - centre : sous-titre traduit (clé i18n "subtitle")
+ * - droite : lien vers la page d'accueil
  *
- * @param {Object} props Les propriétés du composant.
- * @param {string} props.organizerName Prénom de l'organisateur sélectionné (chaîne vide si aucun).
+ * L'horloge en temps réel n'est plus affichée ici : elle vit dans
+ * l'en-tête (voir Index).
+ *
+ * @param {Object} props
+ * @param {string} props.organizerName - Nom de l'organisateur sélectionné (chaîne vide si aucun).
  */
 function Footer( {organizerName} ) {
 
