@@ -153,8 +153,7 @@ function Index() {
 						<Countdown organizerId={organizerId} level={level} setLevel={setLevel} maxLevel={maxLevel} setIsTimerFlashing={setIsTimerFlashing} />
 					</div>
 				</div>				
-			</div>
-			<Footer organizerName={organizerName} />
+			</div>			
 			{showScrollTop && (
 				<button
 					type="button" className="scroll-top" aria-label={t("backToTop")}
@@ -163,6 +162,7 @@ function Index() {
 					<FaArrowUp />
 				</button>
 			)}
+			<Footer organizerName={organizerName} />
 		</div>
 	);
 }
