@@ -141,6 +141,7 @@
 	/* Rangée principale en colonne */
 	.main-container {
 		flex-direction: column;
+		margin-bottom: 14px;
 	}
 
 	/* Carte des jetons pleine largeur */
@@ -212,7 +213,6 @@
 		cursor: pointer;
 		backdrop-filter: blur(10px);
 		box-shadow: 0 0 20px rgba(201, 162, 39, 0.25);
-		z-index: 60;
 		transition: transform 0.2s ease, background 0.25s ease;
 	}
 
